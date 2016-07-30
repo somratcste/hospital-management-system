@@ -1,0 +1,39 @@
+/* $tooltip
+ ------------------------------------------*/
+
+.tooltip-inner {
+  .rounded(@border-radius-base);
+  background-color: @tooltip-radius;
+  background: @tooltip-color;
+  padding: 2px @padding-base;
+}
+
+.tooltip {
+  &.top .tooltip-arrow {
+    border-top-color: @tooltip-color;
+  }
+  &.top-left .tooltip-arrow {
+    border-top-color: @tooltip-color;
+  }
+  &.top-right .tooltip-arrow {
+    border-top-color: @tooltip-color;
+  }
+  &.right .tooltip-arrow {
+    border-right-color: @tooltip-color;
+  }
+  &.left .tooltip-arrow {
+    border-left-color: @tooltip-color;
+  }
+  &.bottom .tooltip-arrow {
+    border-bottom-color: @tooltip-color;
+  }
+  &.bottom-left .tooltip-arrow {
+    border-bottom-color: @tooltip-color;
+  }
+  &.bottom-right .tooltip-arrow {
+    border-bottom-color: @tooltip-color;
+  }
+  &.in {
+    .opacity(1);
+  }
+}

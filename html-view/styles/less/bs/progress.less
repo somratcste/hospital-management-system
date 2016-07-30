@@ -1,0 +1,31 @@
+/* $progress-bar
+ ------------------------------------------*/
+
+.progress {
+  margin-bottom: @padding-base;
+  height: 5px;
+  background-color: @progress-bg;
+  .box-shadow(none);
+  .rounded(0);
+}
+
+.progress-bar {
+  background-color: @progress-bar-bg;
+  .box-shadow(none);
+}
+
+.progress-bar-success {
+  .progress-bar-variant(@progress-bar-success-bg);
+}
+
+.progress-bar-info {
+  .progress-bar-variant(@progress-bar-info-bg);
+}
+
+.progress-bar-warning {
+  .progress-bar-variant(@progress-bar-warning-bg);
+}
+
+.progress-bar-danger {
+  .progress-bar-variant(@progress-bar-danger-bg);
+}

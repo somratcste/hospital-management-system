@@ -1,0 +1,8 @@
+.parsley-validation(@text-color: #555;@border-color: #ccc;@background-color: #f5f5f5) {
+  border-color: @border-color;
+  .box-shadow(none);
+  &:focus {
+    border-color: darken(@border-color, 10%);
+    .box-shadow(none);
+  }
+}

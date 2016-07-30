@@ -1,0 +1,47 @@
+/* $brand
+ ------------------------------------------*/
+
+.brand {
+  width: 100%;
+  height: @header-height;
+  display: block;
+  clear: both;
+  //.box-shadow(0 1px 0 rgba(0,0,0,0.1));
+  .brand-logo {
+    .header-vertical-align(20px);
+    float: left;
+    padding: 0 25px;
+    .opacity(.90);
+  }
+  .toggle-sidebar {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 25px;
+    padding-left: 25px;
+    float: right;
+    .header-vertical-align-padding(13px);
+  }
+}
+@media (max-width: @screen-xs-max) {
+  .header .brand {
+    text-align: center;
+    .brand-logo {
+      display: inline-block;
+      float: none;
+    }
+  }
+  .header .brand .toggle-offscreen,
+  .header .brand .toggle-chat {
+    position: absolute;
+    top: 0;
+    border: 1px solid transparent;
+    .header-vertical-align(40px);
+    .rounded(0);
+  }
+  .header .brand .toggle-offscreen {
+    left: 0;
+  }
+  .header .brand .toggle-chat {
+    right: 0;
+  }
+}

@@ -1,0 +1,62 @@
+/* $preloader
+ ------------------------------------------*/
+
+@-webkit-keyframes loading-bar {
+  0% {
+    width: 0;
+  }
+  33% {
+    width: 100%;
+  }
+  66% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    width: 100%;
+    .transform-origin(right);
+  }
+  100% {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    .transform-origin(right);
+  }
+}
+
+@keyframes loading-bar {
+  0% {
+    width: 0;
+  }
+  33% {
+    width: 100%;
+  }
+  66% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    width: 100%;
+    .transform-origin(right);
+  }
+  100% {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    .transform-origin(right);
+  }
+}
+
+.preloader {
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  top: 0;
+  z-index: 9999;
+  height: 3px;
+  background: fade(@brand-success, 20%)
+}
+
+.preloader::before {
+  content: '';
+  background-color: @brand-success;
+  display: block;
+  .square(100%);
+  -webkit-animation: loading-bar 1.5s infinite;
+  animation: loading-bar 1.5s infinite;
+  .transition-delay(400ms);
+}

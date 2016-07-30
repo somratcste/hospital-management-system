@@ -1,0 +1,21 @@
+/* $accordion
+ ------------------------------------------*/
+
+.accordion {
+  .panel {
+    border: 1px solid lighten(@border-color, 5%);
+    .rounded(@border-radius-large);
+  }
+  .panel-heading {
+    background-color: white!important;
+    .rounded(@border-radius-large);
+    a {
+      color: @text-color;
+      position: relative;
+      display: block;
+    }
+  }
+  .panel-body {
+    border-top: 0!important;
+  }
+}

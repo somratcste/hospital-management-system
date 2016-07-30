@@ -1,0 +1,31 @@
+/* $clock-picker
+ ------------------------------------------*/
+
+.clockpicker-popover {
+  .popover-title {
+    color: @text-color;
+    font-weight: @font-weight-bold;
+    font-size: 16px;
+    line-height: 1;
+    span {
+      cursor: pointer;
+    }
+  }
+  .popover-content {
+    background-color: white;
+    &:last-child {
+      border-bottom-right-radius: @border-radius-base;
+      border-bottom-left-radius: @border-radius-base;
+    }
+  }
+  .clockpicker-plate {
+    border: 1px solid @border-color;
+  }
+  .clockpicker-button {
+    margin: 0;
+    padding: 10px 0;
+    border-width: 1px 0 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}

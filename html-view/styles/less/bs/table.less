@@ -1,0 +1,137 @@
+/* $tables
+ ------------------------------------------*/
+
+.table {
+  background-color: white;
+}
+
+.table {
+  > thead, > tbody, > tfoot {
+    > tr {
+      > th, > td {
+        padding: 10px @padding-base;
+        border-color: @table-border-color;
+      }
+    }
+  }
+  &.table-condensed {
+    > thead, > tbody, > tfoot {
+      > tr {
+        > th, > td {
+          padding: 8px @padding-base;
+        }
+      }
+    }
+  }
+  > thead > tr > th {
+    border-color: @table-border-color;
+  }
+}
+
+.table-hover {
+  > tbody > tr:hover {
+    background-color: @table-bg-hover;
+  }
+}
+
+.table-striped {
+  > tbody > tr:nth-child(even) {
+    background-color: @table-bg-accent;
+  }
+}
+
+.table-bordered {
+  border-color: @table-border-color;
+  > thead, > tbody, > tfoot {
+    > tr {
+      > th, > td {
+        border-color: @table-border-color;
+        border-top: 0;
+        border-left: 0;
+        &:first-child {
+          border-left: 0;
+        }
+        &:last-child {
+          border-right: 0;
+        }
+      }
+    }
+  }
+  > thead > tr {
+    > th, > td {
+      border-bottom-width: 1px;
+    }
+  }
+}
+
+.table-striped {
+  > tbody > tr:nth-child(odd) {
+    background-color: transparent;
+  }
+}
+
+.table-responsive {
+  overflow-x: visible;
+}
+
+@media (max-width: @screen-xs-max) {
+  .table-responsive {
+    overflow-x: auto;
+    border-color: @border-color;
+    .rounded(@border-radius-base);
+  }
+}
+/* No More tables */
+
+@media (max-width: @screen-xs-max) {
+  /* Source:: http://elvery.net/demo/responsive-tables/#no-more-tables */
+  /* Force table to not be like tables anymore */
+
+  .no-more-tables table,
+  .no-more-tables thead,
+  .no-more-tables tbody,
+  .no-more-tables th,
+  .no-more-tables td,
+  .no-more-tables tr {
+    display: block;
+  }
+  /* Hide table headers (but not display: none;, for accessibility) */
+
+  .no-more-tables thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  .no-more-tables tr {
+    border: 1px solid @table-border-color;
+  }
+  .no-more-tables td {
+    position: relative;
+    padding-left: 50%!important;
+    /* Behave  like a "row" */
+
+    border-top: 0!important;
+    border-bottom: 1px solid @table-border-color;
+    text-align: left;
+    white-space: normal;
+  }
+  .no-more-tables td:before {
+    /* Now like a table header */
+
+    position: absolute;
+    /* Top/left values mimic padding */
+
+    top: 6px;
+    left: 6px;
+    padding-right: 10px;
+    width: 45%;
+    text-align: left;
+    white-space: nowrap;
+    font-weight: @font-weight-bold;
+  }
+  /* Label the data */
+
+  .no-more-tables td:before {
+    content: attr(data-title);
+  }
+}

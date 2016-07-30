@@ -1,0 +1,77 @@
+/* $datatables
+ ------------------------------------------*/
+
+table.dataTable {
+  margin-bottom: @padding-base;
+  width: 100%!important;
+  thead {
+    .sorting, .sorting_asc, .sorting_desc, .sorting_asc_disabled, .sorting_desc_disabled {
+      background-color: transparent;
+    }
+    .sorting::after,
+    .sorting_asc::after,
+    .sorting_desc::after,
+    .sorting_asc_disabled::after,
+    .sorting_desc_disabled::after {
+      float: right;
+      color: #ddd;
+      .font-awesome();
+    }
+    .sorting::after {
+      content: "\f0dc";
+    }
+    .sorting_asc::after,
+    .sorting_asc_disabled::after {
+      color: @text-color;
+      content: "\f0de";
+    }
+    .sorting_desc::after,
+    .sorting_desc_disabled::after {
+      color: @text-color;
+      content: "\f0dd";
+    }
+  }
+  .form-control {
+    width: 100%!important
+  }
+  &.no-footer {
+    border-bottom: 0;
+  }
+}
+
+.dataTables_length label {
+  font-weight: @font-weight-base;
+}
+
+.datatable-top {
+  margin-bottom: @padding-base
+}
+
+.datatable-top,
+.datatable-bottom {
+  display: table;
+  width: 100%;
+}
+
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc {
+  background: none;
+}
+
+@media (max-width: @screen-xs-max) {
+  .dataTables_wrapper {
+    .dataTables_length, .toolbar {
+      display: inline-block;
+    }
+    .btn {
+      vertical-align: baseline;
+    }
+    .dataTables_filter label {
+      display: block;
+      input {
+        margin-left: 0;
+      }
+    }
+  }
+}

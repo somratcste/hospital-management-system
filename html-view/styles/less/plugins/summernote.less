@@ -1,0 +1,50 @@
+/* $summernote
+ ------------------------------------------*/
+
+.note-editor {
+  border-color: @border-color;
+  .rounded(@border-radius-base);
+  .btn-toolbar {
+    margin-left: 0;
+    padding: 0;
+  }
+  .btn-toolbar .btn-group {
+    margin: 0;
+  }
+  .btn-group .btn {
+    .rounded(0);
+    .box-shadow(none);
+    height: 40px;
+    line-height: 40px;
+    min-width: 40px;
+    padding: 0 10px;
+    background-color: #f5f5f5;
+    border-top: 0;
+    border-bottom-color: @border-color;
+    border-left: 0;
+    border-right-color: @border-color;
+    color: @text-color;
+    &.active, &:hover {
+      background-color: #ececec;
+    }
+  }
+  .btn-group .btn + .btn,
+  .btn-group .btn + .btn-group,
+  .btn-group .btn-group + .btn,
+  .btn-group .btn-group + .btn-group {
+    margin-left: 0;
+  }
+  .note-toolbar {
+    border-color: @border-color;
+    border-bottom: 0;
+  }
+  .dropdown-menu {
+    margin: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+  .note-editable {
+    background-color: white;
+    min-height: 150px;
+  }
+}

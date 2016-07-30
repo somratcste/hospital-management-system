@@ -1,0 +1,35 @@
+/* $chartjs
+ ------------------------------------------*/
+
+.canvas-holder {
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.doughnut-legend {
+  list-style: none;
+  position: absolute;
+  right: 8px;
+  top: 0;
+  li {
+    display: block;
+    padding-left: 30px;
+    position: relative;
+    margin-bottom: 4px;
+    padding: 2px 8px 2px 28px;
+    cursor: default;
+    .transition(background-color 200ms ease-in-out);
+  }
+  li:hover {
+    background-color: @brand-default;
+  }
+  li span {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 100%;
+  }
+}

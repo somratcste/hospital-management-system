@@ -1,0 +1,43 @@
+/* $session
+ ------------------------------------------*/
+
+.usersession {
+  height: 100%;
+}
+
+.form-layout {
+  margin: 0 auto;
+  padding: @padding-base;
+  .form-control {
+    -webkit-font-smoothing: auto;
+    .box-shadow(none);
+    &:focus {
+      z-index: 2;
+    }
+  }
+  input {
+    margin-bottom: 10px;
+    &:focus {
+      border-color: darken(@border-color, 5%);
+      .box-shadow(none);
+    }
+  }
+  .btn-lg {
+    .rounded(@border-radius-base);
+  }
+}
+
+.fullscreen-bg {
+  position: fixed;
+  .cn-2-cn();
+  background-size: cover;
+  background-position: 50% 50%;
+  z-index: -1;
+  &::before {
+    content: '';
+    position: fixed;
+    .cn-2-cn();
+    background-color: fade(black, 70%);
+    .opacity(.6);
+  }
+}

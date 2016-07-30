@@ -1,0 +1,234 @@
+/* $calendar
+ ------------------------------------------*/
+
+.fc-widget-header {
+  border-width: 0!important;
+}
+
+.calendar-viewer {
+  background: white;
+  padding: (@padding-base*2);
+}
+
+.fullcalendar {
+  th.fc-widget-header {
+    border-width: 0;
+    font-size: @font-size-base;
+    font-weight: @font-weight-bold;
+    text-transform: uppercase;
+  }
+  .fc td,
+  .fc th {
+    border-right: 0;
+    border-left: 0;
+  }
+  .fc-body {
+    border: 1px solid @border-color;
+  }
+  .fc-day-grid-event .fc-time {
+    font-weight: inherit;
+    &::after {
+      display: inline-block;
+      content: ':';
+    }
+  }
+  .fc-widget-content {
+    border-color: @border-color;
+  }
+  .fc-unthemed th,
+  .fc-unthemed td,
+  .fc-unthemed hr,
+  .fc-unthemed thead,
+  .fc-unthemed tbody,
+  .fc-unthemed .fc-row,
+  .fc-unthemed .fc-popover {
+    border-color: @border-color;
+  }
+  .fc-unthemed hr,
+  .fc-unthemed .fc-popover .fc-header {
+    background-color: @border-color;
+  }
+  .fc button {
+    padding: 0 @padding-base;
+    font-size: inherit;
+  }
+  .fc-prev-button,
+  .fc-next-button {
+    padding: 0 5px;
+  }
+  .fc-state-default.fc-corner-left {
+    /* non-theme */
+    border-top-left-radius: @border-radius-base;
+    border-bottom-left-radius: @border-radius-base;
+  }
+  .fc-state-default.fc-corner-right {
+    /* non-theme */
+    border-top-right-radius: @border-radius-base;
+    border-bottom-right-radius: @border-radius-base;
+  }
+  .fc-state-default {
+    background: white;
+    border-color: @border-color;
+    color: @text-color;
+    text-shadow: none;
+    .box-shadow(none);
+  }
+  .fc-state-hover,
+  .fc-state-down,
+  .fc-state-active,
+  .fc-state-disabled {
+    color: darken(@text-color, 5%);
+    background-color: @border-color;
+    outline: none;
+  }
+  .fc-state-hover {
+    color: darken(@text-color, 5%);
+  }
+  .fc-state-down,
+  .fc-state-active {
+    background-color: @border-color;
+    background-image: none;
+    .box-shadow(none);
+  }
+  .fc-toolbar {
+    margin-bottom: (@padding-base*2);
+  }
+  .fc-toolbar h2 {
+    font-size: 28px;
+  }
+}
+
+.fc-event {
+  background-color: @brand-dark;
+  color: white;
+  .rounded(0);
+  padding: 2px 5px;
+  border-color: transparent;
+  font-size: 12px;
+}
+
+.external-event {
+  padding: 4px;
+  background-color: white;
+  border-color: transparent;
+  font-size: @font-size-base;
+  display: block;
+  margin: 0 0 @padding-base 0;
+  .remove {
+    cursor: pointer;
+  }
+}
+
+.external-events {
+  list-style: none;
+  padding: 0;
+}
+
+.external-events,
+.fc-event-container {
+  .event-primary {
+    border-left: 2px solid lighten(@brand-primary, 5%);
+    .form-control {
+      color: darken(@brand-primary, 20%);
+    }
+    &.fc-event {
+      background-color: lighten(@brand-primary, 20%);
+      color: darken(@brand-primary, 20%);
+    }
+  }
+  .event-success {
+    border-left: 2px solid lighten(@brand-success, 5%);
+    .form-control {
+      color: darken(@brand-success, 20%)
+    }
+    &.fc-event {
+      background-color: lighten(@brand-success, 20%);
+      color: darken(@brand-success, 20%);
+    }
+  }
+  .event-info {
+    border-left: 2px solid lighten(@brand-info, 5%);
+    .form-control {
+      color: darken(@brand-info, 20%)
+    }
+    &.fc-event {
+      background-color: lighten(@brand-info, 20%);
+      color: darken(@brand-info, 20%);
+    }
+  }
+  .event-warning {
+    border-left: 2px solid lighten(@brand-warning, 5%);
+    .form-control {
+      color: darken(@brand-warning, 20%)
+    }
+    &.fc-event {
+      background-color: lighten(@brand-warning, 20%);
+      color: darken(@brand-warning, 20%);
+    }
+  }
+  .event-danger {
+    border-left: 2px solid lighten(@brand-danger, 5%);
+    .form-control {
+      color: darken(@brand-danger, 20%)
+    }
+    &.fc-event {
+      background-color: lighten(@brand-danger, 20%);
+      color: darken(@brand-danger, 20%);
+    }
+  }
+  .event-default {
+    border-left: 2px solid darken(@brand-default, 20%);
+    .form-control {
+      color: darken(@brand-default, 20%)
+    }
+    &.fc-event {
+      background-color: lighten(@brand-default, 2%);
+      color: @text-color;
+    }
+  }
+}
+
+.event-type {
+  margin-top: 5px;
+  padding: 0;
+  list-style: none;
+  li {
+    display: inline-block;
+    a::before {
+      display: block;
+      .square(100%);
+      background-color: @brand-primary;
+      content: '';
+    }
+    a:hover,
+    a:focus,
+    a.active {
+      border-color: @brand-primary;
+    }
+    a {
+      position: relative;
+      display: block;
+      padding: 1px;
+      .square(15px);
+      border: 1px solid transparent;
+    }
+    a.event-primary::before {
+      background-color: @brand-primary;
+    }
+    a.event-success::before {
+      background-color: @brand-success;
+    }
+    a.event-info::before {
+      background-color: @brand-info;
+    }
+    a.event-warning::before {
+      background-color: @brand-warning;
+    }
+    a.event-danger::before {
+      background-color: @brand-danger;
+    }
+    a.event-default::before {
+      background-color: @brand-default;
+    }
+  }
+}

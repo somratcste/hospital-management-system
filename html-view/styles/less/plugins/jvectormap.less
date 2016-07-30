@@ -1,0 +1,79 @@
+/* $jvectormap
+ ------------------------------------------*/
+
+.jvectormap-tip {
+  .rounded(@border-radius-base);
+  border: solid 1px @brand-primary;
+  background: @brand-white;
+  color: @text-color;
+  font-family: inherit;
+}
+
+.jvectormap-label {
+  position: absolute;
+  padding: 3px;
+  color: white;
+  font-size: smaller;
+  font-size: inherit;
+  font-family: inherit;
+  .rounded(@border-radius-base);
+  border-color: @brand-primary;
+  background-color: @brand-primary;
+}
+
+.jvectormap-zoomin,
+.jvectormap-zoomout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: @padding-base;
+  .square(32px);
+  background-color: fade(@brand-primary, 90%);
+  background-repeat: no-repeat;
+  text-indent: -9999px;
+  cursor: pointer;
+  .rounded(2px);
+  &::before {
+    content: '';
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    margin-top: -4px;
+    background: fade(white, 80%);
+    width: 2px;
+    height: 10px;
+    margin-right: -1px;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    background: fade(white, 80%);
+    height: 2px;
+    width: 10px;
+    margin-right: -5px;
+  }
+  &:hover {
+    &::before, &::after {
+      background: fade(white, 100%);
+    }
+  }
+}
+
+.jvectormap-zoomin {
+  top: @padding-base;
+  margin-top: 0;
+  margin-bottom: 1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.jvectormap-zoomout {
+  top: (@padding-base + 33px);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  &::before {
+    display: none;
+  }
+}

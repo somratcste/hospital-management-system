@@ -1,0 +1,60 @@
+/* $avatar
+ ------------------------------------------*/
+
+.avatar {
+  position: relative;
+  display: inline-block;
+}
+
+.img-thumbnail {
+  border: 1px solid @border-color;
+}
+
+/* sizes */
+.avatar-xlg {
+  width: 512px;
+}
+
+.avatar-xlg {
+  width: 256px;
+}
+
+.avatar-lg {
+  width: 128px;
+}
+
+.avatar-md {
+  width: 64px;
+}
+
+.avatar-sm {
+  width: 46px
+}
+
+.avatar-xs {
+  width: 34px;
+}
+
+.avatar-xxs {
+  width: 22px;
+}
+
+/* status indicator */
+.status {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 2px;
+  text-align: center;
+  overflow: hidden;
+  .square(10px);
+  .rounded(10px);
+  line-height: 0.245;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.header .status {
+  top: 15px;
+  right: 13px;
+}

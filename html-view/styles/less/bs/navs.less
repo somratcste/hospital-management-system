@@ -1,0 +1,198 @@
+/* $navs
+ ------------------------------------------*/
+
+/* Navs */
+.nav > li > a:hover,
+.nav > li > a:focus {
+  background-color: @brand-primary;
+  color: #fff;
+}
+
+/* Pills */
+.nav-pills {
+  > li {
+    > a {
+      .rounded(@border-radius-base);
+    }
+    &.active > a {
+      &, &:hover, &:focus {
+        background-color: @brand-primary;
+        color: white;
+      }
+    }
+  }
+}
+
+/* Tabs */
+.nav-tabs {
+  border: 0;
+  background: transparent;
+  > li {
+    margin: 0;
+    > a {
+      margin: 0;
+      border: 0;
+      padding: 10px @padding-base;
+      &:hover, &:hover, &:focus {
+        border-color: transparent;
+        background-color: transparent;
+        color: darken(@text-color, 13%);
+      }
+    }
+    &.active > a,
+    &.active > a:hover,
+    &.active > a:focus {
+      border: 0;
+      background-color: transparent;
+    }
+  }
+}
+
+@media (max-width: @screen-xs-max) {
+  .nav-justified-xs {
+    .nav > li {
+      display: table-cell;
+      width: 1%;
+      > a {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+/* Custom tab */
+.box-tab {
+  position: relative;
+  margin-bottom: @padding-base;
+  &.left {
+    .nav-tabs {
+      bottom: auto;
+      right: -1px;
+      float: left;
+      li {
+        float: none;
+        text-align: left;
+      }
+      li a::before {
+        -webkit-transform: perspective(900px) rotate3d(0, 1, 0, 90deg);
+        transform: perspective(900px) rotate3d(0, 1, 0, 90deg);
+        .transform-origin(100% 100%);
+        -webkit-perspective-origin: 100% 100%;
+        perspective-origin: 100% 100%;
+      }
+      li.active a::before {
+        -webkit-transform: perspective(900px) rotate3d(0, 1, 0, 0deg);
+        transform: perspective(900px) rotate3d(0, 1, 0, 0deg);
+        border-top-left-radius: @border-radius-base;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: @border-radius-base;
+      }
+    }
+    .tab-content {
+      overflow: hidden;
+    }
+  }
+  &.right {
+    .nav-tabs {
+      bottom: auto;
+      left: -1px;
+      float: right;
+      li {
+        float: none;
+        text-align: left;
+      }
+      li a::before {
+        -webkit-transform: perspective(900px) rotate3d(0, 1, 0, 90deg);
+        transform: perspective(900px) rotate3d(0, 1, 0, 90deg);
+        .transform-origin(-100% 100%);
+        -webkit-perspective-origin: -100% 100%;
+        perspective-origin: -100% 100%;
+      }
+      li.active a::before {
+        -webkit-transform: perspective(900px) rotate3d(0, 1, 0, 0deg);
+        transform: perspective(900px) rotate3d(0, 1, 0, 0deg);
+        border-top-left-radius: 0;
+        border-top-right-radius: @border-radius-base;
+        border-bottom-right-radius: @border-radius-base;
+      }
+    }
+    .tab-content {
+      overflow: hidden;
+    }
+  }
+  .nav-tabs {
+    position: relative;
+    bottom: -1px;
+    margin: 0 auto;
+    padding: 0;
+    li {
+      position: relative;
+      display: block;
+      margin: 0;
+      text-align: center;
+      z-index: 1;
+    }
+    li:not(:last-child) {
+      border-right: none;
+    }
+    li a {
+      position: relative;
+      display: block;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      .rounded(0);
+      ;
+      overflow: hidden;
+    }
+    li a::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      background-color: @main-panel-bg;
+      content: '';
+      .transition(transform @transition-duration, background-color @transition-duration;);
+      -webkit-transform: perspective(900px) rotate3d(1, 0, 0, 90deg);
+      transform: perspective(900px) rotate3d(1, 0, 0, 90deg);
+      .transform-origin(50% 100%);
+      -webkit-perspective-origin: 50% 100%;
+      perspective-origin: 50% 100%;
+    }
+    li a:hover {
+      color: darken(@text-color, 8%);
+    }
+    li.active a,
+    li.active a:hover {
+      color: @text-color;
+    }
+    li.active a::before {
+      background-color: white;
+      -webkit-transform: perspective(900px) rotate3d(1, 0, 0, 0deg);
+      transform: perspective(900px) rotate3d(1, 0, 0, 0deg);
+      border-top-left-radius: @border-radius-base;
+      border-top-right-radius: @border-radius-base;
+    }
+    &.nav-justified > li > a,
+    &.nav-justified > .active > a,
+    &.nav-justified > .active > a:focus,
+    &.nav-justified > .active > a:hover {
+      border: 0;
+    }
+  }
+  .tab-content {
+    overflow: hidden;
+    padding: 15px;
+    background-color: #fff;
+  }
+  &.justified {
+    .nav-tabs li {
+      display: table-cell;
+      float: none;
+      width: 1%;
+      vertical-align: top;
+      text-align: center;
+    }
+  }
+}

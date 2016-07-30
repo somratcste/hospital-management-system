@@ -1,0 +1,113 @@
+.rounded(@radius: 2px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.box-shadow(@arguments) {
+  -webkit-box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  box-shadow: @arguments;
+}
+
+.transform(...) {
+  -webkit-transform: @arguments;
+  -moz-transform: @arguments;
+  -o-transform: @arguments;
+  -ms-transform: @arguments;
+  transform: @arguments;
+}
+
+.rotate(@deg:5deg){
+  .transform(rotate(@deg));
+}
+
+.translate(@x:0, @y:0) {
+  .transform(translate(@x, @y));
+}
+
+.translate3d(@x:0, @y:0, @z:0) {
+  .transform(translate3d(@x, @y, @z));
+}
+
+.scale(@x:0, @y:0) {
+  .transform(scale(@x, @y));
+}
+
+.scale3d(@x:0, @y:0, @z:0) {
+  .transform(scale3d(@x, @y, @z));
+}
+
+.transition(@value) {
+  -webkit-transition: @value;
+  -moz-transition: @value;
+  -o-transition: @value;
+  transition: @value;
+}
+
+.animation-duration(@duration) {
+  -webkit-animation-duration: @duration;
+  -moz-animation-duration: @duration;
+  -o-animation-duration: @duration;
+  animation-duration: @duration;
+}
+
+.animation-timing-function(@timing) {
+  -webkit-animation-timing-function: @timing;
+  -moz-animation-timing-function: @timing;
+  -o-animation-timing-function: @timing;
+  animation-timing-function: @timing;
+}
+
+.animation-fill-mode(@mode) {
+  -webkit-animation-fill-mode: @mode;
+  -moz-animation-fill-mode: @mode;
+  -o-animation-fill-mode: @mode;
+  animation-fill-mode: @mode;
+}
+
+.animation-name(@name) {
+  -webkit-animation-name: @name;
+  -moz-animation-name: @name;
+  -o-animation-name: @name;
+  animation-name: @name;
+}
+
+.transition-delay(@delay) {
+  -webkit-transition-delay: @delay;
+  -moz-transition-delay: @delay;
+  -o-transition-delay: @delay;
+  transition-delay: @delay;
+}
+
+.transition-duration(@duration: 0.2s) {
+  -moz-transition-duration: @duration;
+  -webkit-transition-duration: @duration;
+  -o-transition-duration: @duration;
+  transition-duration: @duration;
+}
+
+.transform-origin(@origin) {
+  -webkit-transform-origin: @origin;
+  -moz-transform-origin: @origin;
+  -o-transform-origin: @origin;
+  -ms-transform-origin: @origin;
+  transform-origin: @origin;
+}
+
+.user-select(@argument: none) {
+  -webkit-user-select: @argument;
+  -moz-user-select: @argument;
+  -ms-user-select: @argument;
+  user-select: @argument;
+}
+
+.opacity(@opacity: 0.5) {
+  -moz-opacity: @opacity;
+  -khtml-opacity: @opacity;
+  -webkit-opacity: @opacity;
+  opacity: @opacity;
+  @opperc: @opacity * 100;
+  -ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=@{opperc})";
+  filter: ~"alpha(opacity=@{opperc})";
+}

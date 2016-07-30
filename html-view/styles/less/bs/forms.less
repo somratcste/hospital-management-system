@@ -1,0 +1,54 @@
+/* $forms
+ ------------------------------------------*/
+
+label {
+  font-weight: @font-weight-medium;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.no-resize {
+  resize: none;
+}
+
+.form-control {
+  .placeholder(@input-color-placeholder);
+}
+
+.placeholder {
+  color: @input-color-placeholder;
+}
+
+.form-control {
+  border-color: @input-border;
+  font-weight: @font-weight-base;
+  font-size: @font-size-base;
+  -webkit-font-smoothing: antialiased;
+  .rounded(@input-border-radius-base);
+  .transition(border @transition-duration linear);
+  .box-shadow(none);
+}
+
+.form-control:focus {
+  border-color: @input-border-focus;
+  .box-shadow(none);
+}
+
+/* Validation States */
+.has-success {
+  .form-control-validation(@brand-success;@brand-success;@brand-success);
+}
+
+.has-warning {
+  .form-control-validation(@brand-warning;@brand-warning;@brand-warning);
+}
+
+.has-error {
+  .form-control-validation(@brand-danger;@brand-danger;@brand-danger);
+}
+
+.spinner .form-control {
+  text-align: center;
+}

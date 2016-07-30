@@ -1,0 +1,53 @@
+/* $google-map
+ ------------------------------------------*/
+.world-map {
+  width: 100%;
+  height: 100%;
+}
+
+.full-map-wrapper {
+  position: absolute;
+  top: @header-height;
+  bottom: @footer-height;
+  left: @sidebar-width;
+  right: 0;
+}
+
+#cd-google-map {
+  position: relative;
+}
+
+#google-container {
+  position: relative;
+  width: 100%;
+  height: 100%!important;
+  min-height: 400px;
+}
+
+.google-map {
+  width: 100%;
+  background: transparent;
+  padding: 0!important;
+}
+
+.google-map {
+  img {
+    max-width: none!important;
+  }
+}
+
+.gm-style-cc {
+  display: none!important;
+}
+
+.layout-static-sidebar .full-map-wrapper {
+  position: static;
+  height: 100%!important;
+  .world-map {
+    top: @header-height;
+    height: auto;
+    left: auto;
+    right: auto;
+    bottom: @footer-height;
+  }
+}

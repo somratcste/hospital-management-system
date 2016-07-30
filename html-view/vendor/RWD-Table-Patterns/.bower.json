@@ -1,0 +1,42 @@
+{
+  "name": "RWD-Table-Patterns",
+  "description": "This is an awesome solution for responsive tables with complex data.",
+  "version": "5.0.4",
+  "keywords": [
+    "RWD",
+    "responsive",
+    "tables",
+    "mobile-first"
+  ],
+  "homepage": "http://gergeo.se/RWD-Table-Patterns",
+  "authors": [
+    "Nadan Gergeo <nadan.gergeo@gmail.com> (www.gergeo.se)",
+    "Maggie Wachs (www.filamentgroup.com)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nadangergeo/RWD-Table-Patterns.git"
+  },
+  "license": "MIT",
+  "main": [
+    "dist/js/rwd-table.js",
+    "dist/css/rwd-table.css"
+  ],
+  "ignore": [
+    ".*",
+    "docs"
+  ],
+  "dependencies": {
+    "jquery": ">=1.10.1",
+    "bootstrap": ">=3.0.3"
+  },
+  "_release": "5.0.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "v5.0.4",
+    "commit": "7beb05c475cc024b91c5d270adf0776a6d0d7246"
+  },
+  "_source": "git://github.com/nadangergeo/RWD-Table-Patterns.git",
+  "_target": "~5.0.4",
+  "_originalSource": "RWD-Table-Patterns"
+}

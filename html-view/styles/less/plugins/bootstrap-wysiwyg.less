@@ -1,0 +1,72 @@
+/* $bootstrap-wysiwyg
+ ------------------------------------------*/
+
+.bootstrap-wysiwyg .btn-toolbar {
+  margin: 0;
+  padding: 0 0 5px 5px;
+  border: 1px solid @border-color;
+  border-bottom: 0;
+  .btn-group {
+    margin-top: 5px;
+    margin-right: 5px;
+  }
+}
+
+ul.wysihtml5-toolbar {
+  background: #f5f5f5;
+  border: 1px solid @border-color;
+  border-bottom: 0;
+  border-top-left-radius: @border-radius-base;
+  border-top-right-radius: @border-radius-base;
+  > li {
+    margin: 0;
+  }
+  .btn {
+    height: 40px;
+    line-height: 40px;
+    min-width: 40px;
+    padding: 0 10px;
+    background-color: #f5f5f5;
+    border-top: 0;
+    border-bottom-color: @border-color;
+    border-left: 0;
+    border-right-color: @border-color;
+    color: @text-color;
+    .rounded(0);
+    .box-shadow(none);
+    &:hover {
+      background-color: #ececec;
+    }
+  }
+  .btn-group .btn + .btn {
+    margin-left: 0;
+  }
+  a.btn.wysihtml5-command-active {
+    .box-shadow(none);
+    background-color: #ececec;
+  }
+  .open > .dropdown-toggle.btn {
+    color: @text-color;
+    background-color: #f5f5f5;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-right-color: @border-color;
+  }
+  .dropdown-menu {
+    margin: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+}
+
+.wysihtml5-sandbox {
+  padding: @padding-base!important;
+  width: 100%!important;
+  border-color: @border-color!important;
+  border-top: 0!important;
+  background-color: white;
+  border-bottom-left-radius: @border-radius-base!important;
+  border-bottom-right-radius: @border-radius-base!important;
+  outline: none!important;
+}

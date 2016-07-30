@@ -1,0 +1,32 @@
+@import "urban.variables.less";
+@import "variables";
+@import "mixins/vendor-prefixes.less";
+@import "mixins/skin-generator.less";
+
+/* Sample sidebar skins */
+.sidebar-skin-dark {
+  .sidebar-variant(#50516E; #9FA0B5; white; #525371; #9FA0B5);
+}
+.sidebar-skin-eastbay {
+  .sidebar-variant(#53586F; #A1A3BD; white; #555a72; #A1A3BD);
+}
+.sidebar-skin-nevada {
+  .sidebar-variant(#656D78; #CBCDCF; white; #656D78; #CBCDCF);
+}
+.sidebar-skin-hoki {
+  .sidebar-variant(#607D8B; fade(white, 70%); white; @brand-success; #f5f5f5);
+}
+.sidebar-skin-smart-blue {
+  .sidebar-variant(#597D8C; #CBDDED; white; #DD7676; fade(white, 90%));
+}
+
+/* Sample header skins */
+.header-skin-dark {
+    .header-variant(#525371; #4e4f6b; #9FA0B5;  white);
+}
+.header-skin-eastbay {
+    .header-variant(#555a72; #51556c; #C1C1CF;  white);
+}
+.header-skin-purple {
+    .header-variant(#8750C2; #8248bf; #CBAFE2; white);
+}
