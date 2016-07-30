@@ -1,53 +1,4 @@
-<!-- quick launch panel -->
-  <div class="quick-launch-panel">
-    <div class="container">
-      <div class="quick-launcher-inner">
-        <a href="javascript:;" class="close" data-toggle="quick-launch-panel">×</a>
-        <div class="css-table-xs">
-          <div class="col">
-            <a href="app-calendar.html">
-              <i class="icon-marquee"></i>
-              <span>Calendar</span>
-            </a>
-          </div>
-          <div class="col">
-            <a href="app-gallery.html">
-              <i class="icon-drop"></i>
-              <span>Gallery</span>
-            </a>
-          </div>
-          <div class="col">
-            <a href="app-messages.html">
-              <i class="icon-mail"></i>
-              <span>Messages</span>
-            </a>
-          </div>
-          <div class="col">
-            <a href="app-social.html">
-              <i class="icon-speech-bubble"></i>
-              <span>Social</span>
-            </a>
-          </div>
-          <div class="col">
-            <a href="charts-flot.html">
-              <i class="icon-pie-graph"></i>
-              <span>Analytics</span>
-            </a>
-          </div>
-          <div class="col">
-            <a href="javascript:;">
-              <i class="icon-esc"></i>
-              <span>Documentation</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- /quick launch panel -->
-
-
-  <div class="app layout-boxed">
+<div class="app layout-boxed">
 
     <!-- sidebar panel -->
     <div class="sidebar-panel offscreen-left">
@@ -56,7 +7,7 @@
 
         <!-- logo -->
         <div class="brand-logo">
-          <a href="{{ route('admin') }}"><img src="images/logo.png" height="15" alt=""></a>
+          <a href="{{ route('admin') }}"><h6>Trust One Hospital</h6></a>
         </div>
         <!-- /logo -->
 
@@ -157,11 +108,11 @@
             </li>
           <!-- /employee -->
 
-          <!-- tables -->
+          <!-- Appoinment -->
           <li>
             <a href="javascript:;">
               <i class="fa fa-tag"></i>
-              <span>Tables</span>
+              <span>Appoinment</span>
             </a>
             <ul class="sub-menu">
               <li>
@@ -174,25 +125,15 @@
                   <span>Responsive Table</span>
                 </a>
               </li>
-              <li>
-                <a href="table-datatable.html">
-                  <span>Data Tables</span>
-                </a>
-              </li>
-              <li>
-                <a href="table-editable.html">
-                  <span>Editable Table</span>
-                </a>
-              </li>
             </ul>
           </li>
-          <!-- /tables -->
+          <!-- /Appoinment -->
 
-          <!-- charts -->
+          <!-- Services -->
           <li>
             <a href="javascript:;">
               <i class="fa fa-pie-chart"></i>
-              <span>Charts</span>
+              <span>Service</span>
             </a>
             <ul class="sub-menu">
               <li>
@@ -204,38 +145,17 @@
                 <a href="charts-easypie.html">
                   <span>EasyPie</span>
                 </a>
-              </li>
-
-              <li>
-                <a href="charts-chartjs.html">
-                  <span>ChartJs</span>
-                </a>
-              </li>
-              <li>
-                <a href="charts-rickshaw.html">
-                  <span>Rickshaw</span>
-                </a>
-              </li>
-              <li>
-                <a href="charts-nvd3.html">
-                  <span>Nvd3</span>
-                </a>
-              </li>
-              <li>
-                <a href="charts-c3.html">
-                  <span>C3js</span>
-                </a>
-              </li>
+              </li>             
             </ul>
           </li>
-          <!-- /charts -->
+          <!-- /service -->
 
-          <!-- maps -->
+          <!-- Report -->
           <li>
             <a href="javascript:;">
               <i class="fa fa-map-marker"></i>
-              <span>Maps</span>
-              <span class="label label-success pull-right">2</span>
+              <span>Report</span>
+              {{-- <span class="label label-success pull-right">2</span> --}}
             </a>
             <ul class="sub-menu">
               <li>
@@ -250,13 +170,13 @@
               </li>
             </ul>
           </li>
-          <!-- /maps -->
+          <!-- /Report -->
 
-          <!-- ready pages -->
+          <!-- Operation -->
           <li>
             <a href="javascript:;">
               <i class="fa fa-send"></i>
-              <span>Apps</span>
+              <span>Operation</span>
             </a>
             <ul class="sub-menu">
               <li>
@@ -264,105 +184,19 @@
                   <span>Calendar</span>
                 </a>
               </li>
-              <li>
-                <a href="app-gallery.html">
-                  <span>Gallery</span>
-                </a>
-              </li>
-              <li>
-                <a href="app-messages.html">
-                  <span>Messages</span>
-                </a>
-              </li>
-              <li>
-                <a href="app-social.html">
-                  <span>Social</span>
-                </a>
-              </li>
+         
             </ul>
           </li>
-          <!-- /ready pages -->
+          <!-- /Operation -->
 
-          <!-- extras -->
-          <li>
-            <a href="javascript:;">
-              <i class="fa fa-trophy"></i>
-              <span>Extras</span>
-              <span class="label label-danger pull-right">new</span>
-            </a>
-            <ul class="sub-menu">
-              <li>
-                <a href="extras-invoice.html">
-                  <span>Invoice</span>
-                </a>
-              </li>
-              <li>
-                <a href="extras-timeline.html">
-                  <span>Timeline</span>
-                </a>
-              </li>
-              <li>
-                <a href="extras-sortable.html">
-                  <span>Sortable Lists</span>
-                </a>
-              </li>
-              <li>
-                <a href="extras-nestable.html">
-                  <span>Nestable Lists</span>
-                </a>
-              </li>
-              <li>
-                <a href="extras-search.html">
-                  <span>Search</span>
-                </a>
-              </li>
-              <li>
-                <a href="extras-signin.html">
-                  <span>Signin</span>
-                </a>
-              </li>
-              <li>
-                <a href="extras-signup.html">
-                  <span>Signup</span>
-                </a>
-              </li>
-              <li>
-                <a href="extras-forgot.html">
-                  <span>Forgot Password</span>
-                </a>
-              </li>
-              <li>
-                <a href="extras-lockscreen.html">
-                  <span>Lockscreen</span>
-                </a>
-              </li>
-              <li>
-                <a href="extras-404.html">
-                  <span>404 Page</span>
-                </a>
-              </li>
-              <li>
-                <a href="extras-500.html">
-                  <span>500 Page</span>
-                </a>
-              </li>
-              <li>
-                <a href="extras-blank.html">
-                  <span>Starter Page</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <!-- /extras -->
-
-          <!-- ui kit -->
+          <!-- Invoice -->
           <li>
             <a href="widgets.html">
               <i class="fa fa-toggle-on"></i>
-              <span>Widgets</span>
+              <span>Invoice</span>
             </a>
           </li>
-          <!-- /ui kit -->
+          <!-- /Invoice -->
 
           <!-- menu levels -->
           <li>
@@ -410,76 +244,6 @@
             </ul>
           </li>
           <!-- menu levels -->
-
-          <!-- emails -->
-          <li data-ng-class="{open: $state.includes('app.extras')}">
-            <a href="javascript:;">
-              <i class="fa fa-envelope"></i>
-              <span>Transational Emails</span>
-            </a>
-            <ul class="sub-menu">
-              <li>
-                <a href="http://urban.nyasha.me/email/action.html" target="_blank">
-                  <span>Action</span>
-                </a>
-              </li>
-              <li>
-                <a href="http://urban.nyasha.me/email/alert.html" target="_blank">
-                  <span>Alert</span>
-                </a>
-              </li>
-              <li>
-                <a href="http://urban.nyasha.me/email/billing.html" target="_blank">
-                  <span>Billing</span>
-                </a>
-              </li>
-              <li>
-                <a href="http://urban.nyasha.me/email/progress.html" target="_blank">
-                  <span>Progress</span>
-                </a>
-              </li>
-              <li>
-                <a href="http://urban.nyasha.me/email/survey.html" target="_blank">
-                  <span>Survey</span>
-                </a>
-              </li>
-              <li>
-                <a href="http://urban.nyasha.me/email/welcome.html" target="_blank">
-                  <span>Welcome</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <!-- /emails -->
-
-          <!-- customizer -->
-          <li>
-            <a href="http://customizer.nyasha.me/#urban" target="_blank">
-              <i class="fa fa-sliders"></i>
-              <span>Customizer</span>
-              <span class="label label-danger pull-right">hot</span>
-            </a>
-          </li>
-          <!-- /customizer -->
-
-          <!-- documentation -->
-          <li>
-            <a href="docs.html">
-              <i class="fa fa-folder"></i>
-              <span>Documentation</span>
-            </a>
-          </li>
-          <!-- /documentation -->
-
-          <!-- angular -->
-          <li>
-            <a href="http://urban.nyasha.me/angular">
-              <i class="fa fa-circle"></i>
-              <span>Angular Version</span>
-            </a>
-          </li>
-          <!-- /angular -->
-
         </ul>
       </nav>
       <!-- /main navigation -->
