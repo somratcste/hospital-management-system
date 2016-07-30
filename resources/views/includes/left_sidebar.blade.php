@@ -100,125 +100,62 @@
           </li>
           <!-- /dashboard -->
 
-          <!-- ui -->
+          <!-- patient -->
           <li>
             <a href="javascript:;">
               <i class="fa fa-toggle-on"></i>
-              <span>UI Elements</span>
+              <span>Patient</span>
             </a>
             <ul class="sub-menu">
               <li>
                 <a href="ui-buttons.html">
-                  <span>Buttons</span>
+                  <span>OUt Patient</span>
                 </a>
               </li>
               <li>
                 <a href="ui-general.html">
-                  <span>General</span>
+                  <span>In Patient</span>
                 </a>
               </li>
-              <li>
-                <a href="ui-tabs-accordion.html">
-                  <span>Tabs &amp; Accordions</span>
-                </a>
-              </li>
-              <li>
-                <a href="ui-progressbars.html">
-                  <span>Progress Bars</span>
-                </a>
-              </li>
-              <li>
-                <a href="ui-pagination.html">
-                  <span>Pagination</span>
-                </a>
-              </li>
-              <li>
-                <a href="ui-sliders.html">
-                  <span>Sliders</span>
-                </a>
-              </li>
-              <li>
-                <a href="ui-portlets.html">
-                  <span>Portlets</span>
-                </a>
-              </li>
-              <li>
-                <a href="ui-notifications.html">
-                  <span>Notifications</span>
-                </a>
-              </li>
-              <li>
-                <a href="ui-alert.html">
-                  <span>Alerts</span>
-                </a>
-              </li>
-              <li>
-                <a href="javascript:;">
-                  <i class="toggle-accordion"></i>
-                  <span>Icons</span>
-                </a>
-                <ul class="sub-menu">
-                  <li>
-                    <a href="ui-fontawesome.html">
-                      <span>Fontawesome</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="ui-feather.html">
-                      <span>Feather</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="ui-climacon.html">
-                      <span>Climacon</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <!-- /ui -->
+             </ul>
+            </li>
+          <!-- /patient -->
 
-          <!-- forms -->
+          <!-- employee -->
           <li>
             <a href="javascript:;">
               <i class="fa fa-tint"></i>
-              <span>Forms</span>
+              <span>Employee</span>
             </a>
             <ul class="sub-menu">
               <li>
-                <a href="form-basic.html">
-                  <span>Basic Forms</span>
+                <a href="ui-buttons.html">
+                  <span>Doctor</span>
                 </a>
               </li>
               <li>
-                <a href="form-advanced.html">
-                  <span>Advanced Components</span>
+                <a href="ui-general.html">
+                  <span>Nurse</span>
                 </a>
               </li>
               <li>
-                <a href="form-wizard.html">
-                  <span>Wizard</span>
+                <a href="ui-general.html">
+                  <span>Lab. Staff</span>
                 </a>
               </li>
               <li>
-                <a href="form-editors.html">
-                  <span>Editors</span>
+                <a href="ui-general.html">
+                  <span>Accountant</span>
                 </a>
               </li>
               <li>
-                <a href="form-validation.html">
-                  <span>Validation</span>
+                <a href="ui-general.html">
+                  <span>Staff</span>
                 </a>
               </li>
-              <li>
-                <a href="form-masks.html">
-                  <span>Input Masks</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <!-- /forms -->
+             </ul>
+            </li>
+          <!-- /employee -->
 
           <!-- tables -->
           <li>
