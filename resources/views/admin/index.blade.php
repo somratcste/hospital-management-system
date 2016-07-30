@@ -1,4 +1,4 @@
-@include('layouts.master')
+@extends('layouts.master')
 
 @section('content')
 <!-- quick launch panel -->
