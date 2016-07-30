@@ -30,6 +30,7 @@
 </head>
 	<body>	
     @include('includes.left_sidebar')
+    @yield('top_header')
 		@yield('content')
 		@include('includes.footer')
 	</body>

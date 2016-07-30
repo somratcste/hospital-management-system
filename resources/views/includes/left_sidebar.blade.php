@@ -1,4 +1,4 @@
-{{-- <!-- quick launch panel -->
+<!-- quick launch panel -->
   <div class="quick-launch-panel">
     <div class="container">
       <div class="quick-launcher-inner">
@@ -44,7 +44,7 @@
       </div>
     </div>
   </div>
-  <!-- /quick launch panel --> --}}
+  <!-- /quick launch panel -->
 
 
   <div class="app layout-boxed">
@@ -56,7 +56,7 @@
 
         <!-- logo -->
         <div class="brand-logo">
-          <img src="images/logo.png" height="15" alt="">
+          <a href="{{ route('admin') }}"><img src="images/logo.png" height="15" alt=""></a>
         </div>
         <!-- /logo -->
 
@@ -79,10 +79,24 @@
           <!-- dashboard -->
     
           <li>
-            <a href="index.html">
+            <a href="">
               <i class="fa fa-flask"></i>
               <span>Dashboard</span>
             </a>
+
+            <ul class="sub-menu">
+              <li>
+                <a href="{{ route('admin') }}">
+                  <i class="toggle-accordion"></i>
+                  <span>Home</span>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:;">
+                  <span>Logout</span>
+                </a>
+              </li>
+            </ul>
           </li>
           <!-- /dashboard -->
 
