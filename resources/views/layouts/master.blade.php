@@ -29,6 +29,7 @@
 
 </head>
 	<body>	
+    @include('includes.left_sidebar')
 		@yield('content')
 		@include('includes.footer')
 	</body>
