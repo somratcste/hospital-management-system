@@ -1,0 +1,13 @@
+// Navbar vertical align
+//
+// Vertically center elements in the header.
+// Example: an element has a height of 30px, so write out `.header-vertical-align(30px);` to calculate the appropriate top margin.
+.header-vertical-align(@element-height) {
+  margin-top: ((@header-height - @element-height) / 2);
+  margin-bottom: ((@header-height - @element-height) / 2);
+}
+
+.header-vertical-align-padding(@element-height) {
+  padding-top: ((@header-height - @element-height) / 2);
+  padding-bottom: ((@header-height - @element-height) / 2);
+}

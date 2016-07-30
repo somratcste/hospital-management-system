@@ -1,0 +1,118 @@
+/* $switch
+ ------------------------------------------*/
+
+.switch {
+  position: relative;
+  width: 50px;
+  height: 30px;
+  span {
+    .box-shadow(@border-color 0px 0px 0px 0px inset);
+    .transition(border @transition-duration, box-shadow @transition-duration;);
+    .square(100%);
+    position: absolute;
+    display: inline-block;
+    box-sizing: content-box;
+    border: 1px solid @border-color;
+    background-color: @border-color;
+    background-clip: content-box;
+    vertical-align: middle;
+    cursor: pointer;
+    .rounded(20px);
+    .user-select(none);
+  }
+  input {
+    display: none;
+  }
+  span i {
+    position: absolute;
+    top: 0;
+    display: inline-block;
+    cursor: pointer;
+    padding-right: 20px;
+    .transition(all ease 0.2s);
+  }
+  span i::before {
+    display: block;
+    content: '';
+    .square(30px);
+    .rounded(100%);
+    background: white;
+  }
+  :disabled + span i::before {
+    background-color: rgba(239, 239, 239, 1);
+  }
+  :checked + span {
+    border-color: @brand-success;
+    .box-shadow(@brand-success 0px 0px 0px 21px inset);
+    .transition(border @transition-duration, box-shadow @transition-duration, background-color 1.2s;);
+    background-color: @brand-success;
+    i {
+      padding-right: 0;
+      padding-left: 20px;
+    }
+  }
+
+  /* sizes. */
+  &.switch-sm {
+    width: 33px;
+    height: 20px;
+    .rounded(20px);
+    span i::before {
+      .square(20px);
+    }
+    :checked + span i {
+      padding-left: 13px;
+    }
+  }
+  &.switch-lg {
+    width: 66px;
+    height: 40px;
+    .rounded(40px);
+    span i::before {
+      .square(40px);
+    }
+    :checked + span i {
+      padding-left: 26px;
+    }
+  }
+  &.square span {
+    i::before, & {
+      .rounded(@border-radius-base);
+    }
+  }
+  &.switch-primary {
+    :checked + span {
+      border-color: @brand-primary;
+      .box-shadow(@brand-primary 0px 0px 0px 21px inset);
+      background-color: @brand-primary;
+    }
+  }
+  &.switch-warning {
+    :checked + span {
+      border-color: @brand-warning;
+      .box-shadow(@brand-warning 0px 0px 0px 21px inset);
+      background-color: @brand-warning;
+    }
+  }
+  &.switch-danger {
+    :checked + span {
+      border-color: @brand-danger;
+      .box-shadow(@brand-danger 0px 0px 0px 21px inset);
+      background-color: @brand-danger;
+    }
+  }
+  &.switch-info {
+    :checked + span {
+      border-color: @brand-info;
+      .box-shadow(@brand-info 0px 0px 0px 21px inset);
+      background-color: @brand-info;
+    }
+  }
+  &.switch-dark {
+    :checked + span {
+      border-color: @brand-dark;
+      .box-shadow(@brand-dark 0px 0px 0px 21px inset);
+      background-color: @brand-dark;
+    }
+  }
+}

@@ -1,0 +1,132 @@
+/* $panel
+ ------------------------------------------*/
+
+.panel {
+  .rounded(0);
+  .box-shadow(none);
+  border-width: 0;
+  position: relative;
+  margin-bottom: @gutter;
+  &.panel-bordered {
+    border-width: 1px;
+    .panel-heading {
+      .rounded(0);
+    }
+  }
+}
+
+.panel-heading {
+  .clearfix();
+  position: relative;
+  border-color: transparent;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  padding: @padding-base;
+  &.border::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 1px;
+    left: @padding-base;
+    right: @padding-base;
+    bottom: 0;
+    border-bottom: 1px solid fade(black, 6%);
+  }
+}
+
+.panel-group .panel-heading+.panel-collapse>.panel-body {
+  border-color: @panel-inner-border;
+}
+
+.panel-footer {
+  border-color: @panel-inner-border;
+  background-color: @panel-footer-bg;
+}
+
+.panel-default {
+  .panel-variant(@panel-default-border;
+  @panel-default-text;
+  @panel-default-heading-bg;
+  @panel-default-border);
+}
+
+.panel-primary {
+  .panel-variant(@panel-primary-border;
+  @panel-primary-text;
+  @panel-primary-heading-bg;
+  @panel-primary-border);
+}
+
+.panel-success {
+  .panel-variant(@panel-success-border;
+  @panel-success-text;
+  @panel-success-heading-bg;
+  @panel-success-border);
+}
+
+.panel-warning {
+  .panel-variant(@panel-warning-border;
+  @panel-warning-text;
+  @panel-warning-heading-bg;
+  @panel-warning-border);
+}
+
+.panel-danger {
+  .panel-variant(@panel-danger-border;
+  @panel-danger-text;
+  @panel-danger-heading-bg;
+  @panel-danger-border);
+}
+
+.panel-info {
+  .panel-variant(@panel-info-border;
+  @panel-info-text;
+  @panel-info-heading-bg;
+  @panel-info-border);
+}
+
+.accordion-toggle {
+  font-size: @font-size-base;
+}
+
+.panel-controls {
+  float: right;
+  a {
+    margin-left: 10px;
+    display: inline-block;
+  }
+  [data-toggle=panel-remove] .panel-icon-plus,
+  .panel-remove .panel-icon-plus {
+    display: block;
+    .rotate(45deg);
+  }
+}
+
+.panel-collapsed {
+  [data-toggle=panel-collapse] .panel-icon-chevron, .panel-collapse .panel-icon-chevron {
+    display: block;
+    .rotate(180deg);
+  }
+  > .panel-body {
+    display: none;
+  }
+}
+
+.panel-refreshing::before {
+  content: '';
+  position: absolute;
+  .cn-2-cn();
+  background-color: fade(white, 60%);
+  z-index: 1;
+}
+
+.panel-refreshing::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -25px;
+  .square(50px);
+  background: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2032%2032%22%20width%3D%2232%22%20height%3D%2232%22%20fill%3D%22%23ccc%22%3E%0A%20%20%3Cpath%20opacity%3D%22.25%22%20d%3D%22M16%200%20A16%2016%200%200%200%2016%2032%20A16%2016%200%200%200%2016%200%20M16%204%20A12%2012%200%200%201%2016%2028%20A12%2012%200%200%201%2016%204%22/%3E%0A%20%20%3Cpath%20d%3D%22M16%200%20A16%2016%200%200%201%2032%2016%20L28%2016%20A12%2012%200%200%200%2016%204z%22%3E%0A%20%20%20%20%3CanimateTransform%20attributeName%3D%22transform%22%20type%3D%22rotate%22%20from%3D%220%2016%2016%22%20to%3D%22360%2016%2016%22%20dur%3D%220.8s%22%20repeatCount%3D%22indefinite%22%20/%3E%0A%20%20%3C/path%3E%0A%3C/svg%3E%0A%0A) center center no-repeat;
+  content: '';
+  z-index: 2;
+}

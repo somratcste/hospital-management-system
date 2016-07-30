@@ -1,0 +1,41 @@
+/* $hamburger-icon
+ ------------------------------------------*/
+
+.hamburger-icon {
+  tap-highlight-color: transparent;
+  padding: 15px;
+  span {
+    display: block;
+    width: 16px;
+    height: 1px;
+    pointer-events: none;
+  }
+  span:nth-child(2) {
+    margin: 3px 0;
+  }
+}
+
+.hamburger-icon.v2 {
+  span:first-child {
+    width: 14px;
+  }
+  span:nth-child(2) {
+    width: 10px;
+  }
+}
+
+.hamburger-icon.v3 {
+  span {
+    height: 1px;
+  }
+  span:nth-child(3) {
+    margin: 0 0 3px 0;
+  }
+  span:nth-child(4) {
+    width: 10px;
+  }
+}
+
+.header li .hamburger-icon {
+  .header-vertical-align-padding(9px)!important;
+}

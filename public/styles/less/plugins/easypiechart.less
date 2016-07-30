@@ -1,0 +1,34 @@
+/* $easypie
+ ------------------------------------------*/
+
+.piechart {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  > div {
+    display: table;
+    .square(100%);
+  }
+  > div > div {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .percent {
+    position: relative;
+    display: block;
+    margin: 0;
+    font-weight: @font-weight-bold;
+    &:after {
+      position: absolute;
+      top: 0;
+      content: '%';
+      font-size: .5em;
+      font-family: Helvetica, Georgia, serif;
+    }
+  }
+}

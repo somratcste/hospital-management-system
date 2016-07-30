@@ -1,0 +1,31 @@
+/* $modal
+ ------------------------------------------*/
+
+.modal {
+  z-index: @zindex-modal;
+  background: black;
+  background: fade(black, 40%);
+}
+
+.modal-content {
+  .box-shadow(none);
+  .rounded(@border-radius-large);
+}
+
+.modal .modal-dialog,
+.modal.in .modal-dialog {
+  .animation-duration(800ms);
+  .animation-timing-function(linear);
+  .animation-fill-mode(forwards);
+}
+
+.modal .modal-dialog {
+  .animation-name(animation-close);
+  .animation-duration(@transition-duration);
+  .animation-timing-function(ease-out);
+  .translate(0, 0);
+}
+
+.modal.in .modal-dialog {
+  .animation-name(animation-open);
+}

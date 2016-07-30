@@ -1,0 +1,52 @@
+/* $checkbo
+ ------------------------------------------*/
+
+.cb-radio {
+  &.checked i {
+    background-color: @brand-primary
+  }
+  &:hover .cb-inner {
+    border-color: @brand-primary
+  }
+}
+
+.cb-checkbox .cb-inner,
+.cb-radio .cb-inner {
+  border-color: @border-color;
+  background: white;
+}
+
+.cb-checkbox.no-border .cb-inner,
+.cb-radio.no-border .cb-inner {
+  border-color: transparent;
+}
+
+.cb-checkbox {
+  &.checked .cb-inner {
+    border-color: @brand-primary;
+    background-color: @brand-primary
+  }
+  &:hover .cb-inner {
+    border-color: @brand-primary
+  }
+  .cb-inner,
+  i {
+    .rounded(@border-radius-base);
+  }
+  i::after,
+  i::before {
+    width: 1px;
+  }
+  &.cb-sm i,
+  &.cb-sm .cb-inner {
+    .rounded(0);
+  }
+  &.cb-md i,
+  &.cb-md .cb-inner {
+    .rounded(@border-radius-base);
+  }
+  &.cb-lg i,
+  &.cb-lg .cb-inner {
+    .rounded(@border-radius-base);
+  }
+}

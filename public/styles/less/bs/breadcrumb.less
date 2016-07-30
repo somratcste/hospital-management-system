@@ -1,0 +1,12 @@
+/* $breadcrumbs
+ ------------------------------------------*/
+
+.breadcrumb {
+  background-color: @breadcrumb-bg;
+  .rounded(@border-radius-base);
+  > li + li::before {
+    padding: 0 5px;
+    content: "@{breadcrumb-separator}\00a0";
+    font-family: @fontawesome-family-icon;
+  }
+}

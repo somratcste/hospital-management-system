@@ -1,0 +1,27 @@
+/* $c3-charts
+ ------------------------------------------*/
+
+.c3 {
+  svg text,
+  svg {
+    color: @text-color;
+    font: 10px @font-family-base-webfont;
+  }
+  path,
+  line {
+    stroke: @border-color;
+  }
+  .c3-tooltip {
+    .box-shadow(none);
+    tr {
+      border-color: @brand-primary;
+    }
+    th {
+      background-color: @brand-primary;
+      font-size: 13px;
+    }
+    td {
+      border-left-color: @brand-primary;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+/* $main-panel
+ ------------------------------------------*/
+
+.main-panel {
+  .clearfix();
+  background: @main-panel-bg;
+  > .main-content {
+    .clearfix();
+    padding: @gutter;
+    margin-bottom: @footer-height;
+    &.no-padding {
+      padding: 0;
+    }
+  }
+  .row {
+    margin-right: (@gutter / -2);
+    margin-left: (@gutter / -2);
+  }
+  .make-grid-columns();
+}
+
+.center-wrapper {
+  display: table;
+  .square(100%);
+  position: relative;
+  .center-content {
+    display: table-cell;
+    vertical-align: middle;
+    .square(100%);
+    float: none;
+  }
+}
+
+@media screen and (min-width: @screen-sm-min) {
+  .main-panel {
+    margin-left: @sidebar-width;
+  }
+}

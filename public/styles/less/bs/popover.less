@@ -1,0 +1,21 @@
+/* $popover
+ ------------------------------------------*/
+
+.popover {
+  .box-shadow(0 1px 1px rgba(0, 0, 0, 0.05));
+  font-family: inherit;
+  font-size: inherit;
+  .rounded(@border-radius-base);
+  border-color: @border-color;
+  padding: 0;
+  .popover-title {
+    border-bottom-color: @border-color;
+    background-color: @popover-header;
+    border-top-left-radius: @border-radius-base;
+    border-top-right-radius: @border-radius-base;
+  }
+  .popover-content:last-child {
+    border-bottom-left-radius: @border-radius-base;
+    border-bottom-right-radius: @border-radius-base;
+  }
+}

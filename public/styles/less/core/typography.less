@@ -1,0 +1,50 @@
+/* $typography
+ ------------------------------------------*/
+
+.climacon {
+  line-height: 1;
+}
+
+small,
+.small {
+  font-size: 11px;
+}
+p {
+  color: lighten(@text-color, 10%)
+}
+blockquote {
+  display: block;
+  float: left;
+  margin: 15px 0;
+  padding: @padding-base;
+  border: 0;
+  font-size: 13px;
+  &::before {
+    float: left;
+    margin-right: 10px;
+    color: #E2E4E9;
+    content: "“";
+    font-size: 40px;
+    font-family: Georgia, serif;
+    line-height: 1
+  }
+  p {
+    display: inline;
+  }
+}
+
+.pullquote {
+  display: block;
+  float: left;
+  width: 55%;
+  font-style: italic;
+  font-size: 1.6em;
+  &::before {
+    float: left;
+    color: #E2E4E9;
+    content: "“";
+    font-style: normal;
+    font-size: 40px;
+    font-family: Georgia, serif;
+  }
+}

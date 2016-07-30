@@ -1,0 +1,463 @@
+/* $Utilities Classes */
+@xxs: 2px;
+@xs: 5px;
+@sm: 10px;
+@md: 15px;
+@df: 20px;
+@lg: 25px;
+@xlg: 30px;
+.inline {
+    display: inline-block;
+    //vertical-align: top;
+}
+/* Margins */
+.no-margin {
+    margin: 0!important;}
+.mn {
+    margin-right: -@md;
+    margin-left: -@md;
+}
+.mrn {
+    margin-right: -@md;
+}
+.mln {
+    margin-left: -@md;
+}
+.mtn {
+    margin-top: -@md;
+}
+.mbn {
+    margin-bottom: -@md;
+}
+.mbn {
+    margin-bottom: -@md;
+}
+.ml0 {
+    margin-left: 0;
+}
+.mr0 {
+    margin-right: 0;
+}
+.mt0 {
+    margin-top: 0;
+}
+.mb0 {
+    margin-bottom: 0;
+}
+.m30 {
+    margin: @xlg;
+}
+.mr30 {
+    margin-right: @xlg;
+}
+.ml30 {
+    margin-left: @xlg;
+}
+.mt30 {
+    margin-top: @xlg;
+}
+.mb30 {
+    margin-bottom: @xlg;
+}
+.m25 {
+    margin: @lg;
+}
+.mr25 {
+    margin-right: @lg;
+}
+.ml25 {
+    margin-left: @lg;
+}
+.mt25 {
+    margin-top: @lg;
+}
+.mb25 {
+    margin-bottom: @lg;
+}
+.m20 {
+    margin: @df;
+}
+.mr20 {
+    margin-right: @df;
+}
+.ml20 {
+    margin-left: @df;
+}
+.mt20 {
+    margin-top: @df;
+}
+.mb20 {
+    margin-bottom: @df;
+}
+.m15 {
+    margin: @md;
+}
+.mr15 {
+    margin-right: @md;
+}
+.ml15 {
+    margin-left: @md;
+}
+.mt15 {
+    margin-top: @md;
+}
+.mb15 {
+    margin-bottom: @md;
+}
+.m10 {
+    margin: @sm;
+}
+.mr10 {
+    margin-right: @sm;
+}
+.ml10 {
+    margin-left: @sm;
+}
+.mt10 {
+    margin-top: @sm;
+}
+.mb10 {
+    margin-bottom: @sm;
+}
+.m5 {
+    margin: @xs;
+}
+.mr5 {
+    margin-right: @xs;
+}
+.ml5 {
+    margin-left: @xs;
+}
+.mt5 {
+    margin-top: @xs;
+}
+.mb5 {
+    margin-bottom: @xs;
+}
+.m2 {
+    margin: @xxs;
+}
+.mr2 {
+    margin-right: @xxs;
+}
+.ml2 {
+    margin-left: @xxs;
+}
+.mt2 {
+    margin-top: @xxs;
+}
+.mb2 {
+    margin-bottom: @xxs;
+}
+/* Padding */
+.no-padding:not(.main-content) {
+    padding: 0!important;
+}
+.pl0 {
+    padding-left: 0;
+}
+.pr0 {
+    padding-right: 0;
+}
+.pt0 {
+    padding-top: 0!important;
+}
+.pb0 {
+    padding-bottom: 0;
+}
+.p30 {
+    padding: @xlg;
+}
+.pr30 {
+    padding-right: @xlg;
+}
+.pl30 {
+    padding-left: @xlg;
+}
+.pt30 {
+    padding-top: @xlg;
+}
+.pb30 {
+    padding-bottom: @xlg;
+}
+.p25 {
+    padding: @lg;
+}
+.pr25 {
+    padding-right: @lg;
+}
+.pl25 {
+    padding-left: @lg;
+}
+.pt25 {
+    padding-top: @lg;
+}
+.pb25 {
+    padding-bottom: @lg;
+}
+.p20 {
+    padding: @df;
+}
+.pr20 {
+    padding-right: @df;
+}
+.pl20 {
+    padding-left: @df;
+}
+.pt20 {
+    padding-top: @df;
+}
+.pb20 {
+    padding-bottom: @df;
+}
+.p15 {
+    padding: @md;
+}
+.pr15 {
+    padding-right: @md;
+}
+.pl15 {
+    padding-left: @md;
+}
+.pt15 {
+    padding-top: @md;
+}
+.pb15 {
+    padding-bottom: @md;
+}
+.p10 {
+    padding: @sm;
+}
+.pr10 {
+    padding-right: @sm;
+}
+.pl10 {
+    padding-left: @sm;
+}
+.pt10 {
+    padding-top: @sm;
+}
+.pb10 {
+    padding-bottom: @sm;
+}
+.p5 {
+    padding: @xs;
+}
+.pr5 {
+    padding-right: @xs;
+}
+.pl5 {
+    padding-left: @xs;
+}
+.pt5 {
+    padding-top: @xs;
+}
+.pb5 {
+    padding-bottom: @xs;
+}
+.p2 {
+    padding: @xxs;
+}
+.pr2 {
+    padding-right: @xxs;
+}
+.pl2 {
+    padding-left: @xxs;
+}
+.pt2 {
+    padding-top: @xxs;
+}
+.pb2 {
+    padding-bottom: @xxs;
+}
+/* no background color*/
+.no-bg {
+    background-color: transparent!important;
+}
+.shadow {
+    .box-shadow(0 0 5px rgba(0, 0, 0, .2));
+}
+.no-shadow {
+    .box-shadow(none);
+}
+.text-shadow {
+    text-shadow: 0 1px 1px rgba(255,255,255,.9);
+}
+.align-middle td,
+td.align-middle{
+    vertical-align: middle!important;
+}
+/* Position */
+.relative {
+    position: relative;
+}
+.absolute {
+    position: absolute;
+}
+.corner-to-corner {
+    position: absolute;
+    .cn-2-cn;
+}
+.lt {
+    left: 0;
+}
+.rt {
+    right: 0;
+}
+.bt {
+    bottom: 0;
+}
+.tp {
+    top: 0;
+}
+/* Radius */
+.no-radius {
+    .rounded(0);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.round {
+    .rounded(@border-radius-base);
+}
+.brtl {
+    border-top-left-radius: @border-radius-base;
+}
+.brtr {
+    border-top-right-radius: @border-radius-base;
+}
+.brbl {
+    border-bottom-left-radius: @border-radius-base;
+}
+.brbr {
+    border-bottom-right-radius: @border-radius-base;
+}
+/* Overflow */
+.overflow-hidden {
+    overflow: hidden;
+}
+.overflow-visible {
+    overflow: visible;
+}
+.overflow-auto {
+    overflow: auto;
+}
+.block {
+    display: block;
+}
+.open .hover-inactive,
+.hover-inactive {
+    &:hover,
+    &:focus{
+        background-color: transparent!important;
+    }
+}
+/* Widths */
+.w100 {
+    width: 100px;
+}
+.w150 {
+    width: 150px;
+}
+.w200 {
+    width: 200px;
+}
+.w250 {
+    width: 250px;
+}
+.w300 {
+    width: 300px;
+}
+.w350 {
+    width: 350px;
+}
+.w400 {
+    width: 400px;
+}
+.w450 {
+    width: 400px;
+}
+.w500 {
+    width: 500px;
+}
+/* Toggle */
+.toggle-active {
+    cursor: pointer;
+}
+.toggle-active.active {
+    color: @brand-warning;
+}
+/* Borders */
+.no-border
+{
+    border: 0;
+}
+.bordered {
+    border: 1px solid @border-color;
+}
+.bb {
+    border-bottom: 1px solid @border-color;
+}
+.bt {
+    border-top: 1px solid @border-color;
+}
+.bl {
+    border-left: 1px solid @border-color;
+}
+.br {
+    border-right: 1px solid @border-color;
+}
+.bt0 {
+    border-top: 0;
+}
+.br0 {
+    border-right: 0;
+}
+.bb0 {
+    border-bottom: 0;
+}
+.bl0 {
+    border-left: 0;
+}
+.avatar.bordered {
+    border: 3px solid fade(#fff, 50%);
+}
+/* $border color */
+.border-primary {
+    border-color: @brand-primary;
+}
+.border-default {
+    border-color: @brand-default;
+}
+.border-warning {
+    border-color: @brand-warning;
+}
+.border-success {
+    border-color: @brand-success;
+}
+.border-info {
+    border-color: @brand-info;
+}
+.border-white {
+    border-color: @brand-white;
+}
+.border-danger {
+    border-color: @brand-danger;
+}
+.full-height {
+  height: 100%;
+}
+[data-animation] {
+  visibility: hidden;
+}
+.animated {
+  visibility: visible!important;
+}
+.visible {
+  visibility: visible;
+}
+.scrollable {
+  overflow: hidden;
+  position: relative;
+}

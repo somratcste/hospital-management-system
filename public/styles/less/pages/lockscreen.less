@@ -1,0 +1,36 @@
+/* $lockscreen
+ ------------------------------------------*/
+
+.lockcode {
+  display: block;
+  margin: 0 auto;
+  max-width: 280px;
+}
+
+.lock-input {
+  border-color: transparent;
+  &:focus {
+    border-color: transparent;
+    .box-shadow(none);
+  }
+}
+
+.lockscreen-avatar {
+  position: relative;
+  max-width: 128px;
+  margin: 0 auto;
+  &.shadows::before {
+    content: "";
+    .box-shadow(0px 0px 0px 20px rgba(0, 0, 0, 0.01));
+    position: absolute;
+    .cn-2-cn;
+    .rounded(128px);
+  }
+  &.shadows::after {
+    content: "";
+    .box-shadow(0px 0px 0px 8px rgba(0, 0, 0, 0.03));
+    position: absolute;
+    .cn-2-cn;
+    .rounded(128px);
+  }
+}

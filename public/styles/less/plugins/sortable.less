@@ -1,0 +1,31 @@
+/* $sortable
+ ------------------------------------------*/
+
+.sortable-list {
+  padding: 0;
+  -webkit-touch-callout: none;
+  .user-select(none);
+  li {
+    position: relative;
+    display: block;
+    margin-bottom: -1px;
+    padding: 15px;
+    border: 1px solid @border-color;
+    background-color: #fff;
+    cursor: move;
+    &:first-child {
+      border-top-left-radius: @border-radius-base;
+      border-top-right-radius: @border-radius-base;
+    }
+    &:last-child {
+      border-bottom-right-radius: @border-radius-base;
+      border-bottom-left-radius: @border-radius-base;
+    }
+  }
+  li.ui-state-highlight {
+    min-height: 50px;
+    width: 100%;
+    background: fade(black, 1%);
+    list-style: none;
+  }
+}

@@ -1,0 +1,64 @@
+/* $footer
+ ------------------------------------------*/
+
+footer.content-footer {
+  .clearfix();
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: @footer-height;
+  padding: 0 @gutter;
+  border-top: 1px solid fade(black, 7%);
+  font-size: 12px;
+  z-index: 1000;
+  .footer-text {
+    padding-right: @padding-base;
+    padding-left: @padding-base;
+    .footer-vertical-align(19px);
+    display: inline-block;
+    float: left;
+    &.small {
+      .footer-vertical-align(15px);
+    }
+  }
+  .footer-right {
+    float: right;
+    margin-right: 0;
+  }
+  nav {
+    margin-right: @padding-base;
+  }
+  nav ul {
+    list-style: none;
+    margin: 0;
+    font-weight: normal;
+    line-height: 1;
+    li {
+      display: inline-block;
+      vertical-align: -webkit-baseline-middle;
+      a {
+        color: @text-color;
+        .footer-vertical-align-padding(19px);
+        padding-right: 10px;
+        padding-left: 10px;
+        line-height: 20px;
+        max-height: @footer-height;
+        &:hover, &:focus {
+          background-color: transparent;
+          color: darken(@text-color, 5%);
+        }
+      }
+      &:first-child {
+        margin-left: 0;
+        a {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+  li:hover,
+  li a:hover,
+  li a:active {
+    background: transparent;
+  }
+}

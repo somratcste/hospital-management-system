@@ -1,0 +1,166 @@
+/* $scaffolding
+ ------------------------------------------*/
+
+::-moz-selection {
+  background: @brand-primary;
+  color: white;
+  text-shadow: none;
+}
+
+::selection {
+  background: @brand-primary;
+  color: white;
+  text-shadow: none;
+}
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+}
+
+.app {
+  background: @main-panel-bg;
+  width: 100%;
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+  overflow: visible;
+  background: @body-bg;
+  color: @text-color;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  font-family: @font-family-base-webfont, sans-serif;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  &.stop-scrolling {
+    height: 100%;
+    overflow: hidden;
+  }
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  &:visited, &:active, &:focus, &:hover {
+    color: inherit;
+    outline: 0;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+.touch {
+  li:hover, li:focus, a:hover, a:focus, {
+    background-color: transparent!important;
+  }
+}
+
+hr {
+  display: block;
+  margin: 1em 0;
+  padding: 0;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid @hr-border;
+}
+
+img {
+  -ms-interpolation-mode: bicubic;
+}
+
+.img-rounded {
+  .rounded(@border-radius-base);
+}
+
+.img-circle {
+  .rounded(50%);
+}
+
+ol {
+  list-style-position: outside;
+  list-style-type: decimal;
+}
+
+ul {
+  list-style-position: outside;
+  list-style-type: disc;
+  line-height: 1.5;
+}
+
+ol.list-style-none,
+ul.list-style-none {
+  padding: 0;
+  list-style: none;
+}
+
+.nav {
+  padding: 0;
+}
+
+[ui-view].ng-leave {
+  -webkit-animation: fadeOut 0.4s;
+  animation: fadeOut 0.4s;
+}
+
+[ui-view].ng-enter {
+  -webkit-animation: slideInUp 0.4s;
+  animation: slideInUp 0.4s;
+}
+
+@media screen and (min-width: @screen-sm-min) {
+  .scroll {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+  }
+  .eq-col {
+    position: absolute;
+    top: @header-height;
+    bottom: @footer-height;
+    left: @sidebar-width;
+    right: 0;
+  }
+  .display-row {
+    .square(100%);
+  }
+  .display-row .col {
+    float: left;
+    height: 100%;
+  }
+  .display-row .col:last-child {
+    float: none;
+    overflow: hidden;
+  }
+  .css-table {
+    display: table;
+    .square(100%);
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+  }
+  .css-table .col {
+    display: table-cell;
+    vertical-align: top;
+    float: none;
+    height: 100%;
+    height: 100%;
+  }
+}
+.css-table-xs {
+  display: table;
+  .square(100%);
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+  overflow: hidden;
+}
+.css-table-xs .col {
+  display: table-cell;
+  vertical-align: top;
+  position: relative;
+  float: none;
+  height: 100%;
+}
