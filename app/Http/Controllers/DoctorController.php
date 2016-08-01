@@ -20,7 +20,20 @@ class DoctorController extends Controller
     		'birthDate'	=> 'required',
     		'charge'	=> 'required|number',
     		'mobile'	=> 'required|number',
-    		'email'		=> 'required'
+    		'email'		=> 'required|email'
     	]);
+
+    	$doctor 		   = new Doctor();
+    	$doctor->name 	   = ucfirst($request['name']);
+    	$doctor->degree    = $request['degree'];
+    	$doctor->gender	   = $request['gender'];
+    	$doctor->birthDate = $request['birthDate'];
+    	$doctor->charge	   = $request['charge'];
+    	$doctor->mobile	   = $request['mobile'];
+    	$doctor->email	   = $request['email'];    	
+    	$doctor->hAddress  = $request['hAddress'];
+    	$doctor->oaddress  = $request['oaddress'];
+    	$doctor->specialist = $request['specialist'];
+    	$doctor->save();
     }
 }

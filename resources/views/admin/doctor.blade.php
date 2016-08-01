@@ -105,7 +105,7 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Specialization</label>
               <div class="col-sm-8">
-                <select class="form-control" name="specialization">
+                <select class="form-control" name="specialist">
                   <option value="">Medicine</option>
                   <option value="">Orthopedics</option>
                   <option value="">Neurologiest</option>
@@ -137,14 +137,14 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Home Address</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" name="homeAddress" placeholder="Home Address" value="{{ Request::old('homeAddress') }}" required>
+                <input type="text" class="form-control" name="hAddress" placeholder="Home Address" value="{{ Request::old('hAddress') }}" required>
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-sm-2 control-label">Office Address</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" name="officeAddress" placeholder="Office Address" value="{{ Request::old('officeAddress') }}" required>
+                <input type="text" class="form-control" name="oAddress" placeholder="Office Address" value="{{ Request::old('oAddress') }}" required>
               </div>
             </div>
 
