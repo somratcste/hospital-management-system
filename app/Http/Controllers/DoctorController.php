@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Request;
+use Illuminate\Http\Request;
+use App\Doctor;
 
 class DoctorController extends Controller
 {
@@ -11,15 +12,15 @@ class DoctorController extends Controller
         return view('admin.doctor');
     }
 
-    public function save(Requestquest $request)
+    public function save(Request $request)
     {
     	$this->validate($request , [
     		'name' 		=> 'required|max:200',
     		'degree'	=> 'required|max:100',
     		'gender' 	=> 'required',
     		'birthDate'	=> 'required',
-    		'charge'	=> 'required|number',
-    		'mobile'	=> 'required|number',
+    		'charge'	=> 'required|numeric',
+    		'mobile'	=> 'required|numeric',
     		'email'		=> 'required|email'
     	]);
 
@@ -32,8 +33,10 @@ class DoctorController extends Controller
     	$doctor->mobile	   = $request['mobile'];
     	$doctor->email	   = $request['email'];    	
     	$doctor->hAddress  = $request['hAddress'];
-    	$doctor->oaddress  = $request['oaddress'];
+    	$doctor->oaddress  = $request['oAddress'];
     	$doctor->specialist = $request['specialist'];
     	$doctor->save();
+
+    	return redirect()->back()->with(['success' => 'Insert Successfully'] );
     }
 }

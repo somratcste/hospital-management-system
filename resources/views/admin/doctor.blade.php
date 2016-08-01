@@ -67,7 +67,7 @@
         </div>
         <div class="panel-body">
         <div class="col-lg-12">
-          <form class="form-horizontal bordered-group" role="form" action="" method="post">
+          <form class="form-horizontal bordered-group" role="form" action="{{ route('doctor.save') }}" method="post">
 
             <div class="form-group">
               <label class="col-sm-2 control-label">Name</label>
@@ -75,6 +75,7 @@
                 <input type="text" class="form-control" name="name" placeholder="Name" value="{{ Request::old('name') }}" required>
               </div>
             </div>
+            
 
             <div class="form-group">
               <label class="col-sm-2 control-label">Degree</label>
@@ -106,7 +107,7 @@
               <label class="col-sm-2 control-label">Specialization</label>
               <div class="col-sm-8">
                 <select class="form-control" name="specialist">
-                  <option value="">Medicine</option>
+                  <option value="medicine">Medicine</option>
                   <option value="">Orthopedics</option>
                   <option value="">Neurologiest</option>
                 </select>

@@ -21,6 +21,11 @@ Route::group(['middleware' => ['web']] , function() {
 		'uses' => 'DoctorController@getIndex',
 		'as' => 'doctor.index'
 	]);
+
+	Route::post('/doctor/save' , [
+		'uses' => 'DoctorController@save',
+		'as' => 'doctor.save'
+	]);
 });
 
 
