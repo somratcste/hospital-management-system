@@ -10,7 +10,17 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::group(['middleware' => ['web']] , function() {
 
-Route::get('/', function () {
-    return view('admin.index');
-})->name('admin');
+	Route::get('/', [
+    	'uses' => 'AdminController@index',
+    	'as' => 'admin.index'
+	]);
+
+	Route::get('/doctor' , [
+		'uses' => 'DoctorController@getIndex',
+		'as' => 'doctor.index'
+	]);
+});
+
+

@@ -383,6 +383,7 @@
 
   <!-- initialize page scripts -->
   <script src="scripts/pages/dashboard.js"></script>
+  <script src="vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
   <!-- /initialize page scripts -->
 
 </body>

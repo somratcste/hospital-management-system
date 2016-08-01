@@ -37,23 +37,11 @@
       <li>
         <a href="javascript:;" data-toggle="dropdown">
           <img src="images/avatar.jpg" class="header-avatar img-circle ml10" alt="user" title="user">
-          <span class="pull-left">Samuel Perkins</span>
+          <span class="pull-left">Trust One Hospital</span>
         </a>
         <ul class="dropdown-menu">
           <li>
-            <a href="javascript:;">Settings</a>
-          </li>
-          <li>
-            <a href="javascript:;">Upgrade</a>
-          </li>
-          <li>
-            <a href="javascript:;">
-              <span class="label bg-danger pull-right">34</span>
-              <span>Notifications</span>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:;">Help</a>
+            <a href="{{ route('admin.index') }}">Dashboard</a>
           </li>
           <li>
             <a href="signin.html">Logout</a>

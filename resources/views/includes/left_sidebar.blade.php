@@ -7,7 +7,7 @@
 
         <!-- logo -->
         <div class="brand-logo">
-          <a href="{{ route('admin') }}"><h6>Trust One Hospital</h6></a>
+          <a href="{{ route('admin.index') }}"><h6>Trust One Hospital</h6></a>
         </div>
         <!-- /logo -->
 
@@ -37,7 +37,7 @@
 
             <ul class="sub-menu">
               <li>
-                <a href="{{ route('admin') }}">
+                <a href="{{ route('admin.index') }}">
                   <i class="toggle-accordion"></i>
                   <span>Home</span>
                 </a>
@@ -80,9 +80,23 @@
             </a>
             <ul class="sub-menu">
               <li>
-                <a href="ui-buttons.html">
+                <a href="#">
                   <span>Doctor</span>
                 </a>
+                  <ul class="sub-menu">
+                    <li>
+                      <a href="{{ route('doctor.index') }}">
+                        <i class="toggle-accordion"></i>
+                        <span>Add New</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="">
+                        <i class="toggle-accordion"></i>
+                        <span>View List</span>
+                      </a>
+                    </li>
+                  </ul>
               </li>
               <li>
                 <a href="ui-general.html">
