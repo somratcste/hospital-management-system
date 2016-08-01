@@ -123,7 +123,7 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Mobile Number</label> 
               <div class="col-sm-8">
-                <input class="form-control" type="tel" pattern="^\d{11}$" required name="mobile" placeholder="(format: xxxxxxxxxxx)" name="mobileNumber">
+                <input class="form-control" type="tel" pattern="^\d{11}$" required name="mobile" placeholder="(format: xxxxxxxxxxx)" name="mobile">
               </div>
             </div>
 
