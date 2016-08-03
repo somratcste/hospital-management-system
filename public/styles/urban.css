@@ -12918,3 +12918,6 @@ td.align-middle {
 .location-selector [data-position=bottomRight] div {
   cursor: se-resize;
 }
+.clear {
+  clear: both;
+}
