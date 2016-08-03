@@ -27,7 +27,7 @@
     <ul class="nav navbar-nav hidden-xs">
       <li>
         <p class="navbar-text">
-          Add New Nurse
+          View All Doctor's
         </p>
       </li>
     </ul>
@@ -36,7 +36,7 @@
 
       <li>
         <a href="javascript:;" data-toggle="dropdown">
-          <img src="images/avatar.jpg" class="header-avatar img-circle ml10" alt="user" title="user">
+          <img src="{{ asset('images/avatar.jpg') }}" class="header-avatar img-circle ml10" alt="user" title="user">
           <span class="pull-left">Trust One Hospital</span>
         </a>
         <ul class="dropdown-menu">
