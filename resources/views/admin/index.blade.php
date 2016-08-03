@@ -19,7 +19,7 @@
 
       <!-- logo -->
       <div class="brand-logo">
-        <img src="images/logo-dark.png" height="15" alt="">
+        Trust One Hospital
       </div>
       <!-- /logo -->
     </div>

@@ -19,7 +19,7 @@
 
       <!-- logo -->
       <div class="brand-logo">
-        <img src="images/logo-dark.png" height="15" alt="">
+        Trust One Hospital
       </div>
       <!-- /logo -->
     </div>
@@ -102,10 +102,10 @@
               <label class="col-sm-2 control-label">Gender</label>
               <div class="col-sm-8"> 
                 <label class="radio-inline">
-                  <input type="radio" name="gender" id="inlineRadio1" value="m"> Male
+                  <input type="radio" name="gender" id="inlineRadio1" value="Male"> Male
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="gender" id="inlineRadio2" value="f"> Female
+                  <input type="radio" name="gender" id="inlineRadio2" value="Female"> Female
                 </label>
               </div>
             </div>

@@ -51,6 +51,7 @@ class DoctorController extends Controller
 
     public function viewList()
     {
-        return view('admin.doctor_list');
+        $doctor = Doctor::all();
+        return view('admin.doctor_list' , ['doctors' => $doctor]);
     }
 }
