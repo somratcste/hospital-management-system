@@ -25,6 +25,9 @@ class CreateDoctorsTable extends Migration
             $table->string('email');
             $table->string('hAddress');
             $table->string('oAddress');
+            $table->string('image');
+            $table->string('size');
+            $table->string('type');
         });
     }
 

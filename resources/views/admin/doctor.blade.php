@@ -67,7 +67,21 @@
         </div>
         <div class="panel-body">
         <div class="col-lg-12">
-          <form class="form-horizontal bordered-group" role="form" action="{{ route('doctor.save') }}" method="post">
+        @if(Session::has('success'))
+          <div class="alert alert-success">
+            {{Session::get('success')}}
+          </div>
+        @endif
+        @if(count($errors) > 0)
+        <div>
+          <ul class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+              {{$error}}
+            @endforeach
+          </ul>
+        </div>
+      @endif
+          <form class="form-horizontal bordered-group" role="form" action="{{ route('doctor.save') }}" method="post" enctype="multipart/form-data">
 
             <div class="form-group">
               <label class="col-sm-2 control-label">Name</label>
@@ -146,6 +160,13 @@
               <label class="col-sm-2 control-label">Office Address</label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" name="oAddress" placeholder="Office Address" value="{{ Request::old('oAddress') }}" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Upload Image</label>
+              <div class="col-sm-8">
+                <input type="file" name="image">
               </div>
             </div>
 

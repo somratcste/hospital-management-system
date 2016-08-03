@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="55a8a65c-2d67-4312-b258-9f36f4555a84" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/DoctorController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/DoctorController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_08_01_032746_create_doctors_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_08_01_032746_create_doctors_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/doctor.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/doctor.blade.php" />
     </list>
     <ignored path="hospital.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,7 +27,7 @@
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DoctorController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+              <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
               <folding>
                 <element signature="e#41#69#0#PHP" expanded="true" />
               </folding>
@@ -43,7 +39,7 @@
         <entry file="file://$PROJECT_DIR$/resources/views/admin/doctor.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="193">
-              <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+              <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -315,12 +311,12 @@
       <option name="presentableId" value="Default" />
       <updated>1470012930981</updated>
       <workItem from="1470012932451" duration="1018000" />
-      <workItem from="1470021569688" duration="3234000" />
+      <workItem from="1470021569688" duration="3596000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4252000" />
+    <option name="totallyTimeSpent" value="4614000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -371,7 +367,7 @@
     <entry file="file://$PROJECT_DIR$/resources/views/admin/doctor.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
-          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -379,7 +375,7 @@
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DoctorController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
           <folding>
             <element signature="e#41#69#0#PHP" expanded="true" />
           </folding>
