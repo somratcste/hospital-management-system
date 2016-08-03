@@ -26,6 +26,16 @@ Route::group(['middleware' => ['web']] , function() {
 		'uses' => 'DoctorController@save',
 		'as' => 'doctor.save'
 	]);
+
+	Route::get('/doctor/list' , [
+		'uses' => 'DoctorController@viewList',
+		'as' => 'doctor.list'
+	]);
+
+	Route::get('/nurse' , [
+		'uses' => 'NurseController@getIndex',
+		'as' => 'nurse.index'
+	]);
 });
 
 

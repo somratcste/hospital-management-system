@@ -91,9 +91,9 @@
                       </a>
                     </li>
                     <li>
-                      <a href="">
+                      <a href="{{ route('doctor.list') }}">
                         <i class="toggle-accordion"></i>
-                        <span>View List</span>
+                        <span>Doctor List</span>
                       </a>
                     </li>
                   </ul>
@@ -102,6 +102,20 @@
                 <a href="ui-general.html">
                   <span>Nurse</span>
                 </a>
+                <ul class="sub-menu">
+                  <li>
+                    <a href="{{ route('nurse.index') }}">
+                      <i class="toggle-accordion"></i>
+                      <span>Add New</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <i class="toggle-accordion"></i>
+                      <span>Nurse List</span>
+                    </a>
+                  </li>
+                </ul>
               </li>
               <li>
                 <a href="ui-general.html">

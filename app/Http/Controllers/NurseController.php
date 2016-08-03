@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Doctor;
+use App\Nurse;
 use Illuminate\Support\Facades\Input;
 
-class DoctorController extends Controller
+class NurseController extends Controller
 {
     public function getIndex ()
     {
-        return view('admin.doctor');
+        return view('admin.nurse');
     }
 
     public function save(Request $request)
@@ -47,10 +47,5 @@ class DoctorController extends Controller
     	$doctor->save();
 
     	return redirect()->back()->with(['success' => 'Insert Successfully'] );
-    }
-
-    public function viewList()
-    {
-        return view('admin.doctor_list');
     }
 }
