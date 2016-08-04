@@ -266,6 +266,18 @@
             @endforeach
           </tbody>
         </table>
+        <section>
+        <nav>
+          <ul class="pager">
+              @if($doctors->currentPage() !== 1)
+                <li class="previous"><a href="{{ $doctors->previousPageUrl() }}"><span aria-hidden="true">&larr;</span> Older</a></li>
+              @endif
+              @if($doctors->currentPage() !== $doctors->lastPage() && $doctors->hasPages())
+                <li class="next"><a href="{{ $doctors->nextPageUrl() }}">Newer <span aria-hidden="true">&rarr;</span></a></li>
+              @endif
+          </ul>
+        </nav>
+      </section>
       </div>
 
       </div>

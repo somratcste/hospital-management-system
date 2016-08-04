@@ -51,7 +51,7 @@ class DoctorController extends Controller
 
     public function viewList()
     {
-        $doctor = Doctor::all();
+        $doctor = Doctor::orderBy('created_at' , 'desc')->paginate(50);
         return view('admin.doctor_list' , ['doctors' => $doctor]);
     }
 }

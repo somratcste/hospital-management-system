@@ -27,6 +27,11 @@ Route::group(['middleware' => ['web']] , function() {
 		'as' => 'doctor.save'
 	]);
 
+	Route::post('/doctor/update' , [
+		'uses' => 'DoctorController@update',
+		'as' => 'doctor.update'
+	]);
+
 	Route::get('/doctor/list' , [
 		'uses' => 'DoctorController@viewList',
 		'as' => 'doctor.list'
