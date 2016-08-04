@@ -267,7 +267,27 @@
                </form>
               
 
-              <td><a href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
+              <td><a data-toggle="modal" data-target="#delete<?php echo $i; ?>" href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
+              <div class="modal" id="delete<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Delete Doctors Information</h4>
+                  </div>
+                  <div class="modal-body">
+                      Are you sure ?
+                  </div>
+                  <form action="{{ route('doctor.delete') }}" method="">
+                  <div class="modal-footer no-border">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                    <button type="submit" class="btn btn-primary">Yes</button>
+                    <input type="hidden" name="doctor_id" value="{{ $doctor->id }}">
+                  </div>
+                  </form>
+                </div>
+              </div>
+              </div>
             </tr>
             <?php $i++; ?>
             @endforeach

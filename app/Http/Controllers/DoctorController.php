@@ -90,4 +90,15 @@ class DoctorController extends Controller
         $doctor = Doctor::orderBy('created_at' , 'desc')->paginate(50);
         return view('admin.doctor_list' , ['doctors' => $doctor]);
     }
+
+    public function delete(Request $request)
+    {
+        $doctor = Doctor::find($request['doctor_id']);
+        if(!$doctor){
+            return redirect()->route('doctor.list')->with(['fail' => 'Page not found !']);
+        }
+        $doctor->delete();
+        return redirect()->route('doctor.list')->with(['success' => 'Deleted Information Successfully !']);
+
+    }
 }
