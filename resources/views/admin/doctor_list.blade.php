@@ -66,6 +66,11 @@
           Doctor's Information
         </div>
         <div class="panel-body">
+        @if(Session::has('success'))
+        <div class="alert alert-success">
+          {{Session::get('success')}}
+        </div>
+      @endif
         
         <div class="table-responsive">
         <table class="table table-bordered table-striped mb0">
@@ -155,7 +160,7 @@
                     </div>
                     <div class="modal-body">
                       <div class="row mb25">
-                      <form class="form-horizontal bordered-group" role="form" action="{{ route('doctor.save') }}" method="post" enctype="multipart/form-data">
+                      <form class="form-horizontal bordered-group" role="form" action="{{ route('doctor.update') }}" method="post" enctype="multipart/form-data">
 
             <div class="form-group clear">
               <label class="col-sm-3 control-label">Name</label>
@@ -213,7 +218,7 @@
             <div class="form-group clear">
               <label class="col-sm-3 control-label">Mobile Number</label> 
               <div class="col-sm-8">
-                <input class="form-control" type="tel" pattern="^\d{11}$" required name="mobile" name="mobile" value="{{ Request::old('mobile') ? Request::old('mobile') : isset($doctor) ? $doctor->mobile : '' }} ">
+                <input class="form-control" type="tel" required name="mobile" name="mobile" value="{{ Request::old('mobile') ? Request::old('mobile') : isset($doctor) ? $doctor->mobile : '' }} ">
               </div>
             </div>
 
@@ -254,11 +259,13 @@
                       <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                       <button type="submit" class="btn btn-success">Update</button>
                       <input type="hidden" name="_token" value="{{ Session::token() }}">
+                      <input type="hidden" name="doctor_id" value="{{ $doctor->id }}">
                     </div>
                   </div>
                 </div>
               </div>
-              </form>
+               </form>
+              
 
               <td><a href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
             </tr>

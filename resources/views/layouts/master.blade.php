@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>urban admin ui kit html</title>
+  <title>Trust One Hospital</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
   <link rel="shortcut icon" href="/favicon.ico">
