@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Doctor;
 use Illuminate\Support\Facades\Input;
-
+use File;
 class DoctorController extends Controller
 {
     public function getIndex ()
@@ -37,9 +37,9 @@ class DoctorController extends Controller
     	$doctor->oaddress  = $request['oAddress'];
     	$doctor->specialist = $request['specialist'];
         if(Input::hasFile('image')){
-            
+
             $file = Input::file('image');
-            $file->move(public_path(). '/',$file->getClientOriginalName());
+            $file->move(public_path(). '/images/doctors',$file->getClientOriginalName());
 
             $doctor->image = $file->getClientOriginalName();
             $doctor->size = $file->getClientsize();
@@ -75,8 +75,9 @@ class DoctorController extends Controller
         $doctor->oaddress  = $request['oAddress'];
         $doctor->specialist = $request['specialist'];
         if(Input::hasFile('image')){
+            File::delete('public/images/doctors'.$doctor->image);
             $file = Input::file('image');
-            $file->move(public_path(). '/',$file->getClientOriginalName());
+            $file->move(public_path(). '/images/doctors',$file->getClientOriginalName());
 
             $doctor->image = $file->getClientOriginalName();
             $doctor->size = $file->getClientsize();

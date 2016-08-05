@@ -139,7 +139,7 @@
                           <p> : {{ $doctor->email }}</p>
                           <p> : {{ $doctor->oAddress }}</p>
                           <p> : {{ $doctor->hAddress }}</p>
-                          <p> : <img class="img-responsive" src="{{ asset($doctor->image) }}" ></p>
+                          <p> : <img class="img-responsive" src="{{ asset('images/doctors/'.$doctor->image) }}" ></p>
                         </div>
                       </div>
                     </div>
@@ -246,7 +246,7 @@
             <div class="form-group clear">
               <label class="col-sm-3 control-label">Previous Image</label>
               <div class="col-sm-8">
-                <img src="{{ asset( $doctor->image ) }}" class="img-responsive" alt="">
+                <img src="{{ asset('images/doctors/'.$doctor->image) }}" class="img-responsive" alt="">
                 <input class="mt25" type="file" name="image">
               </div>
             </div>
