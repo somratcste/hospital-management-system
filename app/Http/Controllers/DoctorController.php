@@ -75,7 +75,11 @@ class DoctorController extends Controller
         $doctor->oaddress  = $request['oAddress'];
         $doctor->specialist = $request['specialist'];
         if(Input::hasFile('image')){
-            File::delete('public/images/doctors'.$doctor->image);
+
+            if($doctor->image){
+                $image_path = public_path().'/images/doctors/'.$doctor->image;
+                unlink($image_path);
+            }
             $file = Input::file('image');
             $file->move(public_path(). '/images/doctors',$file->getClientOriginalName());
 
