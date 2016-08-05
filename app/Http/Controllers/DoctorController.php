@@ -57,6 +57,9 @@ class DoctorController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
             'degree' => 'required',
+            'gender' => 'required',
+            'birthDate' => 'required',
+            'charge' => 'required',
         ]);
 
         if ($validator->fails()) {
