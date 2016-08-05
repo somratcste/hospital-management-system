@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Doctor;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Validator;
-use App\Http\Controllers\Controller;
+
 class DoctorController extends Controller
 {
     public function getIndex ()
@@ -52,21 +51,15 @@ class DoctorController extends Controller
 
     public function update(Request $request)
     {
-        
-
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
-            'degree' => 'required',
-            'gender' => 'required',
+       $this->validate($request , [
+            'name'      => 'required|max:200',
+            'degree'    => 'required|max:100',
+            'gender'    => 'required',
             'birthDate' => 'required',
-            'charge' => 'required',
+            'charge'    => 'required',
+            'mobile'    => 'required',
+            'email'     => 'required|email'
         ]);
-
-        if ($validator->fails()) {
-            return redirect()->route('doctor.list')
-                        ->withErrors($validator)
-                        ->withInput();
-        }
 
 
         $doctor            = Doctor::find($request['doctor_id']);
