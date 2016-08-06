@@ -59,18 +59,22 @@
             </a>
             <ul class="sub-menu">
               <li>
-                <a href="ui-buttons.html">
-                  <span>OUt Patient</span>
+                <a href="{{ route('patient.index') }}">
+                  <span>Add Patient</span>
                 </a>
               </li>
               <li>
-                <a href="ui-general.html">
+                <a href="{{ route('patient.list' , ['patient' => 'out']) }}">
+                  <span>Out Patient</span>
+                </a>
+              </li>
+              <li>
+                <a href="{{ route('patient.list' , ['patient' => 'admit']) }}">
                   <span>In Patient</span>
                 </a>
               </li>
              </ul>
             </li>
-          <!-- /patient -->
 
           <!-- employee -->
           <li>

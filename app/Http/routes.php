@@ -179,6 +179,33 @@ Route::group(['middleware' => ['web']] , function() {
 		'as' => 'operation.list'
 	]);
 
+	//Patient
+
+	Route::get('/patient' , [
+		'uses' => 'PatientController@getIndex',
+		'as' => 'patient.index'
+	]);
+
+	Route::post('/patient/save' , [
+		'uses' => 'PatientController@save',
+		'as' => 'patient.save'
+	]);
+
+	Route::post('/patient/update' , [
+		'uses' => 'PatientController@update',
+		'as' => 'patient.update'
+	]);
+
+	Route::get('/patient/delete' , [
+		'uses' => 'PatientController@delete',
+		'as' => 'patient.delete'
+	]);
+
+	Route::get('/{patient?}/list' , [
+		'uses' => 'PatientController@viewList',
+		'as' => 'patient.list'
+	]);
+
 });
 
 
