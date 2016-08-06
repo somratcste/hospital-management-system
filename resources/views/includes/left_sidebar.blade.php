@@ -166,6 +166,16 @@
             </a>
             <ul class="sub-menu">
               <li>
+                <a href="{{ route('report.index') }}">
+                  <span>Add Report</span>
+                </a>
+              </li>
+              <li>
+                <a href="{{ route('report.list') }}">
+                  <span>Report List</span>
+                </a>
+              </li>
+              <li>
                 <a href="{{ route('reportType.index') }}">
                   <span>New Type</span>
                 </a>

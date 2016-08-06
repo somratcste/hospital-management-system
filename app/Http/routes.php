@@ -98,6 +98,33 @@ Route::group(['middleware' => ['web']] , function() {
 		'as' => 'reportType.list'
 	]);
 
+	//report
+
+	Route::get('/report' , [
+		'uses' => 'ReportController@getIndex',
+		'as' => 'report.index'
+	]);
+
+	Route::post('/report/save' , [
+		'uses' => 'ReportController@save',
+		'as' => 'report.save'
+	]);
+
+	Route::post('/report/update' , [
+		'uses' => 'ReportController@update',
+		'as' => 'report.update'
+	]);
+
+	Route::get('/report/delete' , [
+		'uses' => 'ReportController@delete',
+		'as' => 'report.delete'
+	]);
+
+	Route::get('/report/viewlist' , [
+		'uses' => 'ReportController@viewList',
+		'as' => 'report.list'
+	]);
+
 });
 
 
