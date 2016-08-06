@@ -136,27 +136,6 @@
           </li>
           <!-- /Appoinment -->
 
-          <!-- Services -->
-          <li>
-            <a href="javascript:;">
-              <i class="fa fa-pie-chart"></i>
-              <span>Service</span>
-            </a>
-            <ul class="sub-menu">
-              <li>
-                <a href="charts-flot.html">
-                  <span>Flot Charts</span>
-                </a>
-              </li>
-              <li>
-                <a href="charts-easypie.html">
-                  <span>EasyPie</span>
-                </a>
-              </li>             
-            </ul>
-          </li>
-          <!-- /service -->
-
           <!-- Report -->
           <li>
             <a href="javascript:;">
