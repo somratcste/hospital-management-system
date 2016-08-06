@@ -204,14 +204,14 @@
               </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group clear">
               <label class="col-sm-3 control-label">Description</label>
               <div class="col-sm-8">
                 <textarea class="form-control" rows="5" name="description"></textarea>
               </div>
             </div>
             
-            <div class="modal-footer no-border mt25">
+            <div class="modal-footer no-border clear">
               <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
               <button type="submit" class="btn btn-success">Update</button>
               <input type="hidden" name="_token" value="{{ Session::token() }}">
