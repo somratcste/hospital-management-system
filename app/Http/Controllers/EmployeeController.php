@@ -90,7 +90,7 @@ class EmployeeController extends Controller
             $employee->type = $file->getClientMimeType();
         }
         $employee->update();
-        return redirect()->route('employee.list')->with(['success' => 'Updated Successfully'] );
+        return redirect()->route('employee.list' , ['employee' => $employee->employee_type])->with(['success' => 'Updated Successfully'] );
     }
 
     public function viewList($employee_type = null)
@@ -110,7 +110,7 @@ class EmployeeController extends Controller
             unlink($image_path);
         }
         $employee->delete();
-        return redirect()->route('employee.list')->with(['success' => 'Deleted Information Successfully !']);
+        return redirect()->route('employee.list' , ['employee' => $employee->employee_type ])->with(['success' => 'Deleted Information Successfully !']);
 
     }
 }
