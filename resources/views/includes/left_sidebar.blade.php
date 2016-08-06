@@ -80,42 +80,14 @@
             </a>
             <ul class="sub-menu">
               <li>
-                <a href="#">
-                  <span>Doctor</span>
+                <a href="{{ route('employee.index') }}">
+                  <span>Add Employee</span>
                 </a>
-                  <ul class="sub-menu">
-                    <li>
-                      <a href="{{ route('doctor.index') }}">
-                        <i class="toggle-accordion"></i>
-                        <span>Add New</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="{{ route('doctor.list') }}">
-                        <i class="toggle-accordion"></i>
-                        <span>Doctor List</span>
-                      </a>
-                    </li>
-                  </ul>
               </li>
               <li>
                 <a href="ui-general.html">
-                  <span>Nurse</span>
+                  <span>Doctor's List</span>
                 </a>
-                <ul class="sub-menu">
-                  <li>
-                    <a href="">
-                      <i class="toggle-accordion"></i>
-                      <span>Add New</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="">
-                      <i class="toggle-accordion"></i>
-                      <span>Nurse List</span>
-                    </a>
-                  </li>
-                </ul>
               </li>
               <li>
                 <a href="ui-general.html">

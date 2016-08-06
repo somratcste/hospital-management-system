@@ -17,31 +17,31 @@ Route::group(['middleware' => ['web']] , function() {
     	'as' => 'admin.index'
 	]);
 
-	//Doctor
+	//employee
 
-	Route::get('/doctor' , [
-		'uses' => 'DoctorController@getIndex',
-		'as' => 'doctor.index'
+	Route::get('/employee' , [
+		'uses' => 'EmployeeController@getIndex',
+		'as' => 'employee.index'
 	]);
 
-	Route::post('/doctor/save' , [
-		'uses' => 'DoctorController@save',
-		'as' => 'doctor.save'
+	Route::post('/employee/save' , [
+		'uses' => 'EmployeeController@save',
+		'as' => 'employee.save'
 	]);
 
-	Route::post('/doctor/update' , [
-		'uses' => 'DoctorController@update',
-		'as' => 'doctor.update'
+	Route::post('/employee/update' , [
+		'uses' => 'EmployeeController@update',
+		'as' => 'employee.update'
 	]);
 
-	Route::get('/doctor/delete' , [
-		'uses' => 'DoctorController@delete',
-		'as' => 'doctor.delete'
+	Route::get('/employee/delete' , [
+		'uses' => 'EmployeeController@delete',
+		'as' => 'employee.delete'
 	]);
 
-	Route::get('/doctor/list' , [
-		'uses' => 'DoctorController@viewList',
-		'as' => 'doctor.list'
+	Route::get('/employee/list' , [
+		'uses' => 'EmployeeController@viewList',
+		'as' => 'employee.list'
 	]);
 
 });
