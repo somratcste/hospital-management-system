@@ -44,6 +44,33 @@ Route::group(['middleware' => ['web']] , function() {
 		'as' => 'employee.list'
 	]);
 
+	//seat
+
+	Route::get('/seat' , [
+		'uses' => 'SeatController@getIndex',
+		'as' => 'seat.index'
+	]);
+
+	Route::post('/seat/save' , [
+		'uses' => 'SeatController@save',
+		'as' => 'seat.save'
+	]);
+
+	Route::post('/seat/update' , [
+		'uses' => 'SeatController@update',
+		'as' => 'seat.update'
+	]);
+
+	Route::get('/seat/delete' , [
+		'uses' => 'SeatController@delete',
+		'as' => 'seat.delete'
+	]);
+
+	Route::get('/seat/list' , [
+		'uses' => 'SeatController@viewList',
+		'as' => 'seat.list'
+	]);
+
 });
 
 

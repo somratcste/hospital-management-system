@@ -112,19 +112,26 @@
           <li>
             <a href="javascript:;">
               <i class="fa fa-tag"></i>
-              <span>Appoinment</span>
+              <span>Seat</span>
             </a>
             <ul class="sub-menu">
               <li>
-                <a href="table-basic.html">
-                  <span>Basic Tables</span>
+                <a href="{{ route('seat.index') }}">
+                  <span>Add New</span>
                 </a>
               </li>
+              @for($i=1;$i<=5;$i++)
               <li>
-                <a href="table-responsive.html">
-                  <span>Responsive Table</span>
+                <a href="{{ route('seat.list' , ['seat' => $i ]) }}">
+                  <span><?php if($i==1) echo '1st Floor' ;
+                              else if($i==2) echo '2nd Floor';
+                              else if ($i==3) echo '3rd Floor';
+                              else if ($i==4) echo '4th Floor';
+                              else if ($i==5) echo '5th Floor';
+                        ?></span>
                 </a>
               </li>
+              @endfor
             </ul>
           </li>
           <!-- /Appoinment -->
