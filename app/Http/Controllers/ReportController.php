@@ -52,7 +52,7 @@ class ReportController extends Controller
 
     public function reportTypedelete(Request $request)
     {
-        $report = ReportType::find($request['report_id']);
+        $report = ReportType::find($request['reportType_id']);
         if(!$report){
             return redirect()->route('reportType.list')->with(['fail' => 'Page not found !']);
         }
