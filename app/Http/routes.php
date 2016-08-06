@@ -17,6 +17,8 @@ Route::group(['middleware' => ['web']] , function() {
     	'as' => 'admin.index'
 	]);
 
+	//Doctor
+
 	Route::get('/doctor' , [
 		'uses' => 'DoctorController@getIndex',
 		'as' => 'doctor.index'
@@ -32,19 +34,41 @@ Route::group(['middleware' => ['web']] , function() {
 		'as' => 'doctor.update'
 	]);
 
-	Route::get('/doctor/list' , [
-		'uses' => 'DoctorController@viewList',
-		'as' => 'doctor.list'
-	]);
-
 	Route::get('/doctor/delete' , [
 		'uses' => 'DoctorController@delete',
 		'as' => 'doctor.delete'
 	]);
 
+	Route::get('/doctor/list' , [
+		'uses' => 'DoctorController@viewList',
+		'as' => 'doctor.list'
+	]);
+
+	//Nurse 
+
 	Route::get('/nurse' , [
 		'uses' => 'NurseController@getIndex',
 		'as' => 'nurse.index'
+	]);
+
+	Route::post('/nurse/save' , [
+		'uses' => 'NurseController@save',
+		'as' => 'nurse.save'
+	]);
+
+	Route::post('/nurse/update' , [
+		'uses' => 'NurseController@update',
+		'as' => 'nurse.update'
+	]);
+
+	Route::get('/nurse/delete' , [
+		'uses' => 'NurseController@delete',
+		'as' => 'nurse.delete'
+	]);
+
+	Route::get('/nurse/list' , [
+		'uses' => 'NurseController@viewList',
+		'as' => 'nurse.list'
 	]);
 });
 

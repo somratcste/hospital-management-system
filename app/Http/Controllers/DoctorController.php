@@ -103,6 +103,10 @@ class DoctorController extends Controller
         if(!$doctor){
             return redirect()->route('doctor.list')->with(['fail' => 'Page not found !']);
         }
+        if($doctor->image){
+            $image_path = public_path().'/images/doctors/'.$doctor->image;
+            unlink($image_path);
+        }
         $doctor->delete();
         return redirect()->route('doctor.list')->with(['success' => 'Deleted Information Successfully !']);
 

@@ -110,7 +110,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="">
+                    <a href="{{ route('nurse.list') }}">
                       <i class="toggle-accordion"></i>
                       <span>Nurse List</span>
                     </a>
