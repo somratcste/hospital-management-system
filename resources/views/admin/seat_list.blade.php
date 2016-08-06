@@ -205,7 +205,7 @@
                 <input class="mt25" type="file" name="image">
               </div>
             </div>
-
+            
             <div class="modal-footer no-border">
               <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
               <button type="submit" class="btn btn-success">Update</button>

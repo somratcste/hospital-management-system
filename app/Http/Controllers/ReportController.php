@@ -36,7 +36,7 @@ class ReportController extends Controller
         ]);
 
 
-        $report            = ReportType::find($request['report_id']);
+        $report            = ReportType::find($request['reportType_id']);
         $report->name      = ucfirst($request['name']);
         $report->cost    = $request['cost'];
         $report->update();
