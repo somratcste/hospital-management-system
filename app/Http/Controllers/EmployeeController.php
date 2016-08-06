@@ -26,11 +26,12 @@ class EmployeeController extends Controller
     	]);
 
     	$employee 		   = new Employee();
-        $employee->employee_type = $request['employee_type'];
+        $employee->employee_type = ucfirst($request['employee_type']);
     	$employee->name 	   = ucfirst($request['name']);
     	$employee->degree    = $request['degree'];
     	$employee->gender	   = $request['gender'];
     	$employee->birthDate = $request['birthDate'];
+        $employee->charge    = $request['charge'];
     	$employee->mobile	   = $request['mobile'];
     	$employee->email	   = $request['email'];    	
     	$employee->hAddress  = $request['hAddress'];
@@ -53,7 +54,7 @@ class EmployeeController extends Controller
     public function update(Request $request)
     {
        $this->validate($request , [
-            'employee_type' => 'required',
+            
             'name'      => 'required|max:200',
             'degree'    => 'required|max:100',
             'gender'    => 'required',
@@ -64,11 +65,12 @@ class EmployeeController extends Controller
 
 
         $employee            = Employee::find($request['employee_id']);
-        $employees->employee_type = $request['employee_type'];
+        $employee->employee_type = ucfirst($request['employee_type']);
         $employee->name      = ucfirst($request['name']);
         $employee->degree    = $request['degree'];
         $employee->gender    = $request['gender'];
         $employee->birthDate = $request['birthDate'];
+        $employee->charge    = $request['charge'];
         $employee->mobile    = $request['mobile'];
         $employee->email     = $request['email'];     
         $employee->hAddress  = $request['hAddress'];

@@ -117,6 +117,7 @@
                         <div class="col-xs-1"></div>
                         <div class="col-xs-4">
                           <p>Name</p>
+                          <p>Position</p>
                           <p>Specialist</p>
                           <p>Visiting Charge</p>
                           <p>Degree</p>
@@ -130,6 +131,7 @@
                         </div>
                         <div class="col-xs-7">
                           <p> : {{ $employee->name }}</p>
+                          <p> : {{ $employee->employee_type }}</p>
                           <p> : {{ $employee->specialist }}</p>
                           <p> : {{ $employee->charge }}</p>
                           <p> : {{ $employee->degree }}</p>
@@ -161,6 +163,17 @@
                     <div class="modal-body">
                       <div class="row mb25">
                       <form class="form-horizontal bordered-group" role="form" action="{{ route('employee.update') }}" method="post" enctype="multipart/form-data">
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Employee Type</label>
+              <div class="col-sm-8">
+                <select class="form-control" name="employee_type">
+                  <option value="doctor" {{ $employee->employee_type == 'doctor' ? 'selected' : ''}}>Doctor</option>
+                  <option value="nurse" {{ $employee->employee_type == 'nurse' ? 'selected' : ''}}>Nurse</option>
+                  <option value="accountant" {{ $employee->employee_type == 'accountant' ? 'selected' : ''}}>Accountant</option>
+                </select>
+              </div>
+            </div>
 
             <div class="form-group clear">
               <label class="col-sm-3 control-label">Name</label>
