@@ -66,7 +66,7 @@ Route::group(['middleware' => ['web']] , function() {
 		'as' => 'seat.delete'
 	]);
 
-	Route::get('/seat/list' , [
+	Route::get('/seat/{seat?}/list' , [
 		'uses' => 'SeatController@viewList',
 		'as' => 'seat.list'
 	]);
