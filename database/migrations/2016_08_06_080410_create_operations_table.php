@@ -18,9 +18,6 @@ class CreateOperationsTable extends Migration
             $table->date('date');
             $table->time('time');
             $table->string('description');
-            $table->string('image');
-            $table->string('size');
-            $table->string('type');
             $table->integer('operationType_id');
             $table->integer('patient_id');
             $table->integer('doctor_id');
