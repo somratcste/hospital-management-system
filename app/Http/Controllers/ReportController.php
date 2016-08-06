@@ -106,7 +106,7 @@ class ReportController extends Controller
 
 
         $report            = Report::find($request['report_id']);
-        $report->patient_id      = $request['reportNo'];
+        $report->patient_id      = $request['patient_id'];
         $report->reportType_id    = $request['reportType_id'];
         $report->description    = $request['description'];
         if(Input::hasFile('image')){
