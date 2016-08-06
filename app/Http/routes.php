@@ -42,10 +42,6 @@ Route::group(['middleware' => ['web']] , function() {
 		'as' => 'doctor.delete'
 	]);
 
-	Route::get('/nurse' , [
-		'uses' => 'NurseController@getIndex',
-		'as' => 'nurse.index'
-	]);
 });
 
 

@@ -104,7 +104,7 @@
                 </a>
                 <ul class="sub-menu">
                   <li>
-                    <a href="{{ route('nurse.index') }}">
+                    <a href="">
                       <i class="toggle-accordion"></i>
                       <span>Add New</span>
                     </a>
