@@ -15,6 +15,18 @@ class CreateNursesTable extends Migration
         Schema::create('nurses', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('name');
+            $table->string('degree');
+            $table->string('gender');
+            $table->string('birthDate');
+            $table->string('specialist');
+            $table->integer('mobile');
+            $table->string('email');
+            $table->string('hAddress');
+            $table->string('oAddress');
+            $table->string('image');
+            $table->string('size');
+            $table->string('type');
         });
     }
 

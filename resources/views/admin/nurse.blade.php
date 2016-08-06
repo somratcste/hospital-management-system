@@ -81,7 +81,7 @@
           </ul>
         </div>
       @endif
-          <form class="form-horizontal bordered-group" role="form" action="" method="post" enctype="multipart/form-data">
+          <form class="form-horizontal bordered-group" role="form" action="{{ route('nurse.save') }}" method="post" enctype="multipart/form-data">
 
             <div class="form-group">
               <label class="col-sm-2 control-label">Name</label>
@@ -102,10 +102,10 @@
               <label class="col-sm-2 control-label">Gender</label>
               <div class="col-sm-8"> 
                 <label class="radio-inline">
-                  <input type="radio" name="gender" id="inlineRadio1" value="m"> Male
+                  <input type="radio" name="gender" id="inlineRadio1" value="Male"> Male
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="gender" id="inlineRadio2" value="f"> Female
+                  <input type="radio" name="gender" id="inlineRadio2" value="Female"> Female
                 </label>
               </div>
             </div>
