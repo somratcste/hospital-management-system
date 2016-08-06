@@ -75,22 +75,19 @@ class OperationController extends Controller
         $this->validate($request , [
             'patient_id' => 'required',
             'operationType_id' => 'required',
+            'doctor_id' => 'required',
+            'date' => 'required',
+            'time' => 'required',
             'description' => 'required'
         ]);
 
         $operation          = new Operation();
         $operation->patient_id      = $request['patient_id'];
         $operation->operationType_id    = $request['operationType_id'];
+        $operation->doctor_id = $request['doctor_id'];
+        $operation->date = $request['date'];
+        $operation->time = $request['time'];
         $operation->description    = $request['description'];
-        if(Input::hasFile('image')){
-
-            $file = Input::file('image');
-            $file->move(public_path(). '/images/operations',$file->getClientOriginalName());
-
-            $operation->image = $file->getClientOriginalName();
-            $operation->size = $file->getClientsize();
-            $operation->type = $file->getClientMimeType();
-        }
         $operation->save();
 
         return redirect()->back()->with(['success' => 'Insert Successfully'] );
@@ -101,6 +98,9 @@ class OperationController extends Controller
        $this->validate($request , [
             'patient_id' => 'required',
             'operationType_id' => 'required',
+            'doctor_id' => 'required',
+            'date' => 'required',
+            'time' => 'required',
             'description' => 'required'
         ]);
 
@@ -108,20 +108,10 @@ class OperationController extends Controller
         $operation            = Operation::find($request['operation_id']);
         $operation->patient_id      = $request['patient_id'];
         $operation->operationType_id    = $request['operationType_id'];
+        $operation->doctor_id = $request['doctor_id'];
+        $operation->date = $request['date'];
+        $operation->time = $request['time'];
         $operation->description    = $request['description'];
-        if(Input::hasFile('image')){
-
-            if($operation->image){
-                $image_path = public_path().'/images/operations/'.$operation->image;
-                unlink($image_path);
-            }
-            $file = Input::file('image');
-            $file->move(public_path(). '/images/operations',$file->getClientOriginalName());
-
-            $operation->image = $file->getClientOriginalName();
-            $operation->size = $file->getClientsize();
-            $operation->type = $file->getClientMimeType();
-        }
         $operation->update();
         return redirect()->route('operation.list')->with(['success' => 'Updated Successfully'] );
     }

@@ -116,7 +116,7 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">O.T Date</label>
               <div class="col-sm-8">
-                <input type="text" name="time" class="form-control">
+                <input type="text" name="date" class="form-control">
               </div>
             </div>
 
