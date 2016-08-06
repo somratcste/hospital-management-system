@@ -85,7 +85,7 @@
                 </a>
               </li>
               <li>
-                <a href="ui-general.html">
+                <a href="{{ route('employee.list') }}">
                   <span>Doctor's List</span>
                 </a>
               </li>
