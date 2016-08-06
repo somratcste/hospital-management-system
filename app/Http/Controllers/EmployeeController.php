@@ -26,7 +26,7 @@ class EmployeeController extends Controller
     	]);
 
     	$employee 		   = new Employee();
-        $employee->employee_type = ucfirst($request['employee_type']);
+        $employee->employee_type = $request['employee_type'];
     	$employee->name 	   = ucfirst($request['name']);
     	$employee->degree    = $request['degree'];
     	$employee->gender	   = $request['gender'];
@@ -65,7 +65,7 @@ class EmployeeController extends Controller
 
 
         $employee            = Employee::find($request['employee_id']);
-        $employee->employee_type = ucfirst($request['employee_type']);
+        $employee->employee_type = $request['employee_type'];
         $employee->name      = ucfirst($request['name']);
         $employee->degree    = $request['degree'];
         $employee->gender    = $request['gender'];
@@ -93,10 +93,10 @@ class EmployeeController extends Controller
         return redirect()->route('employee.list')->with(['success' => 'Updated Successfully'] );
     }
 
-    public function viewList()
+    public function viewList($employee_type = null)
     {
-        $employee = Employee::orderBy('created_at' , 'desc')->paginate(50);
-        return view('admin.employee_list' , ['employees' => $employee]);
+        $employee = Employee::orderBy('created_at' , 'desc')->where('employee_type' , $employee_type)->paginate(50);
+        return view('admin.employee_list' , ['employees' => $employee , 'employee_type' => $employee_type]);
     }
 
     public function delete(Request $request)

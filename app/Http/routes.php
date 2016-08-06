@@ -39,7 +39,7 @@ Route::group(['middleware' => ['web']] , function() {
 		'as' => 'employee.delete'
 	]);
 
-	Route::get('/employee/list' , [
+	Route::get('/{employee?}/list' , [
 		'uses' => 'EmployeeController@viewList',
 		'as' => 'employee.list'
 	]);

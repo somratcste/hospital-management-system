@@ -63,7 +63,7 @@
   <div class="row">
     <div class="panel mb25">
         <div class="panel-heading border">
-          Employee's Information
+          {{ ucfirst($employee_type) }}'s Information
         </div>
         <div class="panel-body">
         @if(Session::has('success'))
@@ -131,7 +131,7 @@
                         </div>
                         <div class="col-xs-7">
                           <p> : {{ $employee->name }}</p>
-                          <p> : {{ $employee->employee_type }}</p>
+                          <p> : {{ ucfirst($employee->employee_type) }}</p>
                           <p> : {{ $employee->specialist }}</p>
                           <p> : {{ $employee->charge }}</p>
                           <p> : {{ $employee->degree }}</p>
