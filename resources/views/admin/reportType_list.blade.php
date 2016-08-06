@@ -98,7 +98,7 @@
               <tr>
               <td><?php echo $i; ?></td>
               <td>{{ $reportType->name }}</td>
-              <td>{{ $reportType->cost }}</td>
+              <td>{{ $reportType->cost }} Tk.</td>
               
               <td><a data-toggle="modal" data-target="#edit<?php echo $i; ?>" href=""><button type="button" class="btn btn-info">Edit</button></a></td>
               <div class="modal" id="edit<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">

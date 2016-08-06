@@ -93,7 +93,7 @@ Route::group(['middleware' => ['web']] , function() {
 		'as' => 'reportType.delete'
 	]);
 
-	Route::get('/reportType/list' , [
+	Route::get('/reportType/list/report' , [
 		'uses' => 'ReportController@reportTypeViewList',
 		'as' => 'reportType.list'
 	]);
