@@ -81,7 +81,7 @@
           </ul>
         </div>
       @endif
-          <form class="form-horizontal bordered-group" role="form" action="{{ route('operation.save') }}" method="post" enctype="multipart/form-data">
+          <form class="form-horizontal bordered-group" role="form" action="{{ route('operation.save') }}" method="post">
 
             <div class="form-group">
               <label class="col-sm-2 control-label">Patient</label>
@@ -114,16 +114,26 @@
             </div>
 
             <div class="form-group">
+              <label class="col-sm-2 control-label">Select Seat</label>
+              <div class="col-sm-8">
+                <select class="form-control" name="seat_id">
+                  <option value="1">ICU - 101</option>
+                  <option value="2">ICU - 202</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
               <label class="col-sm-2 control-label">O.T Date</label>
               <div class="col-sm-8">
-                <input type="text" name="date" class="form-control">
+                <input type="text" name="date" class="form-control" placeholder="Format : Y-M-D">
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-sm-2 control-label">O.T Time</label>
               <div class="col-sm-8">
-                <input type="text" name="time" class="form-control">
+                <input type="text" name="time" class="form-control" placeholder="Format : H:M:S">
               </div>
             </div>
 

@@ -78,6 +78,7 @@ class OperationController extends Controller
             'doctor_id' => 'required',
             'date' => 'required',
             'time' => 'required',
+            'seat_id' => 'required',
             'description' => 'required'
         ]);
 
@@ -85,6 +86,7 @@ class OperationController extends Controller
         $operation->patient_id      = $request['patient_id'];
         $operation->operationType_id    = $request['operationType_id'];
         $operation->doctor_id = $request['doctor_id'];
+        $operation->seat_id = $request['seat_id'];
         $operation->date = $request['date'];
         $operation->time = $request['time'];
         $operation->description    = $request['description'];
@@ -101,6 +103,7 @@ class OperationController extends Controller
             'doctor_id' => 'required',
             'date' => 'required',
             'time' => 'required',
+            'seat_id' => 'required',
             'description' => 'required'
         ]);
 
@@ -109,6 +112,7 @@ class OperationController extends Controller
         $operation->patient_id      = $request['patient_id'];
         $operation->operationType_id    = $request['operationType_id'];
         $operation->doctor_id = $request['doctor_id'];
+        $operation->seat_id = $request['seat_id'];
         $operation->date = $request['date'];
         $operation->time = $request['time'];
         $operation->description    = $request['description'];
