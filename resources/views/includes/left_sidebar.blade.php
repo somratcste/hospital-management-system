@@ -166,13 +166,13 @@
             </a>
             <ul class="sub-menu">
               <li>
-                <a href="map-google.html">
-                  <span>Google Maps</span>
+                <a href="{{ route('reportType.index') }}">
+                  <span>New Type</span>
                 </a>
               </li>
               <li>
-                <a href="map-vector.html">
-                  <span>Vector Maps</span>
+                <a href="{{ route('reportType.list') }}">
+                  <span>Type List</span>
                 </a>
               </li>
             </ul>

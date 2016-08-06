@@ -71,6 +71,33 @@ Route::group(['middleware' => ['web']] , function() {
 		'as' => 'seat.list'
 	]);
 
+	//ReportType
+
+	Route::get('/reportType' , [
+		'uses' => 'ReportController@reportTypeIndex',
+		'as' => 'reportType.index'
+	]);
+
+	Route::post('/reportType/save' , [
+		'uses' => 'ReportController@reportTypesave',
+		'as' => 'reportType.save'
+	]);
+
+	Route::post('/reportType/update' , [
+		'uses' => 'ReportController@reportTypeupdate',
+		'as' => 'reportType.update'
+	]);
+
+	Route::get('/reportType/delete' , [
+		'uses' => 'ReportController@reportTypedelete',
+		'as' => 'reportType.delete'
+	]);
+
+	Route::get('/reportType/list' , [
+		'uses' => 'ReportController@reportTypeViewList',
+		'as' => 'reportType.list'
+	]);
+
 });
 
 
