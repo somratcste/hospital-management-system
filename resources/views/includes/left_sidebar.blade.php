@@ -197,11 +197,25 @@
             </a>
             <ul class="sub-menu">
               <li>
-                <a href="app-calendar.html">
-                  <span>Calendar</span>
+                <a href="{{ route('operation.index') }}">
+                  <span>Add Operation</span>
                 </a>
               </li>
-         
+              <li>
+                <a href="{{ route('operation.list') }}">
+                  <span>Operation List</span>
+                </a>
+              </li>
+              <li>
+                <a href="{{ route('operationType.index') }}">
+                  <span>O.T Type</span>
+                </a>
+              </li>
+              <li>
+                <a href="{{ route('operationType.list') }}">
+                  <span>O.T List</span>
+                </a>
+              </li>
             </ul>
           </li>
           <!-- /Operation -->

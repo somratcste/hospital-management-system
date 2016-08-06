@@ -125,6 +125,60 @@ Route::group(['middleware' => ['web']] , function() {
 		'as' => 'report.list'
 	]);
 
+	//OperationType
+
+	Route::get('/operationType' , [
+		'uses' => 'Operationcontroller@operationTypeIndex',
+		'as' => 'operationType.index'
+	]);
+
+	Route::post('/operationType/save' , [
+		'uses' => 'Operationcontroller@operationTypesave',
+		'as' => 'operationType.save'
+	]);
+
+	Route::post('/operationType/update' , [
+		'uses' => 'Operationcontroller@operationTypeupdate',
+		'as' => 'operationType.update'
+	]);
+
+	Route::get('/operationType/delete' , [
+		'uses' => 'Operationcontroller@operationTypedelete',
+		'as' => 'operationType.delete'
+	]);
+
+	Route::get('/operationType/list/operation' , [
+		'uses' => 'Operationcontroller@operationTypeViewList',
+		'as' => 'operationType.list'
+	]);
+
+	//operation
+
+	Route::get('/operation' , [
+		'uses' => 'Operationcontroller@getIndex',
+		'as' => 'operation.index'
+	]);
+
+	Route::post('/operation/save' , [
+		'uses' => 'Operationcontroller@save',
+		'as' => 'operation.save'
+	]);
+
+	Route::post('/operation/update' , [
+		'uses' => 'Operationcontroller@update',
+		'as' => 'operation.update'
+	]);
+
+	Route::get('/operation/delete' , [
+		'uses' => 'Operationcontroller@delete',
+		'as' => 'operation.delete'
+	]);
+
+	Route::get('/operation/viewlist' , [
+		'uses' => 'Operationcontroller@viewList',
+		'as' => 'operation.list'
+	]);
+
 });
 
 
