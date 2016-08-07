@@ -201,7 +201,7 @@ Route::group(['middleware' => ['web']] , function() {
 		'as' => 'patient.delete'
 	]);
 
-	Route::get('/{patient?}/list' , [
+	Route::get('/patient/{patient?}/list' , [
 		'uses' => 'PatientController@viewList',
 		'as' => 'patient.list'
 	]);
