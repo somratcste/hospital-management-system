@@ -132,15 +132,18 @@
                         <div class="col-xs-7">
                           <p> : {{ $patient->name }}</p>
                           <p> : {{ ucfirst($patient->patient_type) }}</p>
-                          <p> : {{ $patient->specialist }}</p>
-                          <p> : {{ $patient->charge }}</p>
-                          <p> : {{ $patient->degree }}</p>
+                          <p> : {{ $patient->id or '101' }}</p>
                           <p> : {{ $patient->gender }}</p>
                           <p> : {{ $patient->birthDate }}</p>
-                          <p> : {{ $patient->mobile }}</p>
+                          <p> : {{ $patient->bloodGroup }}</p>
+                          <p> : {{ $patient->symptoms }}</p>
+                          <p> : {{ $patient->doctor_id }}</p>
+                          <p> : {{ $patient->date }}</p>
+                          <p> : {{ $patient->time }}</p>
+                          <p> : {{ $patient->seat_id }}</p>
+                          <p> : {{ $patient->mobile }} </p>
                           <p> : {{ $patient->email }}</p>
-                          <p> : {{ $patient->oAddress }}</p>
-                          <p> : {{ $patient->hAddress }}</p>
+                          <p> : {{ $patient->address }}</p>
                           <p> : <img class="img-responsive" src="{{ asset('images/patients/'.$patient->image) }}" ></p>
                         </div>
                       </div>
