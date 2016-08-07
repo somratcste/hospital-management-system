@@ -115,6 +115,11 @@
             <div class="clearfix"></div>
             <div id="ms-allowFreeEntries"></div>
 
+            <button type="button" class="btn btn-primary apibutton">Go</button>
+            <div class="patient_name">
+
+            </div>
+
         </div>
       </div>
     </div>
@@ -155,6 +160,13 @@
         $("#third").val("");
       }
     });
+      $(".apibutton").click(function(){
+          var first_val = $("#first").val();
+          var second_val = $("#second").val();
+          $.getJSON("/hospital/public/api/operationtype_create?name="+first_val+"&cost="+second_val, function(result){
+              $(".patient_name").text(result.status);
+          });
+      });
 
     });
     </script>

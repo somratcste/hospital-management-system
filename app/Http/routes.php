@@ -211,6 +211,16 @@ Route::group(['middleware' => ['web']] , function() {
 		'as' => 'admin.invoice'
 	]);
 
+    Route::get('/api/patient_search' , [
+        'uses' => 'ApiController@patientSearch',
+        'as' => 'apipatient.search'
+    ]);
+
+    Route::get('/api/operationtype_create' , [
+        'uses' => 'ApiController@patientCreate',
+        'as' => 'apipatient.create'
+    ]);
+
 });
 
 
