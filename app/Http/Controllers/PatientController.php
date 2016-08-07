@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Input;
 use File;
 class PatientController extends Controller
 {
+    public function invoice()
+    {
+        return view('admin.invoice');
+    }
     public function getIndex ()
     {
         return view('admin.patient');

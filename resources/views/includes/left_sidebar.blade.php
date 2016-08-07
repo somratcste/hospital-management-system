@@ -205,7 +205,7 @@
 
           <!-- Invoice -->
           <li>
-            <a href="widgets.html">
+            <a href="{{ route('admin.invoice') }}">
               <i class="fa fa-toggle-on"></i>
               <span>Invoice</span>
             </a>
