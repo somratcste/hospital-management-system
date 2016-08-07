@@ -170,8 +170,8 @@
               <label class="col-sm-3 control-label">Patient Type</label>
               <div class="col-sm-8">
                 <select class="form-control" name="patient_type">
-                  <option value="1">Out Patient</option>
-                  <option value="2">Admit Patient</option>
+                  <option value="1" {{ $patient->patient_type == '1' ? 'selected' : ''}}>Admit Patient</option>
+                  <option value="2" {{ $patient->patient_type == '2' ? 'selected' : ''}}>Admit Patient</option>
                 </select>
               </div>
             </div>
@@ -186,7 +186,7 @@
             <div class="form-group clear">
               <label class="col-sm-3 control-label">Name</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" name="name" placeholder="Name" value="{{ Request::old('name') ? Request::old('name') : isset($reportType) ? $reportType->name : '' }}" required>
+                <input type="text" class="form-control" name="name" placeholder="Name" value="{{ Request::old('name') ? Request::old('name') : isset($patient) ? $patient->name : '' }}" required>
               </div>
             </div>
 
@@ -194,10 +194,10 @@
               <label class="col-sm-3 control-label">Gender</label>
               <div class="col-sm-8"> 
                 <label class="radio-inline">
-                  <input type="radio" name="gender" id="inlineRadio1" value="Male"> Male
+                  <input type="radio" name="gender" id="inlineRadio1" value="Male" {{ $patient->gender == 'Male' ? 'checked' : ''}}> Male
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="gender" id="inlineRadio2" value="Female"> Female
+                  <input type="radio" name="gender" id="inlineRadio2" value="Female" {{ $patient->gender == 'Female' ? 'checked' : ''}}> Female
                 </label>
               </div>
             </div>
@@ -205,7 +205,7 @@
             <div class="form-group clear">
               <label class="col-sm-3 control-label">Date of Birth</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" data-provide="datepicker" name="birthDate">
+                <input type="text" class="form-control" data-provide="datepicker" name="birthDate" value="{{ Request::old('birthDate') ? Request::old('birthDate') : isset($patient) ? $patient->birthDate : '' }}" required>
               </div>
             </div>
 
@@ -213,8 +213,8 @@
               <label class="col-sm-3 control-label">Blood Group</label>
               <div class="col-sm-8">
                 <select class="form-control" name="bloodGroup">
-                  <option value="A+">A+</option>
-                  <option value="O+">O+</option>
+                  <option value="A+" {{ $patient->bloodGroup == 'A+' ? 'selected' : ''}}>A+</option>
+                  <option value="O+" {{ $patient->bloodGroup == 'O+' ? 'selected' : ''}}>O+</option>
                 </select>
               </div>
             </div>
@@ -222,21 +222,21 @@
             <div class="form-group clear">
               <label class="col-sm-3 control-label">Symptoms</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" name="symptoms" placeholder="Symptoms" value="{{ Request::old('symptoms') }}" required>
+                <input type="text" class="form-control" name="symptoms" placeholder="Symptoms" value="{{ Request::old('symptoms') ? Request::old('symptoms') : isset($patient) ? $patient->symptoms : '' }}" required>
               </div>
             </div>
 
             <div class="form-group clear">
               <label class="col-sm-3 control-label">Admit Date</label>
               <div class="col-sm-8">
-                <input type="date" class="form-control" name="date" placeholder="Date" value="{{ Request::old('date') }}">
+                <input type="date" class="form-control" name="date" placeholder="Date" value="{{ Request::old('date') ? Request::old('date') : isset($patient) ? $patient->date : '' }}" >
               </div>
             </div>
 
             <div class="form-group clear">
               <label class="col-sm-3 control-label">Admit Time</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" name="time" placeholder="Time" value="{{ Request::old('time') }}">
+                <input type="text" class="form-control" name="time" placeholder="Time" value="{{ Request::old('time') ? Request::old('time') : isset($patient) ? $patient->time : '' }}">
               </div>
             </div>
 
@@ -244,8 +244,8 @@
               <label class="col-sm-3 control-label">Assign Doctor</label>
               <div class="col-sm-8">
                 <select class="form-control" name="doctor_id">
-                  <option value="1">Mr. Nazmul</option>
-                  <option value="2">Sanjida Hossain</option>
+                  <option value="1" {{ $patient->doctor_id == '1' ? 'selected' : ''}}>Mr. Nazmul</option>
+                  <option value="2" {{ $patient->doctor_id == '2' ? 'selected' : ''}}>Sanjida Hossain</option>
                 </select>
               </div>
             </div>
@@ -254,8 +254,8 @@
               <label class="col-sm-3 control-label">Assign Seat</label>
               <div class="col-sm-8">
                 <select class="form-control" name="seat_id">
-                  <option value="1">202</option>
-                  <option value="2">505</option>
+                  <option value="1" {{ $patient->seat_id == '1' ? 'selected' : ''}}>202</option>
+                  <option value="2" {{ $patient->seat_id == '2' ? 'selected' : ''}}>505</option>
                 </select>
               </div>
             </div>
@@ -263,21 +263,21 @@
             <div class="form-group clear">
               <label class="col-sm-3 control-label">Mobile Number</label> 
               <div class="col-sm-8">
-                <input class="form-control" type="tel" pattern="^\d{11}$" required name="mobile" placeholder="(format: xxxxxxxxxxx)" name="mobile">
+                <input class="form-control" type="tel" pattern="^\d{11}$" required name="mobile" name="mobile" value="{{ Request::old('mobile') ? Request::old('mobile') : isset($patient) ? $patient->mobile : '' }}">
               </div>
             </div>
 
             <div class="form-group clear">
               <label class="col-sm-3 control-label">Email</label>
               <div class="col-sm-8">
-                <input type="email" class="form-control" name="email" placeholder="Email" value="{{ Request::old('email') }}">
+                <input type="email" class="form-control" name="email" placeholder="Email" value="{{ Request::old('email') ? Request::old('email') : isset($patient) ? $patient->email : '' }}">
               </div>
             </div>
 
             <div class="form-group clear">
               <label class="col-sm-3 control-label">Address</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" name="address" placeholder="Address" value="{{ Request::old('address') }}" required>
+                <input type="text" class="form-control" name="address" placeholder="Address" value="{{ Request::old('address') ? Request::old('address') : isset($patient) ? $patient->address : '' }}" required>
               </div>
             </div>
 
