@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('run_custom_css_file')
+  <link href="{{ asset('styles/magicsuggest-min.css') }}" rel="stylesheet">
+@endsection
+
 @section('top_header')
 <!-- content panel -->
 <div class="main-panel">
@@ -108,6 +112,9 @@
           <input type="text" class="calculate" id="second"/>
           <input type="text" id="third"/>
 
+            <div class="clearfix"></div>
+            <div id="ms-allowFreeEntries"></div>
+
         </div>
       </div>
     </div>
@@ -117,9 +124,19 @@
 
 @endsection
 
+@section("run_custom_js_file")
+    <script src="{{ asset('scripts/magicsuggest-min.js') }}"></script>
+@endsection
+
 @section('run_custom_jquery')
     <script type="text/javascript">
       $( document ).ready(function() {
+
+      $('#ms-allowFreeEntries').magicSuggest({
+          allowFreeEntries: false,
+          data: ['Paris', 'New York', 'Gotham']
+      });
+
     $(".addMore").click(function(){
     var invoice_form = $(".invoice-cls").children().clone();
     $(".invoice-append").append(invoice_form);
