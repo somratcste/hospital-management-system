@@ -167,29 +167,27 @@
                       <div class="row mb25">
                       <form class="form-horizontal bordered-group" role="form" action="{{ route('patient.update') }}" method="post" enctype="multipart/form-data">
 
-            <div class="form-group">
-              <label class="col-sm-3 control-label">patient Type</label>
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Patient Type</label>
               <div class="col-sm-8">
                 <select class="form-control" name="patient_type">
-                  <option value="doctor" {{ $patient->patient_type == 'doctor' ? 'selected' : ''}}>Doctor</option>
-                  <option value="nurse" {{ $patient->patient_type == 'nurse' ? 'selected' : ''}}>Nurse</option>
-                  <option value="accountant" {{ $patient->patient_type == 'accountant' ? 'selected' : ''}}>Accountant</option>
+                  <option value="1">Out Patient</option>
+                  <option value="2">Admit Patient</option>
                 </select>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Patient ID</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" value="2" disabled>
               </div>
             </div>
 
             <div class="form-group clear">
               <label class="col-sm-3 control-label">Name</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" name="name" placeholder="Name" value="{{ Request::old('name') ? Request::old('name') : isset($patient) ? $patient->name : '' }} " required>
-              </div>
-            </div>
-            
-
-            <div class="form-group clear">
-              <label class="col-sm-3 control-label">Degree</label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control" name="degree" placeholder="Degree" value="{{ Request::old('degree') ? Request::old('degree') : isset($patient) ? $patient->degree : '' }} " required>
+                <input type="text" class="form-control" name="name" placeholder="Name" value="{{ Request::old('name') }}" required>
               </div>
             </div>
 
@@ -197,10 +195,10 @@
               <label class="col-sm-3 control-label">Gender</label>
               <div class="col-sm-8"> 
                 <label class="radio-inline">
-                  <input type="radio" name="gender" id="inlineRadio1" value="Male" {{ $patient->gender == 'Male' ? 'checked' : ''}} > Male
+                  <input type="radio" name="gender" id="inlineRadio1" value="Male"> Male
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="gender" id="inlineRadio2" value="Female" {{ $patient->gender == 'Female' ? 'checked' : ''}}> Female
+                  <input type="radio" name="gender" id="inlineRadio2" value="Female"> Female
                 </label>
               </div>
             </div>
@@ -208,58 +206,83 @@
             <div class="form-group clear">
               <label class="col-sm-3 control-label">Date of Birth</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" data-provide="datepicker" name="birthDate" value="{{ Request::old('birthDate') ? Request::old('birthDate') : isset($patient) ? $patient->birthDate : '' }} " required>
+                <input type="text" class="form-control" data-provide="datepicker" name="birthDate">
               </div>
             </div>
 
             <div class="form-group clear">
-              <label class="col-sm-3 control-label">Specialization</label>
+              <label class="col-sm-3 control-label">Blood Group</label>
               <div class="col-sm-8">
-                <select class="form-control" name="specialist">
-                  <option value="medicine" {{ $patient->specialist == 'medicine' ? 'selected' : ''}}>Medicine</option>
-                  <option value="surgery" {{ $patient->specialist == 'surgery' ? 'selected' : ''}}>Surgery</option>
-                  <option value="">Neurologiest</option>
+                <select class="form-control" name="bloodGroup">
+                  <option value="A+">A+</option>
+                  <option value="O+">O+</option>
                 </select>
               </div>
             </div>
 
             <div class="form-group clear">
-              <label class="col-sm-3 control-label">Visiting Charge</label>
+              <label class="col-sm-3 control-label">Symptoms</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" name="charge" value="{{ Request::old('charge') ? Request::old('charge') : isset($patient) ? $patient->charge : '' }} " required>
+                <input type="text" class="form-control" name="symptoms" placeholder="Symptoms" value="{{ Request::old('symptoms') }}" required>
               </div>
             </div>
 
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Admit Date</label>
+              <div class="col-sm-8">
+                <input type="date" class="form-control" name="date" placeholder="Date" value="{{ Request::old('date') }}">
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Admit Time</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" name="time" placeholder="Time" value="{{ Request::old('time') }}">
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Assign Doctor</label>
+              <div class="col-sm-8">
+                <select class="form-control" name="doctor_id">
+                  <option value="1">Mr. Nazmul</option>
+                  <option value="2">Sanjida Hossain</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Assign Seat</label>
+              <div class="col-sm-8">
+                <select class="form-control" name="seat_id">
+                  <option value="1">202</option>
+                  <option value="2">505</option>
+                </select>
+              </div>
+            </div>
 
             <div class="form-group clear">
               <label class="col-sm-3 control-label">Mobile Number</label> 
               <div class="col-sm-8">
-                <input class="form-control" type="tel" required name="mobile" name="mobile" value="{{ Request::old('mobile') ? Request::old('mobile') : isset($patient) ? $patient->mobile : '' }} ">
+                <input class="form-control" type="tel" pattern="^\d{11}$" required name="mobile" placeholder="(format: xxxxxxxxxxx)" name="mobile">
               </div>
             </div>
 
             <div class="form-group clear">
               <label class="col-sm-3 control-label">Email</label>
               <div class="col-sm-8">
-                <input type="email" class="form-control" name="email" value="{{ Request::old('email') ? Request::old('email') : isset($patient) ? $patient->email : '' }} " required>
+                <input type="email" class="form-control" name="email" placeholder="Email" value="{{ Request::old('email') }}">
               </div>
             </div>
 
             <div class="form-group clear">
-              <label class="col-sm-3 control-label">Home Address</label>
+              <label class="col-sm-3 control-label">Address</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" name="hAddress" value="{{ Request::old('hAddress') ? Request::old('hAddress') : isset($patient) ? $patient->hAddress : '' }} " required>
+                <input type="text" class="form-control" name="address" placeholder="Address" value="{{ Request::old('address') }}" required>
               </div>
             </div>
 
-            <div class="form-group clear">
-              <label class="col-sm-3 control-label">Office Address</label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control" name="oAddress" value="{{ Request::old('oAddress') ? Request::old('oAddress') : isset($patient) ? $patient->oAddress : '' }} " required>
-              </div>
-            </div>
-
-            <div class="form-group clear">
+            <div class="form-group">
               <label class="col-sm-3 control-label">Previous Image</label>
               <div class="col-sm-8">
                 <img src="{{ asset('images/patients/'.$patient->image) }}" class="img-responsive" alt="">
@@ -289,7 +312,7 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title">Delete patients Information</h4>
+                    <h4 class="modal-title">Delete Patients Information</h4>
                   </div>
                   <div class="modal-body">
                       Are you sure ?
