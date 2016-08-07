@@ -164,7 +164,6 @@
                       <h4 class="modal-title">Edit Information</h4>
                     </div>
                     <div class="modal-body">
-                      <div class="row mb25">
                       <form class="form-horizontal bordered-group" role="form" action="{{ route('patient.update') }}" method="post" enctype="multipart/form-data">
 
             <div class="form-group clear">
@@ -187,7 +186,7 @@
             <div class="form-group clear">
               <label class="col-sm-3 control-label">Name</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" name="name" placeholder="Name" value="{{ Request::old('name') }}" required>
+                <input type="text" class="form-control" name="name" placeholder="Name" value="{{ Request::old('name') ? Request::old('name') : isset($reportType) ? $reportType->name : '' }}" required>
               </div>
             </div>
 
@@ -290,9 +289,6 @@
               </div>
             </div>
 
-            
-         
-                    </div>
                     </div>
                     <div class="modal-footer no-border">
                       <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>

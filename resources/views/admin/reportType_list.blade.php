@@ -115,7 +115,7 @@
             <div class="form-group">
               <label class="col-sm-3 control-label">Name</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" name="name" placeholder="reportType No" value="{{ Request::old('name') ? Request::old('reportTypeNo') : isset($reportType) ? $reportType->name : '' }} " required>
+                <input type="text" class="form-control" name="name" placeholder="reportType No" value="{{ Request::old('name') ? Request::old('name') : isset($reportType) ? $reportType->name : '' }}" required>
               </div>
             </div>
 
