@@ -52,6 +52,7 @@
 
     </ul>
   </header>
+
   <!-- /top header -->
 @endsection
 
@@ -103,6 +104,10 @@
         <button type="button" class="btn btn-info addMore">Add More</button>
       </form>
 
+          <input type="text" class="calculate" id="first" />
+          <input type="text" class="calculate" id="second"/>
+          <input type="text" id="third"/>
+
         </div>
       </div>
     </div>
@@ -122,6 +127,16 @@
 
     $( '.invoice-form' ).on( 'click', '.delete', function () {
     $(this).parent().remove();
+    });
+
+    $(".calculate").keyup(function(){
+      var first_val = $("#first").val();
+      var second_val = $("#second").val();
+      if(first_val != "" && second_val != "") {
+        $("#third").val(parseInt(first_val) + parseInt(second_val));
+      } else {
+        $("#third").val("");
+      }
     });
 
     });
