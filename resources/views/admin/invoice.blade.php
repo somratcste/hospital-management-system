@@ -123,14 +123,14 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Medicine Charge</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" name="medicine" placeholder="Medicine Charge" value="{{ Request::old('medicine') }}" required>
+                <input type="text" class="form-control calculate" id="medicine" name="medicine" value="0" required>
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-sm-2 control-label">Service Charge</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" name="service" placeholder="Service Charge" value="{{ Request::old('service') }}" required>
+                <input type="text" class="form-control calculate" id="service" name="service" value="0" required>
               </div>
             </div>
 
@@ -179,15 +179,20 @@
           <input name="total_paid" type="number" class="form-control amountDue" id="amountDue" placeholder="Total" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
         </div>
       </div>
+
+      <div class="form-group">        
+      <label class="col-sm-4"></label>  
+      <div class="input-group col-sm-6">
+      <input type=submit name="invoice" value="Add Invoice" class="btn btn-success btn-lg btn-block">
+      <input type="hidden" name="_token" value="{{ Session::token() }}">
+      </div>
+     
+      </div>
+      </form>
+
       </div>
 
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-5">
-                <button type="submit" class="btn btn-success">Add Invoice</button>
-                <input type="hidden" name="_token" value="{{ Session::token() }}">
-              </div>
-            </div>
-          </form>
+            
 
 
       </div>
@@ -204,9 +209,20 @@
 @endsection
 
 @section('run_custom_jquery')
-    <script type="text/javascript">
-      $( document ).ready(function() {
-
+<script type="text/javascript">
+  $( document ).ready(function() {
+    $(".calculate").keyup(function(){
+      var medicine = $("#medicine").val();
+      var service = $("#service").val();
+      if(medicine != "" && service != "") {
+        $("#subTotal").val(parseInt(medicine) + parseInt(service));
+        $("#totalAftertax").val(parseFloat(medicine) + parseFloat(service));
+        $("#amountDue").val(parseFloat(medicine) + parseFloat(service));
+      } else {
+        $("#subTotal").val("");
+      }
     });
-    </script>
+
+});
+</script>
 @endsection
