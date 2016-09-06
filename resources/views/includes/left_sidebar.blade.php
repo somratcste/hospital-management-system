@@ -205,10 +205,22 @@
 
           <!-- Invoice -->
           <li>
-            <a href="{{ route('admin.invoice') }}">
+            <a href="javascript:;">
               <i class="fa fa-toggle-on"></i>
               <span>Invoice</span>
             </a>
+            <ul class="sub-menu">
+              <li>
+                <a href="{{ route('admin.invoice') }}">
+                  <span>Creat Invoice</span>
+                </a>
+              </li>            
+              <li>
+                <a href="">
+                  <span>Invoice List</span>
+                </a>
+              </li>
+            </ul>
           </li>
           <!-- /Invoice -->
 

@@ -22,7 +22,6 @@ class ApiController extends Controller
         $operation->cost    = $request['cost'];
         $saved =  $operation->save();
 
-
         if(!$saved){
             App::abort(500, 'Error');
         } else {

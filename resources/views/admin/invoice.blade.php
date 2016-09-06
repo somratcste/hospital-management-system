@@ -31,7 +31,7 @@
     <ul class="nav navbar-nav hidden-xs">
       <li>
         <p class="navbar-text">
-          Add New Employee
+          Create New Invoice
         </p>
       </li>
     </ul>
@@ -68,7 +68,7 @@
   <div class="row">
     <div class="panel mb25">
         <div class="panel-heading border">
-          Employee Information
+          Invoice Creator
         </div>
         <div class="panel-body">
         <div class="col-lg-12">
@@ -86,41 +86,111 @@
           </ul>
         </div>
       @endif
-          
       
+    <form class="form-horizontal bordered-group" role="form" action="" method="post" enctype="multipart/form-data">
 
-      <form class="form-inline invoice-form">
-        <div class="invoice-cls">
-            <div class="delete_parent">
-              <div class="form-group">
-                <label class="sr-only" for="exampleInputEmail3">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+          <div class="form-group">
+              <label class="col-sm-2 control-label">Invoice ID</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" value="2" disabled>
               </div>
-              <div class="form-group">
-                <label class="sr-only" for="exampleInputPassword3">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
-              </div>
-              <button type="button" class="btn btn-danger delete">Delete</button>
-              <div class="clearfix"></div>
             </div>
-        </div>
-        <div class="invoice-append"></div>
-        <button type="button" class="btn btn-info addMore">Add More</button>
-      </form>
-
-          <input type="text" class="calculate" id="first" />
-          <input type="text" class="calculate" id="second"/>
-          <input type="text" id="third"/>
-
-            <div class="clearfix"></div>
-            <div id="ms-allowFreeEntries"></div>
-
-            <button type="button" class="btn btn-primary apibutton">Go</button>
-            <div class="patient_name">
-
+          
+          <div class="form-group">
+              <label class="col-sm-2 control-label">Invoice Title</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control">
+              </div>
             </div>
 
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Patient</label>
+              <div class="col-sm-8">
+                <select class="form-control" name="patient_type">
+                  <option value="1">Out Patient</option>
+                  <option value="2">Admit Patient</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Date</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" data-provide="datepicker" name="Date">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Medicine Charge</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" name="medicine" placeholder="Medicine Charge" value="{{ Request::old('medicine') }}" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Service Charge</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" name="service" placeholder="Service Charge" value="{{ Request::old('service') }}" required>
+              </div>
+            </div>
+
+            <div class="row col-md-6 pull-right">
+      <div class="form-group form-inline">
+        <label class="col-sm-4" >Subtotal: &nbsp;</label>
+        <div class="input-group col-sm-6">
+          <div class="input-group-addon">Tk.</div>
+          <input name="subtotal" type="number" class="form-control" id="subTotal" placeholder="Subtotal" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
         </div>
+      </div>
+      <div class="form-group form-inline">
+        <label class="col-sm-4">Percent: &nbsp;</label>
+        <div class="input-group col-sm-6">
+          <div class="input-group-addon">Tk.</div>
+          <input name="percent" type="number" class="form-control" id="tax" placeholder="Percent" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
+              <div class="input-group-addon">%</div>
+        </div>
+      </div>
+      <div class="form-group form-inline">
+        <label class="col-sm-4">Percent Amount: &nbsp;</label>
+        <div class="input-group col-sm-6">
+          <div class="input-group-addon">Tk.</div>
+          <input name="percent_amount" type="text" class="form-control" id="taxAmount" placeholder="Percent" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">          
+        </div>
+      </div>
+
+      <div class="form-group form-inline">
+        <label class="col-sm-4">Without Percent: &nbsp;</label>
+        <div class="input-group col-sm-6">
+          <div class="input-group-addon">Tk.</div>
+          <input name="without_percent" type="text" class="form-control" id="totalAftertax" placeholder="Without Percen" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
+        </div>
+      </div>
+      <div class="form-group form-inline">
+        <label class="col-sm-4">Discount Amount: &nbsp;</label>
+        <div class="input-group col-sm-6">
+          <div class="input-group-addon">Tk.</div>
+          <input name="discount_amount" type="number" class="form-control" id="amountPaid" placeholder="Discount Amount" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
+        </div>
+      </div>
+      <div class="form-group form-inline">
+        <label class="col-sm-4">Total : &nbsp;</label>
+        <div class="input-group col-sm-6">
+          <div class="input-group-addon">Tk.</div>
+          <input name="total_paid" type="number" class="form-control amountDue" id="amountDue" placeholder="Total" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
+        </div>
+      </div>
+      </div>
+
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-5">
+                <button type="submit" class="btn btn-success">Add Invoice</button>
+                <input type="hidden" name="_token" value="{{ Session::token() }}">
+              </div>
+            </div>
+          </form>
+
+
+      </div>
       </div>
     </div>
   </div>
@@ -136,37 +206,6 @@
 @section('run_custom_jquery')
     <script type="text/javascript">
       $( document ).ready(function() {
-
-      $('#ms-allowFreeEntries').magicSuggest({
-          allowFreeEntries: false,
-          data: ['Paris', 'New York', 'Gotham']
-      });
-
-    $(".addMore").click(function(){
-    var invoice_form = $(".invoice-cls").children().clone();
-    $(".invoice-append").append(invoice_form);
-    });
-
-    $( '.invoice-form' ).on( 'click', '.delete', function () {
-    $(this).parent().remove();
-    });
-
-    $(".calculate").keyup(function(){
-      var first_val = $("#first").val();
-      var second_val = $("#second").val();
-      if(first_val != "" && second_val != "") {
-        $("#third").val(parseInt(first_val) + parseInt(second_val));
-      } else {
-        $("#third").val("");
-      }
-    });
-      $(".apibutton").click(function(){
-          var first_val = $("#first").val();
-          var second_val = $("#second").val();
-          $.getJSON("/hospital/public/api/operationtype_create?name="+first_val+"&cost="+second_val, function(result){
-              $(".patient_name").text(result.status);
-          });
-      });
 
     });
     </script>
