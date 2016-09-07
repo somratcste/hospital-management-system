@@ -151,7 +151,7 @@
         </div>
       </div>
       <div class="form-group form-inline">
-        <label class="col-sm-4"><button type="button" id="btnPercent" class="btn btn-primary">Percent Amount</button></label>
+        <label class="col-sm-4">Percent Amount: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
           <input name="percent_amount" type="text" class="form-control" id="taxAmount" placeholder="Percent" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">          
@@ -159,7 +159,7 @@
       </div>
 
       <div class="form-group form-inline">
-        <label class="col-sm-4"><button type="button" id="withoutPercent" class="btn btn-primary">Wiithout Percent</button></label>
+        <label class="col-sm-4">Without Percent: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
           <input name="without_percent" type="text" class="form-control" id="totalAftertax" placeholder="Without Percen" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
@@ -169,14 +169,14 @@
         <label class="col-sm-4">Discount Amount: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
-          <input name="discount_amount" type="number" class="form-control" id="amountPaid" placeholder="Discount Amount" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
+          <input name="discount_amount" type="number" class="form-control" id="discount" value="0" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
         </div>
       </div>
       <div class="form-group form-inline">
-        <label class="col-sm-4">Total : &nbsp;</label>
+        <label class="col-sm-4"><button type="button" id="total" class="btn btn-primary">Total</button></label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
-          <input name="total_paid" type="number" class="form-control amountDue" id="amountDue" placeholder="Total" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
+          <input name="total_paid" type="number" class="form-control" id="totalAmount" placeholder="Total" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
         </div>
       </div>
 
@@ -216,27 +216,31 @@
       var service = $("#service").val();
       if(medicine != "" && service != "") {
         $("#subTotal").val(parseInt(medicine) + parseInt(service));
-        $("#totalAftertax").val(parseFloat(medicine) + parseFloat(service));
-        $("#amountDue").val(parseFloat(medicine) + parseFloat(service));
       } else {
         $("#subTotal").val("");
       }
     });
 
-    $("#btnPercent").click(function() {
+    $("#total").click(function() {
+
       $("#taxAmount").val(function() {
         var result = (parseFloat($("#tax").val()) *  parseFloat($("#subTotal").val()) / 100).toFixed(2)
         if(!isFinite(result)) result = 0 ;
         return result;
       });
-    });
 
-    $("#withoutPercent").click(function() {
       $("#totalAftertax").val(function() {
         var result = (parseFloat($("#subTotal").val()) - parseFloat($("#taxAmount").val())).toFixed(2);
         if(!isFinite(result)) result = 0 ;
         return result;
       });
+
+      $("#totalAmount").val(function() {
+        var result = (parseFloat($("#subTotal").val()) - parseFloat($("#taxAmount").val()) - parseFloat($("#discount").val())).toFixed(2);
+        if(!isFinite(result)) result = 0 ;
+        return result;
+      });
+
     });
 
 });
