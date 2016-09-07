@@ -207,7 +207,7 @@ Route::group(['middleware' => ['web']] , function() {
 	]);
 
 	Route::get('/invoice' , [
-		'uses' => 'PatientController@invoice',
+		'uses' => 'InvoiceController@invoice',
 		'as' => 'admin.invoice'
 	]);
 

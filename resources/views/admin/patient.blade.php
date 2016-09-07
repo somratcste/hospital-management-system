@@ -132,6 +132,12 @@
                 <select class="form-control" name="bloodGroup">
                   <option value="A+">A+</option>
                   <option value="O+">O+</option>
+                  <option value="B+">B+</option>
+                  <option value="AB+">AB+</option>
+                  <option value="A-">A-</option>
+                  <option value="O-">O-</option>
+                  <option value="B-">B-</option>
+                  <option value="AB-">AB-</option>
                 </select>
               </div>
             </div>
@@ -160,9 +166,10 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Assign Doctor</label>
               <div class="col-sm-8">
-                <select class="form-control" name="doctor_id">
-                  <option value="1">Mr. Nazmul</option>
-                  <option value="2">Sanjida Hossain</option>
+                <select class="form-control" name="doctor_id">                  
+                  @foreach ($doctors as $doctor)
+                    <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
+                  @endforeach
                 </select>
               </div>
             </div>
@@ -171,8 +178,9 @@
               <label class="col-sm-2 control-label">Assign Seat</label>
               <div class="col-sm-8">
                 <select class="form-control" name="seat_id">
-                  <option value="1">202</option>
-                  <option value="2">505</option>
+                  @foreach ($seats as $seat)
+                    <option value="{{ $seat->id }}">{{ $seat->seatFloor}} -- {{ $seat->seatNo }}</option>
+                  @endforeach
                 </select>
               </div>
             </div>

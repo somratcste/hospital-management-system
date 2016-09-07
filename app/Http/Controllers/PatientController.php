@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Employee;
 use App\Patient;
-use Illuminate\Support\Facades\Input;
+use App\Seat;
 use File;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 class PatientController extends Controller
 {
-    public function invoice()
-    {
-        return view('admin.invoice');
-    }
+    
     public function getIndex ()
     {
-        return view('admin.patient');
+        $doctor = Employee::orderBy('created_at' , 'desc')->where('employee_type' , 'doctor')->get();
+        $seat = Seat::orderBy('created_at' , 'desc')->where('status' , 'empty')->get();
+        return view('admin.patient' , ['doctors' => $doctor , 'seats' => $seat]);
     }
 
     public function save(Request $request)

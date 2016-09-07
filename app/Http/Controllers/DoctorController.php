@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
@@ -32,7 +32,7 @@ class DoctorController extends Controller
     	$doctor->birthDate = $request['birthDate'];
     	$doctor->charge	   = $request['charge'];
     	$doctor->mobile	   = $request['mobile'];
-    	$doctor->email	   = $request['email'];    	
+    	$doctor->email	   = $request['email'];
     	$doctor->hAddress  = $request['hAddress'];
     	$doctor->oaddress  = $request['oAddress'];
     	$doctor->specialist = $request['specialist'];
@@ -70,7 +70,7 @@ class DoctorController extends Controller
         $doctor->birthDate = $request['birthDate'];
         $doctor->charge    = $request['charge'];
         $doctor->mobile    = $request['mobile'];
-        $doctor->email     = $request['email'];     
+        $doctor->email     = $request['email'];
         $doctor->hAddress  = $request['hAddress'];
         $doctor->oaddress  = $request['oAddress'];
         $doctor->specialist = $request['specialist'];
