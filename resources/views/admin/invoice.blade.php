@@ -151,7 +151,7 @@
         </div>
       </div>
       <div class="form-group form-inline">
-        <label class="col-sm-4">Percent Amount: &nbsp;</label>
+        <label class="col-sm-4"><button type="button" id="btnPercent" class="btn btn-primary">Percent Amount</button></label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
           <input name="percent_amount" type="text" class="form-control" id="taxAmount" placeholder="Percent" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">          
@@ -159,7 +159,7 @@
       </div>
 
       <div class="form-group form-inline">
-        <label class="col-sm-4">Without Percent: &nbsp;</label>
+        <label class="col-sm-4"><button type="button" id="withoutPercent" class="btn btn-primary">Wiithout Percent</button></label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
           <input name="without_percent" type="text" class="form-control" id="totalAftertax" placeholder="Without Percen" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
@@ -221,6 +221,22 @@
       } else {
         $("#subTotal").val("");
       }
+    });
+
+    $("#btnPercent").click(function() {
+      $("#taxAmount").val(function() {
+        var result = (parseFloat($("#tax").val()) *  parseFloat($("#subTotal").val()) / 100).toFixed(2)
+        if(!isFinite(result)) result = 0 ;
+        return result;
+      });
+    });
+
+    $("#withoutPercent").click(function() {
+      $("#totalAftertax").val(function() {
+        var result = (parseFloat($("#subTotal").val()) - parseFloat($("#taxAmount").val())).toFixed(2);
+        if(!isFinite(result)) result = 0 ;
+        return result;
+      });
     });
 
 });
