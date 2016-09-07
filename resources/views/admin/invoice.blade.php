@@ -139,14 +139,14 @@
         <label class="col-sm-4" >Subtotal: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
-          <input name="subtotal" type="number" class="form-control" id="subTotal" placeholder="Subtotal" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
+          <input name="subtotal" type="number" class="form-control" id="subTotal" placeholder="Subtotal">
         </div>
       </div>
       <div class="form-group form-inline">
         <label class="col-sm-4">Percent: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
-          <input name="percent" type="number" class="form-control" id="tax" placeholder="Percent" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
+          <input name="percent" type="number" class="form-control" id="tax" placeholder="Percent">
               <div class="input-group-addon">%</div>
         </div>
       </div>
@@ -154,7 +154,7 @@
         <label class="col-sm-4">Percent Amount: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
-          <input name="percent_amount" type="text" class="form-control" id="taxAmount" placeholder="Percent" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">          
+          <input name="percent_amount" type="text" class="form-control" id="taxAmount" placeholder="Percent">          
         </div>
       </div>
 
@@ -162,21 +162,21 @@
         <label class="col-sm-4">Without Percent: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
-          <input name="without_percent" type="text" class="form-control" id="totalAftertax" placeholder="Without Percen" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
+          <input name="without_percent" type="text" class="form-control" id="totalAftertax" placeholder="Without Percen">
         </div>
       </div>
       <div class="form-group form-inline">
         <label class="col-sm-4">Discount Amount: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
-          <input name="discount_amount" type="number" class="form-control" id="discount" value="0" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
+          <input name="discount_amount" type="number" class="form-control" id="discount" value="0">
         </div>
       </div>
       <div class="form-group form-inline">
         <label class="col-sm-4"><button type="button" id="total" class="btn btn-primary">Total</button></label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
-          <input name="total_paid" type="number" class="form-control" id="totalAmount" placeholder="Total" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
+          <input name="total_paid" type="number" class="form-control" id="totalAmount" placeholder="Total">
         </div>
       </div>
 
