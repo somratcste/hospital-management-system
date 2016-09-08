@@ -78,7 +78,8 @@
             <tr>
               <th>No.</th>
               <th>Name</th>
-              <th>Type</th>
+              <th>ID</th>
+              <th>Phone</th>
               <th>View</th>
               <th>Edit</th>
               <th>Delete</th>
@@ -88,7 +89,8 @@
             <tr>
               <th>No.</th>
               <th>Name</th>
-              <th>Type</th>
+              <th>ID</th>
+              <th>Phone</th>
               <th>View</th>
               <th>Edit</th>
               <th>Delete</th>
@@ -100,7 +102,8 @@
               <tr>
               <td><?php echo $i; ?></td>
               <td>{{ $patient->name }}</td>
-              <td>{{ $patient->patient_type }}</td>
+              <td>{{ $patient->id }}</td>
+              <td>{{ $patient->mobile }}</td>
               <td><a data-toggle="modal" data-target="#details<?php echo $i; ?>" href=""><button type="button" class="btn btn-success">Details</button></a></td>
               <div class="modal" id="details<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog">
@@ -121,8 +124,7 @@
                           <p>Blood Group</p>
                           <p>Symptoms</p>
                           <p>Selected Doctor</p>
-                          <p>Admit Date </p>
-                          <p>Admit Time</p>
+                          <p>Admition Time</p>
                           <p>Allocated Seat</p>
                           <p>Mobile Number</p>
                           <p>Email</p>
@@ -131,15 +133,19 @@
                         </div>
                         <div class="col-xs-7">
                           <p> : {{ $patient->name }}</p>
-                          <p> : {{ ucfirst($patient->patient_type) }}</p>
+                          <p> : @if($patient->patient_type == 1)
+                                 Out Patient 
+                                @elseif($patient->patient_type == 2)
+                                 Admit Patient
+                                @endif
+                          </p>
                           <p> : {{ $patient->id or '101' }}</p>
                           <p> : {{ $patient->gender }}</p>
                           <p> : {{ $patient->birthDate }}</p>
                           <p> : {{ $patient->bloodGroup }}</p>
                           <p> : {{ $patient->symptoms }}</p>
                           <p> : {{ $patient->doctor_id }}</p>
-                          <p> : {{ $patient->date }}</p>
-                          <p> : {{ $patient->time }}</p>
+                          <p> : {{ $patient->created_at }}</p>
                           <p> : {{ $patient->seat_id }}</p>
                           <p> : {{ $patient->mobile }} </p>
                           <p> : {{ $patient->email }}</p>
@@ -170,7 +176,7 @@
               <label class="col-sm-3 control-label">Patient Type</label>
               <div class="col-sm-8">
                 <select class="form-control" name="patient_type">
-                  <option value="1" {{ $patient->patient_type == '1' ? 'selected' : ''}}>Admit Patient</option>
+                  <option value="1" {{ $patient->patient_type == '1' ? 'selected' : ''}}>Out Patient</option>
                   <option value="2" {{ $patient->patient_type == '2' ? 'selected' : ''}}>Admit Patient</option>
                 </select>
               </div>
@@ -179,7 +185,7 @@
             <div class="form-group clear">
               <label class="col-sm-3 control-label">Patient ID</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" value="2" disabled>
+                <input type="text" class="form-control" value="{{ $patient->id }}" disabled>
               </div>
             </div>
 
@@ -223,20 +229,6 @@
               <label class="col-sm-3 control-label">Symptoms</label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" name="symptoms" placeholder="Symptoms" value="{{ Request::old('symptoms') ? Request::old('symptoms') : isset($patient) ? $patient->symptoms : '' }}" required>
-              </div>
-            </div>
-
-            <div class="form-group clear">
-              <label class="col-sm-3 control-label">Admit Date</label>
-              <div class="col-sm-8">
-                <input type="date" class="form-control" name="date" placeholder="Date" value="{{ Request::old('date') ? Request::old('date') : isset($patient) ? $patient->date : '' }}" >
-              </div>
-            </div>
-
-            <div class="form-group clear">
-              <label class="col-sm-3 control-label">Admit Time</label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control" name="time" placeholder="Time" value="{{ Request::old('time') ? Request::old('time') : isset($patient) ? $patient->time : '' }}">
               </div>
             </div>
 

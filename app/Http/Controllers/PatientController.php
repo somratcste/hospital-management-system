@@ -104,9 +104,9 @@ class PatientController extends Controller
     public function viewList($patient_type = null)
     {
         if($patient_type == 'admit')
-            $patient_type = 1;
-        else if ($patient_type == 'out')
             $patient_type = 2;
+        else if ($patient_type == 'out')
+            $patient_type = 1;
         $patient = Patient::orderBy('created_at' , 'desc')->where('patient_type' , $patient_type)->paginate(50);
         return view('admin.patient_list' , ['patients' => $patient , 'patient_type' => $patient_type]);
     }

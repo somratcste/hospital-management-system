@@ -99,13 +99,18 @@
                 </a>
               </li>
               <li>
-                <a href="ui-general.html">
+                <a href="{{ route('employee.list' , ['employee' => 'accountant']) }}">
                   <span>Accountant</span>
                 </a>
               </li>
               <li>
-                <a href="ui-general.html">
-                  <span>Staff</span>
+                <a href="{{ route('employee.list' , ['employee' => 'labStaff']) }}">
+                  <span>Lab Staff</span>
+                </a>
+              </li>
+              <li>
+                <a href="{{ route('employee.list' , ['employee' => 'pharmacist']) }}">
+                  <span>Pharmacist</span>
                 </a>
               </li>
              </ul>

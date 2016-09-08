@@ -90,6 +90,8 @@
                   <option value="doctor">Doctor</option>
                   <option value="nurse">Nurse</option>
                   <option value="accountant">Accountant</option>
+                  <option value="labStaff">Laboratory Staff</option>
+                  <option value="pharmacist">Pharmacist</option>
                 </select>
               </div>
             </div>
@@ -124,7 +126,7 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Date of Birth</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" data-provide="datepicker" name="birthDate">
+                <input type="date" class="form-control" data-provide="datepicker" name="birthDate">
               </div>
             </div>
 
@@ -132,9 +134,14 @@
               <label class="col-sm-2 control-label">Specialization</label>
               <div class="col-sm-8">
                 <select class="form-control" name="specialist">
-                  <option value="medicine">Medicine</option>
-                  <option value="">Orthopedics</option>
-                  <option value="">Neurologiest</option>
+                  <option value="Medicine">Medicine</option>
+                  <option value="Orthopedics">Orthopedics</option>
+                  <option value="Neurologiest">Neurologiest</option>
+                  <option value="Pharmacist">Pharmacist</option>
+                  <option value="Accountant">Accountant</option>
+                  <option value="Nurse">Nurse</option>
+                  <option value="Lab Staff">Lab Staff</option>
+
                 </select>
               </div>
             </div>
