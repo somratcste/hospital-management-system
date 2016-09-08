@@ -16,8 +16,7 @@ class PatientController extends Controller
         $doctor = Employee::orderBy('created_at' , 'desc')->where('employee_type' , 'doctor')->get();
         $seat = Seat::orderBy('created_at' , 'desc')->where('status' , 'empty')->get();
         $patient = Patient::orderBy('created_at' , 'desc')->first();
-        $lastID = $patient->id;
-        return view('admin.patient' , ['doctors' => $doctor , 'seats' => $seat , 'lastID' => $lastID]);
+        return view('admin.patient' , ['doctors' => $doctor , 'seats' => $seat , 'lastID' => $patient->id+1]);
     }
 
     public function save(Request $request)
