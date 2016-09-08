@@ -21,8 +21,6 @@ class CreatePatientsTable extends Migration
             $table->string('birthDate');
             $table->string('bloodGroup');
             $table->string('symptoms');
-            $table->date('date');
-            $table->time('time');
             $table->string('mobile');
             $table->string('email');
             $table->string('address');

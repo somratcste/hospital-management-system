@@ -122,7 +122,7 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Date of Birth</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" data-provide="datepicker" name="birthDate">
+                <input type="date" class="form-control" data-provide="datepicker" name="birthDate">
               </div>
             </div>
 
@@ -146,20 +146,6 @@
               <label class="col-sm-2 control-label">Symptoms</label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" name="symptoms" placeholder="Symptoms" value="{{ Request::old('symptoms') }}" required>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Admit Date</label>
-              <div class="col-sm-8">
-                <input type="date" class="form-control" name="date" placeholder="Date" value="{{ Request::old('date') }}">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Admit Time</label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control" name="time" placeholder="Time" value="{{ Request::old('time') }}">
               </div>
             </div>
 

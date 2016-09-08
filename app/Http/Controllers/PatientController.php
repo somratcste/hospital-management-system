@@ -29,7 +29,7 @@ class PatientController extends Controller
     		'mobile'	=> 'required',
             'address'   => 'required'
     	]);
-
+        date_default_timezone_set("Asia/Dhaka");
     	$patient 		   = new Patient();
         $patient->patient_type = $request['patient_type'];
     	$patient->name 	   = ucfirst($request['name']);
@@ -37,8 +37,6 @@ class PatientController extends Controller
     	$patient->birthDate = $request['birthDate'];
         $patient->bloodGroup = $request['bloodGroup'];
         $patient->symptoms = $request['symptoms'];
-        $patient->date = $request['date'];
-        $patient->time = $request['time'];
     	$patient->mobile	   = $request['mobile'];
     	$patient->email	   = $request['email'];    	
     	$patient->address  = $request['address'];
