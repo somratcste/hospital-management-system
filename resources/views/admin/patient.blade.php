@@ -96,7 +96,7 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Patient ID</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" value="2" disabled>
+                <input type="text" class="form-control" value="{{ $lastID }}" disabled>
               </div>
             </div>
 
