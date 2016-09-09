@@ -99,7 +99,7 @@
               <tr>
               <td><?php echo $i; ?></td>
               <td>{{ $seat->seatNo }}</td>
-              <td>{{ $seat->status }}</td>
+              <td>{{ ucfirst($seat->status) }}</td>
               <td><a data-toggle="modal" data-target="#details<?php echo $i; ?>" href=""><button type="button" class="btn btn-success">Details</button></a></td>
               <div class="modal" id="details<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog">
@@ -122,8 +122,8 @@
                         <div class="col-xs-7">
                           <p> : {{ $seat->seatNo }}</p>
                           <p> : {{ ucfirst($seat->seatFloor) }}</p>
-                          <p> : {{ $seat->rent }}</p>
-                          <p> : {{ $seat->type }}</p>
+                          <p> : {{ $seat->rent }}/- Tk.</p>
+                          <p> : {{ ucfirst($seat->seatType) }}</p>
                           <p> : {{ $seat->status }}</p>
                           <p> : <img class="img-responsive" src="{{ asset('images/seats/'.$seat->image) }}" ></p>
                         </div>
@@ -159,11 +159,11 @@
               <label class="col-sm-3 control-label">Floor No.</label>
               <div class="col-sm-8">
                 <select class="form-control" name="seatFloor">
-                  <option value="1">1st Floor</option>
-                  <option value="2">2nd Floor</option>
-                  <option value="3">3rd Floor</option>
-                  <option value="4">4th Floor</option>
-                  <option value="5">5th Floor</option>
+                  <option value="1" {{ $seat->seatFloor == '1' ? 'selected' : ''}}>1st Floor</option>
+                  <option value="2" {{ $seat->seatFloor == '2' ? 'selected' : ''}}>2nd Floor</option>
+                  <option value="3" {{ $seat->seatFloor == '3' ? 'selected' : ''}}>3rd Floor</option>
+                  <option value="4" {{ $seat->seatFloor == '4' ? 'selected' : ''}}>4th Floor</option>
+                  <option value="5" {{ $seat->seatFloor == '5' ? 'selected' : ''}}>5th Floor</option>
                 </select>
               </div>
             </div>
