@@ -221,6 +221,12 @@
                 <select class="form-control" name="bloodGroup">
                   <option value="A+" {{ $patient->bloodGroup == 'A+' ? 'selected' : ''}}>A+</option>
                   <option value="O+" {{ $patient->bloodGroup == 'O+' ? 'selected' : ''}}>O+</option>
+                  <option value="B+" {{ $patient->bloodGroup == 'B+' ? 'selected' : ''}}>B+</option>
+                  <option value="AB+" {{ $patient->bloodGroup == 'AB+' ? 'selected' : ''}}>AB+</option>
+                  <option value="A-" {{ $patient->bloodGroup == 'A-' ? 'selected' : ''}}>A-</option>
+                  <option value="B-" {{ $patient->bloodGroup == 'B-' ? 'selected' : ''}}>B-</option>
+                  <option value="O-" {{ $patient->bloodGroup == 'O-' ? 'selected' : ''}}>O-</option>
+                  <option value="AB-" {{ $patient->bloodGroup == 'AB-' ? 'selected' : ''}}>AB-</option>
                 </select>
               </div>
             </div>
@@ -236,8 +242,9 @@
               <label class="col-sm-3 control-label">Assign Doctor</label>
               <div class="col-sm-8">
                 <select class="form-control" name="doctor_id">
-                  <option value="1" {{ $patient->doctor_id == '1' ? 'selected' : ''}}>Mr. Nazmul</option>
-                  <option value="2" {{ $patient->doctor_id == '2' ? 'selected' : ''}}>Sanjida Hossain</option>
+                  @foreach ($employees as $employee)
+                    <option value="{{ $employee->id }}" {{ $employee->id == $patient->employee->id ? 'selected' : ''}}>{{ $employee->name }}</option>
+                  @endforeach
                 </select>
               </div>
             </div>
@@ -246,8 +253,9 @@
               <label class="col-sm-3 control-label">Assign Seat</label>
               <div class="col-sm-8">
                 <select class="form-control" name="seat_id">
-                  <option value="1" {{ $patient->seat_id == '1' ? 'selected' : ''}}>202</option>
-                  <option value="2" {{ $patient->seat_id == '2' ? 'selected' : ''}}>505</option>
+                  @foreach ($seats as $seat)
+                    <option value="{{ $seat->id }}" {{ $seat->id == $patient->seat->id ? "selected" : ''}}>{{ $seat->seatFloor}} -- {{ $seat->seatNo}}</option>
+                  @endforeach
                 </select>
               </div>
             </div>

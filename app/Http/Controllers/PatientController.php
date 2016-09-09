@@ -77,8 +77,6 @@ class PatientController extends Controller
         $patient->birthDate = $request['birthDate'];
         $patient->bloodGroup = $request['bloodGroup'];
         $patient->symptoms = $request['symptoms'];
-        $patient->date = $request['date'];
-        $patient->time = $request['time'];
         $patient->mobile       = $request['mobile'];
         $patient->email    = $request['email'];     
         $patient->address  = $request['address'];
@@ -108,7 +106,9 @@ class PatientController extends Controller
         else if ($patient_type == 'out')
             $patient_type = 1;
         $patient = Patient::orderBy('created_at' , 'desc')->where('patient_type' , $patient_type)->paginate(50);
-        return view('admin.patient_list' , ['patients' => $patient , 'patient_type' => $patient_type]);
+        $employee = Employee::all();
+        $seat = Seat::all();
+        return view('admin.patient_list' , ['patients' => $patient , 'patient_type' => $patient_type , 'employees' => $employee , 'seats' => $seat]);
     }
 
     public function delete(Request $request)
