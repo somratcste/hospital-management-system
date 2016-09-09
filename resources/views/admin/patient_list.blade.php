@@ -146,7 +146,7 @@
                           <p> : {{ $patient->symptoms }}</p>
                           <p> : {{ $patient->doctor_id }}</p>
                           <p> : {{ $patient->created_at }}</p>
-                          <p> : {{ $patient->seat_id }}</p>
+                          <p> : {{ $patient->seat->seatFloor }} -- {{ $patient->seat->seatNo }}</p>
                           <p> : {{ $patient->mobile }} </p>
                           <p> : {{ $patient->email }}</p>
                           <p> : {{ $patient->address }}</p>
