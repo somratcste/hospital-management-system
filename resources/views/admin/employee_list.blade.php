@@ -78,7 +78,7 @@
             <tr>
               <th>No.</th>
               <th>Name</th>
-              <th>Specialist</th>
+              <th>Status</th>
               <th>Mobile No.</th>
               <th>View</th>
               <th>Edit</th>
@@ -89,7 +89,7 @@
             <tr>
               <th>No.</th>
               <th>Name</th>
-              <th>Specialist</th>
+              <th>Status</th>
               <th>Mobile No.</th>
               <th>View</th>
               <th>Edit</th>
@@ -102,7 +102,7 @@
               <tr>
               <td><?php echo $i; ?></td>
               <td>{{ $employee->name }}</td>
-              <td>{{ $employee->specialist }}</td>
+              <td>{{ ucfirst($employee->employee_type) }}</td>
               <td>{{ $employee->mobile }}</td>
               <td><a data-toggle="modal" data-target="#details<?php echo $i; ?>" href=""><button type="button" class="btn btn-success">Details</button></a></td>
               <div class="modal" id="details<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
@@ -118,8 +118,14 @@
                         <div class="col-xs-4">
                           <p>Name</p>
                           <p>Position</p>
-                          <p>Specialist</p>
-                          <p>Visiting Charge</p>
+                          @if($employee->specialist == '1')
+                          @else
+                            <p>Specialist</p>
+                          @endif
+                          @if($employee->charge == NULL)
+                          @else
+                            <p>Visiting Charge</p>
+                          @endif
                           <p>Degree</p>
                           <p>Gender</p>
                           <p>Birth Date</p>
@@ -132,8 +138,14 @@
                         <div class="col-xs-7">
                           <p> : {{ $employee->name }}</p>
                           <p> : {{ ucfirst($employee->employee_type) }}</p>
-                          <p> : {{ $employee->specialist }}</p>
-                          <p> : {{ $employee->charge }}</p>
+                          @if($employee->specialist == '1')
+                          @else
+                            <p> : {{ ucfirst($employee->specialist) }}</p>
+                          @endif
+                          @if($employee->charge == NULL)
+                          @else
+                            <p> : {{ ucfirst($employee->charge) }}</p>
+                          @endif
                           <p> : {{ $employee->degree }}</p>
                           <p> : {{ $employee->gender }}</p>
                           <p> : {{ $employee->birthDate }}</p>
@@ -171,6 +183,9 @@
                   <option value="doctor" {{ $employee->employee_type == 'doctor' ? 'selected' : ''}}>Doctor</option>
                   <option value="nurse" {{ $employee->employee_type == 'nurse' ? 'selected' : ''}}>Nurse</option>
                   <option value="accountant" {{ $employee->employee_type == 'accountant' ? 'selected' : ''}}>Accountant</option>
+                  <option value="pharmacist" {{ $employee->employee_type == 'pharmacist' ? 'selected' : ''}}>Pharmacist</option>
+                  <option value="Lab Staff" {{ $employee->employee_type == 'Lab Staff' ? 'selected' : ''}}>Laboratory Staff</option>
+
                 </select>
               </div>
             </div>
@@ -209,25 +224,30 @@
               </div>
             </div>
 
-            <div class="form-group clear">
+            @if($employee->specialist == '1')
+            @else
+              <div class="form-group clear">
               <label class="col-sm-3 control-label">Specialization</label>
               <div class="col-sm-8">
                 <select class="form-control" name="specialist">
                   <option value="medicine" {{ $employee->specialist == 'medicine' ? 'selected' : ''}}>Medicine</option>
-                  <option value="surgery" {{ $employee->specialist == 'surgery' ? 'selected' : ''}}>Surgery</option>
-                  <option value="">Neurologiest</option>
+                  <option value="orthopedics" {{ $employee->specialist == 'orthopedics' ? 'selected' : ''}}>Surgery</option>
+                  <option value="neurologiest" {{ $employee->specialist == 'neurologiest' ? 'selected' : ''}}>Neurologiest</option>
                 </select>
               </div>
             </div>
+            @endif
 
-            <div class="form-group clear">
+            @if($employee->charge == NULL)
+            @else
+              <div class="form-group clear">
               <label class="col-sm-3 control-label">Visiting Charge</label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" name="charge" value="{{ Request::old('charge') ? Request::old('charge') : isset($employee) ? $employee->charge : '' }} " required>
               </div>
             </div>
-
-
+            @endif            
+            
             <div class="form-group clear">
               <label class="col-sm-3 control-label">Mobile Number</label> 
               <div class="col-sm-8">

@@ -90,7 +90,7 @@
                   <option value="doctor">Doctor</option>
                   <option value="nurse">Nurse</option>
                   <option value="accountant">Accountant</option>
-                  <option value="labStaff">Laboratory Staff</option>
+                  <option value="Lab Staff">Laboratory Staff</option>
                   <option value="pharmacist">Pharmacist</option>
                 </select>
               </div>
@@ -134,14 +134,10 @@
               <label class="col-sm-2 control-label">Specialization</label>
               <div class="col-sm-8">
                 <select class="form-control" name="specialist">
-                  <option value="Medicine">Medicine</option>
-                  <option value="Orthopedics">Orthopedics</option>
-                  <option value="Neurologiest">Neurologiest</option>
-                  <option value="Pharmacist">Pharmacist</option>
-                  <option value="Accountant">Accountant</option>
-                  <option value="Nurse">Nurse</option>
-                  <option value="Lab Staff">Lab Staff</option>
-
+                  <option value="1">Other</option>
+                  <option value="medicine">Medicine</option>
+                  <option value="orthopedics">Orthopedics</option>
+                  <option value="neurologiest">Neurologiest</option>
                 </select>
               </div>
             </div>
@@ -149,7 +145,7 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Visiting Charge</label>
               <div class="col-sm-8">
-                <input type="number" class="form-control" name="charge" placeholder="visiting charge" value="{{ Request::old('charge') }}" required>
+                <input type="number" class="form-control" name="charge" placeholder="visiting charge" value="{{ Request::old('charge') }}">
               </div>
             </div>
 
