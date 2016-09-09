@@ -41,7 +41,7 @@ class PatientController extends Controller
     	$patient->mobile	   = $request['mobile'];
     	$patient->email	   = $request['email'];    	
     	$patient->address  = $request['address'];
-    	$patient->doctor_id = $request['doctor_id'];
+    	$patient->employee_id = $request['doctor_id'];
         $patient->seat_id = $request['seat_id'];
         if(Input::hasFile('image')){
 
@@ -82,7 +82,7 @@ class PatientController extends Controller
         $patient->mobile       = $request['mobile'];
         $patient->email    = $request['email'];     
         $patient->address  = $request['address'];
-        $patient->doctor_id = $request['doctor_id'];
+        $patient->employee_id = $request['doctor_id'];
         $patient->seat_id = $request['seat_id'];
         if(Input::hasFile('image')){
 

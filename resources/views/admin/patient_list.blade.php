@@ -144,14 +144,14 @@
                           <p> : {{ $patient->birthDate }}</p>
                           <p> : {{ $patient->bloodGroup }}</p>
                           <p> : {{ $patient->symptoms }}</p>
-                          <p> : {{ $patient->doctor_id }}</p>
+                          <p> : {{ $patient->employee->name }}</p>
                           <p> : {{ $patient->created_at }}</p>
                           <p> : {{ $patient->seat->seatFloor }} -- {{ $patient->seat->seatNo }}</p>
                           <p> : {{ $patient->mobile }} </p>
                           <p> : {{ $patient->email }}</p>
                           <p> : {{ $patient->address }}</p>
                           <p> : <img class="img-responsive" src="{{ asset('images/patients/'.$patient->image) }}" ></p>
-                        </div>
+                </div>
                       </div>
                     </div>
                     <div class="modal-footer no-border">

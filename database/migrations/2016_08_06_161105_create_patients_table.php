@@ -27,7 +27,7 @@ class CreatePatientsTable extends Migration
             $table->string('image');
             $table->string('size');
             $table->string('type');
-            $table->integer('doctor_id');
+            $table->integer('employee_id');
             $table->integer('seat_id');
         });
     }
