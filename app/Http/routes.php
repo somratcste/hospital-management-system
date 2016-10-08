@@ -233,6 +233,8 @@ Route::group(['middleware' => ['web']] , function() {
 
     Route::resource('doctor','DoctorController');
 
+    Route::resource('village','VillageController');
+
 });
 
 

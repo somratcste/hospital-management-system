@@ -25,6 +25,7 @@ class MarketingController extends Controller
     {
         $marketing = new Marketing();
         $marketing->name = $request['name'];
+        $marketing->mobile = $request['mobile'];
         $marketing->save();
         return redirect()->back()->with(['success1' => 'Insert Successfully'] );
     }
@@ -33,6 +34,7 @@ class MarketingController extends Controller
     {
         $marketing = Marketing::find($id);
         $marketing->name = $request['name'];
+        $marketing->mobile = $request['mobile'];
         $marketing->save();
         return redirect()->back()->with(['success' => 'Updtaed Successfully'] );
     }

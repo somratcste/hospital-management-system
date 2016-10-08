@@ -104,7 +104,7 @@
                 </a>
               </li>
               <li>
-                <a href="">
+                <a href="{{ route('village.index') }}">
                   <span>Village Doctor</span>
                 </a>
               </li>

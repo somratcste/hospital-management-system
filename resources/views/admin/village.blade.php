@@ -27,7 +27,7 @@
     <ul class="nav navbar-nav hidden-xs">
       <li>
         <p class="navbar-text">
-          Marketing Officer
+          Village Doctor's Information
         </p>
       </li>
     </ul>
@@ -66,7 +66,7 @@
         <div class="panel-heading border">
           Add New Name
         </div>
-        <form action="{{ route('marketing.store')}}" method="POST">
+        <form action="{{ route('village.store')}}" method="POST">
         {{ csrf_field() }}
         <div class="panel-body">
         @if(Session::has('success1'))
@@ -80,12 +80,26 @@
               <input type="text" class="form-control" name="name" required>
             </div>
           </div>
+
           <div class="form-group clear">
-            <label class="col-sm-2 control-label">Mobile</label>
+            <label class="col-sm-2 control-label">Mobile No.</label>
             <div class="col-sm-7">
               <input type="text" class="form-control" name="mobile" required>
             </div>
           </div>
+
+          <div class="form-group clear">
+            <label class="col-sm-2 control-label">Marketing Officer</label>
+            <div class="col-sm-7">
+              <select class="form-control" name="marketing_id">
+                @foreach($marketings as $marketing)
+                  <option value="{{ $marketing->id }}">{{ $marketing->name }}</option>
+                @endforeach
+              </select>
+            </div>
+          </div>
+
+
         </div>
         <div class="panel-footer" style="overflow: hidden;">
           <button type="submit" class="btn btn-success pull-right">Save</button>
@@ -97,7 +111,7 @@
   <div class="row">
     <div class="panel mb25">
         <div class="panel-heading border">
-         View ALL Marketing Officer
+         View ALL village Doctor's
         </div>
         <div class="panel-body">
         @if(Session::has('success'))
@@ -112,31 +126,61 @@
             <tr>
               <th>No.</th>
               <th>Name</th>
-              <th>Mobile</th>
-              <th>ID</th>
+              <th>View</th>
               <th>Edit</th>
               <th>Delete</th>
+              <th>Visiting</th>
             </tr>
           </thead>
           <tfoot>
             <tr>
               <th>No.</th>
               <th>Name</th>
-              <th>Mobile</th>
-              <th>ID</th>
+              <th>View</th>
               <th>Edit</th>
               <th>Delete</th>
+              <th>Visiting</th>
             </tr>
           </tfoot>
           <tbody>
             <?php $i =1 ; ?>
-            @foreach ($marketings as $marketing)
+            @foreach ($villages as $village)
               <tr>
               <td><?php echo $i; ?></td>
-              <td>{{ $marketing->name }}</td>
-              <td>{{ $marketing->mobile }}</td>
-              <td>{{ $marketing->id}}</td>
+              <td>{{ $village->name }}</td>
+              <td><a data-toggle="modal" data-target="#details<?php echo $i; ?>" href=""><button type="button" class="btn btn-success">Details</button></a></td>
+              <div class="modal" id="details<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                      <h4 class="modal-title">village's Information</h4>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-xs-1"></div>
+                        <div class="col-xs-4">
+                          <p>ID</p>
+                          <p>Name</p>
+                          <p>Mobile</p>
+                          <p>Marketing Officer</p>
+                        </div>
+                        <div class="col-xs-7">
+                          <p> : {{ $village->id }}</p>
+                          <p> : {{ $village->name }}</p>
+                          <p> : {{ $village->mobile }}</p>
+                          <p> : {{ $village->marketing->name }}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer no-border">
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
               
+
               <td><a data-toggle="modal" data-target="#edit<?php echo $i; ?>" href=""><button type="button" class="btn btn-info">Edit</button></a></td>
               <div class="modal" id="edit<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog">
@@ -147,7 +191,7 @@
                     </div>
                     <div class="modal-body">
                       <div class="row mb25">
-              <form class="form-horizontal bordered-group" role="form" action="{{ route('marketing.update' , $marketing->id)}}" method="post" enctype="multipart/form-data">
+              <form class="form-horizontal bordered-group" role="form" action="{{ route('village.update' , $village->id)}}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <input name="_method" type="hidden" value="PUT">
 
@@ -155,14 +199,25 @@
             <div class="form-group clear">
               <label class="col-sm-3 control-label">Name</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" name="name" value="{{ Request::old('name') ? Request::old('name') : isset($marketing) ? $marketing->name : '' }} " required>
+                <input type="text" class="form-control" name="name" value="{{ Request::old('name') ? Request::old('name') : isset($village) ? $village->name : '' }} " required>
               </div>
             </div>
 
             <div class="form-group clear">
               <label class="col-sm-3 control-label">Mobile</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" name="mobile" value="{{ Request::old('mobile') ? Request::old('mobile') : isset($marketing) ? $marketing->mobile : '' }} " required>
+                <input type="text" class="form-control" name="mobile" value="{{ Request::old('mobile') ? Request::old('mobile') : isset($village) ? $village->mobile : '' }} " required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Marketing Officer</label>
+              <div class="col-sm-8">
+                <select class="form-control" name="marketing_id">
+                @foreach ($marketings as $marketing)
+                  <option value="{{ $marketing->id}}" {{ $village->marketing_id == $marketing->id ? 'selected'  : '' }} > {{ $marketing->name }} </option>
+                @endforeach
+                </select>
               </div>
             </div>
 
@@ -184,12 +239,12 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title">Delete Officer's</h4>
+                    <h4 class="modal-title">Delete village Category</h4>
                   </div>
                   <div class="modal-body">
                       Are you sure ?
                   </div>
-                    <form action="{{ route('marketing.destroy' , $marketing->id)}}" method="POST">
+                    <form action="{{ route('village.destroy' , $village->id)}}" method="POST">
                     {{ csrf_field() }}
                   <input name="_method" type="hidden" value="DELETE">
                   <div class="modal-footer no-border">
@@ -200,6 +255,8 @@
                 </div>
               </div>
               </div>
+
+              <td>Visiting</td>
             </tr>
             <?php $i++; ?>
             @endforeach
@@ -208,11 +265,11 @@
         <section>
         <nav>
           <ul class="pager">
-              @if($marketings->currentPage() !== 1)
-                <li class="previous"><a href="{{ $marketings->previousPageUrl() }}"><span aria-hidden="true">&larr;</span> Older</a></li>
+              @if($villages->currentPage() !== 1)
+                <li class="previous"><a href="{{ $villages->previousPageUrl() }}"><span aria-hidden="true">&larr;</span> Older</a></li>
               @endif
-              @if($marketings->currentPage() !== $marketings->lastPage() && $marketings->hasPages())
-                <li class="next"><a href="{{ $marketings->nextPageUrl() }}">Newer <span aria-hidden="true">&rarr;</span></a></li>
+              @if($villages->currentPage() !== $villages->lastPage() && $villages->hasPages())
+                <li class="next"><a href="{{ $villages->nextPageUrl() }}">Newer <span aria-hidden="true">&rarr;</span></a></li>
               @endif
           </ul>
         </nav>
