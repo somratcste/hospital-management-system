@@ -10,4 +10,9 @@ class Doctor extends Model
     {
     	return $this->belongsTo('App\Specialist');
     }
+
+    public function patientouts()
+    {
+    	return $this->hasMany('App\Patientout');
+    }
 }

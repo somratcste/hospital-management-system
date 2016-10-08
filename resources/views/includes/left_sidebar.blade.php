@@ -59,13 +59,8 @@
             </a>
             <ul class="sub-menu">
               <li>
-                <a href="{{ route('patient.index') }}">
+                <a href="{{ route('patientout.index') }}">
                   <span>Add Patient</span>
-                </a>
-              </li>
-              <li>
-                <a href="{{ route('patient.list') }}">
-                  <span>Patient List</span>
                 </a>
               </li>
              </ul>
