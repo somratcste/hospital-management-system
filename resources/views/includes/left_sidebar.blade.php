@@ -91,6 +91,27 @@
              </ul>
             </li>
 
+            <!--R.F -->
+          <li>
+            <a href="javascript:;">
+              <i class="fa fa-send"></i>
+              <span>R.F.</span>
+            </a>
+            <ul class="sub-menu">
+              <li>
+                <a href="{{ route('marketing.index')}}">
+                  <span>Marketing Officer</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <span>Village Doctor</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!-- End R.F -->
+
           <!-- employee -->
           <li>
             <a href="javascript:;">

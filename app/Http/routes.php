@@ -227,6 +227,8 @@ Route::group(['middleware' => ['web']] , function() {
 
     Route::resource('ecategory' , 'EmployeeCategoryController');
 
+    Route::resource('marketing','MarketingController');
+
 });
 
 
