@@ -229,6 +229,10 @@ Route::group(['middleware' => ['web']] , function() {
 
     Route::resource('marketing','MarketingController');
 
+    Route::resource('specialist','SpecialistController');
+
+    Route::resource('doctor','DoctorController');
+
 });
 
 

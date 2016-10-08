@@ -4,111 +4,57 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Doctor;
-use Illuminate\Support\Facades\Input;
-use File;
-class DoctorController extends Controller
+use App\Specialist;
+
+class doctorController extends Controller
 {
-    public function getIndex ()
+
+    public function index()
     {
-        return view('admin.doctor');
+        $specialists = Specialist::all();
+        $doctor = Doctor::orderBy('created_at' , 'desc')->paginate(50);
+        return view('admin.doctor' , ['doctors' => $doctor, 'specialists' => $specialists]);
     }
 
-    public function save(Request $request)
-    {
-    	$this->validate($request , [
-    		'name' 		=> 'required|max:200',
-    		'degree'	=> 'required|max:100',
-    		'gender' 	=> 'required',
-    		'birthDate'	=> 'required',
-    		'charge'	=> 'required|numeric',
-    		'mobile'	=> 'required|numeric',
-    		'email'		=> 'required|email'
-    	]);
 
-    	$doctor 		   = new Doctor();
-    	$doctor->name 	   = ucfirst($request['name']);
-    	$doctor->degree    = $request['degree'];
-    	$doctor->gender	   = $request['gender'];
-    	$doctor->birthDate = $request['birthDate'];
-    	$doctor->charge	   = $request['charge'];
-    	$doctor->mobile	   = $request['mobile'];
-    	$doctor->email	   = $request['email'];
-    	$doctor->hAddress  = $request['hAddress'];
-    	$doctor->oaddress  = $request['oAddress'];
-    	$doctor->specialist = $request['specialist'];
-        if(Input::hasFile('image')){
-
-            $file = Input::file('image');
-            $file->move(public_path(). '/images/doctors',$file->getClientOriginalName());
-
-            $doctor->image = $file->getClientOriginalName();
-            $doctor->size = $file->getClientsize();
-            $doctor->type = $file->getClientMimeType();
-        }
-    	$doctor->save();
-
-    	return redirect()->back()->with(['success' => 'Insert Successfully'] );
-    }
-
-    public function update(Request $request)
-    {
-       $this->validate($request , [
-            'name'      => 'required|max:200',
-            'degree'    => 'required|max:100',
-            'gender'    => 'required',
-            'birthDate' => 'required',
-            'charge'    => 'required',
-            'mobile'    => 'required',
-            'email'     => 'required|email'
-        ]);
-
-
-        $doctor            = Doctor::find($request['doctor_id']);
-        $doctor->name      = ucfirst($request['name']);
-        $doctor->degree    = $request['degree'];
-        $doctor->gender    = $request['gender'];
-        $doctor->birthDate = $request['birthDate'];
-        $doctor->charge    = $request['charge'];
-        $doctor->mobile    = $request['mobile'];
-        $doctor->email     = $request['email'];
-        $doctor->hAddress  = $request['hAddress'];
-        $doctor->oaddress  = $request['oAddress'];
-        $doctor->specialist = $request['specialist'];
-        if(Input::hasFile('image')){
-
-            if($doctor->image){
-                $image_path = public_path().'/images/doctors/'.$doctor->image;
-                unlink($image_path);
-            }
-            $file = Input::file('image');
-            $file->move(public_path(). '/images/doctors',$file->getClientOriginalName());
-
-            $doctor->image = $file->getClientOriginalName();
-            $doctor->size = $file->getClientsize();
-            $doctor->type = $file->getClientMimeType();
-        }
-        $doctor->update();
-        return redirect()->route('doctor.list')->with(['success' => 'Updated Successfully'] );
-    }
-
-    public function viewList()
+    public function show()
     {
         $doctor = Doctor::orderBy('created_at' , 'desc')->paginate(50);
-        return view('admin.doctor_list' , ['doctors' => $doctor]);
+        return view('admin.doctor' , ['doctors' => $doctor]);
     }
 
-    public function delete(Request $request)
+    public function store(Request $request) 
     {
-        $doctor = Doctor::find($request['doctor_id']);
+        $doctor = new Doctor();
+        $doctor->name = $request['name'];
+        $doctor->degree = $request['degree'];
+        $doctor->mobile = $request['mobile'];
+        $doctor->charge = $request['charge'];
+        $doctor->specialist_id = $request['specialist_id'];
+        $doctor->save();
+        return redirect()->back()->with(['success1' => 'Insert Successfully'] );
+    }
+
+    public function update(Request $request,$id)
+    {
+        $doctor = Doctor::find($id);
+        $doctor->name = $request['name'];
+        $doctor->degree = $request['degree'];
+        $doctor->mobile = $request['mobile'];
+        $doctor->charge = $request['charge'];
+        $doctor->specialist_id = $request['specialist_id'];
+        $doctor->save();
+        return redirect()->back()->with(['success' => 'Updtaed Successfully'] );
+    }
+
+    public function destroy($id)
+    {
+        $doctor = Doctor::find($id);
         if(!$doctor){
-            return redirect()->route('doctor.list')->with(['fail' => 'Page not found !']);
-        }
-        if($doctor->image){
-            $image_path = public_path().'/images/doctors/'.$doctor->image;
-            unlink($image_path);
+            return redirect()->route('doctor.index')->with(['fail' => 'Page not found !']);
         }
         $doctor->delete();
-        return redirect()->route('doctor.list')->with(['success' => 'Deleted Information Successfully !']);
-
+        return redirect()->route('doctor.index')->with(['success' => 'Deleted Successfully.']);
     }
+
 }

@@ -112,6 +112,27 @@
           </li>
           <!-- End R.F -->
 
+          <!--R.F -->
+          <li>
+            <a href="javascript:;">
+              <i class="fa fa-map-marker"></i>
+              <span>Doctor</span>
+            </a>
+            <ul class="sub-menu">
+              <li>
+                <a href="{{ route('doctor.index') }}">
+                  <span>Doctor</span>
+                </a>
+              </li>
+              <li>
+                <a href="{{ route('specialist.index') }}">
+                  <span>Specialist</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!-- End R.F -->
+
           <!-- employee -->
           <li>
             <a href="javascript:;">
