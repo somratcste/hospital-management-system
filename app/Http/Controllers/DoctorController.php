@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Doctor;
 use App\Specialist;
-
+use Carbon\Carbon;
+use DB;
+use App\Patientout;
 class doctorController extends Controller
 {
 
@@ -55,6 +57,22 @@ class doctorController extends Controller
         }
         $doctor->delete();
         return redirect()->route('doctor.index')->with(['success' => 'Deleted Successfully.']);
+    }
+
+    public function create(Request $request)
+    {
+        $year = $request['year'];
+        $month = $request['month'];
+        $day = $request['day'];
+        $doctor_id = $request['doctor_id'];
+        $doctor = Doctor::Find($doctor_id);
+        $patients = Patientout::whereYear('created_at' , '=' , $year)
+                              ->whereMonth('created_at' , '=' , $month)
+                              ->whereDay('created_at' , '=' , $day)
+                              ->where('doctor_id' , $doctor_id)
+                              ->orderBy('created_at' , 'asc')
+                              ->paginate(50);
+        return view('admin.visiting_list' , ['patients' => $patients , 'doctor' => $doctor , 'year' => $year , 'month' => $month , 'day' => $day]);
     }
 
 }

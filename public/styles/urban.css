@@ -12930,3 +12930,22 @@ td.align-middle {
     text-align: center;
     color: white;
 }
+
+.panel-heading {
+    position: relative;
+    border-color: transparent;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    padding: 15px;
+    text-align: center;
+    font-family: monospace;
+    font-size: xx-large;
+    background: cyan;
+    color: purple;
+}
+
+.main-panel > .header .navbar-text {
+    color: #616161;
+    font-family: initial;
+    font-size: large;
+}
