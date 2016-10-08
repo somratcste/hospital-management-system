@@ -51,7 +51,27 @@
           </li>
           <!-- /dashboard -->
 
-          <!-- patient -->
+          <!--Outdoor patient -->
+          <li>
+            <a href="javascript:;">
+              <i class="fa fa-tint"></i>
+              <span>Outdoor Patient</span>
+            </a>
+            <ul class="sub-menu">
+              <li>
+                <a href="{{ route('patient.index') }}">
+                  <span>Add Patient</span>
+                </a>
+              </li>
+              <li>
+                <a href="{{ route('patient.list') }}">
+                  <span>Patient List</span>
+                </a>
+              </li>
+             </ul>
+            </li>
+
+          <!--Admit patient -->
           <li>
             <a href="javascript:;">
               <i class="fa fa-toggle-on"></i>
