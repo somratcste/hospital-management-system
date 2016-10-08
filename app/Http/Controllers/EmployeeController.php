@@ -6,17 +6,18 @@ use Illuminate\Http\Request;
 use App\Employee;
 use Illuminate\Support\Facades\Input;
 use File;
+use App\Ecategory;
 class EmployeeController extends Controller
 {
     public function getIndex ()
     {
-        return view('admin.employee');
+        $ecategorys = Ecategory::all();
+        return view('admin.employee' , ['ecategorys' => $ecategorys]);
     }
 
     public function save(Request $request)
     {
     	$this->validate($request , [
-            'employee_type' => 'required',
     		'name' 		=> 'required|max:200',
     		'degree'	=> 'required|max:100',
     		'gender' 	=> 'required',
@@ -26,7 +27,6 @@ class EmployeeController extends Controller
     	]);
 
     	$employee 		   = new Employee();
-        $employee->employee_type = $request['employee_type'];
     	$employee->name 	   = ucfirst($request['name']);
     	$employee->degree    = $request['degree'];
     	$employee->gender	   = $request['gender'];
@@ -37,6 +37,7 @@ class EmployeeController extends Controller
     	$employee->hAddress  = $request['hAddress'];
     	$employee->oaddress  = $request['oAddress'];
     	$employee->specialist = $request['specialist'];
+        $employee->ecategory_id = $request['ecategory_id'];
         if(Input::hasFile('image')){
 
             $file = Input::file('image');
@@ -65,7 +66,6 @@ class EmployeeController extends Controller
 
 
         $employee            = Employee::find($request['employee_id']);
-        $employee->employee_type = $request['employee_type'];
         $employee->name      = ucfirst($request['name']);
         $employee->degree    = $request['degree'];
         $employee->gender    = $request['gender'];
@@ -76,6 +76,7 @@ class EmployeeController extends Controller
         $employee->hAddress  = $request['hAddress'];
         $employee->oaddress  = $request['oAddress'];
         $employee->specialist = $request['specialist'];
+        $employee->ecategory_id = $request['ecategory_id'];
         if(Input::hasFile('image')){
 
             if($employee->image){
@@ -93,10 +94,11 @@ class EmployeeController extends Controller
         return redirect()->route('employee.list' , ['employee' => $employee->employee_type])->with(['success' => 'Updated Successfully'] );
     }
 
-    public function viewList($employee_type = null)
+    public function viewList()
     {
-        $employee = Employee::orderBy('created_at' , 'desc')->where('employee_type' , $employee_type)->paginate(50);
-        return view('admin.employee_list' , ['employees' => $employee , 'employee_type' => $employee_type]);
+        $ecategorys = Ecategory::all();
+        $employee = Employee::orderBy('created_at' , 'desc')->paginate(50);
+        return view('admin.employee_list' , ['employees' => $employee , 'ecategorys' => $ecategorys]);
     }
 
     public function delete(Request $request)

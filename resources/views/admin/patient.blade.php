@@ -154,7 +154,11 @@
               <div class="col-sm-8">
                 <select class="form-control" name="doctor_id">                  
                   @foreach ($doctors as $doctor)
-                    <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
+                    @foreach($employees as $employee)
+                      @if($doctor->id == $employee->ecategory_id)
+                      <option value="{{ $employee->id }}">{{ $employee->name }}</option>
+                      @endif
+                    @endforeach
                   @endforeach
                 </select>
               </div>

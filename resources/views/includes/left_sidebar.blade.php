@@ -70,7 +70,7 @@
               </li>
               <li>
                 <a href="{{ route('patient.list' , ['patient' => 'admit']) }}">
-                  <span>In Patient</span>
+                  <span>Admit Patient</span>
                 </a>
               </li>
              </ul>
@@ -89,30 +89,15 @@
                 </a>
               </li>
               <li>
-                <a href="{{ route('employee.list' , ['employee' => 'doctor']) }}">
-                  <span>Doctor List</span>
+                <a href="{{ route('ecategory.index')}}">
+                  <span>Employee Category</span>
                 </a>
               </li>
               <li>
-                <a href="{{ route('employee.list' , ['employee' => 'nurse']) }}">
-                  <span>Nurse List</span>
+                <a href="{{ route('employee.list') }}">
+                  <span>Employee List</span>
                 </a>
-              </li>
-              <li>
-                <a href="{{ route('employee.list' , ['employee' => 'accountant']) }}">
-                  <span>Accountant</span>
-                </a>
-              </li>
-              <li>
-                <a href="{{ route('employee.list' , ['employee' => 'labStaff']) }}">
-                  <span>Lab Staff</span>
-                </a>
-              </li>
-              <li>
-                <a href="{{ route('employee.list' , ['employee' => 'pharmacist']) }}">
-                  <span>Pharmacist</span>
-                </a>
-              </li>
+              </li>   
              </ul>
             </li>
           <!-- /employee -->
@@ -216,12 +201,12 @@
             </a>
             <ul class="sub-menu">
               <li>
-                <a href="{{ route('admin.invoice') }}">
+                <a href="{{ route('invoice.create_invoce') }}">
                   <span>Creat Invoice</span>
                 </a>
               </li>            
               <li>
-                <a href="">
+                <a href="{{ route('invoice.index')}}">
                   <span>Invoice List</span>
                 </a>
               </li>

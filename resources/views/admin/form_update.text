@@ -1,0 +1,181 @@
+ <!-- <div class="form-group clear">
+              <label class="col-sm-3 control-label">Patient Name</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control" value="{{$invoice->patient->name}}">
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Admission Fee</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control calculate" id="admission" name="admission" value="{{ $invoice->admission}}" required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Consultation</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control calculate" id="consultation" name="consultation" value="{{ $invoice->consultation}}" required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Doctor</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control calculate" id="doctor" name="doctor" value="{{ $invoice->doctor}}" required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Surgeon Fee</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control calculate" id="surgeon" name="surgeon" value="{{ $invoice->surgeon}}" required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Anesthesia Fee</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control calculate" id="anesthesia" name="anesthesia" value="{{ $invoice->anesthesia}}" required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">1st Assistant Fee</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control calculate" id="assistant1" name="assistant1" value="{{ $invoice->assistant1}}" required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">2nd Assistant Fee</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control calculate" id="assistant2" name="assistant2" value="{{ $invoice->assistant2}}" required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">O.T Charge</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control calculate" id="operation" name="operation" value="{{ $invoice->operation}}" required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Delivary Charge</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control calculate" id="delivary" name="delivary" value="{{ $invoice->delivary}}" required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Medicine Charge</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control calculate" id="medicine" name="medicine" value="{{ $invoice->medicine}}" required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Pathology</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control calculate" id="pathology" name="pathology" value="{{ $invoice->pathology}}" required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">U.S.G</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control calculate" id="usg" name="usg" value="{{ $invoice->usg}}" required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">E.C.G</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control calculate" id="ecg" name="ecg" value="{{ $invoice->ecg}}" required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">X-Ray</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control calculate" id="xray" name="xray" value="{{ $invoice->xray}}" required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Nebulizer Charge</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control calculate" id="nebulizer" name="nebulizer" value="{{ $invoice->nebulizer}}" required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Suction Charge</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control calculate" id="suction" name="suction" value="{{ $invoice->suction}}" required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Blood Transfusion</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control calculate" id="blood" name="blood" value="{{ $invoice->blood}}" required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Dressing</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control calculate" id="dressing" name="dressing" value="{{ $invoice->dressing}}" required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Oxygen</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control calculate" id="oxygen" name="oxygen" value="{{ $invoice->oxygen}}" required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Canulla</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control calculate" id="canulla" name="canulla" value="{{ $invoice->canulla}}" required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Catheter</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control calculate" id="catheter" name="catheter" value="{{ $invoice->catheter}}" required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Ryles Tube</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control calculate" id="tube" name="tube" value="{{ $invoice->tube}}" required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Ambulance</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control calculate" id="ambulance" name="ambulance" value="{{ $invoice->ambulance}}" required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Baby Incubator</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control calculate" id="incubator" name="incubator" value="{{ $invoice->incubator}}" required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Others</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control calculate" id="others" name="others" value="{{ $invoice->others}}" required>
+              </div>
+            </div> -->

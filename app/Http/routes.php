@@ -39,10 +39,12 @@ Route::group(['middleware' => ['web']] , function() {
 		'as' => 'employee.delete'
 	]);
 
-	Route::get('/{employee?}/list' , [
+	Route::get('/employee/list' , [
 		'uses' => 'EmployeeController@viewList',
 		'as' => 'employee.list'
 	]);
+
+
 
 	//seat
 
@@ -206,11 +208,6 @@ Route::group(['middleware' => ['web']] , function() {
 		'as' => 'patient.list'
 	]);
 
-	Route::get('/invoice' , [
-		'uses' => 'InvoiceController@invoice',
-		'as' => 'admin.invoice'
-	]);
-
     Route::get('/api/patient_search' , [
         'uses' => 'ApiController@patientSearch',
         'as' => 'apipatient.search'
@@ -220,6 +217,15 @@ Route::group(['middleware' => ['web']] , function() {
         'uses' => 'ApiController@patientCreate',
         'as' => 'apipatient.create'
     ]);
+
+    Route::get('/create_invoice', [
+    	'uses' => 'InvoiceController@getIndex',
+    	'as' => 'invoice.create_invoce'
+    ]);
+
+    Route::resource('invoice', 'InvoiceController');
+
+    Route::resource('ecategory' , 'EmployeeCategoryController');
 
 });
 

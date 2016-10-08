@@ -15,4 +15,9 @@ class Patient extends Model
     {
     	return $this->belongsTo('App\Employee');
     }
+
+    public function invoice()
+    {
+    	return $this->hasOne('App\Invoice');
+    }
 }

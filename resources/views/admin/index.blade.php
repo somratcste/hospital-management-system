@@ -60,7 +60,41 @@
 
       <!-- main area -->
       <div class="main-content">
+
         <div class="row">
+          <div class="col-md-12">
+            <div>
+              <div class="widget bg-white">
+                <h1 style="font-family: cursive;text-align: center;font-size: 50px;">TRUST ONE HOSPITAL</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="widget bg-white">
+              <center><img src="{{url('/images/hospital_one.jpg')}}" height="350px"  alt="Image"/></center>
+            </div>    
+        </div>
+        <div class="row">
+            <div class="widget bg-white">
+              <center><img src="{{url('/images/hospital_two.jpg')}}" height="350px"  alt="Image"/></center>
+            </div>    
+        </div>
+        <div class="row">
+            <div class="widget bg-white">
+              <center><img src="{{url('/images/hospital_three.jpg')}}" height="270px" alt="Image"/>  
+              <img src="{{url('/images/hospital_four.jpg')}}" height="270px"  alt="Image"/></center>
+            </div>  
+        </div>
+        <div class="row">
+            <div class="widget bg-white">
+              <center><img src="{{url('/images/general.jpg')}}" height="270px" width="475px" alt="Image"/>  
+              <img src="{{url('/images/cabin.jpg')}}" height="270px"  alt="Image"/></center>
+            </div>  
+        </div>
+          
+        <!-- <div class="row">
           <div class="col-md-3">
             <div>
               <div class="widget bg-white">
@@ -298,7 +332,7 @@
               </div>
             </section>
           </div>
-        </div>
+        </div> -->
       </div>
       <!-- /main area -->
     </div>

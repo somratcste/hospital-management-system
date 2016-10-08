@@ -63,7 +63,7 @@
   <div class="row">
     <div class="panel mb25">
         <div class="panel-heading border">
-          {{ ucfirst($employee_type) }}'s Information
+          View All Employee
         </div>
         <div class="panel-body">
         @if(Session::has('success'))
@@ -102,7 +102,7 @@
               <tr>
               <td><?php echo $i; ?></td>
               <td>{{ $employee->name }}</td>
-              <td>{{ ucfirst($employee->employee_type) }}</td>
+              <td>{{ $employee->ecategory->name or 'Category Name' }}</td>
               <td>{{ $employee->mobile }}</td>
               <td><a data-toggle="modal" data-target="#details<?php echo $i; ?>" href=""><button type="button" class="btn btn-success">Details</button></a></td>
               <div class="modal" id="details<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
@@ -137,7 +137,7 @@
                         </div>
                         <div class="col-xs-7">
                           <p> : {{ $employee->name }}</p>
-                          <p> : {{ ucfirst($employee->employee_type) }}</p>
+                          <p> : {{ $employee->ecategory->name }}</p>
                           @if($employee->specialist == '1')
                           @else
                             <p> : {{ ucfirst($employee->specialist) }}</p>
@@ -179,13 +179,10 @@
             <div class="form-group">
               <label class="col-sm-3 control-label">Employee Type</label>
               <div class="col-sm-8">
-                <select class="form-control" name="employee_type">
-                  <option value="doctor" {{ $employee->employee_type == 'doctor' ? 'selected' : ''}}>Doctor</option>
-                  <option value="nurse" {{ $employee->employee_type == 'nurse' ? 'selected' : ''}}>Nurse</option>
-                  <option value="accountant" {{ $employee->employee_type == 'accountant' ? 'selected' : ''}}>Accountant</option>
-                  <option value="pharmacist" {{ $employee->employee_type == 'pharmacist' ? 'selected' : ''}}>Pharmacist</option>
-                  <option value="Lab Staff" {{ $employee->employee_type == 'Lab Staff' ? 'selected' : ''}}>Laboratory Staff</option>
-
+                <select class="form-control" name="ecategory_id">
+                  @foreach($ecategorys as $ecategory)
+                    <option value="{{ $ecategory->id }}" {{ $employee->ecategory_id == $ecategory->id ? 'selected'  : '' }}>{{ $ecategory->name }}</option>
+                  @endforeach
                 </select>
               </div>
             </div>

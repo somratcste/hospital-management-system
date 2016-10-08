@@ -86,12 +86,10 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Employee Type</label>
               <div class="col-sm-8">
-                <select class="form-control" name="employee_type">
-                  <option value="doctor">Doctor</option>
-                  <option value="nurse">Nurse</option>
-                  <option value="accountant">Accountant</option>
-                  <option value="Lab Staff">Laboratory Staff</option>
-                  <option value="pharmacist">Pharmacist</option>
+                <select class="form-control" name="ecategory_id">
+                  @foreach($ecategorys as $ecategory)
+                    <option value="{{ $ecategory->id }}">{{ $ecategory->name }}</option>
+                  @endforeach
                 </select>
               </div>
             </div>

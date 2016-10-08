@@ -10,4 +10,9 @@ class Employee extends Model
     {
     	return $this->hasOne('App\Patient');
     }
+
+    public function ecategory()
+    {
+    	return $this->belongsTo('App\Ecategory');
+    }
 }

@@ -8,15 +8,17 @@ use App\Seat;
 use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use App\Ecategory;
 class PatientController extends Controller
 {
     
     public function getIndex ()
     {
-        $doctor = Employee::orderBy('created_at' , 'desc')->where('employee_type' , 'doctor')->get();
+        $ecategory = Ecategory::orderBy('created_at','desc')->where('name','doctor')->get();
+        $employee = Employee::all();
         $seat = Seat::orderBy('created_at' , 'desc')->where('status' , 'empty')->get();
         $patient = Patient::orderBy('created_at' , 'desc')->first();
-        return view('admin.patient' , ['doctors' => $doctor , 'seats' => $seat , 'lastID' => $patient->id+1]);
+        return view('admin.patient' , ['doctors' => $ecategory , 'seats' => $seat , 'lastID' => $patient->id+1 , 'employees' => $employee]);
     }
 
     public function save(Request $request)
