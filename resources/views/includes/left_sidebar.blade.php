@@ -55,7 +55,7 @@
           <li>
             <a href="javascript:;">
               <i class="fa fa-toggle-on"></i>
-              <span>Patient</span>
+              <span>Admit Patient</span>
             </a>
             <ul class="sub-menu">
               <li>
@@ -64,13 +64,8 @@
                 </a>
               </li>
               <li>
-                <a href="{{ route('patient.list' , ['patient' => 'out']) }}">
-                  <span>Out Patient</span>
-                </a>
-              </li>
-              <li>
-                <a href="{{ route('patient.list' , ['patient' => 'admit']) }}">
-                  <span>Admit Patient</span>
+                <a href="{{ route('patient.list') }}">
+                  <span>Patient List</span>
                 </a>
               </li>
              </ul>

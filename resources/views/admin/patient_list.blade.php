@@ -27,7 +27,7 @@
     <ul class="nav navbar-nav hidden-xs">
       <li>
         <p class="navbar-text">
-          View All Patient's
+          View All Admit Patient's
         </p>
       </li>
     </ul>
@@ -133,12 +133,7 @@
                         </div>
                         <div class="col-xs-7">
                           <p> : {{ $patient->name }}</p>
-                          <p> : @if($patient->patient_type == 1)
-                                 Out Patient 
-                                @elseif($patient->patient_type == 2)
-                                 Admit Patient
-                                @endif
-                          </p>
+                          <p> : Admit</p>
                           <p> : {{ $patient->id or '101' }}</p>
                           <p> : {{ $patient->gender }}</p>
                           <p> : {{ $patient->birthDate }}</p>
@@ -171,16 +166,6 @@
                     </div>
                     <div class="modal-body">
                       <form class="form-horizontal bordered-group" role="form" action="{{ route('patient.update') }}" method="post" enctype="multipart/form-data">
-
-            <div class="form-group clear">
-              <label class="col-sm-3 control-label">Patient Type</label>
-              <div class="col-sm-8">
-                <select class="form-control" name="patient_type">
-                  <option value="1" {{ $patient->patient_type == '1' ? 'selected' : ''}}>Out Patient</option>
-                  <option value="2" {{ $patient->patient_type == '2' ? 'selected' : ''}}>Admit Patient</option>
-                </select>
-              </div>
-            </div>
 
             <div class="form-group clear">
               <label class="col-sm-3 control-label">Patient ID</label>

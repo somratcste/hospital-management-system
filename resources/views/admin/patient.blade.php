@@ -84,16 +84,6 @@
           <form class="form-horizontal bordered-group" role="form" action="{{ route('patient.save') }}" method="post" enctype="multipart/form-data">
 
             <div class="form-group">
-              <label class="col-sm-2 control-label">Patient Type</label>
-              <div class="col-sm-8">
-                <select class="form-control" name="patient_type">
-                  <option value="1">Out Patient</option>
-                  <option value="2">Admit Patient</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
               <label class="col-sm-2 control-label">Patient ID</label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" value="{{ $lastID }}" disabled>

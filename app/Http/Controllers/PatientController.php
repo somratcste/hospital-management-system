@@ -101,16 +101,12 @@ class PatientController extends Controller
         return redirect()->route('patient.list' , ['patient' => $patient->patient_type])->with(['success' => 'Updated Successfully'] );
     }
 
-    public function viewList($patient_type = null)
+    public function viewList()
     {
-        if($patient_type == 'admit')
-            $patient_type = 2;
-        else if ($patient_type == 'out')
-            $patient_type = 1;
-        $patient = Patient::orderBy('created_at' , 'desc')->where('patient_type' , $patient_type)->paginate(50);
+        $patient = Patient::orderBy('created_at' , 'desc')->paginate(50);
         $employee = Employee::all();
         $seat = Seat::all();
-        return view('admin.patient_list' , ['patients' => $patient , 'patient_type' => $patient_type , 'employees' => $employee , 'seats' => $seat]);
+        return view('admin.patient_list' , ['patients' => $patient , 'employees' => $employee , 'seats' => $seat]);
     }
 
     public function delete(Request $request)
