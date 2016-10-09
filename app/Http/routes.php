@@ -233,6 +233,11 @@ Route::group(['middleware' => ['web']] , function() {
 
     Route::resource('doctor','DoctorController');
 
+    Route::get('/patientout_view_' , [
+    	'uses' => 'DoctorController@view',
+    	'as' => 'doctor.view'
+    ]);
+
     Route::resource('village','VillageController');
 
     Route::resource('patientout','PatientOutController');

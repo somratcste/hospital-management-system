@@ -25,6 +25,7 @@ class PatientoutController extends Controller
 
     public function store(Request $request) 
     {
+        date_default_timezone_set("Asia/Dhaka");
         $patientout = new Patientout();
         $patientout->name = $request['name'];
         $patientout->mobile = $request['mobile'];

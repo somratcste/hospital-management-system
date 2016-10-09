@@ -113,7 +113,16 @@
               <td><?php echo $i; ?></td>
               <td>{{ $patient->name }}</td>
               <td>{{ $patient->id }}</td>
-              <td><button class="btn btn-primary">Print</button></td>
+              <td>
+                <form action="{{ route('doctor.view') }}" method="GET">
+                  {{ csrf_field() }}
+                <input name="_method" type="hidden" value="GET">
+                <input type="hidden" name="patient_id" value="{{ $patient->id }}">
+                <input type="hidden" name="doctor_id" value="{{ $doctor->id }}">
+                <input type="hidden" name="serial" value="<?php echo $i; ?>">
+                <button class="btn btn-primary">Print</button>
+                </form>
+              </td>
             </tr>
             <?php $i++; ?>
             @endforeach

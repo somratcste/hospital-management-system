@@ -8,6 +8,7 @@ use App\Specialist;
 use Carbon\Carbon;
 use DB;
 use App\Patientout;
+use DateTime;
 class doctorController extends Controller
 {
 
@@ -73,6 +74,16 @@ class doctorController extends Controller
                               ->orderBy('created_at' , 'asc')
                               ->paginate(50);
         return view('admin.visiting_list' , ['patients' => $patients , 'doctor' => $doctor , 'year' => $year , 'month' => $month , 'day' => $day]);
+    }
+
+    public function view(Request $request)
+    {
+        $serial = $request['serial'];
+        $patient = Patientout::Find($request['patient_id']);
+        $doctor = Doctor::Find($request['doctor_id']);
+        $date = new DateTime($patient->created_at);
+        $date = $date->format('m-d-Y h:i:s a');
+        return view('admin.patientout_view',['serial' => $serial , 'patient' => $patient , 'doctor' => $doctor , 'date' => $date]);
     }
 
 }
