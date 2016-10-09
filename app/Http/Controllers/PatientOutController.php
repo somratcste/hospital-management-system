@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Patientout;
 use App\Doctor;
+use Carbon\Carbon;
 
 class PatientoutController extends Controller
 {
@@ -12,7 +13,7 @@ class PatientoutController extends Controller
     public function index()
     {
         $doctors = Doctor::all();
-        $patientout = Patientout::orderBy('created_at' , 'desc')->paginate(50);
+        $patientout = Patientout::whereDate('created_at' , '=' , Carbon::today()->toDateString())->orderBy('created_at' , 'desc')->paginate(50);
         return view('admin.patientout' , ['patientouts' => $patientout, 'doctors' => $doctors]);
     }
 
