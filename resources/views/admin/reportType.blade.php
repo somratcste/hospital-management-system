@@ -99,6 +99,13 @@
             </div>
 
             <div class="form-group">
+              <label class="col-sm-2 control-label">Room No.</label>
+              <div class="col-sm-8">
+                <input type="number" class="form-control" name="room">
+              </div>
+            </div>
+
+            <div class="form-group">
               <div class="col-sm-offset-2 col-sm-5">
                 <button type="submit" class="btn btn-success">Add Name</button>
                 <input type="hidden" name="_token" value="{{ Session::token() }}">

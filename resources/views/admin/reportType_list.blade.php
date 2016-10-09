@@ -79,6 +79,7 @@
               <th>No.</th>
               <th>Name</th>
               <th>cost</th>
+              <th>Room</th>
               <th>Edit</th>
               <th>Delete</th>
             </tr>
@@ -88,6 +89,7 @@
               <th>No.</th>
               <th>Name</th>
               <th>cost</th>
+              <th>Room</th>
               <th>Edit</th>
               <th>Delete</th>
             </tr>         
@@ -99,6 +101,7 @@
               <td><?php echo $i; ?></td>
               <td>{{ $reportType->name }}</td>
               <td>{{ $reportType->cost }} Tk.</td>
+              <td>{{ $reportType->room }}</td>
               
               <td><a data-toggle="modal" data-target="#edit<?php echo $i; ?>" href=""><button type="button" class="btn btn-info">Edit</button></a></td>
               <div class="modal" id="edit<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
@@ -123,6 +126,13 @@
               <label class="col-sm-3 control-label">Cost</label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" name="cost" value="{{ Request::old('cost') ? Request::old('cost') : isset($reportType) ? $reportType->cost : '' }} ">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Room No.</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" name="room" value="{{ Request::old('room') ? Request::old('room') : isset($reportType) ? $reportType->room : '' }} ">
               </div>
             </div>
 

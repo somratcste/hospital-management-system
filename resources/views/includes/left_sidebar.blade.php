@@ -63,6 +63,11 @@
                   <span>Add Patient</span>
                 </a>
               </li>
+              <li>
+                <a href="{{ route('reportout.index')}}">
+                  <span>Add Report</span>
+                </a>
+              </li>
              </ul>
             </li>
 

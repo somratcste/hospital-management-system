@@ -10,6 +10,9 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+use Illuminate\Support\Facades\Input;
+use App\Village;
+
 Route::group(['middleware' => ['web']] , function() {
 
 	Route::get('/', [
@@ -242,6 +245,15 @@ Route::group(['middleware' => ['web']] , function() {
 
     Route::resource('patientout','PatientOutController');
 
+    Route::resource('reportout','ReportOutController');
+
+
+
 });
 
 
+Route::get('/reportout_village' , function(){
+   $marketing_id = Input::get('marketing_id');
+   $villages = Village::where('marketing_id', $marketing_id)->get();
+   return Response::json($villages); 	
+});

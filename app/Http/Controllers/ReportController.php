@@ -18,12 +18,14 @@ class ReportController extends Controller
     {
     	$this->validate($request , [
             'name' => 'required',
-    		'cost' => 'required'
+    		'cost' => 'required',
+            'room' => 'required'
     	]);
 
     	$report 		   = new ReportType();
     	$report->name 	   = ucfirst($request['name']);
     	$report->cost    = $request['cost'];
+        $report->room = $request['room'];
     	$report->save();
 
     	return redirect()->back()->with(['success' => 'Insert Successfully'] );
@@ -40,6 +42,7 @@ class ReportController extends Controller
         $report            = ReportType::find($request['reportType_id']);
         $report->name      = ucfirst($request['name']);
         $report->cost    = $request['cost'];
+        $report->room   = $request['room'];
         $report->update();
         return redirect()->route('reportType.list')->with(['success' => 'Updated Successfully'] );
     }
