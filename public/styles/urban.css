@@ -1170,6 +1170,7 @@ footer.content-footer {
   border-top: 1px solid rgba(0, 0, 0, 0.07);
   font-size: 12px;
   z-index: 1000;
+  background: aqua;
 }
 footer.content-footer::before,
 footer.content-footer::after {
@@ -12949,3 +12950,4 @@ td.align-middle {
     font-family: initial;
     font-size: large;
 }
+

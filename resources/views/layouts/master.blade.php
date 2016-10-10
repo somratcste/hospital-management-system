@@ -64,7 +64,7 @@
         <!-- /page level scripts -->
 
         <!-- initialize page scripts -->
-        <script src="{{ asset('scripts/pages/dashboard.js') }}"></script>}
+        <script src="{{ asset('scripts/pages/dashboard.js') }}"></script>
         <!-- /initialize page scripts -->
         <!-- /content panel -->
         @yield('run_custom_js_file')

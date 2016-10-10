@@ -65,7 +65,7 @@
           <div class="col-md-12">
             <div>
               <div class="widget bg-white">
-                <h1 style="font-family: cursive;text-align: center;font-size: 50px;">TRUST ONE HOSPITAL</h1>
+                <h1 style="font-family: initial;text-align: center;font-size: 50px;">TRUST ONE HOSPITAL</h1>
               </div>
             </div>
           </div>
