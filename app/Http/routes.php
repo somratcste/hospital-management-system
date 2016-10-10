@@ -257,3 +257,4 @@ Route::get('/reportout_village' , function(){
    $villages = Village::where('marketing_id', $marketing_id)->get();
    return Response::json($villages); 	
 });
+Route::get('/autocomplete',array('as'=>'autocomplete','uses'=>'ReportOutController@autocomplete'));

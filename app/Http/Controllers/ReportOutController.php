@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use App\Reportout;
+use App\Reportout;
 use App\Doctor;
 use Carbon\Carbon;
 use App\Marketing;
 use App\Patientout;
+use App\ReportType;
 class reportoutController extends Controller
 {
 
@@ -58,6 +59,17 @@ class reportoutController extends Controller
         }
         $reportout->delete();
         return redirect()->route('reportout.index')->with(['success' => 'Deleted Successfully.']);
+    }
+
+    public function autocomplete(Request $request)
+    {
+        $term = $request->term;
+        $data = ReportType::where('name','LIKE','%'.$term.'%')->take(10)->get();
+        $results = array();
+        foreach ($data as $key => $v) {
+            $results[] = ['id'=>$v->id, 'value'=>$v->name , 'cost'=>$v->cost];
+        }
+        return response()->json($results);
     }
 
 }

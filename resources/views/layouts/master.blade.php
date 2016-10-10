@@ -16,6 +16,7 @@
   <!-- /page level plugin styles -->
 
   <!-- build:css({.tmp,app}) styles/app.min.css -->
+  <link rel="stylesheet" href="{{ asset('vendor/bootstrap/dist/css/jquery-ui.min.css') }}">
   <link rel="stylesheet" href="{{ asset('vendor/bootstrap/dist/css/bootstrap.css') }}">
   <link rel="stylesheet" href="{{ asset('vendor/perfect-scrollbar/css/perfect-scrollbar.css') }}">
   <link rel="stylesheet" href="{{ asset('styles/roboto.css') }}">
@@ -38,6 +39,7 @@
         <!-- build:js({.tmp,app}) scripts/app.min.js -->
         <script src="{{ asset('scripts/extentions/modernizr.js') }}"></script>
         <script src="{{ asset('vendor/jquery/dist/jquery.js') }}"></script>
+        <script src="{{ asset('vendor/jquery/dist/jquery-ui.js') }}"></script>
         <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.js') }}"></script>
         <script src="{{ asset('vendor/jquery.easing/jquery.easing.js') }}"></script>
         <script src="{{ asset('vendor/fastclick/lib/fastclick.js') }}"></script>
@@ -56,7 +58,7 @@
 
         <!-- page level scripts -->
         <script src="{{ asset('scripts/extentions/lib.js') }}"></script>
-       {{--<script src="{{ asset('vendor/rickshaw/rickshaw.min.js') }}"></script>--}}
+       <!-- <script src="{{ asset('vendor/rickshaw/rickshaw.min.js') }}"></script> -->
         <script src="{{ asset('vendor/flot/jquery.flot.js') }}"></script>
         <script src="{{ asset('vendor/flot/jquery.flot.resize.js') }}"></script>
         <script src="{{ asset('vendor/flot/jquery.flot.categories.js') }}"></script>
