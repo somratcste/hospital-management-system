@@ -7,7 +7,7 @@ include ("connection.php");
 if(!empty($_POST['type'])){
 	$type = $_POST['type'];
 	$name = $_POST['name_startsWith'];
-	$statement = $db->prepare("SELECT productCode, productName, sellPrice , quantityInStock FROM table_products where quantityInStock !=0 and UPPER($type) LIKE '".strtoupper($name)."%'");
+	$statement = $db->prepare("SELECT productCode, productName, sellPrice , quantityInStock FROM table_products where quantityInStock !=0 and UPPER($type) LIKE '".strtoupper($name)."%' limit 10");
 	$statement->execute(array());
 	$data = array();
 	$result = $statement->fetchAll(PDO::FETCH_ASSOC);

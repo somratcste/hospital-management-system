@@ -63,11 +63,11 @@ class reportoutController extends Controller
 
     public function autocomplete(Request $request)
     {
-        $term = $request->term;
+        $term = $request->name_startsWith;
         $data = ReportType::where('name','LIKE','%'.$term.'%')->take(10)->get();
         $results = array();
         foreach ($data as $key => $v) {
-            $results[] = ['id'=>$v->id, 'value'=>$v->name , 'cost'=>$v->cost];
+            $results[] = ['id'=>$v->id ,'value'=>$v->name , 'cost'=>$v->cost,'room'=>$v->room];
         }
         return response()->json($results);
     }
