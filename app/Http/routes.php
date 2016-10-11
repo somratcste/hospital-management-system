@@ -245,7 +245,7 @@ Route::group(['middleware' => ['web']] , function() {
 
     Route::resource('patientout','PatientOutController');
 
-    Route::resource('reportout','ReportOutController');
+    Route::resource('invoiceout','InvoiceOutController');
 
 
 

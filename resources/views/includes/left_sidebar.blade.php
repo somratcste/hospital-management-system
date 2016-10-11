@@ -64,7 +64,7 @@
                 </a>
               </li>
               <li>
-                <a href="{{ route('reportout.index')}}">
+                <a href="{{ route('invoiceout.index')}}">
                   <span>Add Report</span>
                 </a>
               </li>
