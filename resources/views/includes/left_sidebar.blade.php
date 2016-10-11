@@ -63,6 +63,16 @@
                   <span>Add Patient</span>
                 </a>
               </li>
+             </ul>
+            </li>
+
+            <!--Report List -->
+          <li>
+            <a href="javascript:;">
+              <i class="fa fa-toggle-on"></i>
+              <span>Outdoor Report</span>
+            </a>
+            <ul class="sub-menu">
               <li>
                 <a href="{{ route('invoiceout.index')}}">
                   <span>Add Report</span>
@@ -70,7 +80,12 @@
               </li>
               <li>
                 <a href="{{ route('invoiceout.create')}}">
-                  <span>Report List</span>
+                  <span>DUE List</span>
+                </a>
+              </li>
+              <li>
+                <a href="{{ route('invoiceout.paidlist')}}">
+                  <span>PAID List</span>
                 </a>
               </li>
              </ul>

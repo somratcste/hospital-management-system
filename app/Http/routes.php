@@ -252,6 +252,11 @@ Route::group(['middleware' => ['web']] , function() {
     	'as' => 'invoiceout.view'
     ]);
 
+    Route::get('/invoiceout_paid_list',[
+    	'uses' => 'InvoiceOutController@paidList',
+    	'as' => 'invoiceout.paidlist'
+    ]);
+
     Route::resource('searchrf','SearchRfController');//Reference Fund : rf
 
 

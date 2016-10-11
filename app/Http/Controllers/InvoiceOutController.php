@@ -79,9 +79,9 @@ class InvoiceoutController extends Controller
 
     public function create()
     {
-        $invoiceouts = InvoiceOut::orderBy('created_at','desc')->where('created_at','>=',Carbon::now()->subMonth())->paginate(50);
+        $invoiceouts = InvoiceOut::orderBy('created_at','desc')->where('created_at','>=',Carbon::now()->subMonth())->where('due','!=',0)->paginate(50);
         $invoiceoutproduct = InvoiceOutProduct::all();
-        return view('admin.invoiceout_list',['invoiceouts' => $invoiceouts , 'invoiceoutproduct'=> $invoiceoutproduct]);
+        return view('admin.invoiceout_due_list',['invoiceouts' => $invoiceouts , 'invoiceoutproduct'=> $invoiceoutproduct]);
     }
 
     public function view(Request $request)
@@ -101,6 +101,13 @@ class InvoiceoutController extends Controller
             $results[] = ['id'=>$v->id ,'value'=>$v->name , 'cost'=>$v->cost,'room'=>$v->room];
         }
         return response()->json($results);
+    }
+
+    public function paidList()
+    {
+        $invoiceouts = InvoiceOut::orderBy('created_at','desc')->where('created_at','>=',Carbon::now()->subMonth())->where('due','==',0)->paginate(50);
+        $invoiceoutproduct = InvoiceOutProduct::all();
+        return view('admin.invoiceout_paid_list',['invoiceouts' => $invoiceouts , 'invoiceoutproduct'=> $invoiceoutproduct]);
     }
 
 }

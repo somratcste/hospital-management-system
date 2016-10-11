@@ -111,7 +111,7 @@
   <div class="row">
     <div class="panel mb25">
         <div class="panel-heading border">
-         View ALL village Doctor's
+         View ALL Village Doctor's
         </div>
         <div class="panel-body">
         @if(Session::has('success'))
