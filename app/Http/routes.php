@@ -252,6 +252,8 @@ Route::group(['middleware' => ['web']] , function() {
     	'as' => 'invoiceout.view'
     ]);
 
+    Route::resource('searchrf','SearchRfController');//Reference Fund : rf
+
 
 
 });

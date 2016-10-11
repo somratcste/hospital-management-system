@@ -89,7 +89,7 @@
       @endif
         
         <div class="table-responsive">
-        <table class="table table-bordered table-striped mb0">
+        <table class="table table-bordered table-hover">
           <thead>
             <tr>
               <th>S. No</th>
@@ -148,9 +148,39 @@
             @endphp
 
             @endforeach
-            {{ $subtotal }} {{ $hospital }} {{ $less }} {{ $pay }}
           </tbody>
         </table>
+        <hr/>
+      <div class="row">
+          <div class="col-md-6"></div>
+          <div class="col-md-6">
+           <table class="table table-bordered table-hover">
+           <tbody>
+              <thead>
+                <th>Description</th>
+                <th>Amount</th>
+              </thead>
+              <tr>
+                <td>Total</td>
+                <td>{{ $subtotal }} Tk.</td>
+              </tr>
+              <tr>
+                <td>Hospital</td>
+                <td>{{ $hospital }} Tk.</td>
+              </tr>
+              <tr>
+                <td>Less</td>
+                <td>{{ $less }} Tk.</td>
+              </tr>
+              <tr>
+                <td>{{ $village->name }}</td>
+                <td>{{ $pay }} Tk.</td>
+              </tr>
+
+          </tbody>
+          </table>
+        </div>
+      </div>
         <section>
         <nav>
           <ul class="pager">

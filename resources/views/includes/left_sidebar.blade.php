@@ -93,6 +93,11 @@
                   <span>Village Doctor</span>
                 </a>
               </li>
+              <li>
+                <a href="{{ route('searchrf.index') }}">
+                  <span>Search</span>
+                </a>
+              </li>
             </ul>
           </li>
           <!-- End R.F -->
