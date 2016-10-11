@@ -10,4 +10,9 @@ class Patientout extends Model
     {
     	return $this->belongsTo('App\Doctor');
     }
+
+    public function invoiceOut()
+    {
+    	return $this->hasOne('App\InvoiceOut');
+    }
 }

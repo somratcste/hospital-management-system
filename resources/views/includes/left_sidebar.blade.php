@@ -68,6 +68,11 @@
                   <span>Add Report</span>
                 </a>
               </li>
+              <li>
+                <a href="{{ route('invoiceout.create')}}">
+                  <span>Report List</span>
+                </a>
+              </li>
              </ul>
             </li>
 

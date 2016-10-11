@@ -10,4 +10,9 @@ class Marketing extends Model
     {
     	return $this->hasMany('App\Village');
     }
+
+    public function invoiceOut()
+    {
+    	return $this->hasOne('App\InvoiceOut');
+    }
 }

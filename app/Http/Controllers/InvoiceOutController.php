@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Doctor;
 use Carbon\Carbon;
 use App\Marketing;
-use App\Patientout;
-use App\ReportType;
+use App\InvoiceOut;
+use App\InvoiceOutProduct;
 class InvoiceoutController extends Controller
 {
 
@@ -15,26 +15,41 @@ class InvoiceoutController extends Controller
     {
         $doctors = Doctor::all();
         $marketings = Marketing::all();
-        return view('admin.invoiceout',['doctors'=>$doctors, 'marketings'=>$marketings]);
+        $report_id = InvoiceOut::orderBy('created_at','desc')->first();
+        $report_id = $report_id->id +1;
+        return view('admin.invoiceout',['doctors'=>$doctors, 'marketings'=>$marketings,'report_id'=>$report_id]);
     }
 
 
     public function show()
     {
-        $invoiceout = invoiceout::orderBy('created_at' , 'desc')->paginate(50);
+        $invoiceout = Invoiceout::orderBy('created_at' , 'desc')->paginate(50);
         return view('admin.invoiceout' , ['invoiceouts' => $invoiceout]);
     }
 
     public function store(Request $request) 
     {
         date_default_timezone_set("Asia/Dhaka");
-        $invoiceout = new invoiceout();
-        $invoiceout->name = $request['name'];
-        $invoiceout->mobile = $request['mobile'];
-        $invoiceout->address = $request['address'];
-        $invoiceout->doctor_id = $request['doctor_id'];
+        $invoiceout = new InvoiceOut();
+        $invoiceout->patientout_id = $request['patient_id'];
+        $invoiceout->marketing_id = $request['marketing_id'];
+        $invoiceout->village_id = $request['village_id'];
+        $invoiceout->subtotal = $request['subtotal'];
+        $invoiceout->percent = $request['percent'];
+        $invoiceout->percent_amount = $request['percent_amount'];
+        $invoiceout->without_percent = $request['without_percent'];
+        $invoiceout->discount = $request['discount'];
+        $invoiceout->total = $request['total'];
         $invoiceout->save();
-        return redirect()->back()->with(['success1' => 'Insert Successfully'] );
+        
+        for($i=0;$i<count($_POST['itemNo']);$i++)
+        {
+            $invoiceoutproduct = new InvoiceOutProduct();
+            $invoiceoutproduct->invoiceOut_id = $request['report_no'];
+            $invoiceoutproduct->reportType_id = $request['itemNo'][$i];
+            $invoiceoutproduct->save();
+        }
+        return redirect()->back()->with(['success' => 'Insert Successfully'] );
     }
 
     public function update(Request $request,$id)
@@ -50,12 +65,27 @@ class InvoiceoutController extends Controller
 
     public function destroy($id)
     {
-        $invoiceout = invoiceout::find($id);
+        $invoiceout = InvoiceOut::find($id);
         if(!$invoiceout){
-            return redirect()->route('invoiceout.index')->with(['fail' => 'Page not found !']);
+            return redirect()->route('invoiceout.create')->with(['fail' => 'Page not found !']);
         }
         $invoiceout->delete();
-        return redirect()->route('invoiceout.index')->with(['success' => 'Deleted Successfully.']);
+        return redirect()->route('invoiceout.create')->with(['success' => 'Deleted Successfully.']);
+    }
+
+    public function create()
+    {
+        $invoiceouts = InvoiceOut::orderBy('created_at','desc')->paginate(50);
+        $invoiceoutproduct = InvoiceOutProduct::all();
+        return view('admin.invoiceout_list',['invoiceouts' => $invoiceouts , 'invoiceoutproduct'=> $invoiceoutproduct]);
+    }
+
+    public function view(Request $request)
+    {
+        $invoiceout_id = $request['invoiceout_id'];
+        $invoiceout = InvoiceOut::Find($invoiceout_id);
+        $invoiceoutproducts = InvoiceOutProduct::where('invoiceOut_id',$invoiceout_id)->get();
+        return view('admin.invoiceout_view', ['invoiceout'=>$invoiceout,'invoiceoutproducts'=>$invoiceoutproducts]);
     }
 
     public function autocomplete(Request $request)

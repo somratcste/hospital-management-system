@@ -10,4 +10,9 @@ class Village extends Model
     {
     	return $this->belongsTo('App\Marketing');
     }
+
+    public function invoiceOut()
+    {
+    	return $this->hasOne('App\InvoiceOut');
+    }
 }

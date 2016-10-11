@@ -247,6 +247,11 @@ Route::group(['middleware' => ['web']] , function() {
 
     Route::resource('invoiceout','InvoiceOutController');
 
+    Route::get('/invoiceout_view',[
+    	'uses' => 'InvoiceOutController@view',
+    	'as' => 'invoiceout.view'
+    ]);
+
 
 
 });

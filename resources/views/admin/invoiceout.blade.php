@@ -67,17 +67,19 @@
           Report Entry Information
         </div>
         <div class="panel-body">
-        @if(Session::has('success1'))
+        @if(Session::has('success'))
         <div class="alert alert-success">
-          {{Session::get('success1')}}
+          {{Session::get('success')}}
         </div>
        @endif
   
 
-  <div class="col-xs-12">
+  <div class="col-xs-12"> 
     <div class="box">
 
-    <form class="" method="post" action="" enctype="multipart/form-data">
+    <form class="" method="post" action="{{ route('invoiceout.store')}}" enctype="multipart/form-data">
+    {{ csrf_field() }}
+    <input name="_method" type="hidden" value="POST">
     <div class='box-body'>  
 
     <div class="row col-md-6 pull-left">
@@ -85,7 +87,8 @@
     <div class="form-group form-inline">
       <label class="col-sm-4" >Report No : &nbsp;</label>
       <div class="input-group col-sm-6">
-        <input name="memo_no" type="number" class="form-control" value="" required >
+        <input type="number" class="form-control" value="{{ $report_id }}" disabled>
+        <input type="hidden" value="{{ $report_id }}"  name="report_no">
       </div>
     </div>  
     </div>  
@@ -282,21 +285,21 @@
         <label class="col-sm-4">Discount Amount: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
-          <input name="discount_amount" type="number" class="form-control" id="amountPaid" placeholder="Discount Amount" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
+          <input name="discount" type="number" class="form-control" id="amountPaid" placeholder="Discount Amount" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
         </div>
       </div>
       <div class="form-group form-inline">
         <label class="col-sm-4">Total : &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
-          <input name="total_paid" type="number" class="form-control amountDue" id="amountDue" placeholder="Total" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
+          <input name="total" type="number" class="form-control amountDue" id="amountDue" placeholder="Total" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
         </div>
       </div>
 
           <div class="form-group">        
       <label class="col-sm-4"></label>  
       <div class="input-group col-sm-6">
-      <input type=submit name="invoice" value="Save" class="btn btn-primary btn-lg btn-block">
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
       </div>
      
           </div>
