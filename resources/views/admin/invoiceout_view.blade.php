@@ -127,17 +127,17 @@
         <thead>
             <tr>
               <th width="50%">Test Name</th>
-              <th width="25%">Room No.</th>
-              <th width="25%">Price</th>
+              <th width="30%">Room No.</th>
+              <th width="16%">Price</th>
             </tr>
             </thead>
 
             <tbody>
               @foreach($invoiceoutproducts as $invoiceoutproduct)
                 <tr>
-                  <td>{{ $invoiceoutproduct->id}}</td>
-                  <td>s</td>
-                  <td>s</td>
+                  <td>{{ $invoiceoutproduct->report_name }}</td>
+                  <td>{{ $invoiceoutproduct->report_room }} Tk.</td>
+                  <td>{{ $invoiceoutproduct->report_cost }} Tk.</td>
                </tr>
               @endforeach
             </tbody>
@@ -145,8 +145,20 @@
         </div>
       </div>
 
+      <div class="row">
+       <div class="col-md-6 pull-left">
+        <table class="table table-bordered table-hover">
+          <tbody>
+            @if($invoiceout->due== 0)
+              PAID 
+            @else
+              DUE Money - {{$invoiceout->due }} Tk.
+            @endif
+          </tbody>
+        </table>
+        </div>
 
-      <div class="row col-md-6 pull-right">
+        <div class="col-md-6 pull-right">
         <table class="table table-bordered table-hover">
           <tbody>
          
@@ -174,10 +186,19 @@
                 <td>Total</td>
                 <td>{{ $invoiceout->total }} Tk.</td>
               </tr>
+              <tr>
+                <td>Paid</td>
+                <td>{{ $invoiceout->receive_cash }} Tk.</td>
+              </tr>
+              <tr>
+                <td>Due Money</td>
+                <td>{{ $invoiceout->due }} Tk.</td>
+              </tr>
 
           </tbody>
         </table>
         </div>
+      </div>
  
 
 

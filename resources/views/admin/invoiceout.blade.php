@@ -97,7 +97,7 @@
     <div class="form-group form-inline">
       <label class="col-sm-4" >Marketing Officer : &nbsp;</label>
       <div class="input-group col-sm-6">
-        <select name="marketing_id" class="form-control" id="marketing">
+        <select name="marketing_id" class="form-control" id="marketing" required>
           <option value="">Select Marketig Officer</option>
           @foreach($marketings as $marketing)
             <option value="{{ $marketing->id }}">{{ $marketing->name }}</option>
@@ -120,7 +120,7 @@
     <div class="form-group form-inline">
       <label class="col-sm-4" >Village Doctor : &nbsp;</label>
       <div class="input-group col-sm-6">
-        <select name="village_id" id="village" class="form-control">
+        <select name="village_id" id="village" class="form-control" required>
           <option value="">Select Village Doctor</option>
         </select>
       </div>
@@ -236,10 +236,10 @@
                     <tbody>
                       <tr>
               <td><input class="case" type="checkbox"/></td>
-              <td><input type="text" data-type="id" name="itemNo[]" id="itemNo_1" class="form-control autocomplete_txt" autocomplete="off"></td>
-              <td><input type="text" data-type="name" name="itemName[]" id="itemName_1" class="form-control autocomplete_txt" autocomplete="off"></td>
-              <td><input type="text" data-type="room" name="itemAvailable[]" id="itemAvailable_1" class="form-control autocomplete_txt" autocomplete="off"></td>
-              <td><input type="number" name="total[]" id="total_1" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;"></td>
+              <td><input type="text" data-type="id" name="itemNo[]" id="itemNo_1" class="form-control autocomplete_txt" autocomplete="off" required></td>
+              <td><input type="text" data-type="name" name="itemName[]" id="itemName_1" class="form-control autocomplete_txt" autocomplete="off" required></td>
+              <td><input type="text" data-type="room" name="itemAvailable[]" id="itemAvailable_1" class="form-control autocomplete_txt" autocomplete="off" required></td>
+              <td><input type="number" name="total[]" id="total_1" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" required></td>
             </tr>
                     </tbody>
                   </table>
@@ -292,7 +292,15 @@
         <label class="col-sm-4">Total : &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
-          <input name="total" type="number" class="form-control amountDue" id="amountDue" placeholder="Total" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
+          <input name="total_paid" type="number" class="form-control amountDue" id="amountDue" placeholder="Total" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
+        </div>
+      </div>
+
+      <div class="form-group form-inline">
+        <label class="col-sm-4">Receive Cash : &nbsp;</label>
+        <div class="input-group col-sm-6">
+          <div class="input-group-addon">Tk.</div>
+          <input name="receive_cash" type="number" class="form-control" placeholder="Receive Cash">
         </div>
       </div>
 

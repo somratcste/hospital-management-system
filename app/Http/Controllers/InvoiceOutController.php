@@ -39,7 +39,9 @@ class InvoiceoutController extends Controller
         $invoiceout->percent_amount = $request['percent_amount'];
         $invoiceout->without_percent = $request['without_percent'];
         $invoiceout->discount = $request['discount'];
-        $invoiceout->total = $request['total'];
+        $invoiceout->total = $request['total_paid'];
+        $invoiceout->receive_cash = $request['receive_cash'];
+        $invoiceout->due = $request['total_paid'] - $request['receive_cash'];
         $invoiceout->save();
         
         for($i=0;$i<count($_POST['itemNo']);$i++)
@@ -47,6 +49,9 @@ class InvoiceoutController extends Controller
             $invoiceoutproduct = new InvoiceOutProduct();
             $invoiceoutproduct->invoiceOut_id = $request['report_no'];
             $invoiceoutproduct->reportType_id = $request['itemNo'][$i];
+            $invoiceoutproduct->report_name = $request['itemName'][$i];
+            $invoiceoutproduct->report_room = $request['itemAvailable'][$i];
+            $invoiceoutproduct->report_cost = $request['total'][$i];
             $invoiceoutproduct->save();
         }
         return redirect()->back()->with(['success' => 'Insert Successfully'] );
@@ -54,11 +59,10 @@ class InvoiceoutController extends Controller
 
     public function update(Request $request,$id)
     {
-        $invoiceout = invoiceout::find($id);
-        $invoiceout->name = $request['name'];
-        $invoiceout->mobile = $request['mobile'];
-        $invoiceout->address = $request['address'];
-        $invoiceout->doctor_id = $request['doctor_id'];
+        $invoiceout = InvoiceOut::find($id);
+        $paid = $invoiceout->receive_cash;
+        $invoiceout->receive_cash = $request['receive_cash'] + $paid;
+        $invoiceout->due = $invoiceout->total - ($paid + $request['receive_cash']);
         $invoiceout->save();
         return redirect()->back()->with(['success' => 'Updtaed Successfully'] );
     }
