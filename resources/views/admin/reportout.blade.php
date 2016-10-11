@@ -230,7 +230,7 @@
               <th width="2%"><input id="check_all" class="formcontrol" type="checkbox"/></th>
               <th width="13%">Test ID</th>
               <th width="33%">Test Name</th>
-              <th width="13%">Available</th>
+              <th width="13%">Room No.</th>
               <th width="13%">Price</th>
             </tr>
                     </thead>
@@ -238,9 +238,9 @@
                     <tbody>
                       <tr>
               <td><input class="case" type="checkbox"/></td>
-              <td><input type="text" data-type="productCode" name="itemNo[]" id="itemNo_1" class="form-control autocomplete_txt" autocomplete="off"></td>
-              <td><input type="text" data-type="productName" name="itemName[]" id="itemName_1" class="form-control autocomplete_txt" autocomplete="off"></td>
-              <td><input type="text" data-type="productAvailable" name="itemAvailable[]" id="itemAvailable_1" class="form-control autocomplete_txt" autocomplete="off"></td>
+              <td><input type="text" data-type="id" name="itemNo[]" id="itemNo_1" class="form-control autocomplete_txt" autocomplete="off"></td>
+              <td><input type="text" data-type="name" name="itemName[]" id="itemName_1" class="form-control autocomplete_txt" autocomplete="off"></td>
+              <td><input type="text" data-type="room" name="itemAvailable[]" id="itemAvailable_1" class="form-control autocomplete_txt" autocomplete="off"></td>
               <td><input type="number" name="total[]" id="total_1" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;"></td>
             </tr>
                     </tbody>
@@ -392,8 +392,8 @@ var i=$('#invoice_bill tr').length;
 $(".addmore").on('click',function(){
   html = '<tr>';
   html += '<td><input class="case" type="checkbox"/></td>';
-  html += '<td><input type="text" data-type="productCode" name="itemNo[]" id="itemNo_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
-  html += '<td><input type="text" data-type="productName" name="itemName[]" id="itemName_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
+  html += '<td><input type="text" data-type="id" name="itemNo[]" id="itemNo_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
+  html += '<td><input type="text" data-type="name" name="itemName[]" id="itemName_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
   html += '<td><input type="text" data-type="productAvailable" name="itemAvailable[]" id="itemAvailable_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
   html += '<td><input type="text" name="total[]" id="total_'+i+'" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;"></td>';
   html += '</tr>';
@@ -417,8 +417,8 @@ $(".delete").on('click', function() {
 $(document).on('focus','.autocomplete_txt',function(){
   type = $(this).data('type');
   
-  if(type =='productCode' )autoTypeNo=0;
-  if(type =='productName' )autoTypeNo=1;  
+  if(type =='id' )autoTypeNo=0;
+  if(type =='name' )autoTypeNo=1;  
   
   $(this).autocomplete({
     source: function( request, response ) {

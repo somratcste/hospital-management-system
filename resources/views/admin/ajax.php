@@ -7,12 +7,12 @@ include ("connection.php");
 if(!empty($_POST['type'])){
 	$type = $_POST['type'];
 	$name = $_POST['name_startsWith'];
-	$statement = $db->prepare("SELECT productCode, productName, sellPrice , quantityInStock FROM table_products where quantityInStock !=0 and UPPER($type) LIKE '".strtoupper($name)."%' limit 10");
+	$statement = $db->prepare("SELECT id, name, room , cost FROM report_types where  cost !=0 and UPPER($type) LIKE '".strtoupper($name)."%' limit 10");
 	$statement->execute(array());
 	$data = array();
 	$result = $statement->fetchAll(PDO::FETCH_ASSOC);
     foreach ($result as $row) {
-    	$name = $row['productCode'].'|'.$row['productName'].'|'.$row['quantityInStock'].'|'.$row['sellPrice'];
+    	$name = $row['id'].'|'.$row['name'].'|'.$row['room'].'|'.$row['cost'];
 		array_push($data, $name);
 
         }
