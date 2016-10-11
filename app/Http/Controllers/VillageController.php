@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Village;
 use App\Marketing;
+use App\InvoiceOut;
 
 class villageController extends Controller
 {
@@ -51,6 +52,22 @@ class villageController extends Controller
         }
         $village->delete();
         return redirect()->route('village.index')->with(['success' => 'Deleted Successfully.']);
+    }
+
+    public function create(Request $request)
+    {
+        $year = $request['year'];
+        $month = $request['month'];
+        $day = $request['day'];
+        $village_id = $request['village_id'];
+        $village = Village::Find($village_id);
+        $invoiceouts = InvoiceOut::whereYear('created_at' , '=' , $year)
+                              ->whereMonth('created_at' , '=' , $month)
+                              ->whereDay('created_at' , '=' , $day)
+                              ->where('village_id' , $village_id)
+                              ->orderBy('created_at' , 'asc')
+                              ->paginate(50);
+        return view('admin.village_visiting_list' , ['invoiceouts' => $invoiceouts , 'village' => $village , 'year' => $year , 'month' => $month , 'day' => $day]);
     }
 
 }

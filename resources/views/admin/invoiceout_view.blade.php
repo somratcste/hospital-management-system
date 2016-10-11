@@ -149,11 +149,14 @@
        <div class="col-md-6 pull-left">
         <table class="table table-bordered table-hover">
           <tbody>
+            <p style="color: red;text-align: center;font-size: 40px;font-family:initial;padding-top: 130px;">
             @if($invoiceout->due== 0)
               PAID 
             @else
-              DUE Money - {{$invoiceout->due }} Tk.
+              DUE
             @endif
+            </p>
+            <p style="padding-top: 80px">Recipent Signature .... .... ... ... ... ... ... ...</p>
           </tbody>
         </table>
         </div>

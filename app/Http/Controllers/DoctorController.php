@@ -73,7 +73,7 @@ class doctorController extends Controller
                               ->where('doctor_id' , $doctor_id)
                               ->orderBy('created_at' , 'asc')
                               ->paginate(50);
-        return view('admin.visiting_list' , ['patients' => $patients , 'doctor' => $doctor , 'year' => $year , 'month' => $month , 'day' => $day]);
+        return view('admin.doctor_visiting_list' , ['patients' => $patients , 'doctor' => $doctor , 'year' => $year , 'month' => $month , 'day' => $day]);
     }
 
     public function view(Request $request)
