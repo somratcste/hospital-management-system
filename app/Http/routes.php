@@ -13,9 +13,14 @@
 use Illuminate\Support\Facades\Input;
 use App\Village;
 
-Route::group(['middleware' => ['web']] , function() {
+Route::get('/' , function() {
+	return view('layouts.login');
+});
 
-	Route::get('/', [
+Route::group(['middleware' => ['auth']] , function() {
+
+
+	Route::get('/home', [
     	'uses' => 'AdminController@index',
     	'as' => 'admin.index'
 	]);
@@ -259,14 +264,59 @@ Route::group(['middleware' => ['web']] , function() {
 
     Route::resource('searchrf','SearchRfController');//Reference Fund : rf
 
+    Route::get('/reportout_village' , function(){
+	   $marketing_id = Input::get('marketing_id');
+	   $villages = Village::where('marketing_id', $marketing_id)->get();
+	   return Response::json($villages); 	
+	});
+
+	Route::get('/daily_entry_hospital' , [
+		'uses' => 'TotalReportController@dailyEntryHospital',
+		'as' => 'daily_entry_hospital'
+	]);
+
+	Route::get('/daily_delivary_hospital' , [
+		'uses' => 'TotalReportController@dailyDelivaryHospital',
+		'as' => 'daily_delivary_hospital'
+	]);
+
+	Route::get('/monthly_entry_hospital' , [
+		'uses' => 'TotalReportController@monthlyEntryHospital',
+		'as' => 'monthly_entry_hospital'
+	]);
+
+	Route::get('/monthly_delivary_hospital' , [
+		'uses' => 'TotalReportController@monthlyDelivaryHospital',
+		'as' => 'monthly_delivary_hospital'
+	]);
+
+	Route::get('/daily_entry_pharmacy' , [
+		'uses' => 'TotalReportController@dailyEntrypharmacy',
+		'as' => 'daily_entry_pharmacy'
+	]);
+
+	Route::get('/daily_delivary_pharmacy' , [
+		'uses' => 'TotalReportController@dailyDelivarypharmacy',
+		'as' => 'daily_delivary_pharmacy'
+	]);
+
+	Route::get('/monthly_entry_pharmacy' , [
+		'uses' => 'TotalReportController@monthlyEntrypharmacy',
+		'as' => 'monthly_entry_pharmacy'
+	]);
+
+	Route::get('/monthly_delivary_pharmacy' , [
+		'uses' => 'TotalReportController@monthlyDelivarypharmacy',
+		'as' => 'monthly_delivary_pharmacy'
+	]);
+
 
 
 });
 
 
-Route::get('/reportout_village' , function(){
-   $marketing_id = Input::get('marketing_id');
-   $villages = Village::where('marketing_id', $marketing_id)->get();
-   return Response::json($villages); 	
-});
+
 Route::get('/autocomplete',array('as'=>'autocomplete','uses'=>'ReportOutController@autocomplete'));
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
