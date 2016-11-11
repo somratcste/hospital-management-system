@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Input;
 use App\Village;
 
 Route::get('/' , function() {
-	return view('layouts.login');
+	return view('auth.login');
 });
 
 Route::group(['middleware' => ['auth']] , function() {
 
 
-	Route::get('/home', [
+	Route::get('/', [
     	'uses' => 'AdminController@index',
     	'as' => 'admin.index'
 	]);
@@ -311,12 +311,10 @@ Route::group(['middleware' => ['auth']] , function() {
 	]);
 
 
-
+	Route::get('/autocomplete',array('as'=>'autocomplete','uses'=>'ReportOutController@autocomplete'));
 });
 
 
-
-Route::get('/autocomplete',array('as'=>'autocomplete','uses'=>'ReportOutController@autocomplete'));
 Route::auth();
 
 Route::get('/home', 'HomeController@index');

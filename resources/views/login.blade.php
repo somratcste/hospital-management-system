@@ -108,22 +108,17 @@ body {
   <div class="login-page">
   <div class="form">
     <form class="register-form">
-      <input name="username" type="text" placeholder="name"/>
-      <input name="password" type="password" placeholder="password"/>
+      <input type="text" placeholder="name"/>
+      <input type="password" placeholder="password"/>
       <input type="text" placeholder="email address"/>
       <button>create</button>
       <p class="message">Already registered? <a href="#">Sign In</a></p>
     </form>
     <form class="login-form">
-      <input name="username" type="text" placeholder="username"/>
-      @if ($errors->has('email'))
-          <span class="help-block">
-              <strong>{{ $errors->first('email') }}</strong>
-          </span>
-      @endif
-      <input name="password" type="password" placeholder="password"/>
+      <input type="text" placeholder="username"/>
+      <input type="password" placeholder="password"/>
       <button>login</button>
-      <!-- <p class="message">Not registered? <a href="#">Create an account</a></p> -->
+      <p class="message">Not registered? <a href="#">Create an account</a></p>
     </form>
   </div>
 </div>
