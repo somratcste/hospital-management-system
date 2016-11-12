@@ -43,7 +43,7 @@
                 </a>
               </li>
               <li>
-                <a href="javascript:;">
+                <a href="{{ url('/logout') }}">
                   <span>Logout</span>
                 </a>
               </li>
@@ -67,6 +67,7 @@
             </li>
 
             <!--Report List -->
+            @if(Auth::user()->name=='nazmul')
           <li>
             <a href="javascript:;">
               <i class="fa fa-toggle-on"></i>
@@ -90,6 +91,7 @@
               </li>
              </ul>
             </li>
+            @endif
 
             <!--R.F -->
           <li>
