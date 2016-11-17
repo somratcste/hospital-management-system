@@ -4,7 +4,7 @@
  Dashboard 
 @endsection
 
-
+@if(Auth::user()->name=='super')
 @section('content')
 
       <!-- main area -->
@@ -990,3 +990,22 @@
     </div>
     <!-- /content panel -->
 @endsection
+@endif
+
+@if(Auth::user()->name=='outdoor' || Auth::user()->name=='indoor')
+@section('content')
+<div class="main-content">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div>
+        <div class="widget bg-white">
+          <h1 style="font-family: initial;text-align: center;font-size: 50px;">TRUST ONE HOSPITAL</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+@endsection
+@endif

@@ -12,6 +12,7 @@
 */
 use Illuminate\Support\Facades\Input;
 use App\Village;
+use App\Doctor;
 
 Route::get('/' , function() {
 	return view('auth.login');
@@ -249,6 +250,12 @@ Route::group(['middleware' => ['auth']] , function() {
     Route::resource('village','VillageController');
 
     Route::resource('patientout','PatientOutController');
+
+    Route::get('/patientout_api' , function(){
+	   $doctor_id = Input::get('doctor_id');
+	   $doctors = Doctor::where('id', $doctor_id)->get();
+	   return Response::json($doctors); 	
+	});
 
     Route::resource('invoiceout','InvoiceOutController');
 

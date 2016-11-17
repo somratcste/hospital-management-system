@@ -50,6 +50,7 @@
             </ul>
           </li>
           <!-- /dashboard -->
+           @if(Auth::user()->name=='outdoor' || Auth::user()->name=='super')
 
           <!--Outdoor patient -->
           <li>
@@ -67,7 +68,7 @@
             </li>
 
             <!--Report List -->
-            @if(Auth::user()->name=='nazmul')
+           
           <li>
             <a href="javascript:;">
               <i class="fa fa-toggle-on"></i>
@@ -92,6 +93,8 @@
              </ul>
             </li>
             @endif
+
+            @if(Auth::user()->name=='super')
 
             <!--R.F -->
           <li>
@@ -118,6 +121,8 @@
             </ul>
           </li>
           <!-- End R.F -->
+          @endif
+          @if(Auth::user()->name=='outdoor' || Auth::user()->name=='super')
 
           <!--R.F -->
           <li>
@@ -138,8 +143,9 @@
               </li>
             </ul>
           </li>
+          @endif
           <!-- End R.F -->
-
+          @if(Auth::user()->name=='indoor' || Auth::user()->name=='super')
           <!--Admit patient -->
           <li>
             <a href="javascript:;">
@@ -159,8 +165,9 @@
               </li>
              </ul>
             </li>
-
+          @endif
           <!-- employee -->
+          @if(Auth::user()->name=='super')
           <li>
             <a href="javascript:;">
               <i class="fa fa-tint"></i>
@@ -184,8 +191,9 @@
               </li>   
              </ul>
             </li>
+            @endif
           <!-- /employee -->
-
+          @if(Auth::user()->name=='indoor' || Auth::user()->name=='super')
           <!-- Appoinment -->
           <li>
             <a href="javascript:;">
@@ -297,9 +305,39 @@
             </ul>
           </li>
           <!-- /Invoice -->
+          @endif
+          @if(Auth::user()->name=='super')
+          <li>
+            <a href="http://localhost/pharmacy/index.php" target="_blank">
+              <i class="fa fa-toggle-on"></i>
+              <span>Pharmacy Section</span>
+            </a>
+          </li>
+          @endif
+
+          <!-- User Create -->
+          <!-- <li>
+            <a href="javascript:;">
+              <i class="fa fa-toggle-on"></i>
+              <span>Create User</span>
+            </a>
+            <ul class="sub-menu">
+              <li>
+                <a href="">
+                  <span>Add New User</span>
+                </a>
+              </li>            
+              <li>
+                <a href="">
+                  <span>User Role</span>
+                </a>
+              </li>
+            </ul>
+          </li> -->
+          <!-- /End User -->
 
           <!-- menu levels -->
-          <li>
+          <!-- <li>
             <a href="javascript:;">
               <i class="fa fa-level-down"></i>
               <span>Menu Levels</span>
@@ -342,7 +380,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> -->
           <!-- menu levels -->
         </ul>
       </nav>

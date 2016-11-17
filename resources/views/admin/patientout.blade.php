@@ -47,11 +47,25 @@
           <div class="form-group clear">
             <label class="col-sm-2 control-label">Visiting Doctor</label>
             <div class="col-sm-7">
-              <select class="form-control" name="doctor_id">
+              <select class="form-control" name="doctor_id" id="doctor_id">
                 @foreach($doctors as $doctor)
                   <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
                 @endforeach
               </select>
+            </div>
+          </div>
+
+          <div class="form-group clear">
+            <label class="col-sm-2 control-label">Visiting Charge</label>
+            <div class="col-sm-7" id="visiting_charge">
+              <input type="text" class="form-control" required>
+            </div>
+          </div>
+
+          <div class="form-group clear">
+            <label class="col-sm-2 control-label">Receive Cash</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" name="address" required>
             </div>
           </div>
 
@@ -246,4 +260,19 @@
   <!-- /main area -->
 </div>
 <!-- /content panel -->
+@endsection
+
+@section('run_custom_jquery')
+<script type="text/javascript">
+  $('#doctor_id').on('change' , function(e){
+    var doctor_id = e.target.value;
+
+    $.get('/hospital/public/patientout_api?doctor_id=' + doctor_id, function(data){
+      $('#visiting_charge').empty();
+      $.each(data, function(index,chargeobj){
+        $('#visiting_charge').append('<input type="text" class="form-control" value="'+chargeobj.charge+'">')
+      });
+    });
+  });
+</script>
 @endsection

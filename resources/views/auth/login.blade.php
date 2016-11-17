@@ -105,7 +105,10 @@ body {
 }
 </style>
 <body>
-  <div class="login-page">
+<div class="widget bg-white">
+  <h1 style="font-family: initial;text-align: center;font-size: 50px;padding-top: 8%;">TRUST ONE HOSPITAL</h1>
+</div>
+  <div class="login-page" style="padding-top: 0%;">
   <div class="form">
     <form class="register-form">
       <input type="text" placeholder="name"/>
