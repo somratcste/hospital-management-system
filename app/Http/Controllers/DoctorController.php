@@ -81,9 +81,18 @@ class doctorController extends Controller
         $serial = $request['serial'];
         $patient = Patientout::Find($request['patient_id']);
         $doctor = Doctor::Find($request['doctor_id']);
+        if($patient->receive_cash == $doctor->charge){
+            $paid_status = "Paid";
+            $due_status = "0";
+        }
+        else {
+            $due = $doctor->charge - $patient->receive_cash;
+            $paid_status = "$due";
+            $due_status = "1";
+        }
         $date = new DateTime($patient->created_at);
         $date = $date->format('m-d-Y h:i:s a');
-        return view('admin.patientout_view',['serial' => $serial , 'patient' => $patient , 'doctor' => $doctor , 'date' => $date]);
+        return view('admin.patientout_view',['serial' => $serial , 'patient' => $patient , 'doctor' => $doctor , 'date' => $date,'paid_status' => $paid_status,'due_status'=>$due_status]);
     }
 
 }

@@ -39,11 +39,19 @@
               </tr>
               <tr>
               	<td>Visiting Charge</td>
-              	<td>{{ $doctor->charge }}</td>
+              	<td>{{ $doctor->charge }} Tk.</td>
               </tr>
               <tr>
               	<td>Date/Time</td>
               	<td>{{ $date }}</td>
+              </tr>
+              <tr>
+                <td>@if($due_status=="1") {{"Due"}}@endif</td>
+                <td>{{$paid_status}}</td>
+              </tr>
+              <tr>
+                <td><p>Recipent Signature .... ....</p></td>
+                <td></td>
               </tr>
           </tbody>
         </table>

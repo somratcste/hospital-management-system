@@ -32,6 +32,7 @@ class PatientoutController extends Controller
         $patientout->mobile = $request['mobile'];
         $patientout->address = $request['address'];
         $patientout->doctor_id = $request['doctor_id'];
+        $patientout->receive_cash = $request['receive_cash'];
         $patientout->save();
         return redirect()->back()->with(['success1' => 'Insert Successfully'] );
     }
