@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Trust One Hospital</title>
+  <title>Center Hospital</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
   <link rel="shortcut icon" href="/favicon.ico">
@@ -51,7 +51,7 @@
 
       <!-- logo -->
       <div class="brand-logo">
-        Trust One Hospital
+        CENTER Hospital
       </div>
       <!-- /logo -->
     </div>
@@ -69,7 +69,7 @@
       <li>
         <a href="javascript:;" data-toggle="dropdown">
           <img src="images/avatar.jpg" class="header-avatar img-circle ml10" alt="user" title="user">
-          <span class="pull-left">Trust One Hospital</span>
+          <span class="pull-left">CENTRAL Hospital</span>
         </a>
         <ul class="dropdown-menu">
           <li>

@@ -7,7 +7,7 @@
 
         <!-- logo -->
         <div class="brand-logo">
-          <a href="{{ route('admin.index') }}"><h6>Trust One Hospital</h6></a>
+          <a href="{{ route('admin.index') }}"><h6>Central Hospital</h6></a>
         </div>
         <!-- /logo -->
 

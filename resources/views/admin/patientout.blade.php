@@ -23,10 +23,26 @@
           {{Session::get('success1')}}
         </div>
        @endif
+
+          <div class="form-group clear">
+            <label class="col-sm-2 control-label">Patient's ID</label>
+            <div class="col-sm-7">
+              <input class="form-control" value="{{ $patient_id }} - {{ $date }}" readonly>
+              <input name="patient_id" type="hidden" value="{{ $patient_id }}">
+            </div>
+          </div>
+
           <div class="form-group clear">
             <label class="col-sm-2 control-label">Patient Name</label>
             <div class="col-sm-7">
               <input type="text" class="form-control" name="name" required>
+            </div>
+          </div>
+
+          <div class="form-group clear">
+            <label class="col-sm-2 control-label">Age</label>
+            <div class="col-sm-7">
+              <input type="number" class="form-control" name="age" required>
             </div>
           </div>
 
@@ -63,12 +79,12 @@
             </div>
           </div>
 
-          <div class="form-group clear">
+<!--           <div class="form-group clear">
             <label class="col-sm-2 control-label">Receive Cash</label>
             <div class="col-sm-7">
               <input type="text" class="form-control" name="receive_cash" required>
             </div>
-          </div>
+          </div> -->
 
 
         </div>
@@ -277,3 +293,4 @@
   });
 </script>
 @endsection
+

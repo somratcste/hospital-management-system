@@ -25,7 +25,6 @@
 
   <div class="col-xs-12"> 
     <div class="box">
-
     <form class="" method="post" action="{{ route('invoiceout.store')}}" enctype="multipart/form-data">
     {{ csrf_field() }}
     <input name="_method" type="hidden" value="POST">
@@ -34,13 +33,24 @@
     <div class="row col-md-6 pull-left">
     
     <div class="form-group form-inline">
+      <label class="col-sm-4" >Patient's ID : &nbsp;</label>
+      <div class="input-group col-sm-6">
+        <input name="patient_id" class="form-control" value="{{Session::get('patient_id')}} {{Session::get('date')}}" readonly>
+      </div>
+    </div>  
+    </div>
+
+    <div class="row col-md-6 pull-right">
+    
+    <div class="form-group form-inline">
       <label class="col-sm-4" >Report No : &nbsp;</label>
       <div class="input-group col-sm-6">
         <input type="number" class="form-control" value="{{ $report_id }}" disabled>
         <input type="hidden" value="{{ $report_id }}"  name="report_no">
       </div>
     </div>  
-    </div>  
+    </div>
+
 
     <div class="row col-md-6 pull-right">
     <div class="form-group form-inline">
@@ -57,13 +67,15 @@
     </div>  
 
     <div class="row col-md-6 pull-left">
+    
     <div class="form-group form-inline">
-      <label class="col-sm-4" >Patient ID: &nbsp;</label>
+      <label class="col-sm-4" >Patient's Name : &nbsp;</label>
       <div class="input-group col-sm-6">
-        <input name="patient_id" type="number" class="form-control" required >
+        <input class="form-control" value="{{Session::get('patient_name')}}" readonly>
       </div>
     </div>  
-    </div>  
+    </div>
+ 
 
     <div class="row col-md-6 pull-right">
     <div class="form-group form-inline">
@@ -188,7 +200,7 @@
               <td><input type="text" data-type="id" name="itemNo[]" id="itemNo_1" class="form-control autocomplete_txt" autocomplete="off" required></td>
               <td><input type="text" data-type="name" name="itemName[]" id="itemName_1" class="form-control autocomplete_txt" autocomplete="off" required></td>
               <td><input type="text" data-type="room" name="itemAvailable[]" id="itemAvailable_1" class="form-control autocomplete_txt" autocomplete="off" required></td>
-              <td><input type="number" name="total[]" id="total_1" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" required></td>
+              <td><input type="number" name="total[]" id="total_1" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" required readonly></td>
             </tr>
                     </tbody>
                   </table>
@@ -350,7 +362,7 @@ $(".addmore").on('click',function(){
   html += '<td><input type="text" data-type="id" name="itemNo[]" id="itemNo_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
   html += '<td><input type="text" data-type="name" name="itemName[]" id="itemName_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
   html += '<td><input type="text" data-type="productAvailable" name="itemAvailable[]" id="itemAvailable_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
-  html += '<td><input type="text" name="total[]" id="total_'+i+'" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;"></td>';
+  html += '<td><input type="text" name="total[]" id="total_'+i+'" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" disabled></td>';
   html += '</tr>';
   $('#invoice_bill').append(html);
   i++;

@@ -94,19 +94,15 @@
   color: #EF3B3A;
 }
 body {
-  background: #76b852; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
-  background: -moz-linear-gradient(right, #76b852, #8DC26F);
-  background: -o-linear-gradient(right, #76b852, #8DC26F);
-  background: linear-gradient(to left, #76b852, #8DC26F);
+
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
 }
 </style>
-<body>
+<body  background="{{ asset('images/hospital.png') }}">
 <div class="widget bg-white">
-  <h1 style="font-family: initial;text-align: center;font-size: 50px;padding-top: 8%;">TRUST ONE HOSPITAL</h1>
+  <h1 style="font-family: initial;text-align: center;font-size: 50px;padding-top: 8%;color:darkblue;">CENTRAL HOSPITAL</h1>
 </div>
   <div class="login-page" style="padding-top: 0%;">
   <div class="form">
