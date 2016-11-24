@@ -10,19 +10,43 @@
 <!-- main area -->
 <div class="main-content">
 
-  <div class="row">
+  <div class="row" style="background: white;">
     <div class="panel mb25">
-        <div class="panel-heading border">
+        <div class="panel-heading border" style="margin-bottom: 20px;">
           Report Entry Information
         </div>
-        <div class="panel-body">
         @if(Session::has('success'))
         <div class="alert alert-success">
           {{Session::get('success')}}
         </div>
        @endif
-  
 
+        <div class="row col-md-6 pull-left">
+    
+        <div class="form-group form-inline">
+          <label class="col-sm-4" >Patient's ID : &nbsp;</label>
+          <div class="input-group col-sm-6">
+            <input name="patient_id" class="form-control" value="{{Session::get('patient_id')}} {{Session::get('date')}}" readonly>
+          </div>
+        </div>  
+        </div>
+        <div class="row col-md-6 pull-left">
+    
+        <div class="form-group form-inline">
+          <label class="col-sm-4" >Patient's Name : &nbsp;</label>
+          <div class="input-group col-sm-6">
+            <input class="form-control" value="{{Session::get('patient_name')}}" readonly>
+          </div>
+        </div>  
+        </div>
+    </div>
+  </div>
+
+        <center><button class="btn btn-success btn-lg btn-block" id="show" style="margin: 20px 0px 20px 0px;">Add or Remove Patient's Test</button></center>
+<div class="row">
+    <div class="panel mb25">
+        <div class="panel-body">
+  
   <div class="col-xs-12"> 
     <div class="box">
     <form class="" method="post" action="{{ route('invoiceout.store')}}" enctype="multipart/form-data">
@@ -30,7 +54,7 @@
     <input name="_method" type="hidden" value="POST">
     <div class='box-body'>  
 
-    <div class="row col-md-6 pull-left">
+    <!-- <div class="row col-md-6 pull-left">
     
     <div class="form-group form-inline">
       <label class="col-sm-4" >Patient's ID : &nbsp;</label>
@@ -38,9 +62,9 @@
         <input name="patient_id" class="form-control" value="{{Session::get('patient_id')}} {{Session::get('date')}}" readonly>
       </div>
     </div>  
-    </div>
+    </div> -->
 
-    <div class="row col-md-6 pull-right">
+    <div class="row col-md-6 pull-left">
     
     <div class="form-group form-inline">
       <label class="col-sm-4" >Report No : &nbsp;</label>
@@ -66,7 +90,7 @@
     </div>  
     </div>  
 
-    <div class="row col-md-6 pull-left">
+    <!-- <div class="row col-md-6 pull-left">
     
     <div class="form-group form-inline">
       <label class="col-sm-4" >Patient's Name : &nbsp;</label>
@@ -74,7 +98,7 @@
         <input class="form-control" value="{{Session::get('patient_name')}}" readonly>
       </div>
     </div>  
-    </div>
+    </div> -->
  
 
     <div class="row col-md-6 pull-right">
@@ -485,6 +509,15 @@ function IsNumeric(e) {
     return ret;
 }
 
+</script>
 
+<script>
+$(document).ready(function(){
+    $(".panel-body").hide();
+
+     $("#show").click(function(){
+        $(".panel-body").fadeToggle();
+    });
+});
 </script>
 @endsection
