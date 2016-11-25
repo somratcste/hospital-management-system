@@ -77,7 +77,7 @@
               </div>
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label class="col-sm-2 control-label">Specialization</label>
               <div class="col-sm-8">
                 <select class="form-control" name="specialist">
@@ -87,14 +87,14 @@
                   <option value="neurologiest">Neurologiest</option>
                 </select>
               </div>
-            </div>
+            </div> -->
 
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label class="col-sm-2 control-label">Visiting Charge</label>
               <div class="col-sm-8">
                 <input type="number" class="form-control" name="charge" placeholder="visiting charge" value="{{ Request::old('charge') }}">
               </div>
-            </div>
+            </div> -->
 
             <div class="form-group">
               <label class="col-sm-2 control-label">Mobile Number</label> 

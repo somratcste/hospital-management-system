@@ -31,12 +31,12 @@ class EmployeeController extends Controller
     	$employee->degree    = $request['degree'];
     	$employee->gender	   = $request['gender'];
     	$employee->birthDate = $request['birthDate'];
-        $employee->charge    = $request['charge'];
+        // $employee->charge    = $request['charge'];
     	$employee->mobile	   = $request['mobile'];
     	$employee->email	   = $request['email'];    	
     	$employee->hAddress  = $request['hAddress'];
     	$employee->oaddress  = $request['oAddress'];
-    	$employee->specialist = $request['specialist'];
+    	// $employee->specialist = $request['specialist'];
         $employee->ecategory_id = $request['ecategory_id'];
         if(Input::hasFile('image')){
 

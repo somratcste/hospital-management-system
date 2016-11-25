@@ -67,14 +67,14 @@
                         <div class="col-xs-4">
                           <p>Name</p>
                           <p>Position</p>
-                          @if($employee->specialist == '1')
+                          <!-- @if($employee->specialist == '1')
                           @else
                             <p>Specialist</p>
                           @endif
                           @if($employee->charge == NULL)
                           @else
                             <p>Visiting Charge</p>
-                          @endif
+                          @endif -->
                           <p>Degree</p>
                           <p>Gender</p>
                           <p>Birth Date</p>
@@ -87,14 +87,14 @@
                         <div class="col-xs-7">
                           <p> : {{ $employee->name }}</p>
                           <p> : {{ $employee->ecategory->name }}</p>
-                          @if($employee->specialist == '1')
+                          <!-- @if($employee->specialist == '1')
                           @else
                             <p> : {{ ucfirst($employee->specialist) }}</p>
                           @endif
                           @if($employee->charge == NULL)
                           @else
                             <p> : {{ ucfirst($employee->charge) }}</p>
-                          @endif
+                          @endif -->
                           <p> : {{ $employee->degree }}</p>
                           <p> : {{ $employee->gender }}</p>
                           <p> : {{ $employee->birthDate }}</p>
@@ -170,7 +170,7 @@
               </div>
             </div>
 
-            @if($employee->specialist == '1')
+            <!-- @if($employee->specialist == '1')
             @else
               <div class="form-group clear">
               <label class="col-sm-3 control-label">Specialization</label>
@@ -182,9 +182,9 @@
                 </select>
               </div>
             </div>
-            @endif
+            @endif -->
 
-            @if($employee->charge == NULL)
+            <!-- @if($employee->charge == NULL)
             @else
               <div class="form-group clear">
               <label class="col-sm-3 control-label">Visiting Charge</label>
@@ -192,7 +192,7 @@
                 <input type="text" class="form-control" name="charge" value="{{ Request::old('charge') ? Request::old('charge') : isset($employee) ? $employee->charge : '' }} " required>
               </div>
             </div>
-            @endif            
+            @endif -->            
             
             <div class="form-group clear">
               <label class="col-sm-3 control-label">Mobile Number</label> 

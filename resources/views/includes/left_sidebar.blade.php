@@ -50,7 +50,7 @@
             </ul>
           </li>
           <!-- /dashboard -->
-           @if(Auth::user()->name=='outdoor' || Auth::user()->name=='super')
+           @if(Auth::user()->outdoor_patient_id ==1)
 
           <!--Outdoor patient -->
           <li>
@@ -64,17 +64,6 @@
                   <span>Add Patient</span>
                 </a>
               </li>
-             </ul>
-            </li>
-
-            <!--Report List -->
-           
-          <li>
-            <a href="javascript:;">
-              <i class="fa fa-toggle-on"></i>
-              <span>Outdoor Report</span>
-            </a>
-            <ul class="sub-menu">
               <li>
                 <a href="{{ route('invoiceout.index')}}">
                   <span>Add Report</span>
@@ -92,9 +81,10 @@
               </li>
              </ul>
             </li>
+
             @endif
 
-            @if(Auth::user()->name=='super')
+            @if(Auth::user()->rf_id ==1)
 
             <!--R.F -->
           <li>
@@ -113,16 +103,18 @@
                   <span>Village Doctor</span>
                 </a>
               </li>
+              @if(Auth::user()->name=='super')
               <li>
                 <a href="{{ route('searchrf.index') }}">
                   <span>Search</span>
                 </a>
               </li>
+              @endif
             </ul>
           </li>
           <!-- End R.F -->
           @endif
-          @if(Auth::user()->name=='outdoor' || Auth::user()->name=='super')
+          @if(Auth::user()->doctor_id ==1)
 
           <!--R.F -->
           <li>
@@ -145,7 +137,7 @@
           </li>
           @endif
           <!-- End R.F -->
-          @if(Auth::user()->name=='indoor' || Auth::user()->name=='super')
+          @if(Auth::user()->indoor_patient_id ==1)
           <!--Admit patient -->
           <li>
             <a href="javascript:;">
@@ -167,7 +159,7 @@
             </li>
           @endif
           <!-- employee -->
-          @if(Auth::user()->name=='super')
+          @if(Auth::user()->employee_id ==1)
           <li>
             <a href="javascript:;">
               <i class="fa fa-tint"></i>
@@ -193,7 +185,7 @@
             </li>
             @endif
           <!-- /employee -->
-          @if(Auth::user()->name=='indoor' || Auth::user()->name=='super')
+          @if(Auth::user()->seat_id ==1)
           <!-- Appoinment -->
           <li>
             <a href="javascript:;">
@@ -221,25 +213,30 @@
             </ul>
           </li>
           <!-- /Appoinment -->
+          @endif
 
           <!-- Report -->
+          @if(Auth::user()->test_id ==1)
           <li>
             <a href="javascript:;">
               <i class="fa fa-map-marker"></i>
-              <span>Report</span>
+              <span>Test</span>
               {{-- <span class="label label-success pull-right">2</span> --}}
             </a>
+         
             <ul class="sub-menu">
+            
               <li>
                 <a href="{{ route('report.index') }}">
-                  <span>Add Report</span>
+                  <span>Add New Test</span>
                 </a>
               </li>
               <li>
                 <a href="{{ route('report.list') }}">
-                  <span>Report List</span>
+                  <span>Test List</span>
                 </a>
               </li>
+             
               <li>
                 <a href="{{ route('reportType.index') }}">
                   <span>New Type</span>
@@ -250,10 +247,13 @@
                   <span>Type List</span>
                 </a>
               </li>
+             
             </ul>
           </li>
+           @endif
+         
           <!-- /Report -->
-
+          @if(Auth::user()->operation_id ==1)
           <!-- Operation -->
           <li>
             <a href="javascript:;">
@@ -261,6 +261,7 @@
               <span>Operation</span>
             </a>
             <ul class="sub-menu">
+          
               <li>
                 <a href="{{ route('operation.index') }}">
                   <span>Add Operation</span>
@@ -271,6 +272,7 @@
                   <span>Operation List</span>
                 </a>
               </li>
+             
               <li>
                 <a href="{{ route('operationType.index') }}">
                   <span>O.T Type</span>
@@ -281,10 +283,13 @@
                   <span>O.T List</span>
                 </a>
               </li>
+
             </ul>
           </li>
           <!-- /Operation -->
-
+          @endif
+       
+          @if(Auth::user()->invoice_id ==1)
           <!-- Invoice -->
           <li>
             <a href="javascript:;">
@@ -306,12 +311,32 @@
           </li>
           <!-- /Invoice -->
           @endif
-          @if(Auth::user()->name=='super')
+          @if(Auth::user()->pharmacy_id ==1)
           <li>
             <a href="http://localhost/pharmacy/index.php" target="_blank">
               <i class="fa fa-toggle-on"></i>
               <span>Pharmacy Section</span>
             </a>
+          </li>
+          @endif
+          @if(Auth::user()->user_id ==1)
+          <li>
+            <a href="javascript:;">
+              <i class="fa fa-toggle-on"></i>
+              <span>Create User</span>
+            </a>
+            <ul class="sub-menu">
+              <li>
+                <a href="{{ route('user_registration.index') }}">
+                  <span>Register User</span>
+                </a>
+              </li>            
+              <li>
+                <a href="">
+                  <span>User List</span>
+                </a>
+              </li>
+            </ul>
           </li>
           @endif
 

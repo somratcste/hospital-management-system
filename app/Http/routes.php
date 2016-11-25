@@ -319,6 +319,13 @@ Route::group(['middleware' => ['auth']] , function() {
 
 
 	Route::get('/autocomplete',array('as'=>'autocomplete','uses'=>'ReportOutController@autocomplete'));
+
+	// Route::get('/user_registration', [
+	// 	'uses' => 'RegistrationController@index',
+	// 	'as' => 'user.registration'
+	// ]);
+
+	Route::resource('user_registration','RegistrationController');
 });
 
 

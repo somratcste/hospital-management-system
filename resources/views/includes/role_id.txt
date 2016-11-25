@@ -1,0 +1,10 @@
+step 1 : outdoor patient
+step 2 : r.f
+step 3 : doctor
+step 4 : indoor admit patient
+step 5 : employee
+setp 6 : seat
+step 7 : test
+setp 8 : operation
+setp 9 : invoice
+setp 10 : pharmacy
