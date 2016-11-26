@@ -31,6 +31,9 @@
               <th>Price Update</th>
               <th>View</th>
               @if(Auth::user()->outdoor_patient_delete_id == 1)
+              <th>Refund</th>
+              @endif
+              @if(Auth::user()->outdoor_patient_delete_id == 1)
               <th>Delete</th>
               @endif
             </tr>
@@ -42,6 +45,9 @@
               <th>P. ID</th>
               <th>Price Update</th>
               <th>View</th>
+              @if(Auth::user()->outdoor_patient_delete_id == 1)
+              <th>Refund</th>
+              @endif
               @if(Auth::user()->outdoor_patient_delete_id == 1)
               <th>Delete</th>
               @endif
@@ -69,6 +75,10 @@
 
             <div class="form-group clear"></div>
             <div class="row">
+
+            
+         
+          
 
             <div class="form-group form-inline">
               <label class="col-sm-4">Total Amount: &nbsp;</label>
@@ -122,6 +132,15 @@
               </td>
               
               @if(Auth::user()->outdoor_patient_delete_id == 1)
+              <td>
+                <form action="{{ route('invoiceout.refund') }}" method="GET">
+                  {{ csrf_field() }}
+                <input name="_method" type="hidden" value="GET">
+                <input type="hidden" name="invoiceout_id" value="{{ $invoiceout->id }}">
+                <button class="btn btn-primary">Refund</button>
+                </form>
+              </td>
+
               <td><a data-toggle="modal" data-target="#delete<?php echo $i; ?>" href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
               @endif
               <div class="modal" id="delete<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">

@@ -264,6 +264,11 @@ Route::group(['middleware' => ['auth']] , function() {
     	'as' => 'invoiceout.view'
     ]);
 
+    Route::get('/invoiceout_refund' , [
+    	'uses' => 'InvoiceOutController@refund',
+    	'as' => 'invoiceout.refund'
+    ]);
+
     Route::get('/invoiceout_paid_list',[
     	'uses' => 'InvoiceOutController@paidList',
     	'as' => 'invoiceout.paidlist'

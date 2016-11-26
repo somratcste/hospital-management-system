@@ -27,6 +27,7 @@
             <tr>
               <th>No.</th>
               <th>Name</th>
+              <th>Test ID</th>
               <th>cost</th>
               <th>Room</th>
               @if(Auth::user()->test_edit_id == 1)
@@ -41,6 +42,7 @@
             <tr>
               <th>No.</th>
               <th>Name</th>
+              <th>Test ID</th>
               <th>cost</th>
               <th>Room</th>
               @if(Auth::user()->test_edit_id == 1)
@@ -57,6 +59,7 @@
               <tr>
               <td><?php echo $i; ?></td>
               <td>{{ $reportType->name }}</td>
+              <td>{{ $reportType->test_id}}</td>
               <td>{{ $reportType->cost }} Tk.</td>
               <td>{{ $reportType->room }}</td>
               @if(Auth::user()->test_edit_id == 1)

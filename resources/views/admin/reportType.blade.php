@@ -33,6 +33,13 @@
           <form class="form-horizontal bordered-group" role="form" action="{{ route('reportType.save') }}" method="post" enctype="multipart/form-data">
 
             <div class="form-group">
+              <label class="col-sm-2 control-label">Test ID</label>
+              <div class="col-sm-8">
+                <input type="number" class="form-control" name="test_id" placeholder="test id" value="{{ Request::old('test_id') }}" required>
+              </div>
+            </div>
+
+            <div class="form-group">
               <label class="col-sm-2 control-label">Report Name</label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" name="name" placeholder="Report Name" value="{{ Request::old('name') }}" required>

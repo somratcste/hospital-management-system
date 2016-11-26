@@ -19,13 +19,15 @@ class ReportController extends Controller
     	$this->validate($request , [
             'name' => 'required',
     		'cost' => 'required',
-            'room' => 'required'
+            'room' => 'required',
+            'test_id' => 'unique:report_types'
     	]);
 
     	$report 		   = new ReportType();
     	$report->name 	   = ucfirst($request['name']);
     	$report->cost    = $request['cost'];
         $report->room = $request['room'];
+        $report->test_id = $request['test_id'];
     	$report->save();
 
     	return redirect()->back()->with(['success' => 'Insert Successfully'] );

@@ -23,8 +23,11 @@ class PatientoutController extends Controller
         if($last_day + 1 == $day){
 
             $patient_id = $patientoutID->patient_id+1;
-            for($i = $patient_id ; $i <=$patient_id ; $i++)
+            for($i = $patient_id ; $i <=$patient_id ; $i++) {
+                if($patient_id > 9)
+                    break;
                 $patient_id = "0$i"; 
+            }
 
         }
         return view('admin.patientout' , ['patientouts' => $patientout, 'doctors' => $doctors , 'patient_id' => $patient_id , 'date' => $date]);
@@ -53,7 +56,7 @@ class PatientoutController extends Controller
         $month = Carbon::today()->month;
         $year = Carbon::today()->year;
         $date = $day . "." . $month . "." . $year;
-        return redirect()->route('invoiceout.index')->with(['success' => 'Patients Information Insert Successfully & Add Patients Report' , 'patient_name' => $patientout->name , 'patient_id' => $request['patient_id'], 'date' => $date ] );
+        return redirect()->route('invoiceout.index')->with(['success' => 'Patients Information Insert Successfully & Add Patients Report' , 'patient_name' => $patientout->name , 'patient_id' => $request['patient_id'], 'date' => $date , 'patientout_id' => $patientout->id ] );
     }
 
     public function update(Request $request,$id)

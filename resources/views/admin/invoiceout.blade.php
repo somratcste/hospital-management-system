@@ -26,10 +26,11 @@
         <div class="form-group form-inline">
           <label class="col-sm-4" >Patient's ID : &nbsp;</label>
           <div class="input-group col-sm-6">
-            <input name="patient_id" class="form-control" value="{{Session::get('patient_id')}} {{Session::get('date')}}" readonly>
+            <input  class="form-control" value="{{Session::get('patient_id')}} {{Session::get('date')}}" readonly>
           </div>
         </div>  
         </div>
+       
         <div class="row col-md-6 pull-left">
     
         <div class="form-group form-inline">
@@ -51,6 +52,7 @@
     <div class="box">
     <form class="" method="post" action="{{ route('invoiceout.store')}}" enctype="multipart/form-data">
     {{ csrf_field() }}
+     <input type="hidden" name="patient_id" value="{{Session::get('patientout_id')}}">
     <input name="_method" type="hidden" value="POST">
     <div class='box-body'>  
 
@@ -221,7 +223,7 @@
                     <tbody>
                       <tr>
               <td><input class="case" type="checkbox"/></td>
-              <td><input type="text" data-type="id" name="itemNo[]" id="itemNo_1" class="form-control autocomplete_txt" autocomplete="off" required></td>
+              <td><input type="text" data-type="test_id" name="itemNo[]" id="itemNo_1" class="form-control autocomplete_txt" autocomplete="off" required></td>
               <td><input type="text" data-type="name" name="itemName[]" id="itemName_1" class="form-control autocomplete_txt" autocomplete="off" required></td>
               <td><input type="text" data-type="room" name="itemAvailable[]" id="itemAvailable_1" class="form-control autocomplete_txt" autocomplete="off" required></td>
               <td><input type="number" name="total[]" id="total_1" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" required readonly></td>
@@ -383,7 +385,7 @@ var i=$('#invoice_bill tr').length;
 $(".addmore").on('click',function(){
   html = '<tr>';
   html += '<td><input class="case" type="checkbox"/></td>';
-  html += '<td><input type="text" data-type="id" name="itemNo[]" id="itemNo_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
+  html += '<td><input type="text" data-type="test_id" name="itemNo[]" id="itemNo_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
   html += '<td><input type="text" data-type="name" name="itemName[]" id="itemName_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
   html += '<td><input type="text" data-type="productAvailable" name="itemAvailable[]" id="itemAvailable_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
   html += '<td><input type="text" name="total[]" id="total_'+i+'" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" disabled></td>';
@@ -408,7 +410,7 @@ $(".delete").on('click', function() {
 $(document).on('focus','.autocomplete_txt',function(){
   type = $(this).data('type');
   
-  if(type =='id' )autoTypeNo=0;
+  if(type =='test_id' )autoTypeNo=0;
   if(type =='name' )autoTypeNo=1;  
   
   $(this).autocomplete({

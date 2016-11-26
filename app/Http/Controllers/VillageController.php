@@ -28,6 +28,9 @@ class villageController extends Controller
     {
         $village = new Village();
         $village->name = $request['name'];
+        $village->pharmacy = $request['pharmacy'];
+        $village->market = $request['market'];
+        $village->address = $request['address'];
         $village->mobile = $request['mobile'];
         $village->marketing_id = $request['marketing_id'];
         $village->save();
@@ -38,6 +41,9 @@ class villageController extends Controller
     {
         $village = Village::find($id);
         $village->name = $request['name'];
+        $village->pharmacy = $request['pharmacy'];
+        $village->market = $request['market'];
+        $village->address = $request['address'];
         $village->mobile = $request['mobile'];
         $village->marketing_id = $request['marketing_id'];
         $village->save();

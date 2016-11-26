@@ -31,6 +31,27 @@
           </div>
 
           <div class="form-group clear">
+            <label class="col-sm-2 control-label">Pharmacy Name</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" name="pharmacy" required>
+            </div>
+          </div>
+
+          <div class="form-group clear">
+            <label class="col-sm-2 control-label">Market Name</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" name="market" required>
+            </div>
+          </div>
+
+          <div class="form-group clear">
+            <label class="col-sm-2 control-label">Address</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" name="address" required>
+            </div>
+          </div>
+
+          <div class="form-group clear">
             <label class="col-sm-2 control-label">Mobile No.</label>
             <div class="col-sm-7">
               <input type="text" class="form-control" name="mobile" required>
@@ -117,12 +138,18 @@
                         <div class="col-xs-4">
                           <p>ID</p>
                           <p>Name</p>
+                          <p>Pharmacy Name</p>
+                          <p>Market Name</p>
+                          <p>Address </p>
                           <p>Mobile</p>
                           <p>Marketing Officer</p>
                         </div>
                         <div class="col-xs-7">
                           <p> : {{ $village->id }}</p>
                           <p> : {{ $village->name }}</p>
+                          <p> : {{ $village->pharmacy }}</p>
+                          <p> : {{ $village->market }}</p>
+                          <p> : {{ $village->address }}</p>
                           <p> : {{ $village->mobile }}</p>
                           <p> : {{ $village->marketing->name }}</p>
                         </div>
@@ -156,6 +183,27 @@
               <label class="col-sm-3 control-label">Name</label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" name="name" value="{{ Request::old('name') ? Request::old('name') : isset($village) ? $village->name : '' }} " required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Pharmacy Name</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" name="pharmacy" value="{{ Request::old('pharmacy') ? Request::old('pharmacy') : isset($village) ? $village->pharmacy : '' }} " required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Market Name</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" name="market" value="{{ Request::old('market') ? Request::old('market') : isset($village) ? $village->market : '' }} " required>
+              </div>
+            </div>
+
+            <div class="form-group clear">
+              <label class="col-sm-3 control-label">Address</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" name="address" value="{{ Request::old('address') ? Request::old('address') : isset($village) ? $village->address : '' }} " required>
               </div>
             </div>
 

@@ -98,7 +98,7 @@ class InvoiceoutController extends Controller
         $data = invoiceType::where('name','LIKE','%'.$term.'%')->take(10)->get();
         $results = array();
         foreach ($data as $key => $v) {
-            $results[] = ['id'=>$v->id ,'value'=>$v->name , 'cost'=>$v->cost,'room'=>$v->room];
+            $results[] = ['test_id'=>$v->id ,'value'=>$v->name , 'cost'=>$v->cost,'room'=>$v->room];
         }
         return response()->json($results);
     }
@@ -108,6 +108,14 @@ class InvoiceoutController extends Controller
         $invoiceouts = InvoiceOut::orderBy('created_at','desc')->where('created_at','>=',Carbon::now()->subMonth())->where('due','==',0)->paginate(50);
         $invoiceoutproduct = InvoiceOutProduct::all();
         return view('admin.invoiceout_paid_list',['invoiceouts' => $invoiceouts , 'invoiceoutproduct'=> $invoiceoutproduct]);
+    }
+
+    public function refund(Request $request)
+    {
+        $invoiceout_id = $request['invoiceout_id'];
+        $invoiceout = InvoiceOut::Find($invoiceout_id);
+        $invoiceoutproducts = InvoiceOutProduct::where('invoiceOut_id',$invoiceout_id)->get();
+        return view('admin.invoiceout_refund', ['invoiceout'=>$invoiceout,'invoiceoutproducts'=>$invoiceoutproducts]); 
     }
 
 }
