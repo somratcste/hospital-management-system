@@ -64,11 +64,11 @@
                   <span>Add Patient</span>
                 </a>
               </li>
-              <li>
+              <!-- <li>
                 <a href="{{ route('invoiceout.index')}}">
                   <span>Add Report</span>
                 </a>
-              </li>
+              </li> -->
               <li>
                 <a href="{{ route('invoiceout.create')}}">
                   <span>DUE List</span>
@@ -327,12 +327,12 @@
             </a>
             <ul class="sub-menu">
               <li>
-                <a href="{{ route('user_registration.index') }}">
+                <a href="{{ route('user.index') }}">
                   <span>Register User</span>
                 </a>
               </li>            
               <li>
-                <a href="">
+                <a href="{{ route('user.create')}}">
                   <span>User List</span>
                 </a>
               </li>

@@ -325,7 +325,7 @@ Route::group(['middleware' => ['auth']] , function() {
 	// 	'as' => 'user.registration'
 	// ]);
 
-	Route::resource('user_registration','RegistrationController');
+	Route::resource('user','RegistrationController');
 });
 
 

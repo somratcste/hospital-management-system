@@ -115,8 +115,12 @@
               <th>Name</th>
               <th>ID</th>
               <th>View</th>
+              @if(Auth::user()->outdoor_patient_edit_id == 1)
               <th>Edit</th>
+              @endif
+              @if(Auth::user()->outdoor_patient_delete_id == 1)
               <th>Delete</th>
+              @endif
             </tr>
           </thead>
           <tfoot>
@@ -125,8 +129,12 @@
               <th>Name</th>
               <th>ID</th>
               <th>View</th>
+              @if(Auth::user()->outdoor_patient_edit_id == 1)
               <th>Edit</th>
+              @endif
+              @if(Auth::user()->outdoor_patient_delete_id == 1)
               <th>Delete</th>
+              @endif
             </tr>
           </tfoot>
           <tbody>
@@ -170,8 +178,9 @@
                 </div>
               </div>
               
-
+              @if(Auth::user()->outdoor_patient_edit_id == 1)
               <td><a data-toggle="modal" data-target="#edit<?php echo $i; ?>" href=""><button type="button" class="btn btn-info">Edit</button></a></td>
+              @endif
               <div class="modal" id="edit<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -229,8 +238,9 @@
         </div>
          </form>
               
-
+              @if(Auth::user()->outdoor_patient_delete_id == 1)
               <td><a data-toggle="modal" data-target="#delete<?php echo $i; ?>" href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
+              @endif
               <div class="modal" id="delete<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">

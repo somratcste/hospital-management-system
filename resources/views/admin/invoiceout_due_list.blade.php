@@ -30,7 +30,9 @@
               <th>P. ID</th>
               <th>Price Update</th>
               <th>View</th>
+              @if(Auth::user()->outdoor_patient_delete_id == 1)
               <th>Delete</th>
+              @endif
             </tr>
           </thead>
           <tfoot>
@@ -40,7 +42,9 @@
               <th>P. ID</th>
               <th>Price Update</th>
               <th>View</th>
+              @if(Auth::user()->outdoor_patient_delete_id == 1)
               <th>Delete</th>
+              @endif
             </tr>
           </tfoot>
           <tbody>
@@ -117,8 +121,9 @@
                 </form>
               </td>
               
-              
+              @if(Auth::user()->outdoor_patient_delete_id == 1)
               <td><a data-toggle="modal" data-target="#delete<?php echo $i; ?>" href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
+              @endif
               <div class="modal" id="delete<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
