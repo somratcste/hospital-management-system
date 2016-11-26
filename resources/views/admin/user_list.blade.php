@@ -32,6 +32,9 @@
               <th>Edit</th>
               @endif
               @if(Auth::user()->name == 'super')
+              <th>Reset Password</th>
+              @endif
+              @if(Auth::user()->name == 'super')
               <th>Delete</th>
               @endif
             </tr>
@@ -43,6 +46,9 @@
               <th>User ID</th>
               @if(Auth::user()->name == 'super')
               <th>Edit</th>
+              @endif
+              @if(Auth::user()->name == 'super')
+              <th>Reset Password</th>
               @endif
               @if(Auth::user()->name == 'super')
               <th>Delete</th>
@@ -411,6 +417,74 @@
                           </select>       
                             </div>
                         </div>
+
+                        <div class="form-group">
+                          <div class="col-md-6 col-md-offset-4" style="margin-top:15px;">
+                              <button type="submit" class="btn btn-success btn-lg btn-block">
+                                  <i class="fa fa-btn fa-user"></i> Update
+                              </button>
+                          </div>
+                      </div>
+
+                        </div>
+                    
+                </div> <!--panel body -->
+                
+                </form>
+
+                @if(Auth::user()->name == 'super')
+              <td><a data-toggle="modal" data-target="#editpassword<?php echo $i; ?>" href=""><button type="button" class="btn btn-info">Reset</button></a></td>
+              @endif
+              <div class="modal" id="editpassword<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                      <h4 class="modal-title">Update Password</h4>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row mb25">
+                      <form class="form-horizontal" role="form" method="POST" action="{{ route('password_reset')}}">
+                        {{ csrf_field() }}
+                      <input type="hidden" name="user_id" value="{{ $user->id }}">
+                        <div class="col-md-6" style="width: 450px;">
+
+                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Name</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control" name="name" value="{{ $user->name }}" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label for="password" class="col-md-4 control-label">Password</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control" name="password">
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+
+                            <div class="col-md-6">
+                                <input id="confirm_password" type="password" class="form-control" name="password_confirmation">
+
+                                @if ($errors->has('password_confirmation'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
 
                         <div class="form-group">
                           <div class="col-md-6 col-md-offset-4" style="margin-top:15px;">

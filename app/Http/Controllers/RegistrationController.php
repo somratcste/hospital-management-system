@@ -76,6 +76,7 @@ class RegistrationController extends Controller
 
 		$user = User::find($id);
 		$user->email = $request['email'];
+		$user->password = bcrypt($request['password']);
 		$user->outdoor_patient_id = $request['outdoor_patient_id'];
 		$user->outdoor_patient_edit_id = $request['outdoor_patient_edit_id'];
 		$user->outdoor_patient_delete_id = $request['outdoor_patient_delete_id'];
@@ -114,5 +115,13 @@ class RegistrationController extends Controller
     {
     	$users = User::orderBy('created_at' , 'desc')->where('name' , '!=' , 'super' )->paginate(50);
 		return view('admin.user_list',['users' => $users]);
+    }
+
+    public function password_reset(Request $request)
+    {
+    	$user = User::find($request['user_id']);
+		$user->password = bcrypt($request['password']);
+		$user->update();
+		return redirect()->back()->with(['success' => 'Password Reset Successfully'] );
     }
 }

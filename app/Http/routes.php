@@ -326,6 +326,10 @@ Route::group(['middleware' => ['auth']] , function() {
 	// ]);
 
 	Route::resource('user','RegistrationController');
+	Route::post('/password_reset' , [
+		'uses' => 'RegistrationController@password_reset',
+		'as' => 'password_reset'
+	]);
 });
 
 
