@@ -113,12 +113,12 @@ body {
       <button>create</button>
       <p class="message">Already registered? <a href="#">Sign In</a></p>
     </form>
-    <form class="login-form form-group{{ $errors->has('email') ? ' has-error' : '' }}" method="POST" action="{{ url('/login') }}">
+    <form class="login-form form-group{{ $errors->has('name') ? ' has-error' : '' }}" method="POST" action="{{ url('/login') }}">
     {{ csrf_field() }}
-      <input name="email" type="email" placeholder="email"/>
-      @if ($errors->has('email'))
+      <input name="name" type="text" placeholder="name"/>
+      @if ($errors->has('name'))
         <span class="help-block">
-            <strong>{{ $errors->first('email') }}</strong>
+            <strong>{{ $errors->first('name') }}</strong>
         </span>
     @endif
     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
