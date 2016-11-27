@@ -43,11 +43,12 @@ class InvoiceoutController extends Controller
         $invoiceout->receive_cash = $request['receive_cash'];
         $invoiceout->due = $request['total_paid'] - $request['receive_cash'];
         $invoiceout->save();
+        $invoiceoutID = $invoiceout->id;
         
         for($i=0;$i<count($_POST['itemNo']);$i++)
         {
             $invoiceoutproduct = new InvoiceOutProduct();
-            $invoiceoutproduct->invoiceOut_id = $request['report_no'];
+            $invoiceoutproduct->invoiceOut_id = $invoiceoutID;
             $invoiceoutproduct->reportType_id = $request['itemNo'][$i];
             $invoiceoutproduct->report_name = $request['itemName'][$i];
             $invoiceoutproduct->report_room = $request['itemAvailable'][$i];
@@ -117,5 +118,7 @@ class InvoiceoutController extends Controller
         $invoiceoutproducts = InvoiceOutProduct::where('invoiceOut_id',$invoiceout_id)->get();
         return view('admin.invoiceout_refund', ['invoiceout'=>$invoiceout,'invoiceoutproducts'=>$invoiceoutproducts]); 
     }
+
+    
 
 }

@@ -71,8 +71,7 @@
     <div class="form-group form-inline">
       <label class="col-sm-4" >Report No : &nbsp;</label>
       <div class="input-group col-sm-6">
-        <input type="number" class="form-control" value="{{ $report_id }}" disabled>
-        <input type="hidden" value="{{ $report_id }}"  name="report_no">
+        <input type="number" name="report_no" class="form-control" value="{{ $report_id }}" disabled>
       </div>
     </div>  
     </div>
@@ -388,7 +387,7 @@ $(".addmore").on('click',function(){
   html += '<td><input type="text" data-type="test_id" name="itemNo[]" id="itemNo_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
   html += '<td><input type="text" data-type="name" name="itemName[]" id="itemName_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
   html += '<td><input type="text" data-type="productAvailable" name="itemAvailable[]" id="itemAvailable_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
-  html += '<td><input type="text" name="total[]" id="total_'+i+'" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" disabled></td>';
+  html += '<td><input type="text" name="total[]" id="total_'+i+'" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" readonly></td>';
   html += '</tr>';
   $('#invoice_bill').append(html);
   i++;

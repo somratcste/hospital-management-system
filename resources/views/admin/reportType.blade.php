@@ -55,6 +55,13 @@
             </div>
 
             <div class="form-group">
+              <label class="col-sm-2 control-label">Discount Percent</label>
+              <div class="col-sm-8">
+                <input type="number" class="form-control" name="percent" placeholder="percent" value="{{ Request::old('percent') }}" required>
+              </div>
+            </div>
+
+            <div class="form-group">
               <label class="col-sm-2 control-label">Room No.</label>
               <div class="col-sm-8">
                 <input type="number" class="form-control" name="room">

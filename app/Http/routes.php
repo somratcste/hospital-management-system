@@ -335,6 +335,9 @@ Route::group(['middleware' => ['auth']] , function() {
 		'uses' => 'RegistrationController@password_reset',
 		'as' => 'password_reset'
 	]);
+
+	Route::resource('refund' , 'RefundController');
+	
 });
 
 

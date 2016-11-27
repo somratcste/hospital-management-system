@@ -12,9 +12,14 @@ class PatientoutController extends Controller
 
     public function index()
     {
+        date_default_timezone_set("Asia/Dhaka");
         $doctors = Doctor::all();
         $patientout = Patientout::whereDate('created_at' , '=' , Carbon::today()->toDateString())->orderBy('created_at' , 'desc')->paginate(50);
-        $patientoutID = Patientout::orderBy('created_at','desc')->first();
+        $patientoutID = Patientout::orderBy('created_at' , 'desc')->whereDate('created_at' , '=' , Carbon::today())->first();
+        if($patientoutID == NULL)
+            $patientoutID = 0 ;
+        else
+            $patientoutID = $patientoutID->patient_id;
         $day = Carbon::today()->day;
         $month = Carbon::today()->month;
         $year = Carbon::today()->year;
@@ -22,7 +27,7 @@ class PatientoutController extends Controller
         $last_day = Carbon::today()->day -1;
         if($last_day + 1 == $day){
 
-            $patient_id = $patientoutID->patient_id+1;
+            $patient_id = $patientoutID+1;
             for($i = $patient_id ; $i <=$patient_id ; $i++) {
                 if($patient_id > 9)
                     break;

@@ -20,4 +20,9 @@ class InvoiceOut extends Model
     {
     	return $this->belongsTo('App\Village');
     }
+
+    public function refund()
+    {
+        return $this->hasOne('App\Refund');
+    }
 }
