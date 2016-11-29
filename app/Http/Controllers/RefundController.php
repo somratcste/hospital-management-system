@@ -51,24 +51,24 @@ class RefundController extends Controller
 
 	public function destroy(Request $request , $id)
     {
-        // $refund = Refund::find($id);
-        // if(!$refund){
-        //     return redirect()->route('refund.index')->with(['fail' => 'Page not found !']);
-        // }
-        // $refund->delete();
+        $refund = Refund::find($id);
+        if(!$refund){
+            return redirect()->route('refund.index')->with(['fail' => 'Page not found !']);
+        }
+        $refund->delete();
 
+        $invoiceOutProduct = InvoiceOutProduct::where('refund_id', $request['refund_id'])->get();
+ 
+        $count = $invoiceOutProduct->count();
+        for($i=1 ; $i<= $count; $i++) 
+        {
+        	$invoiceOutProduct = InvoiceOutProduct::where('refund_id', $request['refund_id'])->first();
+            $invoiceOutProduct->delete();
+        }
 
-        // $invoiceOutProduct = InvoiceOutProduct::where('refund_id', $request['refund_id'])->get();
-        // $count = $invoiceOutProduct->count();
-        // for($i=1 ; $i<= $count; $i++) 
-        // {
-        // 	$invoiceOutProduct->delete();
-        // }
+        $invoiceOut = InvoiceOut::find($request['report_id']);
+        $invoiceOut->delete();
 
-
-        // $invoiceOut = InvoiceOut::where('id' , $request['report_id'])->get();
-        // $invoiceOut->delete();
-        dd("Ops Man ! Transaction don't deleted , Bad Luck !");
 
         return redirect()->route('refund.index')->with(['success' => 'Deleted Successfully.']);
     }

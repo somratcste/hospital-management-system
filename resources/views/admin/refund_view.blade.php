@@ -29,7 +29,7 @@
 
     <div class="">
       <center>
-        <h4>TRUST ONE HOSPITAL</h4>
+        <h4>CENTRAL HOSPITAL</h4>
         <p>Maijdee-Court , Noakhali. Hello : 01823387518</p>
         <p>Patient Copy</p>
       </center>
@@ -192,7 +192,7 @@
 
     <div class="">
       <center>
-        <h4>TRUST ONE HOSPITAL</h4>
+        <h4>CENTRAL HOSPITAL</h4>
         <p>Maijdee-Court , Noakhali. Hello : 01823387518</p>
         <P>Laboratory Copy</P>
       </center>
@@ -292,36 +292,43 @@
               
               <tr>
                 <td width="50%">Subtotal</td>
-                <td width="50%">{{ $invoiceout->subtotal }} Tk.</td>
+                <td width="50%">{{ $refund->subtotal }} Tk.</td>
               </tr>
               <tr>
                 <td>Percent</td>
-                <td>{{ $invoiceout->percent }} Tk.</td>
+                <td>{{ $refund->percent }} %</td>
               </tr>
               <tr>
                 <td>Percent Amount</td>
-                <td>{{ $invoiceout->percent_amount }} Tk.</td>
+                <td>{{ $refund->percent_amount }} Tk.</td>
               </tr>
               <tr>
                 <td>Without Percent</td>
-                <td>{{ $invoiceout->without_percent }} Tk.</td>
+                <td>{{ $refund->without_percent }} Tk.</td>
               </tr>
               <tr>
                 <td>Discount Amount</td>
-                <td>{{ $invoiceout->discount }} Tk.</td>
+                <td>{{ $refund->discount }} Tk.</td>
               </tr>
               <tr>
                 <td>Total</td>
-                <td>{{ $invoiceout->total }} Tk.</td>
+                <td>{{ $refund->total }} Tk.</td>
               </tr>
               <tr>
                 <td>Paid</td>
                 <td>{{ $invoiceout->receive_cash }} Tk.</td>
               </tr>
-              <tr>
-                <td>Due Money</td>
-                <td>{{ $invoiceout->due }} Tk.</td>
-              </tr>
+              @if($refund->less == 0)
+                <tr>
+                  <td>Refund</td>
+                  <td>{{ $refund->refund }} Tk.</td>
+                </tr> 
+              @elseif ($refund->refund == 0)
+                <tr>
+                  <td>Less</td>
+                  <td>{{ $refund->less }} Tk.</td>
+                </tr>
+              @endif
 
           </tbody>
         </table>
@@ -349,7 +356,7 @@
 
     <div class="">
       <center>
-        <h4>TRUST ONE HOSPITAL</h4>
+        <h4>CENTRAL HOSPITAL</h4>
         <p>Maijdee-Court , Noakhali. Hello : 01823387518</p>
         <P>Hospital Copy</P>
       </center>
@@ -457,36 +464,43 @@
               
               <tr>
                 <td width="50%">Subtotal</td>
-                <td width="50%">{{ $invoiceout->subtotal }} Tk.</td>
+                <td width="50%">{{ $refund->subtotal }} Tk.</td>
               </tr>
               <tr>
                 <td>Percent</td>
-                <td>{{ $invoiceout->percent }} Tk.</td>
+                <td>{{ $refund->percent }} %</td>
               </tr>
               <tr>
                 <td>Percent Amount</td>
-                <td>{{ $invoiceout->percent_amount }} Tk.</td>
+                <td>{{ $refund->percent_amount }} Tk.</td>
               </tr>
               <tr>
                 <td>Without Percent</td>
-                <td>{{ $invoiceout->without_percent }} Tk.</td>
+                <td>{{ $refund->without_percent }} Tk.</td>
               </tr>
               <tr>
                 <td>Discount Amount</td>
-                <td>{{ $invoiceout->discount }} Tk.</td>
+                <td>{{ $refund->discount }} Tk.</td>
               </tr>
               <tr>
                 <td>Total</td>
-                <td>{{ $invoiceout->total }} Tk.</td>
+                <td>{{ $refund->total }} Tk.</td>
               </tr>
               <tr>
                 <td>Paid</td>
                 <td>{{ $invoiceout->receive_cash }} Tk.</td>
               </tr>
-              <tr>
-                <td>Due Money</td>
-                <td>{{ $invoiceout->due }} Tk.</td>
-              </tr>
+              @if($refund->less == 0)
+                <tr>
+                  <td>Refund</td>
+                  <td>{{ $refund->refund }} Tk.</td>
+                </tr> 
+              @elseif ($refund->refund == 0)
+                <tr>
+                  <td>Less</td>
+                  <td>{{ $refund->less }} Tk.</td>
+                </tr>
+              @endif
 
           </tbody>
         </table>

@@ -46,6 +46,8 @@ class ReportController extends Controller
         $report->name      = ucfirst($request['name']);
         $report->cost    = $request['cost'];
         $report->room   = $request['room'];
+        $report->test_id = $request['test_id'];
+        $report->percent = $request['percent'];
         $report->update();
         return redirect()->route('reportType.list')->with(['success' => 'Updated Successfully'] );
     }

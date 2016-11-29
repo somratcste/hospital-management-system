@@ -9,7 +9,8 @@
   <link rel="shortcut icon" href="/favicon.ico">
 
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
+  <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-u‌​i.css"> -->
+  
   <!-- page level plugin styles -->
   <link rel="stylesheet" href="{{ asset('styles/climacons-font.css') }}">
   <link rel="stylesheet" href="{{ asset('vendor/rickshaw/rickshaw.min.css') }}">
@@ -26,6 +27,7 @@
   <link rel="stylesheet" href="{{ asset('styles/animate.css') }}">
   <link rel="stylesheet" href="{{ asset('styles/urban.css') }}">
   <link rel="stylesheet" href="{{ asset('styles/urban.skins.css') }}">
+
   <!-- endbuild -->
     @yield('run_custom_css_file')
     @yield('run_custom_css')
@@ -90,6 +92,8 @@
 		@include('includes.footer')
 
         <!-- build:js({.tmp,app}) scripts/app.min.js -->
+        <!-- <script src="code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script> -->
         <script src="{{ asset('scripts/extentions/modernizr.js') }}"></script>
         <script src="{{ asset('vendor/jquery/dist/jquery.js') }}"></script>
         <script src="{{ asset('vendor/jquery/dist/jquery-ui.js') }}"></script>

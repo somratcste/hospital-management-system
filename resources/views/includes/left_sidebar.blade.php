@@ -324,6 +324,33 @@
             </a>
           </li>
           @endif
+
+    
+          <li>
+            <a href="javascript:;">
+              <i class="fa fa-toggle-on"></i>
+              <span>Stock</span>
+            </a>
+            <ul class="sub-menu">
+              <li>
+                <a href="{{ route('stock.create')}}">
+                  <span>Stock Process</span>
+                </a>
+              </li>            
+              <li>
+                <a href="">
+                  <span>Stock List</span>
+                </a>
+              </li>
+              <li>
+                <a href="{{ route('stock.index')}}">
+                  <span>Stock Item</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+     
+
           @if(Auth::user()->user_id ==1)
           <li>
             <a href="javascript:;">

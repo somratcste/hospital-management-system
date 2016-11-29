@@ -77,6 +77,13 @@
                       <form class="form-horizontal bordered-group" role="form" action="{{ route('reportType.update') }}" method="post" enctype="multipart/form-data">
 
             <div class="form-group">
+              <label class="col-sm-3 control-label">Test ID</label>
+              <div class="col-sm-8">
+                <input type="number" class="form-control" name="test_id" placeholder="reportType No" value="{{ Request::old('test_id') ? Request::old('test_id') : isset($reportType) ? $reportType->test_id : '' }}" required>
+              </div>
+            </div>
+
+            <div class="form-group">
               <label class="col-sm-3 control-label">Name</label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" name="name" placeholder="reportType No" value="{{ Request::old('name') ? Request::old('name') : isset($reportType) ? $reportType->name : '' }}" required>
@@ -87,6 +94,13 @@
               <label class="col-sm-3 control-label">Cost</label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" name="cost" value="{{ Request::old('cost') ? Request::old('cost') : isset($reportType) ? $reportType->cost : '' }} ">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Discount Percent</label>
+              <div class="col-sm-8">
+                <input type="number" class="form-control" name="percent" placeholder="reportType No" value="{{ Request::old('percent') ? Request::old('percent') : isset($reportType) ? $reportType->percent : '' }}" required>
               </div>
             </div>
 

@@ -323,7 +323,7 @@ Route::group(['middleware' => ['auth']] , function() {
 	]);
 
 
-	Route::get('/autocomplete',array('as'=>'autocomplete','uses'=>'ReportOutController@autocomplete'));
+	Route::get('/autocomplete',array('as'=>'autocomplete','uses'=>'StockController@autocomplete'));
 
 	// Route::get('/user_registration', [
 	// 	'uses' => 'RegistrationController@index',
@@ -337,6 +337,8 @@ Route::group(['middleware' => ['auth']] , function() {
 	]);
 
 	Route::resource('refund' , 'RefundController');
+
+	Route::resource('stock' , 'StockController');
 	
 });
 
