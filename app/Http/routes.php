@@ -339,6 +339,11 @@ Route::group(['middleware' => ['auth']] , function() {
 	Route::resource('refund' , 'RefundController');
 
 	Route::resource('stock' , 'StockController');
+
+	Route::post('stock_process' , [
+		'uses' => 'StockController@process',
+		'as' => 'stock.process'
+	]);
 	
 });
 

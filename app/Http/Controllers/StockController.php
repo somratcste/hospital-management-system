@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Stock;
 use DateTime;
+use App\StockEntry;
+use App\StockDelivary;
 class StockController extends Controller
 {
 
@@ -61,12 +63,49 @@ class StockController extends Controller
     public function autocomplete(Request $request)
     {
         $term = $request->term ;
-        $data =  Stock::where('name','LIKE','%'.$term.'%')->take(10)->get();
+        $data =  Stock::where('name','LIKE','%'.$term.'%')
+        ->take(10)
+        ->get();
         $result = array();
         foreach ($data as $value) {
             $result[] = ['quantity'=> $value->quantity];
         }
         return response()->json($result);
     }
+
+    public function process(Request $request)
+    {
+        if($request->stock_process == 1)
+            {
+                $stockEntry = new StockEntry();
+                $stockEntry->stock_id = $request['stock_id'];
+                $stockEntry->type = $request['type'];
+                $stockEntry->quantity = $request['quantity'];
+                $stockEntry->address = $request['address'];
+                $stockEntry->save();
+
+                $stock = Stock::find($request['stock_id']);
+                $stock->quantity = $stock->quantity + $request['quantity'];
+                $stock->update();
+
+                return redirect()->back()->with(['success' => 'Product Entry Successfully']);
+            }
+        else 
+            {
+                $stockDelivary = new StockDelivary();
+                $stockDelivary->stock_id = $request['stock_id'];
+                $stockDelivary->type = $request['type'];
+                $stockDelivary->quantity = $request['quantity'];
+                $stockDelivary->address = $request['address'];
+                $stockDelivary->save();
+
+                $stock = Stock::find($request['stock_id']);
+                $stock->quantity = $stock->quantity - $request['quantity'];
+                $stock->update();
+
+                return redirect()->back()->with(['success' => 'Product Delivary Successfully']);
+            }
+    }
+
 
 }

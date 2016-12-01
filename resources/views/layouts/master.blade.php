@@ -71,7 +71,7 @@
       <li>
         <a href="javascript:;" data-toggle="dropdown">
           <img src="images/avatar.jpg" class="header-avatar img-circle ml10" alt="user" title="user">
-          <span class="pull-left">CENTRAL Hospital</span>
+          <span class="pull-left" style="text-transform:uppercase;">{{(Auth::user()->name)}}</span>
         </a>
         <ul class="dropdown-menu">
           <li>
