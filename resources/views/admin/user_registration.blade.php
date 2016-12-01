@@ -144,6 +144,17 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="col-md-4 control-label">Refund</label>
+
+                            <div class="col-md-6">
+                            <select class="form-control" name="refund_id" required>      
+                              <option value="0">No</option>
+                              <option value="1">Yes</option>
+                          </select>       
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="rf_id" class="col-md-4 control-label">Doctor </label>
 
                             <div class="col-md-6">

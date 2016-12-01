@@ -30,11 +30,7 @@
               <th>User ID</th>
               @if(Auth::user()->name == 'super')
               <th>Edit</th>
-              @endif
-              @if(Auth::user()->name == 'super')
               <th>Reset Password</th>
-              @endif
-              @if(Auth::user()->name == 'super')
               <th>Delete</th>
               @endif
             </tr>
@@ -46,11 +42,7 @@
               <th>User ID</th>
               @if(Auth::user()->name == 'super')
               <th>Edit</th>
-              @endif
-              @if(Auth::user()->name == 'super')
               <th>Reset Password</th>
-              @endif
-              @if(Auth::user()->name == 'super')
               <th>Delete</th>
               @endif
             </tr>
@@ -159,6 +151,17 @@
                             <select class="form-control" name="rf_delete_id" required>      
                               <option value="0">No</option>
                               <option value="1" {{ $user->rf_delete_id == 1 ? 'selected'  : '' }}>Yes</option>
+                          </select>       
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Refund </label>
+
+                            <div class="col-md-6">
+                            <select class="form-control" name="refund_id" required>      
+                              <option value="0">No</option>
+                              <option value="1" {{ $user->refund_id == 1 ? 'selected'  : '' }}>Yes</option>
                           </select>       
                             </div>
                         </div>

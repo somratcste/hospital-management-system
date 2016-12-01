@@ -79,15 +79,18 @@
                   <span>PAID List</span>
                 </a>
               </li>
+              @endif
+              @if(Auth::user()->refund_id ==1)
               <li>
                 <a href="{{ route('refund.index')}}">
                   <span>Refund List</span>
                 </a>
               </li>
+              @endif
              </ul>
             </li>
 
-            @endif
+            
 
             @if(Auth::user()->rf_id ==1)
 
@@ -337,11 +340,6 @@
                   <span>Stock Process</span>
                 </a>
               </li>            
-              <li>
-                <a href="">
-                  <span>Stock List</span>
-                </a>
-              </li>
               <li>
                 <a href="{{ route('stock.index')}}">
                   <span>Stock Item</span>

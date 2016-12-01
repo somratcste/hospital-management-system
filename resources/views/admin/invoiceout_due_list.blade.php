@@ -30,7 +30,7 @@
               <th>P. ID</th>
               <th>Price Update</th>
               <th>View</th>
-              @if(Auth::user()->outdoor_patient_delete_id == 1)
+              @if(Auth::user()->refund_id == 1)
               <th>Refund</th>
               @endif
               @if(Auth::user()->outdoor_patient_delete_id == 1)
@@ -45,7 +45,7 @@
               <th>P. ID</th>
               <th>Price Update</th>
               <th>View</th>
-              @if(Auth::user()->outdoor_patient_delete_id == 1)
+              @if(Auth::user()->refund_id == 1)
               <th>Refund</th>
               @endif
               @if(Auth::user()->outdoor_patient_delete_id == 1)
@@ -131,7 +131,7 @@
                 </form>
               </td>
               
-              @if(Auth::user()->outdoor_patient_delete_id == 1)
+              @if(Auth::user()->refund_id == 1)
               <td>
                 <form action="{{ route('invoiceout.refund') }}" method="GET">
                   {{ csrf_field() }}
@@ -140,6 +140,8 @@
                 <button class="btn btn-primary">Refund</button>
                 </form>
               </td>
+              @endif
+              @if(Auth::user()->outdoor_patient_delete_id == 1)
 
               <td><a data-toggle="modal" data-target="#delete<?php echo $i; ?>" href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
               @endif

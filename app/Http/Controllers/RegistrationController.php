@@ -28,6 +28,7 @@ class RegistrationController extends Controller
 		$user->rf_id = $request['rf_id'];
 		$user->rf_edit_id = $request['rf_edit_id'];
 		$user->rf_delete_id = $request['rf_delete_id'];
+		$user->refund_id = $request['refund_id'];
 		$user->doctor_id = $request['doctor_id'];
 		$user->doctor_edit_id = $request['doctor_edit_id'];
 		$user->doctor_delete_id = $request['doctor_delete_id'];
@@ -82,6 +83,7 @@ class RegistrationController extends Controller
 		$user->rf_id = $request['rf_id'];
 		$user->rf_edit_id = $request['rf_edit_id'];
 		$user->rf_delete_id = $request['rf_delete_id'];
+		$user->refund_id = $request['refund_id'];
 		$user->doctor_id = $request['doctor_id'];
 		$user->doctor_edit_id = $request['doctor_edit_id'];
 		$user->doctor_delete_id = $request['doctor_delete_id'];
