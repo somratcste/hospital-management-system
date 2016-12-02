@@ -80,7 +80,7 @@ class StockController extends Controller
                 $stockEntry = new StockEntry();
                 $stockEntry->stock_id = $request['stock_id'];
                 $stockEntry->type = $request['type'];
-                $stockEntry->quantity = $request['quantity'];
+                $stockEntry->quantity_entry = $request['quantity'];
                 $stockEntry->address = $request['address'];
                 $stockEntry->save();
 
@@ -95,7 +95,7 @@ class StockController extends Controller
                 $stockDelivary = new StockDelivary();
                 $stockDelivary->stock_id = $request['stock_id'];
                 $stockDelivary->type = $request['type'];
-                $stockDelivary->quantity = $request['quantity'];
+                $stockDelivary->quantity_delivary = $request['quantity'];
                 $stockDelivary->address = $request['address'];
                 $stockDelivary->save();
 

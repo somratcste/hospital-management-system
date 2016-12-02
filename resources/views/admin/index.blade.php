@@ -435,7 +435,7 @@
               </div>
               <div class="modal-body">
                 <div class="row mb25">
-              <form class="form-horizontal bordered-group" role="form" action="{{ route('daily_entry_hospital')}}" method="get" enctype="multipart/form-data">
+              <form class="form-horizontal bordered-group" role="form" action="{{ route('daily_entry_stock')}}" method="get" enctype="multipart/form-data">
 
             <div class="clear">
               <label class="col-sm-3 control-label">Year</label>
@@ -556,7 +556,7 @@
               </div>
               <div class="modal-body">
                 <div class="row mb25">
-              <form class="form-horizontal bordered-group" role="form" action="{{ route('daily_delivary_hospital')}}" method="get" enctype="multipart/form-data">
+              <form class="form-horizontal bordered-group" role="form" action="{{ route('daily_delivary_stock')}}" method="get" enctype="multipart/form-data">
 
 
             <div class="clear">
@@ -682,7 +682,7 @@
               </div>
               <div class="modal-body">
                 <div class="row mb25">
-              <form class="form-horizontal bordered-group" role="form" action="{{ route('monthly_entry_hospital')}}" method="get" enctype="multipart/form-data">
+              <form class="form-horizontal bordered-group" role="form" action="{{ route('monthly_entry_stock')}}" method="get" enctype="multipart/form-data">
 
             <div class="clear">
               <label class="col-sm-3 control-label">Year</label>
@@ -763,7 +763,7 @@
               </div>
               <div class="modal-body">
                 <div class="row mb25">
-              <form class="form-horizontal bordered-group" role="form" action="{{ route('monthly_delivary_hospital')}}" method="get" enctype="multipart/form-data">
+              <form class="form-horizontal bordered-group" role="form" action="{{ route('monthly_delivary_stock')}}" method="get" enctype="multipart/form-data">
 
             <div class="clear">
               <label class="col-sm-3 control-label">Year</label>

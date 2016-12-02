@@ -302,6 +302,26 @@ Route::group(['middleware' => ['auth']] , function() {
 		'as' => 'monthly_delivary_hospital'
 	]);
 
+	Route::get('/daily_entry_stock' , [
+		'uses' => 'TotalReportController@dailyEntryStock',
+		'as' => 'daily_entry_stock'
+	]);
+
+	Route::get('/daily_delivary_stock' , [
+		'uses' => 'TotalReportController@dailyDelivaryStock',
+		'as' => 'daily_delivary_stock'
+	]);
+
+	Route::get('/monthly_entry_stock' , [
+		'uses' => 'TotalReportController@monthlyEntryStock',
+		'as' => 'monthly_entry_stock'
+	]);
+
+	Route::get('/monthly_delivary_stock' , [
+		'uses' => 'TotalReportController@monthlyDelivaryStock',
+		'as' => 'monthly_delivary_stock'
+	]);
+
 	Route::get('/daily_entry_pharmacy' , [
 		'uses' => 'TotalReportController@dailyEntrypharmacy',
 		'as' => 'daily_entry_pharmacy'
