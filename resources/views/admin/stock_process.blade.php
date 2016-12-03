@@ -44,14 +44,14 @@
           <div class="form-group clear">
             <label class="col-sm-2 control-label">Name</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" name="stock_id" id="searchname" value="2" required>
+              <input type="text" class="form-control" name="stock_id" id="searchname" required>
             </div>
           </div>     
 
           <div class="form-group clear">
             <label class="col-sm-2 control-label">Availabe</label>
             <div class="col-sm-7">
-              <input type="number" class="form-control" id="quantity" value="5" readonly>
+              <input type="number" class="form-control" id="quantity" readonly>
             </div>
           </div> 
          

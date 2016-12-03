@@ -409,6 +409,17 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label for="invoice_id" class="col-md-4 control-label">Stock </label>
+
+                            <div class="col-md-6">
+                            <select class="form-control" name="stock_id" required>      
+                              <option value="0">No</option>
+                              <option value="1">Yes</option>
+                          </select>       
+                            </div>
+                        </div>
+
                         </div>
                     
                 </div> <!--panel body -->

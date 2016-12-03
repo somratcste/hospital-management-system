@@ -33,22 +33,34 @@ class TotalReportController extends Controller
 
 	// start stock section 
 
-	public function dailyEntryStock()
+	public function dailyEntryStock(Request $request)
 	{
+		if($request['type'] == 1 ) 
+			$type = 'Hospital';
+		else
+			$type = 'Laboratory';
+		$day = $request['day'];
+		$month = $request['month'];
+		$year = $request['year'];
+		$date = $month .'-'. $day.'-' . $year ; 
 		$stockEntry = DB::table('stocks')
 					->join('stock_entries' , 'stocks.id', '=' , 'stock_entries.stock_id')
-					->where('stock_entries.type' , '=' , 1)
+					->where('stock_entries.type' , '=' , $request['type'])
 					->get();
-		return view('admin.daily_entry_stock',['stockEntries' => $stockEntry]);
+		return view('admin.daily_entry_stock',['stockEntries' => $stockEntry , 'type'=> $type , 'date' => $date]);
 	}
 
-	public function dailyDelivaryStock()
+	public function dailyDelivaryStock(Request $request)
 	{
+		if($request['type'] == 1 ) 
+			$type = 'Hospital';
+		else
+			$type = 'Laboratory';
 		$stockDelivary = DB::table('stocks')
 					->join('stock_delivaries' , 'stocks.id' , '=' , 'stock_delivaries.stock_id')
-					->where('stock_delivaries.type' , '=' , 1)
+					->where('stock_delivaries.type' , '=' , $request['type'])
 					->get();
-		return view('admin.daily_delivary_stock',['stockDelivaries' => $stockDelivary]);
+		return view('admin.daily_delivary_stock',['stockDelivaries' => $stockDelivary,'type' => $type]);
 	}
 
 	public function monthlyEntryStock()

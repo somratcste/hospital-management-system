@@ -52,6 +52,7 @@ class RegistrationController extends Controller
 		$user->invoice_delete_id = $request['invoice_delete_id'];
 		$user->pharmacy_id = $request['pharmacy_id'];
 		$user->user_id = $request['user_id'];
+		$user->stock_id = $request['stock_id'];
 		$user->save();
 		return redirect()->route('user.create')->with(['success' => 'Create New User Successfully'] );
 	}
@@ -107,6 +108,7 @@ class RegistrationController extends Controller
 		$user->invoice_delete_id = $request['invoice_delete_id'];
 		$user->pharmacy_id = $request['pharmacy_id'];
 		$user->user_id = $request['user_id'];
+		$user->stock_id = $request['stock_id'];
 		$user->save();
 		return redirect()->back()->with(['success' => 'Updtaed Successfully'] );
 

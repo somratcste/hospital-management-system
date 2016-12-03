@@ -328,7 +328,7 @@
           </li>
           @endif
 
-    
+          @if(Auth::user()->stock_id == 1)
           <li>
             <a href="javascript:;">
               <i class="fa fa-toggle-on"></i>
@@ -348,7 +348,7 @@
             </ul>
           </li>
      
-
+          @endif
           @if(Auth::user()->user_id ==1)
           <li>
             <a href="javascript:;">
