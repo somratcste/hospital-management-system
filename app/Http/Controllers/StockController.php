@@ -66,11 +66,11 @@ class StockController extends Controller
         $data =  Stock::where('name','LIKE','%'.$term.'%')
         ->take(10)
         ->get();
-        $result = array();
+        $results = array();
         foreach ($data as $value) {
-            $result[] = ['quantity'=> $value->quantity];
+            $results[] = ['label' => $value->name ,'stock_id' => $value->id, 'quantity'=> $value->quantity];
         }
-        return response()->json($result);
+        return response()->json($results);
     }
 
     public function process(Request $request)

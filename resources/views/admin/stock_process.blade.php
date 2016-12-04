@@ -44,9 +44,16 @@
           <div class="form-group clear">
             <label class="col-sm-2 control-label">Name</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" name="stock_id" id="searchname" required>
+              <input type="text" class="form-control" name="searchname" id="searchname" required>
             </div>
-          </div>     
+          </div>    
+
+          <div class="form-group clear">
+            <label class="col-sm-2 control-label">Product ID</label>
+            <div class="col-sm-7">
+              <input type="number" class="form-control" name="stock_id" id="stock_id" readonly>
+            </div>
+          </div>  
 
           <div class="form-group clear">
             <label class="col-sm-2 control-label">Availabe</label>
@@ -73,7 +80,6 @@
           <button type="submit" class="btn btn-success pull-right">Save</button>
         </div>
         </form>
-    </div>
   </div>
 
   <!-- /main area -->
@@ -84,13 +90,15 @@
 @section('run_custom_jquery')
 
 <script type="text/javascript">
-
   $('#searchname').autocomplete({
     source : '{!!URL::route('autocomplete')!!}',
     minlenght:1,
     autoFocus:true,
-    select:function(e,ui){
+    select:function(event,ui){
+      event.preventDefault();
+      $('#searchname').val(ui.item.label);
       $('#quantity').val(ui.item.quantity);
+      $('#stock_id').val(ui.item.stock_id);
     }
   });
 </script>
