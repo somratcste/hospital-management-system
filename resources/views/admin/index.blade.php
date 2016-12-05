@@ -13,53 +13,33 @@
         <div class="row">
           <div class="col-md-12">
             <div>
-              <div class="widget bg-white">
-                <h1 style="font-family: initial;text-align: center;font-size: 50px;">CENTRAL HOSPITAL</h1>
+              <div class="widget bg-white" 
+              style="border-radius: 40px;
+              background-color: darkslategrey;
+              color: whitesmoke;">
+                <h1 style="font-family: initial;text-align: center;font-size: 50px;"><img src="{{url('/images/central/logo11.png')}}" "alt="Central Hospital (PVT)" height="19%" width="19%" style="padding-bottom: 20px;"></img>
+                <br />
+              
+                CENTRAL HOSPITAL (PVT)</h1>
+                <br />
+
               </div>
             </div>
           </div>
         </div>
 
-        <!-- <div class="row">
-            <div class="widget bg-white">
-              <center><img src="{{url('/images/hospital_one.jpg')}}" height="350px"  alt="Image"/></center>
-            </div>    
-        </div>
-        <div class="row">
-            <div class="widget bg-white">
-              <center><img src="{{url('/images/hospital_two.jpg')}}" height="350px"  alt="Image"/></center>
-            </div>    
-        </div>
-        <div class="row">
-            <div class="widget bg-white">
-              <center><img src="{{url('/images/hospital_three.jpg')}}" height="270px" alt="Image"/>  
-              <img src="{{url('/images/hospital_four.jpg')}}" height="270px"  alt="Image"/></center>
-            </div>  
-        </div>
-        <div class="row">
-            <div class="widget bg-white">
-              <center><img src="{{url('/images/general.jpg')}}" height="270px" width="475px" alt="Image"/>  
-              <img src="{{url('/images/cabin.jpg')}}" height="270px"  alt="Image"/></center>
-            </div>  
-        </div> -->
+    
 
 
         <!-- Start Hospital Section Report -->
         <div class="row">
-          <div class="col-md-12">
-            <div>
-              <div class="widget bg-white">
-                <h1 style="font-family: initial;text-align: center;font-size: 25px;">Hospital Section</h1>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
            <div class="col-md-6" data-toggle="modal" data-target="#dailyEntryHospital" style="cursor: pointer;">
-            <section class="widget bg-lightblue">
+            <section class="widget bg-lightblue"
+              style="border-radius: 40px;
+              background-color: #458484;
+              color: whitesmoke;">
               <div class="widget-details">
-                  <img src="images/avatar.jpg" class="avatar avatar-sm img-circle bordered" alt="">
+                  <img src="images/central/list-9.png" class="avatar avatar-sm img-circle bordered" alt="Daily Entry Report">
               </div>
               <div class="widget-details">
                 <span class="h3 bold" style="font-family: initial;">Daily Entry Report</span>
@@ -161,9 +141,12 @@
         </div>
 
         <div class="col-md-6" data-toggle="modal" data-target="#dailyDelivaryHospital" style="cursor: pointer;">
-            <section class="widget bg-lightblue">
+            <section class="widget bg-lightblue"
+              style="border-radius: 40px;
+              background-color: #458484;
+              color: whitesmoke;">
               <div class="widget-details">
-                  <img src="images/avatar.jpg" class="avatar avatar-sm img-circle bordered" alt="">
+                  <img src="images/central/list-9.png" class="avatar avatar-sm img-circle bordered" alt="Daily Delivary Report">
               </div>
               <div class="widget-details">
                 <span class="h3 bold" style="font-family: initial;">Daily Delivary Report</span>
@@ -270,9 +253,12 @@
 
         <div class="row">
            <div class="col-md-6" data-toggle="modal" data-target="#monthlyEntryPharmacy" style="cursor: pointer;">
-            <section class="widget bg-lightblue">
+            <section class="widget bg-lightblue"
+              style="border-radius: 40px;
+              background-color: #458484;
+              color: whitesmoke;">
               <div class="widget-details">
-                  <img src="images/avatar.jpg" class="avatar avatar-sm img-circle bordered" alt="">
+                  <img src="images/central/list-9.png" class="avatar avatar-sm img-circle bordered" alt="Monthly Entry Report">
               </div>
               <div class="widget-details">
                 <span class="h3 bold" style="font-family: initial;">Monthly Entry Report</span>
@@ -335,9 +321,12 @@
         </div>
 
         <div class="col-md-6" data-toggle="modal" data-target="#monthlyDelivaryPharmacy" style="cursor: pointer;">
-            <section class="widget bg-lightblue">
+            <section class="widget bg-lightblue"
+              style="border-radius: 40px;
+              background-color: #458484;
+              color: whitesmoke;">
               <div class="widget-details">
-                  <img src="images/avatar.jpg" class="avatar avatar-sm img-circle bordered" alt="">
+                  <img src="images/central/list-9.png" class="avatar avatar-sm img-circle bordered" alt="Monthly Delivary Report">
               </div>
               <div class="widget-details">
                 <span class="h3 bold" style="font-family: initial;">Monthly Delivary Report</span>
@@ -404,12 +393,17 @@
 
         <!--Hospital Section End-->
 
+        <!--Hospital Section End-->
+
         <!-- Start Stock Section Report -->
         <div class="row">
           <div class="col-md-12">
             <div>
-              <div class="widget bg-white">
-                <h1 style="font-family: initial;text-align: center;font-size: 25px;">Stock Section</h1>
+              <div class="widget bg-white" 
+              style="border-radius: 40px;
+              background-color: #386969;
+              color: whitesmoke;">
+                <h1 style="font-family: initial;text-align: center;font-size: 35px;">Stock Section</h1>
               </div>
             </div>
           </div>
@@ -417,9 +411,12 @@
 
         <div class="row">
            <div class="col-md-6" data-toggle="modal" data-target="#dailyEntryStock" style="cursor: pointer;">
-            <section class="widget bg-lightblue">
+            <section class="widget bg-lightblue"
+              style="border-radius: 40px;
+              background-color: #458484;
+              color: whitesmoke;">
               <div class="widget-details">
-                  <img src="images/avatar.jpg" class="avatar avatar-sm img-circle bordered" alt="">
+                  <img src="images/central/list-9.png" class="avatar avatar-sm img-circle bordered" alt="Daily Entry Report">
               </div>
               <div class="widget-details">
                 <span class="h3 bold" style="font-family: initial;">Daily Entry Report</span>
@@ -548,9 +545,12 @@
         </div>
 
         <div class="col-md-6" data-toggle="modal" data-target="#dailyDelivaryStock" style="cursor: pointer;">
-            <section class="widget bg-lightblue">
+            <section class="widget bg-lightblue"
+              style="border-radius: 40px;
+              background-color: #458484;
+              color: whitesmoke;">
               <div class="widget-details">
-                  <img src="images/avatar.jpg" class="avatar avatar-sm img-circle bordered" alt="">
+                  <img src="images/central/list-9.png" class="avatar avatar-sm img-circle bordered" alt="Daily Delivary Report">
               </div>
               <div class="widget-details">
                 <span class="h3 bold" style="font-family: initial;">Daily Delivary Report</span>
@@ -683,9 +683,12 @@
 
         <div class="row">
            <div class="col-md-6" data-toggle="modal" data-target="#monthlyEntryStock" style="cursor: pointer;">
-            <section class="widget bg-lightblue">
+            <section class="widget bg-lightblue"
+              style="border-radius: 40px;
+              background-color: #458484;
+              color: whitesmoke;">
               <div class="widget-details">
-                  <img src="images/avatar.jpg" class="avatar avatar-sm img-circle bordered" alt="">
+                  <img src="images/central/list-9.png" class="avatar avatar-sm img-circle bordered" alt="Monthly Entry Report">
               </div>
               <div class="widget-details">
                 <span class="h3 bold" style="font-family: initial;">Monthly Entry Report</span>
@@ -774,9 +777,12 @@
         </div>
 
         <div class="col-md-6" data-toggle="modal" data-target="#monthlyDelivaryStock" style="cursor: pointer;">
-            <section class="widget bg-lightblue">
+            <section class="widget bg-lightblue"
+              style="border-radius: 40px;
+              background-color: #458484;
+              color: whitesmoke;">
               <div class="widget-details">
-                  <img src="images/avatar.jpg" class="avatar avatar-sm img-circle bordered" alt="">
+                  <img src="images/central/list-9.png" class="avatar avatar-sm img-circle bordered" alt="Monthly Delivary Report">
               </div>
               <div class="widget-details">
                 <span class="h3 bold" style="font-family: initial;">Monthly Delivary Report</span>
@@ -874,8 +880,11 @@
         <div class="row">
           <div class="col-md-12">
             <div>
-              <div class="widget bg-white">
-                <h1 style="font-family: initial;text-align: center;font-size: 25px;">Pharmacy Section</h1>
+              <div class="widget bg-white" 
+              style="border-radius: 40px;
+              background-color: #386969;
+              color: whitesmoke;">
+                <h1 style="font-family: initial;text-align: center;font-size: 35px;">Pharmacy Section</h1>
               </div>
             </div>
           </div>
@@ -883,9 +892,12 @@
 
         <div class="row">
            <div class="col-md-6" data-toggle="modal" data-target="#dailyEntryPharmacy" style="cursor: pointer;">
-            <section class="widget bg-lightblue">
+            <section class="widget bg-lightblue"
+              style="border-radius: 40px;
+              background-color: #458484;
+              color: whitesmoke;">
               <div class="widget-details">
-                  <img src="images/avatar.jpg" class="avatar avatar-sm img-circle bordered" alt="">
+                  <img src="images/central/list-9.png" class="avatar avatar-sm img-circle bordered" alt="Daily Entry Report">
               </div>
               <div class="widget-details">
                 <span class="h3 bold" style="font-family: initial;">Daily Entry Report</span>
@@ -907,7 +919,6 @@
               <label class="col-sm-3 control-label">Year</label>
               <div class="col-sm-8">
                 <select class="form-control" name="year">
-                  <option value="{{ $year }}">{{ $year }}</option>
                   <option value="2016">2016</option>
                   <option value="2017">2017</option>
                   <option value="2018">2018</option>
@@ -989,9 +1000,12 @@
 
         <div class="col-md-6" data-toggle="modal" data-target="#dailyDelivaryPharmacy
         " style="cursor: pointer;">
-            <section class="widget bg-lightblue">
+            <section class="widget bg-lightblue"
+              style="border-radius: 40px;
+              background-color: #458484;
+              color: whitesmoke;">
               <div class="widget-details">
-                  <img src="images/avatar.jpg" class="avatar avatar-sm img-circle bordered" alt="">
+                  <img src="images/central/list-9.png" class="avatar avatar-sm img-circle bordered" alt="Daily Delivary Report">
               </div>
               <div class="widget-details">
                 <span class="h3 bold" style="font-family: initial;">Daily Delivary Report</span>
@@ -1097,9 +1111,12 @@
 
         <div class="row">
            <div class="col-md-6" data-toggle="modal" data-target="#monthlyEntryHospital" style="cursor: pointer;">
-            <section class="widget bg-lightblue">
+            <section class="widget bg-lightblue"
+              style="border-radius: 40px;
+              background-color: #458484;
+              color: whitesmoke;">
               <div class="widget-details">
-                  <img src="images/avatar.jpg" class="avatar avatar-sm img-circle bordered" alt="">
+                  <img src="images/central/list-9.png" class="avatar avatar-sm img-circle bordered" alt="Monthly Entry Report">
               </div>
               <div class="widget-details">
                 <span class="h3 bold" style="font-family: initial;">Monthly Entry Report</span>
@@ -1166,9 +1183,12 @@
         </div>
 
         <div class="col-md-6" data-toggle="modal" data-target="#monthlyDelivaryHospital" style="cursor: pointer;">
-            <section class="widget bg-lightblue">
+            <section class="widget bg-lightblue"
+              style="border-radius: 40px;
+              background-color: #458484;
+              color: whitesmoke;">
               <div class="widget-details">
-                  <img src="images/avatar.jpg" class="avatar avatar-sm img-circle bordered" alt="">
+                  <img src="images/central/list-9.png" class="avatar avatar-sm img-circle bordered" alt="Monthly Delivary Report">
               </div>
               <div class="widget-details">
                 <span class="h3 bold" style="font-family: initial;">Monthly Delivary Report</span>

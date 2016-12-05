@@ -1,8 +1,8 @@
   <!-- bottom footer -->
-    <footer class="content-footer">
+    <footer class="content-footer" style="background: #000">
 
       <nav>
-        <ul class="nav" style="">
+        <ul class="nav">
           <li>
             <a href="http://www.somrat.info">Developed By : SOMRAT IT</a>
           </li>
