@@ -42,10 +42,11 @@ class TotalReportController extends Controller
 		$day = $request['day'];
 		$month = $request['month'];
 		$year = $request['year'];
-		$date = $month .'-'. $day.'-' . $year ; 
+		$date = $year .'-'. $month . '-' . $day ; 
 		$stockEntry = DB::table('stocks')
 					->join('stock_entries' , 'stocks.id', '=' , 'stock_entries.stock_id')
 					->where('stock_entries.type' , '=' , $request['type'])
+					->whereDate('stock_entries.created_at' , '=' , $date)
 					->get();
 		return view('admin.daily_entry_stock',['stockEntries' => $stockEntry , 'type'=> $type , 'date' => $date]);
 	}
@@ -56,9 +57,14 @@ class TotalReportController extends Controller
 			$type = 'Hospital';
 		else
 			$type = 'Laboratory';
+		$day = $request['day'];
+		$month = $request['month'];
+		$year = $request['year'];
+		$date = $year .'-'. $month . '-' . $day ; 
 		$stockDelivary = DB::table('stocks')
 					->join('stock_delivaries' , 'stocks.id' , '=' , 'stock_delivaries.stock_id')
 					->where('stock_delivaries.type' , '=' , $request['type'])
+					->whereDate('stock_delivaries.created_at' , '=' , $date)
 					->get();
 		return view('admin.daily_delivary_stock',['stockDelivaries' => $stockDelivary,'type' => $type]);
 	}

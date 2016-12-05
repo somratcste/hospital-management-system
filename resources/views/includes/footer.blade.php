@@ -2,7 +2,7 @@
     <footer class="content-footer">
 
       <nav>
-        <ul class="nav" style="text-align: center;">
+        <ul class="nav" style="">
           <li>
             <a href="http://www.somrat.info">Developed By : SOMRAT IT</a>
           </li>
