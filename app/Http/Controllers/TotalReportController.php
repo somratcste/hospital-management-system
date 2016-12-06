@@ -11,6 +11,16 @@ use App\StockDelivary;
 
 class TotalReportController extends Controller
 { 
+	public function dailyAccounce()
+	{
+		return view('admin.daily_accounce');
+	}
+
+	public function monthlyAccounce()
+	{
+		return view('admin.monthly_accounce');
+	}
+
 	public function dailyEntryHospital()
 	{
 		return view('admin.daily_entry_hospital');

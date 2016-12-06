@@ -332,6 +332,23 @@
           <li>
             <a href="javascript:;">
               <i class="fa fa-toggle-on"></i>
+              <span>Accounce</span>
+            </a>
+            <ul class="sub-menu">
+              <li>
+                <a href="{{ route('accounce_cost.index')}}">
+                  <span>A/C Cost</span>
+                </a>
+              </li>            
+            </ul>
+          </li>
+     
+          @endif
+
+          @if(Auth::user()->stock_id == 1)
+          <li>
+            <a href="javascript:;">
+              <i class="fa fa-toggle-on"></i>
               <span>Stock</span>
             </a>
             <ul class="sub-menu">

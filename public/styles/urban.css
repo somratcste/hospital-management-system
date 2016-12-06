@@ -12924,13 +12924,19 @@ td.align-middle {
 }
 
 .modal-header {
-    min-height: 16.42857143px;
-    padding: 15px;
-    border-bottom: 1px solid #e5e5e5;
-    background: blue;
+    background: darkcyan;
     text-align: center;
     color: white;
 }
+
+.modal-body {
+    background: aliceblue;
+}
+
+.modal-footer {
+    background: darkcyan;
+}
+
 
 .panel-heading {
     position: relative;

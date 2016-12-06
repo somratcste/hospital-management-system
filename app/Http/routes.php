@@ -282,6 +282,16 @@ Route::group(['middleware' => ['auth']] , function() {
 	   return Response::json($villages); 	
 	});
 
+	Route::get('daily_accounce' , [
+		'uses' => 'TotalReportController@dailyAccounce' ,
+		'as' => 'daily_accounce'
+	]);
+
+	Route::get('monthly_accounce' , [
+		'uses' => 'TotalReportController@monthlyAccounce' ,
+		'as' => 'monthly_accounce'
+	]);
+
 	Route::get('/daily_entry_hospital' , [
 		'uses' => 'TotalReportController@dailyEntryHospital',
 		'as' => 'daily_entry_hospital'
@@ -364,6 +374,8 @@ Route::group(['middleware' => ['auth']] , function() {
 		'uses' => 'StockController@process',
 		'as' => 'stock.process'
 	]);
+
+	Route::resource('accounce_cost' , 'AccounceController');
 	
 });
 
