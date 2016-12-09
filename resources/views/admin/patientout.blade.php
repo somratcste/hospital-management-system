@@ -24,6 +24,13 @@
         </div>
        @endif
 
+        <div class="form-group clear">
+            <label class="col-sm-2 control-label">Date</label>
+            <div class="col-sm-7">
+              <input class="form-control" value="{{ $date }}" readonly>
+            </div>
+          </div>
+
           <div class="form-group clear">
             <label class="col-sm-2 control-label">Patient's ID</label>
             <div class="col-sm-7">
@@ -35,7 +42,7 @@
           <div class="form-group clear">
             <label class="col-sm-2 control-label">Patient Name</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" name="name" required>
+              <input type="text" class="form-control" name="name" id="name" required>
             </div>
           </div>
 
@@ -63,29 +70,10 @@
           <div class="form-group clear">
             <label class="col-sm-2 control-label">Visiting Doctor</label>
             <div class="col-sm-7">
-              <select class="form-control" name="doctor_id" id="doctor_id">
-                <option value="">Select Doctor</option>
-                @foreach($doctors as $doctor)
-                  <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
-                @endforeach
-              </select>
+              <input type="text" class="form-control" id="searchname" name="searchname" required>
+              <input type="hidden" name="doctor_id" id="doctor_id">
             </div>
-          </div>
-
-          <div class="form-group clear">
-            <label class="col-sm-2 control-label">Visiting Charge</label>
-            <div class="col-sm-7" id="visiting_charge">
-              <input type="text" class="form-control" disabled>
-            </div>
-          </div>
-
-<!--           <div class="form-group clear">
-            <label class="col-sm-2 control-label">Receive Cash</label>
-            <div class="col-sm-7">
-              <input type="text" class="form-control" name="receive_cash" required>
-            </div>
-          </div> -->
-
+          </div> 
 
         </div>
         <div class="panel-footer" style="overflow: hidden;">
@@ -289,18 +277,24 @@
 <!-- /content panel -->
 @endsection
 
-@section('run_custom_jquery')
-<script type="text/javascript">
-  $('#doctor_id').on('change' , function(e){
-    var doctor_id = e.target.value;
 
-    $.get('/hospital/public/patientout_api?doctor_id=' + doctor_id, function(data){
-      $('#visiting_charge').empty();
-      $.each(data, function(index,chargeobj){
-        $('#visiting_charge').append('<input type="text" name="visiting_charge" class="form-control" value="'+chargeobj.charge+'"disabled>')
-      });
-    });
+
+@section('run_custom_jquery')
+
+<script type="text/javascript">
+  $('#name').focus();
+  $('#searchname').autocomplete({
+    source : '{!!URL::route('autocomplete_doctor')!!}',
+    minlenght:1,
+    autoFocus:true,
+    select:function(event,ui){
+      event.preventDefault();
+      $('#searchname').val(ui.item.label);
+      $('#doctor_id').val(ui.item.id);
+    }
   });
+
 </script>
+
 @endsection
 

@@ -424,7 +424,8 @@ function IsNumeric(e) {
 
 </script>
 
-<script>
+<script type="text/javascript">
+ $('#show').focus();
 $(document).ready(function(){
     $(".panel-body").hide();
 

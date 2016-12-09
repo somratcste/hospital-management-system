@@ -7,7 +7,7 @@ use App\Patientout;
 use App\Doctor;
 use Carbon\Carbon;
 
-class PatientoutController extends Controller
+class PatientOutController extends Controller
 {
 
     public function index()
@@ -82,7 +82,20 @@ class PatientoutController extends Controller
             return redirect()->route('patientout.index')->with(['fail' => 'Page not found !']);
         }
         $patientout->delete();
-        return redirect()->route('patientout.index')->with(['success' => 'Deleted Successfully.']);
+        return redirect()->route('patientout.index')->with(['success' => 'Deleted Successfully.']);                                                         
+    }
+
+    public function autocomplete_doctor(Request $request)
+    {
+        $term = $request->term ;
+        $data =  Doctor::where('name','LIKE','%'.$term.'%')
+        ->take(10)
+        ->get();
+        $results = array();
+        foreach ($data as $value) {
+            $results[] = ['label' => $value->name ,'id' => $value->id];
+        }
+        return response()->json($results);
     }
 
 }
