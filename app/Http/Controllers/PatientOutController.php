@@ -55,6 +55,7 @@ class PatientOutController extends Controller
         $patientout->mobile = $request['mobile'];
         $patientout->address = $request['address'];
         $patientout->doctor_id = $request['doctor_id'];
+        $patientout->gender = $request['gender'];
         // $patientout->receive_cash = $request['receive_cash'];
         $patientout->save();
         $day = Carbon::today()->day;
@@ -71,6 +72,7 @@ class PatientOutController extends Controller
         $patientout->mobile = $request['mobile'];
         $patientout->address = $request['address'];
         $patientout->doctor_id = $request['doctor_id'];
+        $patientout->gender = $request['gender'];
         $patientout->save();
         return redirect()->back()->with(['success' => 'Updtaed Successfully'] );
     }

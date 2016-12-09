@@ -75,6 +75,17 @@
             </div>
           </div> 
 
+          <div class="form-group clear">
+            <label class="col-sm-2 control-label">Gender</label>
+            <div class="col-sm-7">
+              <select class="form-control" name="gender" required>
+                <option value="">Select Gender</option>
+                <option value="m">Male</option>
+                <option value="f">Female</option>
+              </select>
+            </div>
+          </div>
+
         </div>
         <div class="panel-footer" style="overflow: hidden;">
           <button type="submit" class="btn btn-success pull-right">Save</button>
@@ -146,6 +157,7 @@
                         <div class="col-xs-4">
                           <p>ID</p>
                           <p>Name</p>
+                          <p>Gender</p>
                           <p>Mobile</p>
                           <p>Address</p>
                           <p>Visiting Doctor</p>
@@ -153,6 +165,10 @@
                         <div class="col-xs-7">
                           <p> : {{ $patientout->id }}</p>
                           <p> : {{ $patientout->name }}</p>
+                          <p> : @if($patientout->gender=='m') Male 
+                                @else Femaile
+                                @endif
+                          </p>
                           <p> : {{ $patientout->mobile }}</p>
                           <p> : {{ $patientout->address}}</p>
                           <p> : {{ $patientout->doctor->name }}</p>
@@ -191,6 +207,16 @@
             </div>
 
             <div class="form-group clear">
+              <label class="col-sm-3 control-label">Gender</label>
+              <div class="col-sm-8">
+                <select class="form-control" name="gender">                
+                  <option value="m" {{ $patientout->gender == 'm' ? 'selected'  : '' }} > Male</option>
+                  <option value="f" {{ $patientout->gender == 'f' ? 'selected'  : '' }}>Female</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group clear">
               <label class="col-sm-3 control-label">Mobile</label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" name="mobile" value="{{ Request::old('mobile') ? Request::old('mobile') : isset($patientout) ? $patientout->mobile : '' }} " required>
@@ -214,6 +240,8 @@
                 </select>
               </div>
             </div>
+
+
 
               </div>
               </div>
