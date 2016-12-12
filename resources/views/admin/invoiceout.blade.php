@@ -52,7 +52,8 @@
     <div class="box">
     <form class="" method="post" action="{{ route('invoiceout.store')}}" enctype="multipart/form-data">
     {{ csrf_field() }}
-     <input type="hidden" name="patient_id" value="{{Session::get('patientout_id')}}">
+     <input type="hidden" name="patientout_id" value="{{Session::get('patientout_id')}}">
+     <input type="hidden" name="patient_id" value="{{Session::get('patient_id')}}">
     <input name="_method" type="hidden" value="POST">
     <div class='box-body'>  
 
@@ -71,7 +72,7 @@
     <div class="form-group form-inline">
       <label class="col-sm-4" >Report No : &nbsp;</label>
       <div class="input-group col-sm-6">
-        <input type="number" name="report_no" class="form-control" value="{{ $report_id }}" disabled>
+        <input type="number" class="form-control" value="{{ $report_id }}" readonly>
       </div>
     </div>  
     </div>

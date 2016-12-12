@@ -59,7 +59,7 @@
               <tr>
               <td><?php echo $i; ?></td>
               <td>{{ $invoiceout->id}}</td>
-              <td>{{ $invoiceout->patientout_id }}</td>
+              <td>{{ $invoiceout->patient_id }} - {{ $invoiceout->created_at->format('m-d-Y') }}</td>
               <td><a data-toggle="modal" data-target="#edit<?php echo $i; ?>" href=""><button type="button" class="btn btn-info">Edit</button></a></td>
               <div class="modal" id="edit<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
               <div class="modal-dialog">

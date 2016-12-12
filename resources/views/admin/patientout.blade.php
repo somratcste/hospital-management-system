@@ -138,7 +138,7 @@
               <tr>
               <td><?php echo $i; ?></td>
               <td>{{ $patientout->name }}</td>
-              <td>{{ $patientout->id }}</td>
+              <td>{{ $patientout->patient_id }}-{{ $date }}</td>
               <td><a data-toggle="modal" data-target="#details<?php echo $i; ?>" href=""><button type="button" class="btn btn-success">Details</button></a></td>
               <div class="modal" id="details<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog">
@@ -159,7 +159,7 @@
                           <p>Visiting Doctor</p>
                         </div>
                         <div class="col-xs-7">
-                          <p> : {{ $patientout->id }}</p>
+                          <p> : {{ $patientout->patient_id }}-{{ $date }}</p>
                           <p> : {{ $patientout->name }}</p>
                           <p> : @if($patientout->gender=='m') Male 
                                 @else Femaile

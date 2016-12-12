@@ -35,7 +35,8 @@ class InvoiceoutController extends Controller
     {
         date_default_timezone_set("Asia/Dhaka");
         $invoiceout = new InvoiceOut();
-        $invoiceout->patientout_id = $request['patient_id'];
+        $invoiceout->patientout_id = $request['patientout_id'];
+        $invoiceout->patient_id = $request['patient_id'];
         $invoiceout->marketing_id = $request['marketing_id'];
         $invoiceout->village_id = $request['village_id'];
         $invoiceout->subtotal = $request['subtotal'];
@@ -59,7 +60,7 @@ class InvoiceoutController extends Controller
             $invoiceoutproduct->report_cost = $request['total'][$i];
             $invoiceoutproduct->save();
         }
-        return redirect()->back()->with(['success' => 'Insert Successfully'] );
+        return redirect()->route('invoiceout.create')->with(['success' => 'Insert Successfully'] );
     }
 
     public function update(Request $request,$id)
