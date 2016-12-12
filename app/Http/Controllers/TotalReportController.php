@@ -7,18 +7,33 @@ use App\Stock;
 use App\StockEntry;
 use DB;
 use App\StockDelivary;
+use App\AccounceCost;
+use Carbon\Carbon;
 
 
 class TotalReportController extends Controller
 { 
-	public function dailyAccounce()
+	public  function __construct()
 	{
-		return view('admin.daily_accounce');
+		
+	}
+	public function dailyAccounce(Request $request)
+	{
+		$day = $request['day'];
+		$month = $request['month'];
+		$year = $request['year'];
+		$date = $year .'-'. $month . '-' . $day ;
+		$accounce_costs = AccounceCost::whereDate('created_at' , '=' , $date)->orderBy('created_at' , 'desc')->get();
+		return view('admin.daily_accounce', ['accounce_costs' => $accounce_costs , 'date' => $date]);
 	}
 
-	public function monthlyAccounce()
+	public function monthlyAccounce(Request $request)
 	{
-		return view('admin.monthly_accounce');
+		$month = $request['month'];
+		$year = $request['year'];
+		$date = $month  .'-'. $year ; 
+		$accounce_costs = AccounceCost::whereMonth('created_at' , '=' , $month)->orderBy('created_at' , 'desc')->get();
+		return view('admin.monthly_accounce', ['accounce_costs' => $accounce_costs,'date'=> $date]);
 	}
 
 	public function dailyEntryHospital()

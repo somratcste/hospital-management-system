@@ -199,7 +199,7 @@
         <label class="col-sm-4">Receive Cash : &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
-          <input name="receive_cash" type="number" class="form-control" placeholder="Receive Cash">
+          <input name="receive_cash" type="number" class="form-control" placeholder="Receive Cash" required>
         </div>
       </div>
 
