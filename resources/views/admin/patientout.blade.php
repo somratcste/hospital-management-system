@@ -78,11 +78,7 @@
           <div class="form-group clear">
             <label class="col-sm-2 control-label">Gender</label>
             <div class="col-sm-7">
-              <select class="form-control" name="gender" required>
-                <option value="">Select Gender</option>
-                <option value="m">Male</option>
-                <option value="f">Female</option>
-              </select>
+              <input type="text" class="form-control" name="gender" required>
             </div>
           </div>
 
