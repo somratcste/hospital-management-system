@@ -51,7 +51,7 @@
               <tr>
               <td><?php echo $i; ?></td>
               <td>{{ $invoiceout->id}}</td>
-              <td>{{ $invoiceout->patientout_id }}</td>
+              <td>{{ $invoiceout->patient_id }}-{{ $invoiceout->created_at->format('m-d-Y')}}</td>
               <td>
                 <form action="{{ route('invoiceout.view') }}" method="GET">
                   {{ csrf_field() }}

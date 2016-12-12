@@ -27,6 +27,7 @@
             <tr>
               <th>No.</th>
               <th>Report ID</th>
+              <th>Patient ID</th>
               <th>View</th>
               @if(Auth::user()->outdoor_patient_delete_id == 1)
               <th>Delete</th>
@@ -37,6 +38,7 @@
             <tr>
               <th>No.</th>
               <th>Report ID</th>
+              <th>Patient ID</th>
               <th>View</th>
               @if(Auth::user()->outdoor_patient_delete_id == 1)
               <th>Delete</th>
@@ -48,8 +50,8 @@
             @foreach ($refunds as $refund)
               <tr>
               <td><?php echo $i; ?></td>
-              <td>{{ $refund->report_id}}</td>
-              
+              <td>{{ $refund->invoice_out_id}}</td>
+              <td>{{ $refund->invoiceOut->patient_id}}-{{$refund->invoiceOut->created_at->format('m-d-Y')}}</td>
               @if(Auth::user()->outdoor_patient_delete_id == 1)
               <td>
                 <form action="{{ route('refund.create') }}" method="GET">

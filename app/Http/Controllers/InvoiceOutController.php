@@ -111,7 +111,7 @@ class InvoiceoutController extends Controller
 
     public function paidList()
     {
-        $invoiceouts = InvoiceOut::orderBy('created_at','desc')->where('created_at','>=',Carbon::now()->subMonth())->where('due','==',0)->paginate(50);
+        $invoiceouts = InvoiceOut::orderBy('created_at','desc')->where('created_at','>=',Carbon::now()->subMonth())->whereRaw('total = receive_cash')->paginate(50);
         $invoiceoutproduct = InvoiceOutProduct::all();
         return view('admin.invoiceout_paid_list',['invoiceouts' => $invoiceouts , 'invoiceoutproduct'=> $invoiceoutproduct]);
     }

@@ -46,7 +46,7 @@ class RefundController extends Controller
             $invoiceoutproduct->report_cost = $request['total'][$i];
             $invoiceoutproduct->save();
         }
-        return redirect()->back()->with(['success' => 'Refund Successfully'] );
+        return redirect()->route('refund.index')->with(['success' => 'Refund Successfully'] );
     }
 
 	public function destroy(Request $request , $id)
@@ -77,7 +77,7 @@ class RefundController extends Controller
     {
     	$refund_id = $request['refund_id'];
         $refund = Refund::find($refund_id);
- 		$report_id = $refund->report_id;
+ 		$report_id = $refund->invoice_out_id;
         $invoiceout = InvoiceOut::find($report_id);
         $invoiceoutproducts = InvoiceOutProduct::where('refund_id' , $refund_id)->get();
         return view('admin.refund_view' , ['refund' => $refund , 'invoiceout' => $invoiceout , 'invoiceoutproducts' => $invoiceoutproducts]);

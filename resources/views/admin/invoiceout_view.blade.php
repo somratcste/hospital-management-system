@@ -66,7 +66,7 @@
 
             <tr>
               <td>Patient ID</td>
-              <td>{{ $invoiceout->patientout->id }}</td>
+              <td>{{ $invoiceout->patient_id }}-{{ $invoiceout->created_at->format('m-d-Y')}}</td>
             </tr>
             <tr>
               <td>Patient Mobile</td>
