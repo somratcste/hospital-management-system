@@ -9,13 +9,14 @@ use DB;
 use App\StockDelivary;
 use App\AccounceCost;
 use Carbon\Carbon;
-
+use App\InvoiceOut;
+use App\Refund;
 
 class TotalReportController extends Controller
 { 
 	public  function __construct()
 	{
-		
+		date_default_timezone_set("Asia/Dhaka");
 	}
 	public function dailyAccounce(Request $request)
 	{
@@ -36,9 +37,16 @@ class TotalReportController extends Controller
 		return view('admin.monthly_accounce', ['accounce_costs' => $accounce_costs,'date'=> $date]);
 	}
 
-	public function dailyEntryHospital()
+	public function dailyEntryHospital(Request $request)
 	{
-		return view('admin.daily_entry_hospital');
+		$day = $request['day'];
+		$month = $request['month'];
+		$year = $request['year'];
+		$date = $year .'-'. $month . '-' . $day ;
+		$due_lists = InvoiceOut::whereDate('created_at' , '=' , $date)->orderBy('created_at' , 'desc')->where('due','!=',0)->get();
+		$paid_lists = InvoiceOut::whereDate('created_at' , '=' , $date)->orderBy('created_at' , 'desc')->whereRaw('total = receive_cash')->get();
+		$refund_lists = Refund::whereDate('created_at' , '=' , $date)->orderBy('created_at' , 'desc')->get();
+		return view('admin.daily_entry_hospital' , ['due_lists'=>$due_lists,'paid_lists'=>$paid_lists , 'refund_lists' => $refund_lists]);
 	}
 
 	public function dailyDelivaryHospital()

@@ -30,4 +30,9 @@ class InvoiceOut extends Model
     {
         return $this->hasMany('App\OutdoorIncome');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

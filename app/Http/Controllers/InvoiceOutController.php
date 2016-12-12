@@ -49,6 +49,7 @@ class InvoiceoutController extends Controller
         $invoiceout->total = $request['total_paid'];
         $invoiceout->receive_cash = $request['receive_cash'];
         $invoiceout->due = $request['total_paid'] - $request['receive_cash'];
+        $invoiceout->user_id = Auth::user()->id ;
         $invoiceout->save();
         $invoiceoutID = $invoiceout->id;
 

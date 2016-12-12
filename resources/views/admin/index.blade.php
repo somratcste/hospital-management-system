@@ -301,6 +301,7 @@
               <label class="col-sm-3 control-label">Year</label>
               <div class="col-sm-8">
                 <select class="form-control" name="year">
+                  <option value="{{ $year }}">{{ $year }}</option>
                   <option value="2016">2016</option>
                   <option value="2017">2017</option>
                   <option value="2018">2018</option>
@@ -314,7 +315,22 @@
               <label class="col-sm-3 control-label">Month</label>
               <div class="col-sm-8">
                 <select class="form-control" name="month">
-                  <option value="01">October</option>
+                  <option value="{{ $month }}">
+                        @if($month==12) December 
+                        @elseif($month==11) November 
+                        @elseif($month==10) October
+                        @elseif($month==09) September
+                        @elseif($month==08) August
+                        @elseif($month==07) July
+                        @elseif($month==06) June
+                        @elseif($month==05) May
+                        @elseif($month==04) April
+                        @elseif($month==03) March
+                        @elseif($month==02) February
+                        @elseif($month==01) January
+                        @endif
+                  </option>
+                  <option value="01">January</option>
                   <option value="02">February</option>
                   <option value="03">March</option>
                   <option value="04">April</option>
@@ -334,6 +350,7 @@
               <label class="col-sm-3 control-label">Day</label>
               <div class="col-sm-8">
                 <select class="form-control" name="day">
+                  <option value="{{ $day }}">{{ $day }}</option>
                   <option value="01">1</option>
                   <option value="02">2</option>
                   <option value="03">3</option>
@@ -409,6 +426,7 @@
               <label class="col-sm-3 control-label">Year</label>
               <div class="col-sm-8">
                 <select class="form-control" name="year">
+                  <option value="{{ $year }}">{{ $year }}</option>
                   <option value="2016">2016</option>
                   <option value="2017">2017</option>
                   <option value="2018">2018</option>
@@ -422,7 +440,22 @@
               <label class="col-sm-3 control-label">Month</label>
               <div class="col-sm-8">
                 <select class="form-control" name="month">
-                  <option value="01">October</option>
+                  <option value="{{ $month }}">
+                        @if($month==12) December 
+                        @elseif($month==11) November 
+                        @elseif($month==10) October
+                        @elseif($month==09) September
+                        @elseif($month==08) August
+                        @elseif($month==07) July
+                        @elseif($month==06) June
+                        @elseif($month==05) May
+                        @elseif($month==04) April
+                        @elseif($month==03) March
+                        @elseif($month==02) February
+                        @elseif($month==01) January
+                        @endif
+                  </option>
+                  <option value="01">January</option>
                   <option value="02">February</option>
                   <option value="03">March</option>
                   <option value="04">April</option>
@@ -442,6 +475,7 @@
               <label class="col-sm-3 control-label">Day</label>
               <div class="col-sm-8">
                 <select class="form-control" name="day">
+                  <option value="{{ $day }}">{{ $day }}</option>
                   <option value="01">1</option>
                   <option value="02">2</option>
                   <option value="03">3</option>
@@ -520,6 +554,7 @@
               <label class="col-sm-3 control-label">Year</label>
               <div class="col-sm-8">
                 <select class="form-control" name="year">
+                  <option value="{{ $year }}">{{ $year }}</option>
                   <option value="2016">2016</option>
                   <option value="2017">2017</option>
                   <option value="2018">2018</option>
@@ -533,7 +568,22 @@
               <label class="col-sm-3 control-label">Month</label>
               <div class="col-sm-8">
                 <select class="form-control" name="month">
-                  <option value="01">October</option>
+                  <option value="{{ $month }}">
+                        @if($month==12) December 
+                        @elseif($month==11) November 
+                        @elseif($month==10) October
+                        @elseif($month==09) September
+                        @elseif($month==08) August
+                        @elseif($month==07) July
+                        @elseif($month==06) June
+                        @elseif($month==05) May
+                        @elseif($month==04) April
+                        @elseif($month==03) March
+                        @elseif($month==02) February
+                        @elseif($month==01) January
+                        @endif
+                  </option>
+                  <option value="01">January</option>
                   <option value="02">February</option>
                   <option value="03">March</option>
                   <option value="04">April</option>
@@ -588,6 +638,7 @@
               <label class="col-sm-3 control-label">Year</label>
               <div class="col-sm-8">
                 <select class="form-control" name="year">
+                  <option value="{{ $year }}">{{ $year }}</option>
                   <option value="2016">2016</option>
                   <option value="2017">2017</option>
                   <option value="2018">2018</option>
@@ -601,7 +652,22 @@
               <label class="col-sm-3 control-label">Month</label>
               <div class="col-sm-8">
                 <select class="form-control" name="month">
-                  <option value="01">October</option>
+                  <option value="{{ $month }}">
+                        @if($month==12) December 
+                        @elseif($month==11) November 
+                        @elseif($month==10) October
+                        @elseif($month==09) September
+                        @elseif($month==08) August
+                        @elseif($month==07) July
+                        @elseif($month==06) June
+                        @elseif($month==05) May
+                        @elseif($month==04) April
+                        @elseif($month==03) March
+                        @elseif($month==02) February
+                        @elseif($month==01) January
+                        @endif
+                  </option>
+                  <option value="01">January</option>
                   <option value="02">February</option>
                   <option value="03">March</option>
                   <option value="04">April</option>

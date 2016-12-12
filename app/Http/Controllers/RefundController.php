@@ -19,7 +19,7 @@ class RefundController extends Controller
     {
         date_default_timezone_set("Asia/Dhaka");
         $refund = new Refund();
-        $refund->report_id = $request['report_id'];
+        $refund->invoice_out_id = $request['report_id'];
         $refund->subtotal = $request['subtotal'];
         $refund->percent = $request['percent'];
         $refund->percent_amount = $request['percent_amount'];

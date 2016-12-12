@@ -5,10 +5,10 @@ use Carbon\Carbon;
 
 class AdminController extends Controller {
 
-	// public function __construct()
-	// {
-	// 	$this->middleware('auth');
-	// }
+	public  function __construct()
+	{
+		date_default_timezone_set("Asia/Dhaka");
+	}
 	public function index()
 	{
 		$day = Carbon::today()->day;
