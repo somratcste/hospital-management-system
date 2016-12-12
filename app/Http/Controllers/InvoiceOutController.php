@@ -8,6 +8,8 @@ use Carbon\Carbon;
 use App\Marketing;
 use App\InvoiceOut;
 use App\InvoiceOutProduct;
+use App\OutdoorIncome;
+use Auth;
 class InvoiceoutController extends Controller
 {
 
@@ -49,6 +51,13 @@ class InvoiceoutController extends Controller
         $invoiceout->due = $request['total_paid'] - $request['receive_cash'];
         $invoiceout->save();
         $invoiceoutID = $invoiceout->id;
+
+        $outdoorIncome = new OutdoorIncome();
+        $outdoorIncome->invoice_out_id = $invoiceoutID;
+        $outdoorIncome->taka = $request['receive_cash'];
+        $outdoorIncome->user_id = Auth::user()->id ;
+        $outdoorIncome->save();
+        
         
         for($i=0;$i<count($_POST['itemNo']);$i++)
         {
@@ -70,6 +79,13 @@ class InvoiceoutController extends Controller
         $invoiceout->receive_cash = $request['receive_cash'] + $paid;
         $invoiceout->due = $invoiceout->total - ($paid + $request['receive_cash']);
         $invoiceout->save();
+
+        $outdoorIncome = new OutdoorIncome();
+        $outdoorIncome->invoice_out_id = $id;
+        $outdoorIncome->taka = $request['receive_cash'];
+        $outdoorIncome->user_id = Auth::user()->id ;
+        $outdoorIncome->save();
+
         return redirect()->back()->with(['success' => 'Updtaed Successfully'] );
     }
 

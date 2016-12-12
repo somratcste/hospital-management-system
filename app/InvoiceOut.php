@@ -25,4 +25,9 @@ class InvoiceOut extends Model
     {
         return $this->hasOne('App\Refund');
     }
+
+    public function outdoorIncome()
+    {
+        return $this->hasMany('App\OutdoorIncome');
+    }
 }
