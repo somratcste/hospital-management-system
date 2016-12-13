@@ -10,26 +10,21 @@
 <!-- main area -->
 <div class="main-content">
 
+  <!-- Monthly Cost Start -->
   <div class="row">
     <div class="panel mb25">
         <div class="panel-heading border">
          View ALL Monthly Accounce Cost on {{ $date }}
         </div>
         <div class="panel-body">
-        @if(Session::has('success'))
-        <div class="alert alert-success">
-          {{Session::get('success')}}
-        </div>
-      @endif
         
         <div class="table-responsive">
         <table class="table table-bordered table-striped mb0">
           <thead>
             <tr>
               <th>No.</th>
-              <th>Particular</th>
-              <th>Taka</th>
               <th>Date</th>
+              <th>Taka</th>
             </tr>
           </thead>
           @php 
@@ -40,11 +35,10 @@
             @foreach ($accounce_costs as $accounce_cost)
               <tr>
               <td><?php echo $i; ?></td>
-              <td>{{ $accounce_cost->name }}</td>
-              <td>{{ $accounce_cost->taka }} /-</td> 
+              <td>{{ $accounce_cost->created_at->format('m-d-Y')}}</td>
+              <td>{{ $accounce_cost->totalTaka }} /-</td> 
                   @php 
-                  $totalAccounce = $accounce_cost->taka+ $totalAccounce @endphp    
-              <td>{{ $accounce_cost->created_at->format('m-d-Y')}}</td>                     
+                  $totalAccounce = $accounce_cost->totalTaka+ $totalAccounce @endphp                        
             </tr>
             <?php $i++; ?>
             @endforeach
@@ -54,7 +48,6 @@
               <th></th>
               <th>Total</th>
               <th>{{ $totalAccounce }} Tk.</th>
-              <th></th>
             </tr>
           </tfoot>
         </table>
@@ -65,6 +58,8 @@
       </div>
     </div>
   </div>
+  <!-- Monthly Cost End -->
+
   <!-- /main area -->
 </div>
 <!-- /content panel -->

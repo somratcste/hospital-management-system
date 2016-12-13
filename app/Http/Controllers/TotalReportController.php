@@ -35,7 +35,11 @@ class TotalReportController extends Controller
 		$month = $request['month'];
 		$year = $request['year'];
 		$date = $month  .'-'. $year ; 
-		$accounce_costs = AccounceCost::whereMonth('created_at' , '=' , $month)->orderBy('created_at' , 'desc')->get();
+		$accounce_costs = AccounceCost::whereMonth('created_at' , '=' , $month)
+						->select('taka','name','created_at',DB::raw('SUM(taka) as totalTaka'))
+						->groupBy(DB::raw('Date(created_at)'))
+						->get(array('taka','created_at'));
+						
 		return view('admin.monthly_accounce', ['accounce_costs' => $accounce_costs,'date'=> $date]);
 	}
 
