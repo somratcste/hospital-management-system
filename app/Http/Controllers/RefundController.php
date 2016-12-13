@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Refund;
 use App\InvoiceOutProduct;
 use App\InvoiceOut;
+use Auth;
 class RefundController extends Controller
 {
 	public function index()
@@ -26,6 +27,7 @@ class RefundController extends Controller
         $refund->without_percent = $request['without_percent'];
         $refund->discount = $request['discount'];
         $refund->total = $request['total_paid'];
+        $refund->user_id = Auth::user()->id ;
         $receive_cash = InvoiceOut::find($request['report_id']);
         $receive_cash->due = 0 ;
         $receive_cash->update();

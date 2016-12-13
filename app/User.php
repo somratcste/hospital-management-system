@@ -28,4 +28,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\InvoiceOut');
     }
+
+    public function outdoorIncome()
+    {
+        return $this->hasMany('App\OutdoorIncome');
+    }
 }

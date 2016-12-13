@@ -10,4 +10,9 @@ class OutdoorIncome extends Model
     {
     	return $this->belongsTo('App\invoiceOut');
     }
+
+    public function user()
+    {
+    	return $this->belongsTo('App\User');
+    }
 }

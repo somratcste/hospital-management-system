@@ -11,6 +11,7 @@ use App\AccounceCost;
 use Carbon\Carbon;
 use App\InvoiceOut;
 use App\Refund;
+use App\OutdoorIncome;
 
 class TotalReportController extends Controller
 { 
@@ -25,7 +26,8 @@ class TotalReportController extends Controller
 		$year = $request['year'];
 		$date = $year .'-'. $month . '-' . $day ;
 		$accounce_costs = AccounceCost::whereDate('created_at' , '=' , $date)->orderBy('created_at' , 'desc')->get();
-		return view('admin.daily_accounce', ['accounce_costs' => $accounce_costs , 'date' => $date]);
+		$daily_incomes = OutdoorIncome::whereDate('created_at','=', $date)->orderBy('created_at','desc')->get();
+		return view('admin.daily_accounce', ['accounce_costs' => $accounce_costs , 'date' => $date ,'daily_incomes'=> $daily_incomes]);
 	}
 
 	public function monthlyAccounce(Request $request)
@@ -43,9 +45,17 @@ class TotalReportController extends Controller
 		$month = $request['month'];
 		$year = $request['year'];
 		$date = $year .'-'. $month . '-' . $day ;
-		$due_lists = InvoiceOut::whereDate('created_at' , '=' , $date)->orderBy('created_at' , 'desc')->where('due','!=',0)->get();
-		$paid_lists = InvoiceOut::whereDate('created_at' , '=' , $date)->orderBy('created_at' , 'desc')->whereRaw('total = receive_cash')->get();
-		$refund_lists = Refund::whereDate('created_at' , '=' , $date)->orderBy('created_at' , 'desc')->get();
+		$due_lists = InvoiceOut::whereDate('created_at' , '=' , $date)
+					->orderBy('created_at' , 'desc')
+					->where('due','!=',0)
+					->get();
+		$paid_lists = InvoiceOut::whereDate('created_at' , '=' , $date)
+					->orderBy('created_at' , 'desc')
+					->whereRaw('total = receive_cash')
+					->get();
+		$refund_lists = Refund::whereDate('created_at' , '=' , $date)
+					->orderBy('created_at' , 'desc')
+					->get();
 		return view('admin.daily_entry_hospital' , ['due_lists'=>$due_lists,'paid_lists'=>$paid_lists , 'refund_lists' => $refund_lists]);
 	}
 

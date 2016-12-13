@@ -84,16 +84,10 @@
             </tr>
             <?php $i++; ?>
             @php 
-              $subtotal += $invoiceout->subtotal 
-            @endphp
-            @php 
-              $hospital += $invoiceout->subtotal / 2 
-            @endphp
-            @php 
-              $less += $invoiceout->percent_amount + $invoiceout->discount
-            @endphp
-            @php 
-              $pay += ($invoiceout->subtotal / 2) - ($invoiceout->percent_amount + $invoiceout->discount)
+              $subtotal += $invoiceout->subtotal ;
+              $hospital += $invoiceout->subtotal / 2  ;
+              $less += $invoiceout->percent_amount + $invoiceout->discount  ;
+              $pay += ($invoiceout->subtotal / 2) - ($invoiceout->percent_amount + $invoiceout->discount) ;
             @endphp
 
             @endforeach
@@ -131,16 +125,6 @@
         </div>
       </div>
         <section>
-        <nav>
-          <ul class="pager">
-              @if($invoiceouts->currentPage() !== 1)
-                <li class="previous"><a href="{{ $invoiceouts->previousPageUrl() }}"><span aria-hidden="true">&larr;</span> Older</a></li>
-              @endif
-              @if($invoiceouts->currentPage() !== $invoiceouts->lastPage() && $invoiceouts->hasPages())
-                <li class="next"><a href="{{ $invoiceouts->nextPageUrl() }}">Newer <span aria-hidden="true">&rarr;</span></a></li>
-              @endif
-          </ul>
-        </nav>
       </section>
       </div>
 
