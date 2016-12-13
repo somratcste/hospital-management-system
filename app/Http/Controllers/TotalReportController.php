@@ -36,11 +36,15 @@ class TotalReportController extends Controller
 		$year = $request['year'];
 		$date = $month  .'-'. $year ; 
 		$accounce_costs = AccounceCost::whereMonth('created_at' , '=' , $month)
-						->select('taka','name','created_at',DB::raw('SUM(taka) as totalTaka'))
+						->select('taka','created_at',DB::raw('SUM(taka) as totalCost'))
+						->groupBy(DB::raw('Date(created_at)'))
+						->get(array('taka','created_at'));
+		$accounce_incomes = OutdoorIncome::whereMonth('created_at' , '=' , $month)
+						->select('taka','created_at',DB::raw('SUM(taka) as totalIncome'))
 						->groupBy(DB::raw('Date(created_at)'))
 						->get(array('taka','created_at'));
 						
-		return view('admin.monthly_accounce', ['accounce_costs' => $accounce_costs,'date'=> $date]);
+		return view('admin.monthly_accounce', ['accounce_costs' => $accounce_costs,'date'=> $date,'accounce_incomes'=> $accounce_incomes]);
 	}
 
 	public function dailyEntryHospital(Request $request)
