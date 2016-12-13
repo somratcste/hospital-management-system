@@ -378,6 +378,8 @@ Route::group(['middleware' => ['auth']] , function() {
 	Route::resource('accounce_cost' , 'AccounceController');
 
 	Route::get('/autocomplete_doctor',array('as'=>'autocomplete_doctor','uses'=>'PatientOutController@autocomplete_doctor'));
+
+	Route::get('/autocomplete_village',array('as'=>'autocomplete_village','uses'=>'InvoiceOutController@autocomplete_village'));
 	
 });
 

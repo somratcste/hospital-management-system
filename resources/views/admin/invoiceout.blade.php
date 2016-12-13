@@ -57,15 +57,6 @@
     <input name="_method" type="hidden" value="POST">
     <div class='box-body'>  
 
-    <!-- <div class="row col-md-6 pull-left">
-    
-    <div class="form-group form-inline">
-      <label class="col-sm-4" >Patient's ID : &nbsp;</label>
-      <div class="input-group col-sm-6">
-        <input name="patient_id" class="form-control" value="{{Session::get('patient_id')}} {{Session::get('date')}}" readonly>
-      </div>
-    </div>  
-    </div> -->
 
     <div class="row col-md-6 pull-left">
     
@@ -77,39 +68,30 @@
     </div>  
     </div>
 
+    <div class="row col-md-6 pull-right">  
+    <div class="form-group form-inline">
+      <label class="col-sm-4" >Search : &nbsp;</label>
+      <div class="input-group col-sm-6">
+        <input type="text" class="form-control" id="village_id" name="village_id" required>
+      </div>
+    </div>  
+    </div>  
 
-    <div class="row col-md-6 pull-right">
+    <div class="row col-md-6 pull-left">
     <div class="form-group form-inline">
       <label class="col-sm-4" >Marketing Officer : &nbsp;</label>
       <div class="input-group col-sm-6">
-        <select name="marketing_id" class="form-control" id="marketing" required>
-          <option value="">Select Marketig Officer</option>
-          @foreach($marketings as $marketing)
-            <option value="{{ $marketing->id }}">{{ $marketing->name }}</option>
-          @endforeach
-        </select>
+        <input type="hidden" class="form-control" name="marketing_id" id="marketing_id">
+        <input type="text" class="form-control" id="marketing_name" required readonly>
       </div>
     </div>  
-    </div>  
-
-    <!-- <div class="row col-md-6 pull-left">
-    
-    <div class="form-group form-inline">
-      <label class="col-sm-4" >Patient's Name : &nbsp;</label>
-      <div class="input-group col-sm-6">
-        <input class="form-control" value="{{Session::get('patient_name')}}" readonly>
-      </div>
-    </div>  
-    </div> -->
- 
+    </div> 
 
     <div class="row col-md-6 pull-right">
     <div class="form-group form-inline">
       <label class="col-sm-4" >Village Doctor : &nbsp;</label>
       <div class="input-group col-sm-6">
-        <select name="village_id" id="village" class="form-control" required>
-          <option value="">Select Village Doctor</option>
-        </select>
+        <input type="text" class="form-control" id="village_name" required readonly>
       </div>
     </div>  
     </div>
@@ -236,15 +218,17 @@
 @endsection
 @section('run_custom_jquery')
 <script type="text/javascript">
-  $('#marketing').on('change' , function(e){
-    var marketing_id = e.target.value;
-
-    $.get('/hospital/public/reportout_village?marketing_id=' + marketing_id, function(data){
-      $('#village').empty();
-      $.each(data, function(index,villageobj){
-        $('#village').append('<option value="'+villageobj.id+'">'+villageobj.name+'</option>')
-      });
-    });
+  $('#village_id').autocomplete({
+    source : '{!!URL::route('autocomplete_village')!!}',
+    minlenght:1,
+    autoFocus:true,
+    select:function(event,ui){
+      event.preventDefault();
+      $('#village_name').val(ui.item.label);
+      $('#village_id').val(ui.item.village_id);
+      $('#marketing_id').val(ui.item.marketing_id);
+      $('#marketing_name').val(ui.item.marketing_name);
+    }
   });
 </script>
 

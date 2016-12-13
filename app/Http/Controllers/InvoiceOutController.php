@@ -10,6 +10,7 @@ use App\InvoiceOut;
 use App\InvoiceOutProduct;
 use App\OutdoorIncome;
 use Auth;
+use App\Village;
 class InvoiceoutController extends Controller
 {
 
@@ -115,13 +116,16 @@ class InvoiceoutController extends Controller
         return view('admin.invoiceout_view', ['invoiceout'=>$invoiceout,'invoiceoutproducts'=>$invoiceoutproducts]);
     }
 
-    public function autocomplete(Request $request)
+    public function autocomplete_village(Request $request)
     {
-        $term = $request->name_startsWith;
-        $data = invoiceType::where('name','LIKE','%'.$term.'%')->take(10)->get();
+       $term = $request->term ;
+        $data =  Village::where('id','LIKE','%'.$term.'%')
+        ->orWhere('name','LIKE','%'.$term.'%')
+        ->take(10)
+        ->get();
         $results = array();
-        foreach ($data as $key => $v) {
-            $results[] = ['test_id'=>$v->id ,'value'=>$v->name , 'cost'=>$v->cost,'room'=>$v->room];
+        foreach ($data as $value) {
+            $results[] = ['label' => $value->name .'-'. $value->mobile ,'village_id' => $value->id,'marketing_id' =>$value->marketing_id,'marketing_name'=> $value->marketing->name ];
         }
         return response()->json($results);
     }
