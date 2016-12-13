@@ -17,23 +17,15 @@
         </div>
       <div class="panel-body">
 
-     <form action="{{ route('village.create')}}" method="get" enctype="multipart/form-data">
+     <form action="{{ route('marketing.view')}}" method="get" enctype="multipart/form-data">
       {{ csrf_field() }}
-      <input name="_method" type="hidden" value="GET">
-
-      <div class="form-group clear">
-      <label class="col-sm-3 control-label" >Village Doctor : &nbsp;</label>
-      <div class="col-sm-7">
-        <input type="text" class="form-control" id="village_name" required>
-        <input type="hidden" name="village_id" id="village_id">
-      </div>
-    </div>  
+      <input name="_method" type="hidden" value="GET"> 
 
     <div class="form-group clear">
       <label class="col-sm-3 control-label">Marketing Officer</label>
       <div class="col-sm-7">
         <input type="hidden" class="form-control" name="marketing_id" id="marketing_id">
-        <input type="text" class="form-control" id="marketing_name" required readonly>
+        <input type="text" class="form-control" id="marketing_name" required>
       </div>
     </div>  
 
@@ -72,46 +64,6 @@
       </div>
     </div>
 
-    <div class="form-group clear">
-      <label class="col-sm-3 control-label">Day</label>
-      <div class="col-sm-7">
-        <select class="form-control" name="day" required>
-        <option value="">Select Day</option>
-          <option value="01">1</option>
-          <option value="02">2</option>
-          <option value="03">3</option>
-          <option value="04">4</option>
-          <option value="05">5</option>
-          <option value="06">6</option>
-          <option value="07">7</option>
-          <option value="08">8</option>
-          <option value="09">9</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-          <option value="12">12</option>
-          <option value="13">13</option>
-          <option value="14">14</option>
-          <option value="15">15</option>
-          <option value="16">16</option>
-          <option value="17">17</option>
-          <option value="18">18</option>
-          <option value="19">19</option>
-          <option value="20">20</option>
-          <option value="21">21</option>
-          <option value="22">22</option>
-          <option value="23">23</option>
-          <option value="24">24</option>
-          <option value="25">25</option>
-          <option value="26">26</option>
-          <option value="27">27</option>
-          <option value="28">28</option>
-          <option value="29">29</option>
-          <option value="30">30</option>
-          <option value="31">31</option>
-        </select>
-      </div>
-    </div>
-
   </div>
     <div class="panel-footer" style="overflow: hidden;">
       <div class="col-sm-3"></div>
@@ -130,16 +82,14 @@
 @endsection
 @section('run_custom_jquery')
 <script type="text/javascript">
-  $('#village_name').autocomplete({
-    source : '{!!URL::route('autocomplete_village')!!}',
+  $('#marketing_name').autocomplete({
+    source : '{!!URL::route('autocomplete_marketing')!!}',
     minlenght:1,
     autoFocus:true,
     select:function(event,ui){
       event.preventDefault();
-      $('#village_name').val(ui.item.label);
-      $('#village_id').val(ui.item.village_id);
       $('#marketing_id').val(ui.item.marketing_id);
-      $('#marketing_name').val(ui.item.marketing_name);
+      $('#marketing_name').val(ui.item.label);
     }
   });
 </script>

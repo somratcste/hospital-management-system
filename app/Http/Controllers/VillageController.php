@@ -72,7 +72,7 @@ class villageController extends Controller
                               ->whereDay('created_at' , '=' , $day)
                               ->where('village_id' , $village_id)
                               ->orderBy('created_at' , 'asc')
-                              ->paginate(50);
+                              ->get();
         return view('admin.village_visiting_list' , ['invoiceouts' => $invoiceouts , 'village' => $village , 'year' => $year , 'month' => $month , 'day' => $day]);
     }
 

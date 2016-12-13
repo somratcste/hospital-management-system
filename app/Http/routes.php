@@ -275,6 +275,10 @@ Route::group(['middleware' => ['auth']] , function() {
     ]);
 
     Route::resource('searchrf','SearchRfController');//Reference Fund : rf
+    Route::get('searchrf_marketing_view', [
+    	'uses' => 'SearchRFController@view',
+    	'as' => 'marketing.view'
+    ]);
 
     Route::get('/reportout_village' , function(){
 	   $marketing_id = Input::get('marketing_id');
@@ -380,6 +384,8 @@ Route::group(['middleware' => ['auth']] , function() {
 	Route::get('/autocomplete_doctor',array('as'=>'autocomplete_doctor','uses'=>'PatientOutController@autocomplete_doctor'));
 
 	Route::get('/autocomplete_village',array('as'=>'autocomplete_village','uses'=>'InvoiceOutController@autocomplete_village'));
+
+	Route::get('/autocomplete_marketing',array('as'=>'autocomplete_marketing','uses'=>'SearchRFController@autocomplete_marketing'));
 	
 });
 

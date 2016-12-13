@@ -114,7 +114,12 @@
               @if(Auth::user()->name=='super')
               <li>
                 <a href="{{ route('searchrf.index') }}">
-                  <span>Search</span>
+                  <span>Search V. Doctor</span>
+                </a>
+              </li>
+              <li>
+                <a href="{{ route('searchrf.create') }}">
+                  <span>Search M. Officer</span>
                 </a>
               </li>
               @endif
