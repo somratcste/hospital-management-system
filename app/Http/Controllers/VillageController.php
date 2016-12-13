@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Village;
 use App\Marketing;
 use App\InvoiceOut;
+use App\InvoiceOutProduct;
 
 class villageController extends Controller
 {
@@ -73,6 +74,16 @@ class villageController extends Controller
                               ->where('village_id' , $village_id)
                               ->orderBy('created_at' , 'asc')
                               ->get();
+        $invoiceoutproducts = InvoiceOutProduct::whereYear('created_at' , '=' , $year)
+                              ->whereMonth('created_at' , '=' , $month)
+                              ->whereDay('created_at' , '=' , $day)
+                              ->groupBy('invoice_out_id')
+                              ->orderBy('created_at','desc')
+                              ->get();
+        foreach($invoiceoutproducts as $in)
+        {
+            dd($in->invoiceout->Marketing->name);
+        }
         return view('admin.village_visiting_list' , ['invoiceouts' => $invoiceouts , 'village' => $village , 'year' => $year , 'month' => $month , 'day' => $day]);
     }
 

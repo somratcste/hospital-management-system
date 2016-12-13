@@ -119,6 +119,7 @@
               <td><input class="case" type="checkbox"/></td>
               <td><input type="text" data-type="test_id" name="itemNo[]" id="itemNo_1" class="form-control autocomplete_txt" autocomplete="off" required></td>
               <td><input type="text" data-type="name" name="itemName[]" id="itemName_1" class="form-control autocomplete_txt" autocomplete="off" required></td>
+              <input type="hidden" data-type="test_id" name="itemDiscount[]" id="itemDiscount_1" class="form-control autocomplete_txt" autocomplete="off" required>
               <td><input type="text" data-type="room" name="itemAvailable[]" id="itemAvailable_1" class="form-control autocomplete_txt" autocomplete="off" required></td>
               <td><input type="number" name="total[]" id="total_1" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" required readonly></td>
             </tr>
@@ -246,6 +247,7 @@ $(".addmore").on('click',function(){
   html += '<td><input class="case" type="checkbox"/></td>';
   html += '<td><input type="text" data-type="test_id" name="itemNo[]" id="itemNo_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
   html += '<td><input type="text" data-type="name" name="itemName[]" id="itemName_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
+  html += '<input type="hidden"  name="itemDiscount[]" id="itemDiscount_'+i+'" class="form-control autocomplete_txt" autocomplete="off">';
   html += '<td><input type="text" data-type="productAvailable" name="itemAvailable[]" id="itemAvailable_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
   html += '<td><input type="text" name="total[]" id="total_'+i+'" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" readonly></td>';
   html += '</tr>';
@@ -302,8 +304,9 @@ $(document).on('focus','.autocomplete_txt',function(){
         id = id_arr.split("_");
       $('#itemNo_'+id[1]).val(names[0]);
       $('#itemName_'+id[1]).val(names[1]);
-      $('#itemAvailable_'+id[1]).val(names[2]);
-      $('#total_'+id[1]).val(names[3] );
+      $('#itemDiscount_'+id[1]).val(names[2]);
+      $('#itemAvailable_'+id[1]).val(names[3]);
+      $('#total_'+id[1]).val(names[4] );
       calculateTotal();
     }           
   });

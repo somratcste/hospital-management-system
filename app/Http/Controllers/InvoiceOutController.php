@@ -63,8 +63,9 @@ class InvoiceoutController extends Controller
         for($i=0;$i<count($_POST['itemNo']);$i++)
         {
             $invoiceoutproduct = new InvoiceOutProduct();
-            $invoiceoutproduct->invoiceOut_id = $invoiceoutID;
+            $invoiceoutproduct->invoice_out_id = $invoiceoutID;
             $invoiceoutproduct->reportType_id = $request['itemNo'][$i];
+            $invoiceoutproduct->report_discount = $request['itemDiscount'][$i];
             $invoiceoutproduct->report_name = $request['itemName'][$i];
             $invoiceoutproduct->report_room = $request['itemAvailable'][$i];
             $invoiceoutproduct->report_cost = $request['total'][$i];

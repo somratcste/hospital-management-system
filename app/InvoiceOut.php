@@ -35,4 +35,9 @@ class InvoiceOut extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function invoiceoutproduct()
+    {
+        return $this->hasOne('App\InvoiceOutProduct');
+    }
 }
