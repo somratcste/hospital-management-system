@@ -249,47 +249,10 @@
 </script>
 
 
-<!-- <script type="text/javascript">
-  $('#testName').autocomplete({
-    source : 'http://localhost/hospital/public/autocomplete',
-    minLength: 0,
-    autoFocus:true,
-    select:function(e,ui){
-      $('#testId').val(ui.item.id);
-      $('#price').val(ui.item.cost);
-      $('#room').val(ui.item.room);
-    }
-  });
-</script> -->
-
-<!-- <script type="text/javascript">
-$(document).ready(function(){
-  $('.addmore').click(function(){
-    var n = ($('.body tr').length-0)+1;
-    var tr = '<tr>' +
-          '<td style="text-align: center;">'+n+'</td>'+
-          '<td><input type="text" name="testId[]" id="testId" class="testId form-control"></td>'+
-          '<td><input type="text" name="testName[]" id="testName" class="testName form-control"></td>'+
-          '<td><input type="number" name="room[]" id="room" class="room form-control"></td>'+
-          '<td><input type="number" name="price[]" id="price" class="price form-control"></td>'+
-          '<td style="font-size: 25px;text-align: center;color: red;"><a href="#" class="delete">X</a></td></tr>';
-
-    $('.body').append(tr);
-  });
-
-  $('.body').delegate('.delete' , 'click' , function(){
-    $(this).parent().parent().remove();
-  });
-});
-
-
-
-</script> -->
-
 <script type="text/javascript">
   /**
- * Site : http:www.smarttutorials.net
- * @author muni
+ * Site : http:www.somrat.info
+ * @author G. M. Nazmul Hossain Somrat
  */
         
 //adds extra table rows
