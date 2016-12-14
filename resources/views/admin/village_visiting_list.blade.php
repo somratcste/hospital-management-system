@@ -31,11 +31,6 @@
           
         </div>
         <div class="panel-body">
-        @if(Session::has('success'))
-        <div class="alert alert-success">
-          {{Session::get('success')}}
-        </div>
-      @endif
         
         <div class="table-responsive">
         <table class="table table-bordered table-hover">
@@ -45,6 +40,7 @@
               <th>Report ID</th>
               <th>Total</th>
               <th>Hospital</th>
+              <th>R.F</th>
               <th>Less</th>
               <th>Pay</th>
             </tr>
@@ -55,6 +51,7 @@
               <th>Report ID</th>
               <th>Total</th>
               <th>Hospital</th>
+              <th>R.F</th>
               <th>Less</th>
               <th>Pay</th>
             </tr>
@@ -76,18 +73,19 @@
             @foreach ($invoiceouts as $invoiceout)
             <tr>
               <td><?php echo $i; ?></td>
-              <td>{{ $invoiceout->id }}</td>
+              <td>{{ $invoiceout->invoice_out_id }}</td>
               <td>{{ $invoiceout->subtotal}}</td>
-              <td>{{ $invoiceout->subtotal / 2}}</td>
-              <td>{{ $invoiceout->percent_amount + $invoiceout->discount }}</td>
-              <td>{{ ($invoiceout->subtotal / 2) - ($invoiceout->percent_amount + $invoiceout->discount) }}</td>
+              <td>{{ number_format($invoiceout->subtotal - $invoiceout->totalRf) }}</td>
+              <td>{{ number_format($invoiceout->totalRf) }}</td>
+              <td>{{ number_format($invoiceout->percent_amount + $invoiceout->discount) }}</td>
+              <td>{{ number_format($invoiceout->totalRf - $invoiceout->percent_amount + $invoiceout->discount) }}</td>
             </tr>
             <?php $i++; ?>
             @php 
               $subtotal += $invoiceout->subtotal ;
-              $hospital += $invoiceout->subtotal / 2  ;
-              $less += $invoiceout->percent_amount + $invoiceout->discount  ;
-              $pay += ($invoiceout->subtotal / 2) - ($invoiceout->percent_amount + $invoiceout->discount) ;
+              $hospital += number_format($invoiceout->subtotal - $invoiceout->totalRf) ;
+              $less += number_format($invoiceout->percent_amount + $invoiceout->discount)  ;
+              $pay += number_format($invoiceout->totalRf - ($invoiceout->percent_amount + $invoiceout->discount)) ;
             @endphp
 
             @endforeach

@@ -7,6 +7,7 @@ use App\Village;
 use App\Marketing;
 use App\InvoiceOut;
 use App\InvoiceOutProduct;
+use DB;
 
 class villageController extends Controller
 {
@@ -66,24 +67,18 @@ class villageController extends Controller
         $year = $request['year'];
         $month = $request['month'];
         $day = $request['day'];
+        $date = $year.'-'.$month.'-'.$day;
         $village_id = $request['village_id'];
         $village = Village::Find($village_id);
-        $invoiceouts = InvoiceOut::whereYear('created_at' , '=' , $year)
-                              ->whereMonth('created_at' , '=' , $month)
-                              ->whereDay('created_at' , '=' , $day)
-                              ->where('village_id' , $village_id)
-                              ->orderBy('created_at' , 'asc')
-                              ->get();
-        $invoiceoutproducts = InvoiceOutProduct::whereYear('created_at' , '=' , $year)
-                              ->whereMonth('created_at' , '=' , $month)
-                              ->whereDay('created_at' , '=' , $day)
-                              ->groupBy('invoice_out_id')
-                              ->orderBy('created_at','desc')
-                              ->get();
-        foreach($invoiceoutproducts as $in)
-        {
-            dd($in->invoiceout->Marketing->name);
-        }
+
+        $invoiceouts = DB::table('invoice_out_products')
+                    ->join('invoice_outs','invoice_out_id','=' ,'invoice_outs.id')
+                    ->whereDate('invoice_outs.created_at','=',$date)
+                    ->select('*',DB::raw('SUM(report_cost*report_discount/100) as totalRf'))
+                    ->groupBy('invoice_out_id')
+                    ->orderBy('invoice_outs.created_at' , 'desc')
+                    ->get();
+
         return view('admin.village_visiting_list' , ['invoiceouts' => $invoiceouts , 'village' => $village , 'year' => $year , 'month' => $month , 'day' => $day]);
     }
 

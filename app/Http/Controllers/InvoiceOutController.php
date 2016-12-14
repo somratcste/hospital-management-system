@@ -112,7 +112,7 @@ class InvoiceoutController extends Controller
     {
         $invoiceout_id = $request['invoiceout_id'];
         $invoiceout = InvoiceOut::Find($invoiceout_id);
-        $invoiceoutproducts = InvoiceOutProduct::where('invoiceOut_id',$invoiceout_id)->get();
+        $invoiceoutproducts = InvoiceOutProduct::where('invoice_out_id',$invoiceout_id)->get();
         return view('admin.invoiceout_view', ['invoiceout'=>$invoiceout,'invoiceoutproducts'=>$invoiceoutproducts]);
     }
 
