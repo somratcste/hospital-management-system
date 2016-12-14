@@ -112,8 +112,11 @@ class InvoiceoutController extends Controller
     {
         $invoiceout_id = $request['invoiceout_id'];
         $invoiceout = InvoiceOut::Find($invoiceout_id);
+        $delivaryTime = $invoiceout->created_at;
+        $delivaryTime = $delivaryTime->addDays(2);
+        $delivaryTime = $delivaryTime->format('d-m-Y h:i A');
         $invoiceoutproducts = InvoiceOutProduct::where('invoice_out_id',$invoiceout_id)->get();
-        return view('admin.invoiceout_view', ['invoiceout'=>$invoiceout,'invoiceoutproducts'=>$invoiceoutproducts]);
+        return view('admin.invoiceout_view', ['invoiceout'=>$invoiceout,'invoiceoutproducts'=>$invoiceoutproducts,'delivaryTime'=> $delivaryTime]);
     }
 
     public function autocomplete_village(Request $request)

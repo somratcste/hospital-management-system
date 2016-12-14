@@ -39,7 +39,7 @@
     <div class="panel-body">
     <div class="row">
 
-    <div class="col-md-6 pull-left">
+    <div class="col-md-4 pull-left">
       <table class="table table-bordered table-hover">
         <tbody>
 
@@ -60,7 +60,7 @@
       </table>
       </div>
 
-      <div class="col-md-6 pull-right">
+      <div class="col-md-4 pull-left">
         <table class="table table-bordered table-hover">
           <tbody>
 
@@ -75,6 +75,34 @@
             <tr>
               <td>Patient Address</td>
               <td>{{ $invoiceout->patientout->address }}</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+      </div>
+
+      <div class="col-md-4 pull-left">
+        <table class="table table-bordered table-hover">
+          <tbody>
+
+            <tr>
+              <td>Date</td>
+              <td>{{ $invoiceout->created_at->format('d-m-Y h:i A')}}</td>
+            </tr>
+            <tr>
+              <td>Delivary Date</td>
+              <td>{{ $delivaryTime }}</td>
+            </tr>
+            <tr>
+              <td>Sex</td>
+              <td>
+                @if($invoiceout->patientout->gender=='m')
+                  Male 
+                @else 
+                  Female 
+                @endif
+              </td>
             </tr>
           </tbody>
         </table>
