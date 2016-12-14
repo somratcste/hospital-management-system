@@ -66,21 +66,21 @@
 
             <tr>
               <td>Patient ID</td>
-              <td>{{ $invoiceout->patient_id }}-{{ $invoiceout->created_at->format('m-d-Y')}}</td>
+              <td>{{ $invoiceout->patient_id }} / {{ $invoiceout->created_at->format('m-d-Y')}}</td>
             </tr>
             <tr>
-              <td>Patient Mobile</td>
-              <td>{{ $invoiceout->patientout->mobile }}</td>
+              <td>Age</td>
+              <td>{{ $invoiceout->patientout->age }} years</td>
             </tr>
             <tr>
-              <td>Patient Address</td>
-              <td>{{ $invoiceout->patientout->address }}</td>
+              <td>Hello</td>
+              <td>+880{{ $invoiceout->patientout->mobile }}</td>
             </tr>
           </tbody>
         </table>
         </div>
 
-      </div>
+      
 
       <div class="col-md-4 pull-left">
         <table class="table table-bordered table-hover">
@@ -91,10 +91,6 @@
               <td>{{ $invoiceout->created_at->format('d-m-Y h:i A')}}</td>
             </tr>
             <tr>
-              <td>Delivary Date</td>
-              <td>{{ $delivaryTime }}</td>
-            </tr>
-            <tr>
               <td>Sex</td>
               <td>
                 @if($invoiceout->patientout->gender=='m')
@@ -103,6 +99,10 @@
                   Female 
                 @endif
               </td>
+            </tr>
+            <tr>
+              <td>Delivary Date</td>
+              <td>{{ $delivaryTime }}</td>
             </tr>
           </tbody>
         </table>
@@ -139,14 +139,15 @@
        <div class="col-md-6 pull-left">
         <table class="table table-bordered table-hover">
           <tbody>
-            <p style="color: red;text-align: center;font-size: 40px;font-family:initial;padding-top: 130px;">
+            <p style="color: red;text-align: center;font-size: 40px;font-family:initial;padding-top: 50px;">
             @if($invoiceout->due== 0)
               PAID 
             @else
               DUE
             @endif
             </p>
-            <p style="padding-top: 80px">Recipent Signature .... .... ... ... ... ... ... ...</p>
+            <p style="padding-top:28px;text-transform: capitalize;"><b>Collected By :: </b>{{ Auth::user()->name }}</p>
+            <p style="text-transform: capitalize;">Received with thanks Tk. {{ $money }} Only</p>
           </tbody>
         </table>
         </div>
@@ -159,21 +160,10 @@
                 <td width="50%">Subtotal</td>
                 <td width="50%">{{ $invoiceout->subtotal }} Tk.</td>
               </tr>
+                
               <tr>
-                <td>Percent</td>
-                <td>{{ $invoiceout->percent }} Tk.</td>
-              </tr>
-              <tr>
-                <td>Percent Amount</td>
-                <td>{{ $invoiceout->percent_amount }} Tk.</td>
-              </tr>
-              <tr>
-                <td>Without Percent</td>
-                <td>{{ $invoiceout->without_percent }} Tk.</td>
-              </tr>
-              <tr>
-                <td>Discount Amount</td>
-                <td>{{ $invoiceout->discount }} Tk.</td>
+                <td>Discount</td>
+                <td>{{ number_format($invoiceout->discount + $invoiceout->percent_amount) }} Tk.</td>
               </tr>
               <tr>
                 <td>Total</td>
@@ -184,7 +174,7 @@
                 <td>{{ $invoiceout->receive_cash }} Tk.</td>
               </tr>
               <tr>
-                <td>Due Money</td>
+                <td>Due </td>
                 <td>{{ $invoiceout->due }} Tk.</td>
               </tr>
 
