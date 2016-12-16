@@ -64,22 +64,42 @@ class villageController extends Controller
 
     public function create(Request $request)
     {
-        $year = $request['year'];
-        $month = $request['month'];
-        $day = $request['day'];
-        $date = $year.'-'.$month.'-'.$day;
-        $village_id = $request['village_id'];
-        $village = Village::Find($village_id);
+        if($request['type'] == 1) {
+            $year = $request['year'];
+            $month = $request['month'];
+            $day = $request['day'];
+            $date = $year.'-'.$month.'-'.$day;
+            $village_id = $request['village_id'];
+            $village = Village::Find($village_id);
 
-        $invoiceouts = DB::table('invoice_out_products')
-                    ->join('invoice_outs','invoice_out_id','=' ,'invoice_outs.id')
-                    ->whereDate('invoice_outs.created_at','=',$date)
-                    ->select('*',DB::raw('SUM(report_cost*report_discount/100) as totalRf'))
-                    ->groupBy('invoice_out_id')
-                    ->orderBy('invoice_outs.created_at' , 'desc')
-                    ->get();
+            $invoiceouts = DB::table('invoice_out_products')
+                        ->join('invoice_outs','invoice_out_id','=' ,'invoice_outs.id')
+                        ->whereDate('invoice_outs.created_at','=',$date)
+                        ->select('*',DB::raw('SUM(report_cost*report_discount/100) as totalRf'))
+                        ->groupBy('invoice_out_id')
+                        ->orderBy('invoice_outs.created_at' , 'desc')
+                        ->get();
 
-        return view('admin.village_visiting_list' , ['invoiceouts' => $invoiceouts , 'village' => $village , 'year' => $year , 'month' => $month , 'day' => $day]);
+            return view('admin.village_visiting_list' , ['invoiceouts' => $invoiceouts , 'village' => $village , 'year' => $year , 'month' => $month , 'day' => $day]);
+        } else {
+            $year = $request['year'];
+            $month = $request['month'];
+            $day = $request['day'];
+            $village_id = $request['village_id'];
+            $village = Village::Find($village_id);
+
+            $invoiceouts = DB::table('invoice_out_products')
+                        ->join('invoice_outs','invoice_out_id','=' ,'invoice_outs.id')
+                        ->whereYear('invoice_outs.created_at','=',date('Y'))
+                        ->whereMonth('invoice_outs.created_at','=',date('m'))
+                        ->select('*',DB::raw('SUM(report_cost*report_discount/100) as totalRf'))
+                        ->groupBy('invoice_out_id')
+                        ->orderBy('invoice_outs.created_at' , 'desc')
+                        ->get();
+
+            return view('admin.village_visiting_list' , ['invoiceouts' => $invoiceouts , 'village' => $village , 'year' => $year , 'month' => $month , 'day' => $day]);
+
+        }
     }
 
 }

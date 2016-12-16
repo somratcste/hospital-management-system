@@ -13,13 +13,24 @@
   <div class="row">
     <div class="panel mb25">
         <div class="panel-heading border">
-          Find Your ID 
+          Find Your ID By Village Doctor
         </div>
       <div class="panel-body">
 
      <form action="{{ route('village.create')}}" method="get" enctype="multipart/form-data">
       {{ csrf_field() }}
       <input name="_method" type="hidden" value="GET">
+
+
+      <div class="form-group clear">
+        <label class="col-sm-3 control-label">Daily / Monthly</label>
+        <div class="col-sm-7">
+          <select class="form-control" name="type" id="privileges" required onclick="craateUserJsObject.ShowPrivileges();" >
+            <option value="01">Daily</option>
+            <option value="02">Monthly</option>
+          </select>
+        </div>
+      </div>
 
       <div class="form-group clear">
       <label class="col-sm-3 control-label" >Village Doctor : &nbsp;</label>
@@ -51,7 +62,7 @@
       </div>
     </div>
 
-    <div class="form-group clear">
+    <div class="form-group clear" id="month">
       <label class="col-sm-3 control-label">Month</label>
       <div class="col-sm-7">
         <select class="form-control" name="month" required>
@@ -72,7 +83,7 @@
       </div>
     </div>
 
-    <div class="form-group clear">
+    <div class="form-group clear" id="day">
       <label class="col-sm-3 control-label">Day</label>
       <div class="col-sm-7">
         <select class="form-control" name="day" required>
@@ -128,8 +139,22 @@
 </div>
 <!-- /content panel -->
 @endsection
+
 @section('run_custom_jquery')
+
 <script type="text/javascript">
+
+  $(document).ready(function(){
+    var Privileges = jQuery('#privileges');
+    var select = this.value;
+    Privileges.change(function () {
+        if ($(this).val() == '01') {
+            $('#day').show();
+        }
+        else $('#day').hide();
+    });
+  });
+
   $('#village_name').autocomplete({
     source : '{!!URL::route('autocomplete_village')!!}',
     minlenght:1,
