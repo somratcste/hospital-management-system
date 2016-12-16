@@ -86,7 +86,7 @@
     <div class="form-group clear" id="day">
       <label class="col-sm-3 control-label">Day</label>
       <div class="col-sm-7">
-        <select class="form-control" name="day" required>
+        <select class="form-control" name="day">
         <option value="">Select Day</option>
           <option value="01">1</option>
           <option value="02">2</option>

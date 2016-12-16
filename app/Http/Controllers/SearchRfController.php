@@ -34,16 +34,30 @@ class SearchRfController extends Controller
 
 	public function view(Request $request)
 	{
-    $year = $request['year'];
-    $month = $request['month'];
-    $marketing_id = $request['marketing_id'];
-    $marketing = Marketing::Find($marketing_id);
-    $invoiceouts = InvoiceOut::whereYear('created_at' , '=' , $year)
-                          ->whereMonth('created_at' , '=' , $month)
-                          ->where('marketing_id' , $marketing_id)
-                          ->orderBy('created_at' , 'asc')
-                          ->get();
-    return view('admin.marketing_visiting_list' , ['invoiceouts' => $invoiceouts , 'marketing' => $marketing , 'year' => $year , 'month' => $month]);
+    if($request['type'] == 2) {
+      $year = $request['year'];
+      $month = $request['month'];
+      $marketing_id = $request['marketing_id'];
+      $marketing = Marketing::Find($marketing_id);
+      $invoiceouts = InvoiceOut::whereYear('created_at' , '=' , $year)
+                            ->whereMonth('created_at' , '=' , $month)
+                            ->where('marketing_id' , $marketing_id)
+                            ->orderBy('created_at' , 'asc')
+                            ->get();
+      return view('admin.marketing_visiting_list' , ['invoiceouts' => $invoiceouts , 'marketing' => $marketing , 'year' => $year , 'month' => $month]);
+    } else {
+      $year = $request['year'];
+      $month = $request['month'];
+      $day = $request['day'];
+      $date = $year.'-'.$month.'-'.$day;
+      $marketing_id = $request['marketing_id'];
+      $marketing = Marketing::Find($marketing_id);
+      $invoiceouts = InvoiceOut::whereDate('created_at','=',$date)
+                            ->where('marketing_id' , $marketing_id)
+                            ->orderBy('created_at' , 'asc')
+                            ->get();
+      return view('admin.marketing_visiting_list' , ['invoiceouts' => $invoiceouts , 'marketing' => $marketing , 'year' => $year , 'month' => $month]);
+    }
 	}
 
 }
