@@ -119,9 +119,9 @@
               <div class="col-sm-6">
                 <select class="form-control" name="bloodGroup">
                   <option value="1">Islam</option>
-                  <option value="2">Hindu</option>
-                  <option value="3">Christan</option>
-                  <option value="4">Bouddho</option>
+                  <option value="2">Hinduism</option>
+                  <option value="3">Buddhism</option>
+                  <option value="4">Christianity</option>
                 </select>
               </div>
             </div>
@@ -159,6 +159,41 @@
               </div>
             </div>
           </div>
+
+          <div class="col-md-6 clear">
+            <div class="form-group">
+              <label class="col-sm-4 control-label">Consultant Name</label>
+              <div class="col-sm-6">
+                <select class="form-control" name="doctor_id">                  
+                  @foreach ($doctors as $doctor)
+                      <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
+                  @endforeach
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Bed No.</label>
+              <div class="col-sm-6">
+                <select class="form-control" name="seat_id">
+                  @foreach ($seats as $seat)
+                    <option value="{{ $seat->id }}">{{ $seat->seatFloor}} -- {{ $seat->seatNo }}</option>
+                  @endforeach
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="col-md-12">
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Upload Image</label>
+              <div class="col-sm-8">
+                <input type="file" name="image">
+              </div>
+            </div>
+          </div> -->
 
           
 
@@ -272,8 +307,8 @@
             </div> -->
 
             <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-5">
-                <button type="submit" class="btn btn-success">Add Patient</button>
+              <div class="col-sm-offset-3 col-sm-6">
+                <button type="submit" class="btn btn-block btn-large btn-success">Save</button>
                 <input type="hidden" name="_token" value="{{ Session::token() }}">
               </div>
             </div>
