@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Employee;
 use App\Patient;
 use App\Seat;
+use App\Doctor;
 use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -14,11 +15,10 @@ class PatientController extends Controller
     
     public function getIndex ()
     {
-        $ecategory = Ecategory::orderBy('created_at','desc')->where('name','doctor')->get();
-        $employee = Employee::all();
+        $doctors = Doctor::all();
         $seat = Seat::orderBy('created_at' , 'desc')->where('status' , 'empty')->get();
         $patient = Patient::orderBy('created_at' , 'desc')->first();
-        return view('admin.patient' , ['doctors' => $ecategory , 'seats' => $seat , 'lastID' => $patient->id+1 , 'employees' => $employee]);
+        return view('admin.patient' , ['doctors' => $doctors , 'seats' => $seat , 'lastID' => $patient->id+1 ]);
     }
 
     public function save(Request $request)

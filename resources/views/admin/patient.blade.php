@@ -12,10 +12,10 @@
   <div class="row">
     <div class="panel mb25">
         <div class="panel-heading border">
-          Patient Information
+          ADMISSION FORM
         </div>
         <div class="panel-body">
-        <div class="col-lg-12">
+        
         @if(Session::has('success'))
           <div class="alert alert-success">
             {{Session::get('success')}}
@@ -32,7 +32,139 @@
       @endif
           <form class="form-horizontal bordered-group" role="form" action="{{ route('patient.save') }}" method="post" enctype="multipart/form-data">
 
+          <div class="col-md-12">
+            <div class="form-group" style="border-bottom: none;">
+              <label class="col-sm-2 control-label">Patient ID</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" value="{{ $lastID }}" disabled>
+              </div>
+            </div>
+            <div class="form-group" style="border-bottom: none;">
+              <label class="col-sm-2 control-label">Name</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" name="name" placeholder="Name" value="{{ Request::old('name') }}" required>
+              </div>
+            </div>
             <div class="form-group">
+              <label class="col-sm-2 control-label">Father / Husband's Name</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" name="name" placeholder="Name" value="{{ Request::old('name') }}" required>
+              </div>
+            </div>
+          </div>
+
+          
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="col-sm-4 control-label">Blood Group</label>
+              <div class="col-sm-6">
+                <select class="form-control" name="bloodGroup">
+                  <option value="A+">A+</option>
+                  <option value="O+">O+</option>
+                  <option value="B+">B+</option>
+                  <option value="AB+">AB+</option>
+                  <option value="A-">A-</option>
+                  <option value="O-">O-</option>
+                  <option value="B-">B-</option>
+                  <option value="AB-">AB-</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Gender</label>
+              <div class="col-sm-8"> 
+                <label class="radio-inline">
+                  <input type="radio" name="gender" id="inlineRadio1" value="Male"> Male
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="gender" id="inlineRadio2" value="Female"> Female
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 clear">
+            <div class="form-group">
+              <label class="col-sm-4 control-label">Date of Birth</label>
+              <div class="col-sm-6">
+                <input type="date" class="form-control" data-provide="datepicker" name="birthDate">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Age</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" name="name" placeholder="Name" value="{{ Request::old('name') }}" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 clear">
+            <div class="form-group">
+              <label class="col-sm-4 control-label">Occupation</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" name="name" placeholder="Name" value="{{ Request::old('name') }}" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Religion</label>
+              <div class="col-sm-6">
+                <select class="form-control" name="bloodGroup">
+                  <option value="1">Islam</option>
+                  <option value="2">Hindu</option>
+                  <option value="3">Christan</option>
+                  <option value="4">Bouddho</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group" style="border-bottom: none;">
+              <label class="col-sm-2 control-label">Local Address</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group" style="border-bottom: none;">
+              <label class="col-sm-2 control-label">Permanent Address</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 clear">
+            <div class="form-group">
+              <label class="col-sm-4 control-label">Home Phone</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" name="name" placeholder="Name" value="{{ Request::old('name') }}" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Mobile</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" name="name" placeholder="Name" value="{{ Request::old('name') }}" required>
+              </div>
+            </div>
+          </div>
+
+          
+
+          
+
+            <!-- <div class="form-group">
               <label class="col-sm-2 control-label">Patient ID</label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" value="{{ $lastID }}" disabled>
@@ -93,11 +225,7 @@
               <div class="col-sm-8">
                 <select class="form-control" name="doctor_id">                  
                   @foreach ($doctors as $doctor)
-                    @foreach($employees as $employee)
-                      @if($doctor->id == $employee->ecategory_id)
-                      <option value="{{ $employee->id }}">{{ $employee->name }}</option>
-                      @endif
-                    @endforeach
+                      <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
                   @endforeach
                 </select>
               </div>
@@ -141,7 +269,7 @@
               <div class="col-sm-8">
                 <input type="file" name="image">
               </div>
-            </div>
+            </div> -->
 
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-5">
@@ -150,7 +278,7 @@
               </div>
             </div>
           </form>
-        </div>
+        
       </div>
     </div>
   </div>
