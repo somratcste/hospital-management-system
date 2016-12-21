@@ -20,4 +20,9 @@ class Patient extends Model
     {
     	return $this->hasOne('App\Invoice');
     }
+
+    public function doctor()
+    {
+        return $this->belongsTo('App\Doctor');
+    }
 }

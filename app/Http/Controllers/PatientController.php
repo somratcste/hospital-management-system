@@ -18,42 +18,33 @@ class PatientController extends Controller
         $doctors = Doctor::all();
         $seat = Seat::orderBy('created_at' , 'desc')->where('status' , 'empty')->get();
         $patient = Patient::orderBy('created_at' , 'desc')->first();
-        return view('admin.patient' , ['doctors' => $doctors , 'seats' => $seat , 'lastID' => $patient->id+1 ]);
+        return view('admin.patient' , ['doctors' => $doctors , 'seats' => $seat , 'lastID' => $patient->id+2 ]);
     }
 
     public function save(Request $request)
     {
     	$this->validate($request , [
-            'patient_type' => 'required',
     		'name' 		=> 'required|max:200',
     		'gender' 	=> 'required',
-    		'birthDate'	=> 'required',
-            'symptoms'  => 'required',
-    		'mobile'	=> 'required',
-            'address'   => 'required'
+    		'pphone'	=> 'required',
     	]);
         date_default_timezone_set("Asia/Dhaka");
     	$patient 		   = new Patient();
-        $patient->patient_type = $request['patient_type'];
     	$patient->name 	   = ucfirst($request['name']);
-    	$patient->gender	   = $request['gender'];
-    	$patient->birthDate = $request['birthDate'];
+        $patient->fh = $request['fh'];
+        $patient->fname = $request['fname'];
         $patient->bloodGroup = $request['bloodGroup'];
-        $patient->symptoms = $request['symptoms'];
-    	$patient->mobile	   = $request['mobile'];
-    	$patient->email	   = $request['email'];    	
-    	$patient->address  = $request['address'];
-    	$patient->employee_id = $request['doctor_id'];
-        $patient->seat_id = $request['seat_id'];
-        if(Input::hasFile('image')){
-
-            $file = Input::file('image');
-            $file->move(public_path(). '/images/patients',$file->getClientOriginalName());
-
-            $patient->image = $file->getClientOriginalName();
-            $patient->size = $file->getClientsize();
-            $patient->type = $file->getClientMimeType();
-        }
+    	$patient->gender	   = $request['gender'];
+        $patient->age = $request['age'];
+        $patient->occupation = $request['occupation'];
+        $patient->religion = ucfirst($request['religion']); 
+        $patient->laddress = $request['laddress'];
+        $patient->paddress = $request['paddress'];
+        $patient->hphone = $request['hphone'];
+        $patient->pphone = $request['pphone'];
+        $patient->doctor_id = $request['doctor_id'];
+        $patient->seat_id = $request['seat_id'];  	
+       
     	$patient->save();
 
     	return redirect()->back()->with(['success' => 'Insert Successfully'] );
@@ -61,52 +52,15 @@ class PatientController extends Controller
 
     public function update(Request $request)
     {
-       $this->validate($request , [
-            'patient_type' => 'required',
-            'name'      => 'required|max:200',
-            'gender'    => 'required',
-            'birthDate' => 'required',
-            'symptoms'  => 'required',
-            'mobile'    => 'required',
-            'address'   => 'required'
-        ]);
-
-
-        $patient            = Patient::find($request['patient_id']);
-        $patient->patient_type = $request['patient_type'];
-        $patient->name     = ucfirst($request['name']);
-        $patient->gender       = $request['gender'];
-        $patient->birthDate = $request['birthDate'];
-        $patient->bloodGroup = $request['bloodGroup'];
-        $patient->symptoms = $request['symptoms'];
-        $patient->mobile       = $request['mobile'];
-        $patient->email    = $request['email'];     
-        $patient->address  = $request['address'];
-        $patient->employee_id = $request['doctor_id'];
-        $patient->seat_id = $request['seat_id'];
-        if(Input::hasFile('image')){
-
-            if($patient->image){
-                $image_path = public_path().'/images/patients/'.$patient->image;
-                unlink($image_path);
-            }
-            $file = Input::file('image');
-            $file->move(public_path(). '/images/patients',$file->getClientOriginalName());
-
-            $patient->image = $file->getClientOriginalName();
-            $patient->size = $file->getClientsize();
-            $patient->type = $file->getClientMimeType();
-        }
-        $patient->update();
-        return redirect()->route('patient.list' , ['patient' => $patient->patient_type])->with(['success' => 'Updated Successfully'] );
+       
     }
 
     public function viewList()
     {
         $patient = Patient::orderBy('created_at' , 'desc')->paginate(50);
-        $employee = Employee::all();
+        $doctors = Doctor::all();
         $seat = Seat::all();
-        return view('admin.patient_list' , ['patients' => $patient , 'employees' => $employee , 'seats' => $seat]);
+        return view('admin.patient_list' , ['patients' => $patient , 'doctors' => $doctors , 'seats' => $seat]);
     }
 
     public function delete(Request $request)

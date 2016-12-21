@@ -30,9 +30,6 @@
               <th>ID</th>
               <th>Phone</th>
               <th>View</th>
-              @if(Auth::user()->indoor_patient_edit_id == 1)
-              <th>Edit</th>
-              @endif
               @if(Auth::user()->indoor_patient_delete_id == 1)
               <th>Delete</th>
               @endif
@@ -45,9 +42,6 @@
               <th>ID</th>
               <th>Phone</th>
               <th>View</th>
-              @if(Auth::user()->indoor_patient_edit_id == 1)
-              <th>Edit</th>
-              @endif
               @if(Auth::user()->indoor_patient_delete_id == 1)
               <th>Delete</th>
               @endif
@@ -60,7 +54,7 @@
               <td><?php echo $i; ?></td>
               <td>{{ $patient->name }}</td>
               <td>{{ $patient->id }}</td>
-              <td>{{ $patient->mobile }}</td>
+              <td>{{ $patient->pphone }}</td>
               <td><a data-toggle="modal" data-target="#details<?php echo $i; ?>" href=""><button type="button" class="btn btn-success">Details</button></a></td>
               <div class="modal" id="details<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog">
@@ -73,36 +67,43 @@
                       <div class="row">
                         <div class="col-xs-1"></div>
                         <div class="col-xs-4">
+                          <p>Admit DateTime</p>
                           <p>Name</p>
-                          <p>Patient Type</p>
                           <p>Patient ID</p>
+                          @if($patient->fh == 1)
+                            <p>Father's Name</p>
+                          @else
+                            <p>Husband Name</p>
+                          @endif
                           <p>Gender</p>
-                          <p>Birth Date</p>
                           <p>Blood Group</p>
-                          <p>Symptoms</p>
-                          <p>Selected Doctor</p>
-                          <p>Admition Time</p>
+                          <p>Age</p>
+                          <p>Religion</p>
+                          <p>Occupation</p>
+                          <p>Consultant</p>
                           <p>Allocated Seat</p>
-                          <p>Mobile Number</p>
-                          <p>Email</p>
-                          <p>Address</p>
-                          <p>Image Preview</p>
+                          <p>Mobile</p>
+                          <p>Home Phone</p>
+                          <p>Local Address</p>
+                          <p>Permanent Address</p>
                         </div>
                         <div class="col-xs-7">
+                          <P> : {{ $patient->created_at->format('d-m-Y h.i.A')}}</P>
                           <p> : {{ $patient->name }}</p>
-                          <p> : Admit</p>
                           <p> : {{ $patient->id or '101' }}</p>
+                          <p> :  {{ $patient->fname }}</p>
                           <p> : {{ $patient->gender }}</p>
-                          <p> : {{ $patient->birthDate }}</p>
                           <p> : {{ $patient->bloodGroup }}</p>
-                          <p> : {{ $patient->symptoms }}</p>
-                          <p> : {{ $patient->employee->name }}</p>
-                          <p> : {{ $patient->created_at }}</p>
-                          <p> : {{ $patient->seat->seatFloor }} -- {{ $patient->seat->seatNo}}</p>
-                          <p> : {{ $patient->mobile }} </p>
-                          <p> : {{ $patient->email }}</p>
-                          <p> : {{ $patient->address }}</p>
-                          <p> : <img class="img-responsive" src="{{ asset('images/patients/'.$patient->image) }}" ></p>
+                          <p> : {{ $patient->age }}</p>
+                          <p> : {{ $patient->religion }}</p>
+                          <p style="text-transform: capitalize;"> : {{ $patient->occupation }}</p>
+                          <p> : {{ $patient->doctor->name }}</p>
+                          <p> : {{ $patient->seat->seatFloor }}nd Floor {{ $patient->seat->seatNo}} no. Bed</p>
+                          <p> : {{ $patient->pphone }}</p>
+                          <p> : {{ $patient->hphone }}</p>
+                          <p> : {{ $patient->laddress }}</p>
+                          <p> : {{ $patient->paddress }}</p>
+
                 </div>
                       </div>
                     </div>
@@ -113,139 +114,6 @@
                 </div>
               </div>
               
-              @if(Auth::user()->indoor_patient_edit_id == 1)
-              <td><a data-toggle="modal" data-target="#edit<?php echo $i; ?>" href=""><button type="button" class="btn btn-info">Edit</button></a></td>
-              @endif
-              <div class="modal" id="edit<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                      <h4 class="modal-title">Edit Information</h4>
-                    </div>
-                    <div class="modal-body">
-                      <form class="form-horizontal bordered-group" role="form" action="{{ route('patient.update') }}" method="post" enctype="multipart/form-data">
-
-            <div class="form-group clear">
-              <label class="col-sm-3 control-label">Patient ID</label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control" value="{{ $patient->id }}" disabled>
-              </div>
-            </div>
-
-            <div class="form-group clear">
-              <label class="col-sm-3 control-label">Name</label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control" name="name" placeholder="Name" value="{{ Request::old('name') ? Request::old('name') : isset($patient) ? $patient->name : '' }}" required>
-              </div>
-            </div>
-
-            <div class="form-group clear">
-              <label class="col-sm-3 control-label">Gender</label>
-              <div class="col-sm-8"> 
-                <label class="radio-inline">
-                  <input type="radio" name="gender" id="inlineRadio1" value="Male" {{ $patient->gender == 'Male' ? 'checked' : ''}}> Male
-                </label>
-                <label class="radio-inline">
-                  <input type="radio" name="gender" id="inlineRadio2" value="Female" {{ $patient->gender == 'Female' ? 'checked' : ''}}> Female
-                </label>
-              </div>
-            </div>
-
-            <div class="form-group clear">
-              <label class="col-sm-3 control-label">Date of Birth</label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control" data-provide="datepicker" name="birthDate" value="{{ Request::old('birthDate') ? Request::old('birthDate') : isset($patient) ? $patient->birthDate : '' }}" required>
-              </div>
-            </div>
-
-            <div class="form-group clear">
-              <label class="col-sm-3 control-label">Blood Group</label>
-              <div class="col-sm-8">
-                <select class="form-control" name="bloodGroup">
-                  <option value="A+" {{ $patient->bloodGroup == 'A+' ? 'selected' : ''}}>A+</option>
-                  <option value="O+" {{ $patient->bloodGroup == 'O+' ? 'selected' : ''}}>O+</option>
-                  <option value="B+" {{ $patient->bloodGroup == 'B+' ? 'selected' : ''}}>B+</option>
-                  <option value="AB+" {{ $patient->bloodGroup == 'AB+' ? 'selected' : ''}}>AB+</option>
-                  <option value="A-" {{ $patient->bloodGroup == 'A-' ? 'selected' : ''}}>A-</option>
-                  <option value="B-" {{ $patient->bloodGroup == 'B-' ? 'selected' : ''}}>B-</option>
-                  <option value="O-" {{ $patient->bloodGroup == 'O-' ? 'selected' : ''}}>O-</option>
-                  <option value="AB-" {{ $patient->bloodGroup == 'AB-' ? 'selected' : ''}}>AB-</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group clear">
-              <label class="col-sm-3 control-label">Symptoms</label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control" name="symptoms" placeholder="Symptoms" value="{{ Request::old('symptoms') ? Request::old('symptoms') : isset($patient) ? $patient->symptoms : '' }}" required>
-              </div>
-            </div>
-
-            <div class="form-group clear">
-              <label class="col-sm-3 control-label">Assign Doctor</label>
-              <div class="col-sm-8">
-                <select class="form-control" name="doctor_id">
-                  @foreach ($employees as $employee)
-                    <option value="{{ $employee->id }}" {{ $employee->id == $patient->employee->id ? 'selected' : ''}}>{{ $employee->name }}</option>
-                  @endforeach
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group clear">
-              <label class="col-sm-3 control-label">Assign Seat</label>
-              <div class="col-sm-8">
-                <select class="form-control" name="seat_id">
-                  @foreach ($seats as $seat)
-                    <option value="{{ $seat->id }}" {{ $seat->id == $patient->seat->id ? "selected" : ''}}>{{ $seat->seatFloor}} -- {{ $seat->seatNo}}</option>
-                  @endforeach
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group clear">
-              <label class="col-sm-3 control-label">Mobile Number</label> 
-              <div class="col-sm-8">
-                <input class="form-control" type="tel" pattern="^\d{11}$" required name="mobile" name="mobile" value="{{ Request::old('mobile') ? Request::old('mobile') : isset($patient) ? $patient->mobile : '' }}">
-              </div>
-            </div>
-
-            <div class="form-group clear">
-              <label class="col-sm-3 control-label">Email</label>
-              <div class="col-sm-8">
-                <input type="email" class="form-control" name="email" placeholder="Email" value="{{ Request::old('email') ? Request::old('email') : isset($patient) ? $patient->email : '' }}">
-              </div>
-            </div>
-
-            <div class="form-group clear">
-              <label class="col-sm-3 control-label">Address</label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control" name="address" placeholder="Address" value="{{ Request::old('address') ? Request::old('address') : isset($patient) ? $patient->address : '' }}" required>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-sm-3 control-label">Previous Image</label>
-              <div class="col-sm-8">
-                <img src="{{ asset('images/patients/'.$patient->image) }}" class="img-responsive" alt="">
-                <input class="mt25" type="file" name="image">
-              </div>
-            </div>
-
-                    </div>
-                    <div class="modal-footer no-border">
-                      <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                      <button type="submit" class="btn btn-success">Update</button>
-                      <input type="hidden" name="_token" value="{{ Session::token() }}">
-                      <input type="hidden" name="patient_id" value="{{ $patient->id }}">
-                    </div>
-                  </div>
-                </div>
-              </div>
-               </form>
-              
-
               @if(Auth::user()->indoor_patient_delete_id == 1)
               <td><a data-toggle="modal" data-target="#delete<?php echo $i; ?>" href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
               @endif

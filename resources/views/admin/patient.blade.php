@@ -46,14 +46,18 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-2 control-label">Father / Husband's Name</label>
+              <label class="col-sm-2 control-label">
+                <select class="form-control" name="fh">
+                  <option value="1">Father's Name</option>
+                  <option value="2">Husband Name</option>
+                </select>
+              </label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" name="name" placeholder="Name" value="{{ Request::old('name') }}" required>
+                <input type="text" class="form-control" name="fname" value="{{ Request::old('fname') }}" required>
               </div>
             </div>
           </div>
 
-          
           <div class="col-md-6">
             <div class="form-group">
               <label class="col-sm-4 control-label">Blood Group</label>
@@ -88,27 +92,9 @@
 
           <div class="col-md-6 clear">
             <div class="form-group">
-              <label class="col-sm-4 control-label">Date of Birth</label>
+              <label class="col-sm-4 control-label">Age</label>
               <div class="col-sm-6">
-                <input type="date" class="form-control" data-provide="datepicker" name="birthDate">
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6">
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Age</label>
-              <div class="col-sm-6">
-                <input type="text" class="form-control" name="name" placeholder="Name" value="{{ Request::old('name') }}" required>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 clear">
-            <div class="form-group">
-              <label class="col-sm-4 control-label">Occupation</label>
-              <div class="col-sm-6">
-                <input type="text" class="form-control" name="name" placeholder="Name" value="{{ Request::old('name') }}" required>
+                <input type="number" class="form-control" name="age" placeholder="age" value="{{ Request::old('name') }}" required>
               </div>
             </div>
           </div>
@@ -117,12 +103,21 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Religion</label>
               <div class="col-sm-6">
-                <select class="form-control" name="bloodGroup">
-                  <option value="1">Islam</option>
-                  <option value="2">Hinduism</option>
-                  <option value="3">Buddhism</option>
-                  <option value="4">Christianity</option>
+                <select class="form-control" name="religion">
+                  <option value="islam">Islam</option>
+                  <option value="hinduism">Hinduism</option>
+                  <option value="buddhism">Buddhism</option>
+                  <option value="christianity">Christianity</option>
                 </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 clear">
+            <div class="form-group">
+              <label class="col-sm-4 control-label">Occupation</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" name="occupation" placeholder="occupation" value="{{ Request::old('name') }}" required>
               </div>
             </div>
           </div>
@@ -131,13 +126,13 @@
             <div class="form-group" style="border-bottom: none;">
               <label class="col-sm-2 control-label">Local Address</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="laddress">
               </div>
             </div>
             <div class="form-group" style="border-bottom: none;">
               <label class="col-sm-2 control-label">Permanent Address</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="paddress">
               </div>
             </div>
           </div>
@@ -146,7 +141,7 @@
             <div class="form-group">
               <label class="col-sm-4 control-label">Home Phone</label>
               <div class="col-sm-6">
-                <input type="text" class="form-control" name="name" placeholder="Name" value="{{ Request::old('name') }}" required>
+                <input type="text" class="form-control" name="hphone" value="{{ Request::old('hphone') }}" required>
               </div>
             </div>
           </div>
@@ -155,7 +150,7 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Mobile</label>
               <div class="col-sm-6">
-                <input type="text" class="form-control" name="name" placeholder="Name" value="{{ Request::old('name') }}" required>
+                <input type="text" class="form-control" name="pphone" value="{{ Request::old('name') }}" required>
               </div>
             </div>
           </div>
