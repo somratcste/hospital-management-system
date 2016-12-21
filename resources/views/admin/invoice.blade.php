@@ -19,7 +19,6 @@
           Invoice Creator
         </div>
         <div class="panel-body">
-        <div class="col-lg-12">
         @if(Session::has('success'))
           <div class="alert alert-success">
             {{Session::get('success')}}
@@ -36,200 +35,252 @@
       @endif
       
     <form class="form-horizontal bordered-group" role="form" action="{{ route('invoice.store')}}" method="post" enctype="multipart/form-data">
-
+        <div class="col-md-12">
           <div class="form-group">
-              <label class="col-sm-2 control-label">Patient Name</label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control" value="{{$patient->id}} -- {{$patient->name}} -- @if($patient->patient_type == 1)Out @else Admit
-                @endif " disabled>
-                <input type="hidden" value="{{$patient->id}}" name="patient_id">
-              </div>
+            <label class="col-sm-2 control-label">Patient Name</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" value="{{$patient->id}} -- {{$patient->name}} -- @if($patient->patient_type == 1)Out @else Admit
+              @endif " disabled>
+              <input type="hidden" value="{{$patient->id}}" name="patient_id">
             </div>
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Admission Fee</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control calculate" id="admission" name="admission" value="0" required>
-              </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Admission Fee</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control calculate" id="admission" name="admission" value="300" readonly>
             </div>
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">{{ $difference }} Day's Before Rent</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control calculate" id="rent" name="rent" value="{{ $cost }}" required>
-              </div>
+          </div>
+        </div>
+          
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Consultation</label>
+            <div class="col-sm-5">
+              <input type="number" class="form-control calculate" id="consultation" name="consultation" value="0" required>
             </div>
+          </div>
+        </div>
 
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Consultation</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control calculate" id="consultation" name="consultation" value="0" required>
-              </div>
+        <div class="col-md-6 clear">
+          <div class="form-group">
+            <label class="col-sm-4 control-label">{{ $difference }} Day's Before Rent</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control calculate" id="rent" name="rent" value="{{ $cost }}" required>
             </div>
+          </div>
+        </div>
 
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Doctor</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control calculate" id="doctor" name="doctor" value="0" required>
-              </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Doctor</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control calculate" id="doctor" name="doctor" value="0" required>
             </div>
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Surgeon Fee</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control calculate" id="surgeon" name="surgeon" value="0" required>
-              </div>
+          </div>
+        </div>
+          
+        <div class="col-md-6 clear">
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Surgeon Fee</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control calculate" id="surgeon" name="surgeon" value="0" required>
             </div>
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Anesthesia Fee</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control calculate" id="anesthesia" name="anesthesia" value="0" required>
-              </div>
+          </div>
+        </div>
+         
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Anesthesia Fee</label>
+            <div class="col-sm-5">
+              <input type="number" class="form-control calculate" id="anesthesia" name="anesthesia" value="0" required>
             </div>
+          </div>
+        </div>   
 
-            <div class="form-group">
-              <label class="col-sm-2 control-label">1st Assistant Fee</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control calculate" id="assistant1" name="assistant1" value="0" required>
-              </div>
+        <div class="col-md-6 clear">
+          <div class="form-group">
+            <label class="col-sm-4 control-label">1st Assistant Fee</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control calculate" id="assistant1" name="assistant1" value="0" required>
             </div>
+          </div>
+        </div>    
 
-            <div class="form-group">
-              <label class="col-sm-2 control-label">2nd Assistant Fee</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control calculate" id="assistant2" name="assistant2" value="0" required>
-              </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="col-sm-3 control-label">2nd Assistant</label>
+            <div class="col-sm-5">
+              <input type="number" class="form-control calculate" id="assistant2" name="assistant2" value="0" required>
             </div>
+          </div>
+        </div>   
 
-            <div class="form-group">
-              <label class="col-sm-2 control-label">O.T Charge</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control calculate" id="operation" name="operation" value="0" required>
-              </div>
+        <div class="col-md-6 clear">
+          <div class="form-group">
+            <label class="col-sm-4 control-label">O.T Charge</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control calculate" id="operation" name="operation" value="0" required>
             </div>
+          </div>
+        </div>    
 
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Delivary Charge</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control calculate" id="delivary" name="delivary" value="0" required>
-              </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Delivary Fee</label>
+            <div class="col-sm-5">
+              <input type="number" class="form-control calculate" id="delivary" name="delivary" value="0" required>
             </div>
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Medicine Charge</label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control calculate" id="medicine" name="medicine" value="0" required>
-              </div>
+          </div>
+        </div>    
+        
+        <div class="col-md-6 clear">
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Medicine Charge</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control calculate" id="medicine" name="medicine" value="0" required>
             </div>
+          </div>
+        </div>   
 
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Pathology</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control calculate" id="pathology" name="pathology" value="0" required>
-              </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Pathology</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control calculate" id="pathology" name="pathology" value="0" required>
             </div>
+          </div>
+        </div>    
 
-            <div class="form-group">
-              <label class="col-sm-2 control-label">U.S.G</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control calculate" id="usg" name="usg" value="0" required>
-              </div>
+        <div class="col-md-6 clear">
+          <div class="form-group">
+            <label class="col-sm-4 control-label">U.S.G</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control calculate" id="usg" name="usg" value="0" required>
             </div>
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">E.C.G</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control calculate" id="ecg" name="ecg" value="0" required>
-              </div>
+          </div>
+        </div>
+            
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">E.C.G</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control calculate" id="ecg" name="ecg" value="0" required>
             </div>
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">X-Ray</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control calculate" id="xray" name="xray" value="0" required>
-              </div>
+          </div>
+        </div>
+                       
+        <div class="col-md-6 clear">
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Nebulizer Charge</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control calculate" id="nebulizer" name="nebulizer" value="0" required>
             </div>
+          </div>
+        </div>
 
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Nebulizer Charge</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control calculate" id="nebulizer" name="nebulizer" value="0" required>
-              </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">X-Ray</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control calculate" id="xray" name="xray" value="0" required>
             </div>
+          </div>
+        </div>
 
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Suction Charge</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control calculate" id="suction" name="suction" value="0" required>
-              </div>
+        <div class="col-md-6  clear">
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Blood Transfusion</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control calculate" id="blood" name="blood" value="0" required>
             </div>
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Blood Transfusion</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control calculate" id="blood" name="blood" value="0" required>
-              </div>
+          </div>
+        </div> 
+            
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Suction Fee</label>
+            <div class="col-sm-5">
+              <input type="number" class="form-control calculate" id="suction" name="suction" value="0" required>
             </div>
+          </div>
+        </div>
+                  
 
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Dressing</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control calculate" id="dressing" name="dressing" value="0" required>
-              </div>
+        <div class="col-md-6 clear">
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Dressing</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control calculate" id="dressing" name="dressing" value="0" required>
             </div>
+          </div>
+        </div>    
 
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Oxygen</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control calculate" id="oxygen" name="oxygen" value="0" required>
-              </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Oxygen</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control calculate" id="oxygen" name="oxygen" value="0" required>
             </div>
+          </div>
+        </div>    
 
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Canulla</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control calculate" id="canulla" name="canulla" value="0" required>
-              </div>
+        <div class="col-md-6 clear">
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Canulla</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control calculate" id="canulla" name="canulla" value="0" required>
             </div>
+          </div>
+        </div>   
 
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Catheter</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control calculate" id="catheter" name="catheter" value="0" required>
-              </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Catheter</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control calculate" id="catheter" name="catheter" value="0" required>
             </div>
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Ryles Tube</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control calculate" id="tube" name="tube" value="0" required>
-              </div>
+          </div>
+        </div>
+            
+        <div class="col-md-6 clear">
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Ryles Tube</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control calculate" id="tube" name="tube" value="0" required>
             </div>
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Ambulance</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control calculate" id="ambulance" name="ambulance" value="0" required>
-              </div>
+          </div>
+        </div>
+            
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Ambulance</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control calculate" id="ambulance" name="ambulance" value="0" required>
             </div>
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Baby Incubator</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control calculate" id="incubator" name="incubator" value="0" required>
-              </div>
+          </div>
+        </div>
+            
+        <div class="col-md-6 clear">
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Baby Incubator</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control calculate" id="incubator" name="incubator" value="0" required>
             </div>
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Others</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control calculate" id="others" name="others" value="0" required>
-              </div>
+          </div>
+        </div>
+            
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Others</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control calculate" id="others" name="others" value="0" required>
             </div>
-
-
-      <div class="row col-md-6 pull-right">
+          </div>
+        </div>
+            
+   <div class="row col-md-6 pull-right">
       <div class="form-group form-inline">
         <label class="col-sm-4" >Subtotal: &nbsp;</label>
         <div class="input-group col-sm-6">
@@ -285,8 +336,6 @@
       </div>
       </form>
 
-      </div>
-
             
 
 
@@ -330,7 +379,7 @@
       var ambulance = $("#ambulance").val();
       var incubator = $("#incubator").val();
       var others = $("#others").val();
-      if(admission!= "" && pathology!= "") {
+      if(consultation!= "" && pathology!= "") {
         $("#subTotal").val(parseInt(admission)+parseInt(rent)+parseInt(consultation)+parseInt(doctor)+parseInt(surgeon)+parseInt(anesthesia)+parseInt(assistant1)+parseInt(assistant2)+parseInt(operation)+parseInt(delivary)+parseInt(medicine)+parseInt(pathology)+parseInt(usg)+parseInt(ecg)+parseInt(xray)+parseInt(nebulizer)+parseInt(suction)+parseInt(blood)+parseInt(dressing)+parseInt(oxygen)+parseInt(canulla)+parseInt(catheter)+parseInt(tube)+parseInt(ambulance)+parseInt(incubator)+parseInt(others));
       } else {
         $("#subTotal").val("");
