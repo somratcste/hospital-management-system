@@ -327,12 +327,12 @@
       </div>
 
       <div class="form-group">        
-      <label class="col-sm-4"></label>  
-      <div class="input-group col-sm-6">
-      <input type=submit name="invoice" value="Add Invoice" class="btn btn-success btn-lg btn-block">
-      <input type="hidden" name="_token" value="{{ Session::token() }}">
-      </div>
-     
+        <label class="col-sm-4"></label>  
+          <div class="input-group col-sm-6">
+            <input type="hidden" name="seat_id" value="{{ $patient->seat_id}}">
+            <input type=submit name="invoice" value="Add Invoice" class="btn btn-success btn-lg btn-block">
+            <input type="hidden" name="_token" value="{{ Session::token() }}">
+        </div>   
       </div>
       </form>
 

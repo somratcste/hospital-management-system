@@ -43,8 +43,12 @@ class PatientController extends Controller
         $patient->hphone = $request['hphone'];
         $patient->pphone = $request['pphone'];
         $patient->doctor_id = $request['doctor_id'];
-        $patient->seat_id = $request['seat_id'];  	
-       
+        $patient->seat_id = $request['seat_id']; 
+
+        $seat = Seat::find($request['seat_id']);
+        $seat->status = "full";
+        $seat->update();
+
     	$patient->save();
 
     	return redirect()->back()->with(['success' => 'Insert Successfully'] );

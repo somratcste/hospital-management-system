@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Patient;
 use Carbon\Carbon;
 use App\Invoice;
+use App\Seat;
 
 class InvoiceController extends Controller
 {
@@ -68,6 +69,11 @@ class InvoiceController extends Controller
         $invoice->discount = $request['discount'];
         $invoice->total = $request['total'];
         $invoice->patient_id = $request['patient_id'];
+
+        $seat = Seat::find($request['seat_id']);
+        $seat->status = "empty";
+        $seat->update();
+
         $invoice->save();
         return redirect()->back()->with(['success' => 'Invoice Create Successfully'] );
     }
