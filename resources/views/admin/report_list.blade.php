@@ -73,16 +73,19 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title">Delete Reports Information</h4>
+                    <h4 class="modal-title">Delete Report's Information</h4>
                   </div>
                   <div class="modal-body">
                       Are you sure ?
                   </div>
-                  <form action="" method="">
+                  <form action="{{ route('report.destroy' , $report->id)}}" method="POST">
+                  <input name="_method" type="hidden" value="DELETE">
+                  <input type="hidden" name="report_id" value="{{ $report->id }}">
+                  {{ csrf_field() }}
+
                   <div class="modal-footer no-border">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                    <button type="submit" class="btn btn-primary">Yes</button>
-                    <input type="hidden" name="report_id" value="{{ $report->id }}">
+                      <button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+                      <button type="submit" class="btn btn-primary">Yes</button>
                   </div>
                   </form>
                 </div>

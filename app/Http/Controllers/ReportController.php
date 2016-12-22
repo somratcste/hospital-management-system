@@ -10,9 +10,10 @@ use App\Report;
 use App\Patient;
 use App\ReportProduct;
 use Auth;
-use App\InvoiceOut;
+
 class ReportController extends Controller
 {
+
 
     public function reportTypeIndex ()
     {
@@ -124,19 +125,24 @@ class ReportController extends Controller
         return view('admin.report_list' , ['reports' => $report]);
     }
 
-    public function delete(Request $request)
+    public function destroy(Request $request ,$id)
     {
-        $report = report::find($request['report_id']);
+        $report = Report::find($id);
         if(!$report){
-            return redirect()->route('report.list')->with(['fail' => 'Page not found !']);
+            return redirect()->route('report.create')->with(['fail' => 'Page not found !']);
         }
-        if($report->image){
-            $image_path = public_path().'/images/reports/'.$report->image;
-            unlink($image_path);
-        }
-        $report->delete();
-        return redirect()->route('report.list')->with(['success' => 'Deleted Information Successfully !']);
 
+        
+        $reportproduct = ReportProduct::where('report_id', $request['report_id'])->get();
+        $count = $reportproduct->count();
+        for($i=1 ; $i<= $count; $i++) 
+        {
+            $reportproduct = ReportProduct::where('report_id', $request['report_id'])->first();
+            $reportproduct->delete();
+        }
+
+        $report->delete();
+        return redirect()->route('report.create')->with(['success' => 'Deleted Successfully.']);
     }
 
     public function create()
@@ -165,7 +171,6 @@ class ReportController extends Controller
         $report = Report::Find($report_id);
         $delivaryTime = $report->created_at;
         $money = $report->subtotal;
-        $money = InvoiceOutController::convert_number_to_words($money);
         $reportproducts = ReportProduct::where('report_id',$report_id)->get();
         return view('admin.report_view', ['report'=>$report,'reportproducts'=>$reportproducts, 'money' => $money]);
     }
