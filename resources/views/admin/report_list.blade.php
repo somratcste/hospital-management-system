@@ -63,7 +63,13 @@
                 </form>
               </td>
 
-              <td><a data-toggle="modal" data-target="#edit<?php echo $i; ?>" href=""><button type="button" class="btn btn-info">Edit</button></a></td>
+              <td>
+                <form action="{{ route('report.get') }}" method="GET">
+                  {{ csrf_field() }}
+                <input type="hidden" name="report_id" value="{{ $report->id }}">
+                <button class="btn btn-primary">Edit</button>
+                </form>
+              </td>
               
               @if(Auth::user()->test_delete_id == 1)
               <td><a data-toggle="modal" data-target="#delete<?php echo $i; ?>" href=""><button type="button" class="btn btn-danger">Delete</button></a></td>

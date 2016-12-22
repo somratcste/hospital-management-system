@@ -1,7 +1,10 @@
 @extends('layouts.master')
 
+@section('run_custom_css')
+
+@endsection
 @section('top_header')
-  Add New Report
+  Update Test 
 @endsection
 
 
@@ -9,21 +12,46 @@
 
 <!-- main area -->
 <div class="main-content">
-
-  <div class="row" style="background: white;">
-    <div class="panel mb25">
-        <div class="panel-heading border" style="margin-bottom: 20px;">
-          Report Entry Information
-        </div>
-        @if(Session::has('success'))
-        <div class="alert alert-success">
-          {{Session::get('success')}}
-        </div>
-       @endif
-
-
+  <div class="row">
+  <div class="panel mb25">
+    <div class="panel-heading border">
+    	Update Test Information
     </div>
-  </div>
+
+    <div class="col-md-6 pull-left">
+      <table class="table table-bordered table-hover">
+        <tbody>
+            <tr>
+              <td>Report ID</td>
+              <td>{{ $report->id }}</td>
+            </tr>
+            <tr>
+              <td>Patient Name</td>
+              <td>{{ $report->patient->name }}</td>
+            </tr>                      
+        </tbody>
+      </table>
+      </div>
+
+      <div class="col-md-6 pull-right">
+        <table class="table table-bordered table-hover">
+          <tbody>
+
+            <tr>
+              <td>Patient ID</td>
+              <td>{{ $report->patient_id }}-{{ $report->created_at->format('m-d-Y')}}</td>
+            </tr>
+            <tr>
+              <td>Patient Mobile</td>
+              <td>{{ $report->patient->pphone }}</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+      </div>
+      </div>
+    
 
 <div class="row">
     <div class="panel mb25">
@@ -31,44 +59,11 @@
   
   <div class="col-xs-12"> 
     <div class="box">
-    <form class="" method="post" action="" enctype="multipart/form-data">
+    <form action="{{ route('report.update' , $report->id)}}" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
-    <input name="_method" type="hidden" value="POST">
+     <input type="hidden" name="report_id" value="{{ $report->id }}">
+    <input name="_method" type="hidden" value="Put">
     <div class='box-body'>  
-
-
-    <div class="row col-md-6 pull-left">
-    
-    <div class="form-group form-inline">
-      <label class="col-sm-4" >Report No : &nbsp;</label>
-      <div class="input-group col-sm-6">
-        <input type="number" class="form-control" value="{{ $report_id }}" readonly>
-      </div>
-    </div>  
-    </div>
-
-    <div class="row col-md-6 pull-right">  
-    <div class="form-group form-inline">
-      <label class="col-sm-4" >Search : &nbsp;</label>
-      <div class="input-group col-sm-6">
-        <input type="text" class="form-control" id="patient_id" name="patient_id" required>
-      </div>
-    </div>  
-    </div>  
-
-
-    <div class="row col-md-6 pull-right">
-    <div class="form-group form-inline">
-      <label class="col-sm-4" >Patient Name : &nbsp;</label>
-      <div class="input-group col-sm-6">
-        <input type="text" class="form-control" id="patient_name" required readonly>
-      </div>
-    </div>  
-    </div>
-            
-   </div>
-
-
 
       <div class="box-body">
        <div class="table-responsive">  
@@ -82,17 +77,21 @@
               <th width="13%">Room No.</th>
               <th width="13%">Price</th>
             </tr>
-                    </thead>
+            </thead>
 
-                    <tbody>
-                      <tr>
+            <tbody>
+              
+              @foreach($reportproducts as $reportproduct)
+              <tr>
               <td><input class="case" type="checkbox"/></td>
-              <td><input type="text" data-type="test_id" name="itemNo[]" id="itemNo_1" class="form-control autocomplete_txt" autocomplete="off" required></td>
-              <td><input type="text" data-type="name" name="itemName[]" id="itemName_1" class="form-control autocomplete_txt" autocomplete="off" required></td>
-              <input type="hidden" data-type="test_id" name="itemDiscount[]" id="itemDiscount_1" class="form-control autocomplete_txt" autocomplete="off" required>
-              <td><input type="text" data-type="room" name="itemAvailable[]" id="itemAvailable_1" class="form-control autocomplete_txt" autocomplete="off" required></td>
-              <td><input type="number" name="total[]" id="total_1" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" required readonly></td>
-            </tr>
+              <td><input type="text" data-type="test_id" name="itemNo[]" id="itemNo_1" class="form-control autocomplete_txt" autocomplete="off" value="{{ $reportproduct->reportType_id }}" required></td>
+              <td><input type="text" data-type="name" name="itemName[]" id="itemName_1" class="form-control autocomplete_txt" autocomplete="off" value="{{ $reportproduct->report_name }}" required></td>
+              <td><input type="text" data-type="room" name="itemAvailable[]" id="itemAvailable_1" class="form-control autocomplete_txt" autocomplete="off" value="{{ $reportproduct->report_room }}" required></td>
+              <td><input type="number" name="total[]" id="total_1" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" value="{{ $reportproduct->report_cost }}" required readonly></td>
+             </tr>
+
+              @endforeach
+
                     </tbody>
                   </table>
                 </div>
@@ -107,56 +106,11 @@
         <label class="col-sm-4" >Subtotal: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
-          <input name="subtotal" type="number" class="form-control" id="subTotal" placeholder="Subtotal" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" readonly>
+          <input name="subtotal" type="number" class="form-control" id="subTotal" placeholder="Subtotal" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" value="{{ $report->subtotal }}" readonly>
         </div>
       </div>
-      <!-- <div class="form-group form-inline">
-        <label class="col-sm-4">Percent: &nbsp;</label>
-        <div class="input-group col-sm-6">
-          <div class="input-group-addon">Tk.</div>
-          <input name="percent" type="number" class="form-control" id="tax" placeholder="Percent" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
-              <div class="input-group-addon">%</div>
-        </div>
-      </div>
-      <div class="form-group form-inline">
-        <label class="col-sm-4">Percent Amount: &nbsp;</label>
-        <div class="input-group col-sm-6">
-          <div class="input-group-addon">Tk.</div>
-          <input name="percent_amount" type="text" class="form-control" id="taxAmount" placeholder="Percent" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">          
-        </div>
-      </div>
-
-      <div class="form-group form-inline">
-        <label class="col-sm-4">Without Percent: &nbsp;</label>
-        <div class="input-group col-sm-6">
-          <div class="input-group-addon">Tk.</div>
-          <input name="without_percent" type="text" class="form-control" id="totalAftertax" placeholder="Without Percen" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
-        </div>
-      </div>
-      <div class="form-group form-inline">
-        <label class="col-sm-4">Discount Amount: &nbsp;</label>
-        <div class="input-group col-sm-6">
-          <div class="input-group-addon">Tk.</div>
-          <input name="discount" type="number" class="form-control" id="amountPaid" placeholder="Discount Amount" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
-        </div>
-      </div>
-      <div class="form-group form-inline">
-        <label class="col-sm-4">Total : &nbsp;</label>
-        <div class="input-group col-sm-6">
-          <div class="input-group-addon">Tk.</div>
-          <input name="total_paid" type="number" class="form-control amountDue" id="amountDue" placeholder="Total" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
-        </div>
-      </div>
-
-      <div class="form-group form-inline">
-        <label class="col-sm-4">Receive Cash : &nbsp;</label>
-        <div class="input-group col-sm-6">
-          <div class="input-group-addon">Tk.</div>
-          <input name="receive_cash" type="number" class="form-control" placeholder="Receive Cash" required>
-        </div>
-      </div> -->
-
-          <div class="form-group">        
+      
+      <div class="form-group">        
       <label class="col-sm-4"></label>  
       <div class="input-group col-sm-6">
       <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
@@ -187,21 +141,9 @@
 </div>
 <!-- /content panel -->
 @endsection
+
+
 @section('run_custom_jquery')
-<script type="text/javascript">
-  $('#patient_id').autocomplete({
-    source : '{!!URL::route('autocomplete_indoor_patient')!!}',
-    minlenght:1,
-    autoFocus:true,
-    select:function(event,ui){
-      event.preventDefault();
-      $('#patient_name').val(ui.item.label);
-      $('#patient_id').val(ui.item.id);
-    }
-  });
-</script>
-
-
 <script type="text/javascript">
   /**
  * Site : http:www.somrat.info
@@ -215,7 +157,6 @@ $(".addmore").on('click',function(){
   html += '<td><input class="case" type="checkbox"/></td>';
   html += '<td><input type="text" data-type="test_id" name="itemNo[]" id="itemNo_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
   html += '<td><input type="text" data-type="name" name="itemName[]" id="itemName_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
-  html += '<input type="hidden"  name="itemDiscount[]" id="itemDiscount_'+i+'" class="form-control autocomplete_txt" autocomplete="off">';
   html += '<td><input type="text" data-type="productAvailable" name="itemAvailable[]" id="itemAvailable_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
   html += '<td><input type="text" name="total[]" id="total_'+i+'" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" readonly></td>';
   html += '</tr>';
@@ -272,9 +213,8 @@ $(document).on('focus','.autocomplete_txt',function(){
         id = id_arr.split("_");
       $('#itemNo_'+id[1]).val(names[0]);
       $('#itemName_'+id[1]).val(names[1]);
-      $('#itemDiscount_'+id[1]).val(names[2]);
-      $('#itemAvailable_'+id[1]).val(names[3]);
-      $('#total_'+id[1]).val(names[4] );
+      $('#itemAvailable_'+id[1]).val(names[2]);
+      $('#total_'+id[1]).val(names[3] );
       calculateTotal();
     }           
   });
@@ -342,5 +282,4 @@ function IsNumeric(e) {
 }
 
 </script>
-
 @endsection

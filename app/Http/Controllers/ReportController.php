@@ -116,7 +116,33 @@ class ReportController extends Controller
 
     public function update(Request $request ,$id)
     {
-       
+        $report = Report::find($id);
+        $report->subtotal = $request['subtotal'];
+        
+
+        $reportproduct = ReportProduct::where('report_id', $request['report_id'])->get();
+        $count = $reportproduct->count();
+        for($i=1 ; $i<= $count; $i++) 
+        {
+            $reportproduct = ReportProduct::where('report_id', $request['report_id'])->first();
+
+            $reportproduct->delete();
+        }
+
+        $report->update();
+
+        for($i=0;$i<count($_POST['itemNo']);$i++)
+        {
+            $reportproduct = new ReportProduct();
+            $reportproduct->report_id = $id;
+            $reportproduct->reportType_id = $request['itemNo'][$i];
+            $reportproduct->report_name = $request['itemName'][$i];
+            $reportproduct->report_room = $request['itemAvailable'][$i];
+            $reportproduct->report_cost = $request['total'][$i];
+            $reportproduct->save();
+
+        }
+        return redirect()->route('report.create')->with(['success' => 'Update Successfully'] );
     }
 
     public function viewList($reportFloor = null)
@@ -149,6 +175,14 @@ class ReportController extends Controller
     {
         $report = Report::orderBy('created_at' , 'desc')->paginate(50);
         return view('admin.report_list' , ['reports' => $report]);
+    }
+
+    public function get(Request $request)
+    {
+        $report_id = $request['report_id'];
+        $report = Report::Find($report_id);
+        $reportproducts = ReportProduct::where('report_id',$report_id)->get();
+        return view('admin.report_get', ['report'=>$report,'reportproducts'=>$reportproducts]); 
     }
 
     public function autocomplete_indoor_patient(Request $request)
