@@ -7,8 +7,13 @@ use App\ReportType;
 use Illuminate\Support\Facades\Input;
 use File;
 use App\Report;
+use App\Patient;
+use App\ReportProduct;
+use Auth;
+use App\InvoiceOut;
 class ReportController extends Controller
 {
+
     public function reportTypeIndex ()
     {
         return view('admin.reportType');
@@ -73,65 +78,44 @@ class ReportController extends Controller
 
     //Report Controller 
     
-    public function getIndex ()
+    public function index ()
     {
-        return view('admin.report');
+        $report_id = Report::orderBy('created_at','desc')->first();
+        if($report_id == NULL){
+            $report_id = 0 ;
+        } else {
+            $report_id = $report_id->id ;
+        }   
+        return view('admin.report' , ['report_id' => $report_id +1]);
     }
 
-    public function save(Request $request)
+    public function store(Request $request)
     {
-        $this->validate($request , [
-            'patient_id' => 'required',
-            'reportType_id' => 'required',
-            'description' => 'required'
-        ]);
-
-        $report          = new Report();
-        $report->patient_id      = $request['patient_id'];
-        $report->reportType_id    = $request['reportType_id'];
-        $report->description    = $request['description'];
-        if(Input::hasFile('image')){
-
-            $file = Input::file('image');
-            $file->move(public_path(). '/images/reports',$file->getClientOriginalName());
-
-            $report->image = $file->getClientOriginalName();
-            $report->size = $file->getClientsize();
-            $report->type = $file->getClientMimeType();
-        }
+       date_default_timezone_set("Asia/Dhaka");
+        $report = new Report();
+        $report->patient_id = $request['patient_id'];
+        $report->subtotal = $request['subtotal'];
+        $report->user_id = Auth::user()->id ;
         $report->save();
-
-        return redirect()->back()->with(['success' => 'Insert Successfully'] );
+        $reportID = $report->id;
+        
+        
+        for($i=0;$i<count($_POST['itemNo']);$i++)
+        {
+            $reportproduct = new ReportProduct();
+            $reportproduct->report_id = $reportID;
+            $reportproduct->reportType_id = $request['itemNo'][$i];
+            $reportproduct->report_name = $request['itemName'][$i];
+            $reportproduct->report_room = $request['itemAvailable'][$i];
+            $reportproduct->report_cost = $request['total'][$i];
+            $reportproduct->save();
+        }
+        return redirect()->route('report.create')->with(['success' => 'Insert Successfully'] );
     }
 
-    public function update(Request $request)
+    public function update(Request $request ,$id)
     {
-       $this->validate($request , [
-            'patient_id' => 'required',
-            'reportType_id' => 'required',
-            'description' => 'required'
-        ]);
-
-
-        $report            = Report::find($request['report_id']);
-        $report->patient_id      = $request['patient_id'];
-        $report->reportType_id    = $request['reportType_id'];
-        $report->description    = $request['description'];
-        if(Input::hasFile('image')){
-
-            if($report->image){
-                $image_path = public_path().'/images/reports/'.$report->image;
-                unlink($image_path);
-            }
-            $file = Input::file('image');
-            $file->move(public_path(). '/images/reports',$file->getClientOriginalName());
-
-            $report->image = $file->getClientOriginalName();
-            $report->size = $file->getClientsize();
-            $report->type = $file->getClientMimeType();
-        }
-        $report->update();
-        return redirect()->route('report.list')->with(['success' => 'Updated Successfully'] );
+       
     }
 
     public function viewList($reportFloor = null)
@@ -153,5 +137,36 @@ class ReportController extends Controller
         $report->delete();
         return redirect()->route('report.list')->with(['success' => 'Deleted Information Successfully !']);
 
+    }
+
+    public function create()
+    {
+        $report = Report::orderBy('created_at' , 'desc')->paginate(50);
+        return view('admin.report_list' , ['reports' => $report]);
+    }
+
+    public function autocomplete_indoor_patient(Request $request)
+    {
+        $term = $request->term ;
+        $data =  Patient::where('id','LIKE','%'.$term.'%')
+        ->orWhere('name','LIKE','%'.$term.'%')
+        ->take(10)
+        ->get();
+        $results = array();
+        foreach ($data as $value) {
+            $results[] = ['label' => $value->name .'-'. $value->pphone ,'id' => $value->id];
+        }
+        return response()->json($results);
+    }
+
+    public function view(Request $request)
+    {
+        $report_id = $request['report_id'];
+        $report = Report::Find($report_id);
+        $delivaryTime = $report->created_at;
+        $money = $report->subtotal;
+        $money = InvoiceOutController::convert_number_to_words($money);
+        $reportproducts = ReportProduct::where('report_id',$report_id)->get();
+        return view('admin.report_view', ['report'=>$report,'reportproducts'=>$reportproducts, 'money' => $money]);
     }
 }

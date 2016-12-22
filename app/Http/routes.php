@@ -111,30 +111,12 @@ Route::group(['middleware' => ['auth']] , function() {
 
 	//report
 
-	Route::get('/report' , [
-		'uses' => 'ReportController@getIndex',
-		'as' => 'report.index'
-	]);
+	Route::resource('report','ReportController');
 
-	Route::post('/report/save' , [
-		'uses' => 'ReportController@save',
-		'as' => 'report.save'
-	]);
-
-	Route::post('/report/update' , [
-		'uses' => 'ReportController@update',
-		'as' => 'report.update'
-	]);
-
-	Route::get('/report/delete' , [
-		'uses' => 'ReportController@delete',
-		'as' => 'report.delete'
-	]);
-
-	Route::get('/report/viewlist' , [
-		'uses' => 'ReportController@viewList',
-		'as' => 'report.list'
-	]);
+	Route::get('/report_view',[
+    	'uses' => 'ReportController@view',
+    	'as' => 'report.view'
+    ]);
 
 	//OperationType
 
@@ -386,6 +368,8 @@ Route::group(['middleware' => ['auth']] , function() {
 	Route::get('/autocomplete_village',array('as'=>'autocomplete_village','uses'=>'InvoiceOutController@autocomplete_village'));
 
 	Route::get('/autocomplete_marketing',array('as'=>'autocomplete_marketing','uses'=>'SearchRFController@autocomplete_marketing'));
+
+	Route::get('/autocomplete_indoor_patient',array('as'=>'autocomplete_indoor_patient','uses'=>'ReportController@autocomplete_indoor_patient'));
 	
 });
 

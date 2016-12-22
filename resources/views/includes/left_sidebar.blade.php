@@ -172,7 +172,7 @@
             </li>
           @endif
           <!-- employee -->
-          @if(Auth::user()->employee_id ==1)
+          <!-- @if(Auth::user()->employee_id ==1)
           <li>
             <a href="javascript:;">
               <i class="fa fa-tint"></i>
@@ -196,7 +196,7 @@
               </li>   
              </ul>
             </li>
-            @endif
+            @endif -->
           <!-- /employee -->
           @if(Auth::user()->seat_id ==1)
           <!-- Appoinment -->
@@ -245,7 +245,7 @@
                 </a>
               </li>
               <li>
-                <a href="{{ route('report.list') }}">
+                <a href="{{ route('report.create') }}">
                   <span>Test List</span>
                 </a>
               </li>
