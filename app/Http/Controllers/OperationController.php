@@ -7,6 +7,8 @@ use App\OperationType;
 use Illuminate\Support\Facades\Input;
 use File;
 use App\Operation;
+use App\Doctor; 
+
 class OperationController extends Controller
 {
     public function operationTypeIndex ()
@@ -67,7 +69,9 @@ class OperationController extends Controller
     
     public function getIndex ()
     {
-        return view('admin.operation');
+        $doctors = Doctor::all();
+        $operationtypes = OperationType::all();
+        return view('admin.operation',['doctors'=>$doctors,'operationtypes'=>$operationtypes]);
     }
 
     public function save(Request $request)
@@ -76,20 +80,14 @@ class OperationController extends Controller
             'patient_id' => 'required',
             'operationType_id' => 'required',
             'doctor_id' => 'required',
-            'date' => 'required',
-            'time' => 'required',
-            'seat_id' => 'required',
-            'description' => 'required'
+            'dateTime' => 'required'
         ]);
 
         $operation          = new Operation();
         $operation->patient_id      = $request['patient_id'];
         $operation->operationType_id    = $request['operationType_id'];
         $operation->doctor_id = $request['doctor_id'];
-        $operation->seat_id = $request['seat_id'];
-        $operation->date = $request['date'];
-        $operation->time = $request['time'];
-        $operation->description    = $request['description'];
+        $operation->dateTime = $request['dateTime'];
         $operation->save();
 
         return redirect()->back()->with(['success' => 'Insert Successfully'] );
@@ -101,9 +99,7 @@ class OperationController extends Controller
             'patient_id' => 'required',
             'operationType_id' => 'required',
             'doctor_id' => 'required',
-            'date' => 'required',
-            'time' => 'required',
-            'seat_id' => 'required',
+            'dateTime' => 'required',
             'description' => 'required'
         ]);
 
@@ -112,10 +108,7 @@ class OperationController extends Controller
         $operation->patient_id      = $request['patient_id'];
         $operation->operationType_id    = $request['operationType_id'];
         $operation->doctor_id = $request['doctor_id'];
-        $operation->seat_id = $request['seat_id'];
-        $operation->date = $request['date'];
-        $operation->time = $request['time'];
-        $operation->description    = $request['description'];
+        $operation->dateTime = $request['dateTime'];
         $operation->update();
         return redirect()->route('operation.list')->with(['success' => 'Updated Successfully'] );
     }
@@ -132,10 +125,7 @@ class OperationController extends Controller
         if(!$operation){
             return redirect()->route('operation.list')->with(['fail' => 'Page not found !']);
         }
-        if($operation->image){
-            $image_path = public_path().'/images/operations/'.$operation->image;
-            unlink($image_path);
-        }
+
         $operation->delete();
         return redirect()->route('operation.list')->with(['success' => 'Deleted Information Successfully !']);
 

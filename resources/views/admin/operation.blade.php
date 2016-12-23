@@ -1,5 +1,10 @@
 @extends('layouts.master')
 
+@section('run_custom_css_file')
+  <link rel="stylesheet" href="{{ asset('styles/bootstrap-combined.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('styles/bootstrap-datetimepicker.min.css') }}">
+  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+@endsection
 @section('top_header')
   Add New Operation
 @endsection
@@ -46,8 +51,9 @@
               <label class="col-sm-2 control-label">Operation Type</label>
               <div class="col-sm-8">
                 <select class="form-control" name="operationType_id">
-                  <option value="1">T4</option>
-                  <option value="2">C.B.C</option>
+                @foreach($operationtypes as $operationtype)
+                  <option value="{{ $operationtype->id }}">{{ $operationtype->name }}</option>
+                @endforeach
                 </select>
               </div>
             </div>
@@ -56,40 +62,21 @@
               <label class="col-sm-2 control-label">Select Doctor</label>
               <div class="col-sm-8">
                 <select class="form-control" name="doctor_id">
-                  <option value="1">T4</option>
-                  <option value="2">C.B.C</option>
+                @foreach($doctors as $doctor)
+                  <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
+                @endforeach
                 </select>
               </div>
             </div>
 
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Select Seat</label>
-              <div class="col-sm-8">
-                <select class="form-control" name="seat_id">
-                  <option value="1">ICU - 101</option>
-                  <option value="2">ICU - 202</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">O.T Date</label>
-              <div class="col-sm-8">
-                <input type="text" name="date" class="form-control" placeholder="Format : Y-M-D">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">O.T Time</label>
-              <div class="col-sm-8">
-                <input type="text" name="time" class="form-control" placeholder="Format : H:M:S">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-sm-2 control-label">Description</label>
-              <div class="col-sm-8">
-                <textarea class="form-control" rows="5" name="description"></textarea>
+            <div class="form-group input-append" id="datetimepicker2">
+              <label class="col-sm-5">Operation Date / Time</label>
+              <div class="col-sm-6">
+                <input data-format="MM/dd/yyyy HH:mm:ss PP" type="dateTime">
+              <span class="add-on">
+                <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                </i>
+              </span>
               </div>
             </div>
 
@@ -107,4 +94,20 @@
   <!-- /main area -->
 </div>
 <!-- /content panel -->
+
+@endsection
+
+@section('run_custom_js_file')
+  <script src="{{ asset('scripts/bootstrap-datetimepicker.min.js') }}"></script>
+@endsection
+
+@section('run_custom_jquery')
+<script type="text/javascript">
+  $(function() {
+    $('#datetimepicker2').datetimepicker({
+      language: 'en',
+      pick12HourFormat: true
+    });
+  });
+</script>
 @endsection
