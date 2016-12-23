@@ -26,7 +26,9 @@
           <thead>
             <tr>
               <th>No.</th>
-              <th>operation Name</th>
+              <th>Patient Name</th>
+              <th>Patient ID</th>
+              <th>Operation Name</th>
               <th>View</th>
               @if(Auth::user()->operation_edit_id == 1)
               <th>Edit</th>
@@ -39,7 +41,9 @@
           <tfoot>
             <tr>
               <th>No.</th>
-              <th>operation Name</th>
+              <th>Patient Name</th>
+              <th>Patient ID</th>
+              <th>Operation Name</th>
               <th>View</th>
               @if(Auth::user()->operation_edit_id == 1)
               <th>Edit</th>
@@ -54,7 +58,9 @@
             @foreach ($operations as $operation)
               <tr>
               <td><?php echo $i; ?></td>
-              <td>{{ $operation->operationNo or 'T4' }}</td>
+              <td>{{ $operation->patient->name }}</td>
+              <td>{{ $operation->patient->id }}</td>
+              <td>{{ $operation->operationtype->name }}</td>
               <td><a data-toggle="modal" data-target="#details<?php echo $i; ?>" href=""><button type="button" class="btn btn-success">Details</button></a></td>
               <div class="modal" id="details<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog">
@@ -69,22 +75,18 @@
                         <div class="col-xs-4">
                           <p>Operation Name</p>
                           <p>Patient Name</p>
+                          <p>Patient ID</p>
                           <p>Selected Doctor</p>
-                          <p>Selected Seat</p>
-                          <p>O.T Date</p>
-                          <p>O.T Time</p>
-                          <p>O.T Charge</p>
-                          <p>Description</p>                 
+                          <p>O.T Date / Time</p>
+                          <p>O.T Charge</p>                
                         </div>
                         <div class="col-xs-7">
-                          <p> : {{ $operation->name or 'T4' }}</p>
-                          <p> : {{ $operation->patien or 'Somrat' }}</p>
-                          <P> : {{ $operation->doctor or 'Mr. Nazmul' }}</P>
-                          <p> : {{ $operation->seat or '102' }}</p>
-                          <p> : {{ $operation->date or '2016:20:06' }}</p>
-                          <p> : {{ $operation->time or '05:06:20' }}</p>
-                          <p> : {{ $operation->charge or '2000' }}</p>
-                          <p> : {{ $operation->description }}</p>                         
+                          <p> : {{ $operation->operationtype->name or 'T4' }}</p>
+                          <p> : {{ $operation->patient->name or 'Somrat' }}</p>
+                          <p> : {{ $operation->patient->id }}</p>
+                          <P> : {{ $operation->doctor->name or 'Mr. Nazmul' }}</P>
+                          <p> : {{ $operation->dateTime or '2016:20:06' }}</p>
+                          <p> : {{ $operation->operationtype->cost or '2000' }} Tk.</p>                       
                         </div>
                       </div>
                     </div>
@@ -111,11 +113,8 @@
 
             <div class="form-group">
               <label class="col-sm-3 control-label">Patient</label>
-              <div class="col-sm-8">
-                <select class="form-control" name="patient_id">
-                  <option value="1">Nazmul</option>
-                  <option value="2">Somrat</option>
-                </select>
+              <div class="col-sm-8">    
+                <input class="form-control" type="text" value="{{ $operation->patient->name }}" readonly>
               </div>
             </div>
 
@@ -123,8 +122,9 @@
               <label class="col-sm-3 control-label">Operation Type</label>
               <div class="col-sm-8">
                 <select class="form-control" name="operationType_id">
-                  <option value="1">T4</option>
-                  <option value="2">C.B.C</option>
+                @foreach($operationtypes as $operationtype)
+                  <option value="{{ $operationtype->id }}" {{ $operation->operation_type_id == $operationtype->id ? 'selected' : '' }}>{{ $operationtype->name }}</option>
+                @endforeach
                 </select>
               </div>
             </div>
@@ -133,40 +133,17 @@
               <label class="col-sm-3 control-label">Select Doctor</label>
               <div class="col-sm-8">
                 <select class="form-control" name="doctor_id">
-                  <option value="1">T4</option>
-                  <option value="2">C.B.C</option>
+                @foreach($doctors as $doctor)
+                  <option value="{{ $doctor->id }}" {{ $operation->doctor_id == $doctor->id ? 'selected' : ''}}>{{ $doctor->name }}</option>
+                @endforeach
                 </select>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-sm-3 control-label">Select Seat</label>
+              <label class="col-sm-3 control-label">O.T Date / Time</label>
               <div class="col-sm-8">
-                <select class="form-control" name="seat_id">
-                  <option value="1">ICU - 101</option>
-                  <option value="2">ICU - 202</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-sm-3 control-label">O.T Date</label>
-              <div class="col-sm-8">
-                <input type="text" name="date" class="form-control" placeholder="Format : Y-M-D">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-sm-3 control-label">O.T Time</label>
-              <div class="col-sm-8">
-                <input type="text" name="time" class="form-control" placeholder="Format : H:M:S">
-              </div>
-            </div>
-
-            <div class="form-group clear">
-              <label class="col-sm-3 control-label">Description</label>
-              <div class="col-sm-8">
-                <textarea class="form-control" rows="5" name="description"></textarea>
+                <input type="text" name="dateTime" value="{{ $operation->dateTime }}" class="form-control">
               </div>
             </div>
             

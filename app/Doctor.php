@@ -20,4 +20,9 @@ class Doctor extends Model
     {
     	return $this->hasOne('App\Patient');
     }
+
+    public function operation()
+    {
+        return $this->hasOne('App\Operation');
+    }
 }

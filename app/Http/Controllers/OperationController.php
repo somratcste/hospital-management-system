@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\OperationType;
 use Illuminate\Support\Facades\Input;
-use File;
 use App\Operation;
 use App\Doctor; 
+use Auth;
 
 class OperationController extends Controller
 {
@@ -85,9 +85,10 @@ class OperationController extends Controller
 
         $operation          = new Operation();
         $operation->patient_id      = $request['patient_id'];
-        $operation->operationType_id    = $request['operationType_id'];
+        $operation->operation_type_id   = $request['operationType_id'];
         $operation->doctor_id = $request['doctor_id'];
         $operation->dateTime = $request['dateTime'];
+        $operation->user_id = Auth::user()->id;
         $operation->save();
 
         return redirect()->back()->with(['success' => 'Insert Successfully'] );
@@ -96,19 +97,17 @@ class OperationController extends Controller
     public function update(Request $request)
     {
        $this->validate($request , [
-            'patient_id' => 'required',
             'operationType_id' => 'required',
             'doctor_id' => 'required',
-            'dateTime' => 'required',
-            'description' => 'required'
+            'dateTime' => 'required'
         ]);
 
 
-        $operation            = Operation::find($request['operation_id']);
-        $operation->patient_id      = $request['patient_id'];
-        $operation->operationType_id    = $request['operationType_id'];
+        $operation  = Operation::find($request['operation_id']);
+        $operation->operation_type_id    = $request['operationType_id'];
         $operation->doctor_id = $request['doctor_id'];
         $operation->dateTime = $request['dateTime'];
+        $operation->user_id = Auth::user()->id;
         $operation->update();
         return redirect()->route('operation.list')->with(['success' => 'Updated Successfully'] );
     }
@@ -116,7 +115,9 @@ class OperationController extends Controller
     public function viewList($operationFloor = null)
     {
         $operation = Operation::orderBy('created_at' , 'desc')->paginate(50);
-        return view('admin.operation_list' , ['operations' => $operation]);
+        $operationtypes = OperationType::all();
+        $doctors = Doctor::all();
+        return view('admin.operation_list' , ['operations' => $operation,'doctors'=>$doctors,'operationtypes'=> $operationtypes]);
     }
 
     public function delete(Request $request)

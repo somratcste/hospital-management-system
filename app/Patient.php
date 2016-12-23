@@ -30,4 +30,9 @@ class Patient extends Model
     {
         return $this->hasOne('App\Report');
     }
+
+    public function operation()
+    {
+        return $this->hasOne('App\Operation');
+    }
 }

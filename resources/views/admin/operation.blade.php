@@ -40,10 +40,8 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Patient</label>
               <div class="col-sm-8">
-                <select class="form-control" name="patient_id">
-                  <option value="1">Nazmul</option>
-                  <option value="2">Somrat</option>
-                </select>
+                <input type="text" id="patient_name" class="form-control">
+                <input type="hidden" name="patient_id" id="patient_id" required>
               </div>
             </div>
 
@@ -72,7 +70,7 @@
             <div class="form-group input-append" id="datetimepicker2">
               <label class="col-sm-5">Operation Date / Time</label>
               <div class="col-sm-6">
-                <input data-format="MM/dd/yyyy HH:mm:ss PP" type="dateTime">
+                <input data-format="MM/dd/yyyy HH:mm:ss PP" type="dateTime"  name="dateTime">
               <span class="add-on">
                 <i data-time-icon="icon-time" data-date-icon="icon-calendar">
                 </i>
@@ -108,6 +106,17 @@
       language: 'en',
       pick12HourFormat: true
     });
+  });
+
+  $('#patient_name').autocomplete({
+    source : '{!!URL::route('autocomplete_indoor_patient')!!}',
+    minlenght:1,
+    autoFocus:true,
+    select:function(event,ui){
+      event.preventDefault();
+      $('#patient_name').val(ui.item.label);
+      $('#patient_id').val(ui.item.id);
+    }
   });
 </script>
 @endsection
