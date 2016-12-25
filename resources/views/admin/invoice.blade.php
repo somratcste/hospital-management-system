@@ -121,7 +121,7 @@
           <div class="form-group">
             <label class="col-sm-4 control-label">O.T Charge</label>
             <div class="col-sm-6">
-              <input type="number" class="form-control calculate" id="operation" name="operation" value="0" required>
+              <input type="number" class="form-control calculate" id="operation" name="operation" value="{{ $operationCost }}" readonly>
             </div>
           </div>
         </div>    
@@ -148,7 +148,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">Pathology</label>
             <div class="col-sm-6">
-              <input type="number" class="form-control calculate" id="pathology" name="pathology" value="0" required>
+              <input type="number" class="form-control calculate" id="pathology" name="pathology" value="{{ $reportCost}}" readonly>
             </div>
           </div>
         </div>    
@@ -281,14 +281,14 @@
         </div>
             
    <div class="row col-md-6 pull-right">
-      <div class="form-group form-inline">
+      <div class="form-group form-inline" style="border-bottom: none;padding-bottom: 0px;">
         <label class="col-sm-4" >Subtotal: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
           <input name="subtotal" type="number" class="form-control" id="subTotal" placeholder="Subtotal" required>
         </div>
       </div>
-      <div class="form-group form-inline">
+      <div class="form-group form-inline" style="border-bottom: none;padding-bottom: 0px;">
         <label class="col-sm-4">VAT: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
@@ -296,7 +296,7 @@
               <div class="input-group-addon">%</div>
         </div>
       </div>
-      <div class="form-group form-inline">
+      <div class="form-group form-inline" style="border-bottom: none;padding-bottom: 0px;">
         <label class="col-sm-4">Service Charge: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
@@ -304,21 +304,21 @@
         </div>
       </div>
 
-      <div class="form-group form-inline">
+      <div class="form-group form-inline" style="border-bottom: none;padding-bottom: 0px;">
         <label class="col-sm-4">Total Amount: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
           <input name="total_amount" type="text" class="form-control" id="totalAftertax" placeholder="Total Amout" required>
         </div>
       </div>
-      <div class="form-group form-inline">
+      <div class="form-group form-inline" style="border-bottom: none;padding-bottom: 0px;">
         <label class="col-sm-4">Discount Amount: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
           <input name="discount" type="number" class="form-control" id="discount" value="0" required>
         </div>
       </div>
-      <div class="form-group form-inline">
+      <div class="form-group form-inline" style="border-bottom: none;padding-bottom: 0px;">
         <label class="col-sm-4"><button type="button" id="total" class="btn btn-primary">Total</button></label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>

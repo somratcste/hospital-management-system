@@ -7,6 +7,8 @@ use App\Patient;
 use Carbon\Carbon;
 use App\Invoice;
 use App\Seat;
+use App\Operation;
+use App\Report; 
 
 class InvoiceController extends Controller
 {
@@ -24,7 +26,14 @@ class InvoiceController extends Controller
         $created = new Carbon($patient->created_at);
         $difference = $created->diffInDays();
         $cost = $patient->seat->rent * $difference;
-    	return view('admin.invoice',['patient' => $patient , 'difference' => $difference , 'cost' => $cost]);
+        $operations = Operation::where('patient_id',$patient->id)->get();
+        $operationCost = 0 ;
+        foreach($operations as $operation){
+            $operationCost += $operation->operationType->cost;
+        }
+        $reportCost = Report::where('patient_id',$patient->id)->first();
+        $reportCost = $reportCost->subtotal ;
+    	return view('admin.invoice',['patient' => $patient , 'difference' => $difference , 'cost' => $cost,'operationCost'=>$operationCost,'reportCost'=>$reportCost]);
     }
 
     public function show()
