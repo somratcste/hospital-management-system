@@ -95,7 +95,7 @@ class PatientOutController extends Controller
         ->get();
         $results = array();
         foreach ($data as $value) {
-            $results[] = ['label' => $value->name ,'id' => $value->id];
+            $results[] = ['label' => $value->name ,'id' => $value->id,'charge'=> $value->charge];
         }
         return response()->json($results);
     }

@@ -70,8 +70,12 @@
           <div class="form-group clear">
             <label class="col-sm-2 control-label">Visiting Doctor</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" id="searchname" name="searchname" required>
-              <input type="hidden" name="doctor_id" id="doctor_id">
+              <select class="form-control" name="doctor_id" required>
+                  <option value="">Select Doctor</option>
+                @foreach($doctors as $doctor)
+                  <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
+                @endforeach
+              </select>
             </div>
           </div> 
 
@@ -315,6 +319,7 @@
       event.preventDefault();
       $('#searchname').val(ui.item.label);
       $('#doctor_id').val(ui.item.id);
+      $('#doctor_charge').val(ui.item.charge);
     }
   });
 
