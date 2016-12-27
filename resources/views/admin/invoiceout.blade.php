@@ -68,16 +68,28 @@
     </div>  
     </div>
 
-    <div class="row col-md-6 pull-right">  
+    <!-- <div class="row col-md-6 pull-right">  
     <div class="form-group form-inline">
       <label class="col-sm-4" >Search : &nbsp;</label>
       <div class="input-group col-sm-6">
         <input type="text" class="form-control" id="village_id" name="village_id" required>
       </div>
     </div>  
-    </div>  
+    </div>   -->
 
-    <div class="row col-md-6 pull-left">
+    <div class="row col-md-6 pull-right">
+      <label class="col-sm-4" >Marketing Officer : &nbsp;</label>
+      <div class="input-group col-sm-6">
+        <select name="marketing_id" class="form-control" id="marketing" required>
+          <option value="">Select Marketig Officer</option>
+          @foreach($marketings as $marketing)
+          <option value="{{ $marketing->id }}">{{ $marketing->name }}</option>
+          @endforeach
+        </select>
+      </div>
+    </div>
+
+    <!-- <div class="row col-md-6 pull-left">
     <div class="form-group form-inline">
       <label class="col-sm-4" >Marketing Officer : &nbsp;</label>
       <div class="input-group col-sm-6">
@@ -85,16 +97,27 @@
         <input type="text" class="form-control" id="marketing_name" required readonly>
       </div>
     </div>  
-    </div> 
+    </div>  -->
 
-    <div class="row col-md-6 pull-right">
+    <!-- <div class="row col-md-6 pull-right">
     <div class="form-group form-inline">
       <label class="col-sm-4" >Village Doctor : &nbsp;</label>
       <div class="input-group col-sm-6">
         <input type="text" class="form-control" id="village_name" required readonly>
       </div>
     </div>  
+    </div> -->
+
+    <div class="row col-md-6 pull-right">
+      <div class="form-group form-inline">
+      <label class="col-sm-4" >Village Doctor : &nbsp;</label>
+      <div class="input-group col-sm-6">
+        <select name="village_id" id="village" class="form-control" required>
+          <option value="">Select Village Doctor</option>
+        </select>
+      </div>
     </div>
+
             
    </div>
 
@@ -218,6 +241,19 @@
 <!-- /content panel -->
 @endsection
 @section('run_custom_jquery')
+
+<script type="text/javascript">
+  $('#marketing').on('change' , function(e){
+    var marketing_id = e.target.value;
+    $.get('/hospital/public/reportout_village?marketing_id=' + marketing_id, function(data){
+      $('#village').empty();
+      $.each(data, function(index,villageobj){
+        $('#village').append('<option value="'+villageobj.id+'">'+villageobj.name+'</option>')
+      });
+    });
+  });
+</script>
+
 <script type="text/javascript">
   $('#village_id').autocomplete({
     source : '{!!URL::route('autocomplete_village')!!}',

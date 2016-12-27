@@ -70,19 +70,16 @@
           <div class="form-group clear">
             <label class="col-sm-2 control-label">Visiting Doctor</label>
             <div class="col-sm-7">
-              <select class="form-control" name="doctor_id" required>
-                  <option value="">Select Doctor</option>
-                @foreach($doctors as $doctor)
-                  <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
-                @endforeach
-              </select>
+              <input type="text" id="searchname" name="searchname" class="form-control" required>
+              <input type="hidden" name="doctor_id">
             </div>
           </div> 
+
 
           <div class="form-group clear">
             <label class="col-sm-2 control-label">Gender</label>
             <div class="col-sm-7">
-              <select class="form-control" name="gender">
+              <select class="form-control" name="gender" required>
                 <option value="m">Male</option>
                 <option value="f">Female</option>
               </select>

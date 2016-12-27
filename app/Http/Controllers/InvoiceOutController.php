@@ -129,13 +129,14 @@ class InvoiceoutController extends Controller
     public function index()
     {
         $doctors = Doctor::all();
+        $marketings = Marketing::all();
         $report_id = InvoiceOut::orderBy('created_at','desc')->first();
         if($report_id == NULL)
             $report_id = 01 ;
         else
             
             $report_id = $report_id->id +1;
-        return view('admin.invoiceout',['doctors'=>$doctors, 'report_id'=>$report_id]);
+        return view('admin.invoiceout',['doctors'=>$doctors, 'report_id'=>$report_id,'marketings'=>$marketings]);
     }
 
 

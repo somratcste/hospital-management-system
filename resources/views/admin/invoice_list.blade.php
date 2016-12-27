@@ -26,10 +26,10 @@
           <thead>
             <tr>
               <th>No.</th>
-              <th>P. ID</th>
               <th>P. Name</th>
-              <th>P. Type</th>
+              <th>P. ID</th>
               <th>View</th>
+              <th>Print</th>
               @if(Auth::user()->invoice_edit_id == 1)
               <th>Edit</th>
               @endif
@@ -41,10 +41,10 @@
           <tfoot>
             <tr>
               <th>No.</th>
-              <th>P. ID</th>
               <th>P. Name</th>
-              <th>P. Type</th>
+              <th>P. ID</th>
               <th>View</th>
+              <th>Print</th>
               @if(Auth::user()->invoice_edit_id == 1)
               <th>Edit</th>
               @endif
@@ -58,9 +58,8 @@
             @foreach ($invoices as $invoice)
               <tr>
               <td><?php echo $i; ?></td>
-              <td>{{ $invoice->patient->id}}</td>
               <td>{{ $invoice->patient->name }}</td>
-              <td>{{ $invoice->patient->patient_type == '1' ? 'Out' : 'Admit'}}</td>
+              <td>{{ $invoice->patient->id}}</td>
               <td><a data-toggle="modal" data-target="#details<?php echo $i; ?>" href=""><button type="button" class="btn btn-success">Details</button></a></td>
               <div class="modal" id="details<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog">
@@ -152,6 +151,7 @@
                 </div>
               </div>
               
+              <td>Print</td>
               @if(Auth::user()->invoice_edit_id == 1)
               <td><a data-toggle="modal" data-target="#edit<?php echo $i; ?>" href=""><button type="button" class="btn btn-info">Edit</button></a></td>
               @endif
