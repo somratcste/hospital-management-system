@@ -177,13 +177,13 @@ $(".delete").on('click', function() {
 $(document).on('focus','.autocomplete_txt',function(){
   type = $(this).data('type');
   
-  if(type =='test_id' )autoTypeNo=0;
+  if(type =='id' )autoTypeNo=0;
   if(type =='name' )autoTypeNo=1;  
   
   $(this).autocomplete({
     source: function( request, response ) {
       $.ajax({
-        url : 'http://localhost/hospital/resources/views/admin/ajax.php',
+        url : 'http://localhost/hospital/resources/views/admin/operationproduct.php',
         dataType: "json",
         method: 'post',
         data: {
@@ -210,8 +210,8 @@ $(document).on('focus','.autocomplete_txt',function(){
         id = id_arr.split("_");
       $('#itemNo_'+id[1]).val(names[0]);
       $('#itemName_'+id[1]).val(names[1]);
-      $('#itemAvailable_'+id[1]).val(names[2]);
-      $('#total_'+id[1]).val(names[3] );
+      // $('#itemAvailable_'+id[1]).val(names[2]);
+      $('#total_'+id[1]).val(names[2] );
       calculateTotal();
     }           
   });
