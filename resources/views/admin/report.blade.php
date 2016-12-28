@@ -15,13 +15,15 @@
         <div class="panel-heading border" style="margin-bottom: 20px;">
           Report Entry Information
         </div>
-        @if(Session::has('success'))
-        <div class="alert alert-success">
-          {{Session::get('success')}}
+        @if(count($errors) > 0)
+        <div>
+          <ul class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+              {{$error}}
+            @endforeach
+          </ul>
         </div>
-       @endif
-
-
+        @endif
     </div>
   </div>
 
@@ -31,7 +33,7 @@
   
   <div class="col-xs-12"> 
     <div class="box">
-    <form class="" method="post" action="" enctype="multipart/form-data">
+    <form class="" method="post" action="{{ route('report.store') }}" enctype="multipart/form-data">
     {{ csrf_field() }}
     <input name="_method" type="hidden" value="POST">
     <div class='box-body'>  

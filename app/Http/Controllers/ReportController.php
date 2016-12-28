@@ -92,7 +92,10 @@ class ReportController extends Controller
 
     public function store(Request $request)
     {
-       date_default_timezone_set("Asia/Dhaka");
+        $this->validate($request , [ 
+            'patient_id' => 'unique:reports' 
+        ]);
+        date_default_timezone_set("Asia/Dhaka");
         $report = new Report();
         $report->patient_id = $request['patient_id'];
         $report->subtotal = $request['subtotal'];

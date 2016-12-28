@@ -71,7 +71,7 @@
             <label class="col-sm-2 control-label">Visiting Doctor</label>
             <div class="col-sm-7">
               <input type="text" id="searchname" name="searchname" class="form-control" required>
-              <input type="hidden" name="doctor_id">
+              <input type="hidden" name="doctor_id" id="doctor_id">
             </div>
           </div> 
 
