@@ -26,13 +26,10 @@ class InvoiceController extends Controller
         $created = new Carbon($patient->created_at);
         $difference = $created->diffInDays();
         $cost = $patient->seat->rent * $difference;
-        $operations = Operation::where('patient_id',$patient->id)->get();
-        $operationCost = 0 ;
-        foreach($operations as $operation){
-            $operationCost += $operation->operationType->cost;
-        }
+        $operations = Operation::where('patient_id',$patient->id)->first();
+        $operationCost = $operations->subtotal ;
         $reportCost = Report::where('patient_id',$patient->id)->first();
-        $reportCost = $reportCost->subtotal ;
+        $reportCost = $reportCost->due ;
     	return view('admin.invoice',['patient' => $patient , 'difference' => $difference , 'cost' => $cost,'operationCost'=>$operationCost,'reportCost'=>$reportCost]);
     }
 
