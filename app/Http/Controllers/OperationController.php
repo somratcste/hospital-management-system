@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Input;
 use App\Operation;
 use App\Doctor; 
 use Auth;
+use App\OperationProduct;
 
 class OperationController extends Controller
 {
@@ -67,68 +68,137 @@ class OperationController extends Controller
 
     //operation Controller 
     
-    public function getIndex ()
+    public function index ()
     {
-        $doctors = Doctor::all();
-        $operationtypes = OperationType::all();
-        return view('admin.operation',['doctors'=>$doctors,'operationtypes'=>$operationtypes]);
+        $operation_id = Operation::orderBy('created_at','desc')->first();
+        if($operation_id == NULL){
+            $operation_id = 0 ;
+        } else {
+            $operation_id = $operation_id->id ;
+        } 
+        $doctors = Doctor::all();  
+        return view('admin.operation' , ['operation_id' => $operation_id +1,'doctors'=>$doctors]);
     }
 
-    public function save(Request $request)
+    public function store(Request $request)
     {
-        $this->validate($request , [
-            'patient_id' => 'required',
-            'operationType_id' => 'required',
-            'doctor_id' => 'required',
-            'dateTime' => 'required'
+        $this->validate($request , [ 
+            'patient_id' => 'unique:operations' 
         ]);
-
-        $operation          = new Operation();
-        $operation->patient_id      = $request['patient_id'];
-        $operation->operation_type_id   = $request['operationType_id'];
+        date_default_timezone_set("Asia/Dhaka");
+        $operation = new Operation();
+        $operation->patient_id = $request['patient_id'];
         $operation->doctor_id = $request['doctor_id'];
         $operation->dateTime = $request['dateTime'];
-        $operation->user_id = Auth::user()->id;
+        $operation->subtotal = $request['subtotal'];
+        $operation->user_id = Auth::user()->id ;
         $operation->save();
-
-        return redirect()->back()->with(['success' => 'Insert Successfully'] );
+        $operationID = $operation->id;
+        
+        
+        for($i=0;$i<count($_POST['itemNo']);$i++)
+        {
+            $operationproduct = new OperationProduct();
+            $operationproduct->operation_id = $operationID;
+            $operationproduct->operation_type_id = $request['itemNo'][$i];
+            $operationproduct->operation_name = $request['itemName'][$i];
+            $operationproduct->operation_cost = $request['total'][$i];
+            $operationproduct->save();
+        }
+        return redirect()->route('operation.create')->with(['success' => 'Insert Successfully'] );
     }
 
-    public function update(Request $request)
+    public function update(Request $request ,$id)
     {
-       $this->validate($request , [
-            'operationType_id' => 'required',
-            'doctor_id' => 'required',
-            'dateTime' => 'required'
-        ]);
+        $operation = Operation::find($id);
+        $operation->subtotal = $request['subtotal'];
+        
 
+        $operationproduct = OperationProduct::where('operation_id', $request['operation_id'])->get();
+        $count = $operationproduct->count();
+        for($i=1 ; $i<= $count; $i++) 
+        {
+            $operationproduct = OperationProduct::where('operation_id', $request['operation_id'])->first();
 
-        $operation  = Operation::find($request['operation_id']);
-        $operation->operation_type_id    = $request['operationType_id'];
-        $operation->doctor_id = $request['doctor_id'];
-        $operation->dateTime = $request['dateTime'];
-        $operation->user_id = Auth::user()->id;
+            $operationproduct->delete();
+        }
+
         $operation->update();
-        return redirect()->route('operation.list')->with(['success' => 'Updated Successfully'] );
+
+        for($i=0;$i<count($_POST['itemNo']);$i++)
+        {
+            $operationproduct = new OperationProduct();
+            $operationproduct->operation_id = $id;
+            $operationproduct->operation_type_id = $request['itemNo'][$i];
+            $operationproduct->operation_name = $request['itemName'][$i];
+            $operationproduct->operation_cost = $request['total'][$i];
+            $operationproduct->save();
+
+        }
+        return redirect()->route('operation.create')->with(['success' => 'Update Successfully'] );
     }
 
     public function viewList($operationFloor = null)
     {
         $operation = Operation::orderBy('created_at' , 'desc')->paginate(50);
-        $operationtypes = OperationType::all();
-        $doctors = Doctor::all();
-        return view('admin.operation_list' , ['operations' => $operation,'doctors'=>$doctors,'operationtypes'=> $operationtypes]);
+        return view('admin.operation_list' , ['operations' => $operation]);
     }
 
-    public function delete(Request $request)
+    public function destroy(Request $request ,$id)
     {
-        $operation = Operation::find($request['operation_id']);
+        $operation = Operation::find($id);
         if(!$operation){
-            return redirect()->route('operation.list')->with(['fail' => 'Page not found !']);
+            return redirect()->route('operation.create')->with(['fail' => 'Page not found !']);
+        }
+
+        
+        $operationproduct = OperationProduct::where('operation_id', $request['operation_id'])->get();
+        $count = $operationproduct->count();
+        for($i=1 ; $i<= $count; $i++) 
+        {
+            $operationproduct = OperationProduct::where('operation_id', $request['operation_id'])->first();
+            $operationproduct->delete();
         }
 
         $operation->delete();
-        return redirect()->route('operation.list')->with(['success' => 'Deleted Information Successfully !']);
+        return redirect()->route('operation.create')->with(['success' => 'Deleted Successfully.']);
+    }
 
+    public function create()
+    {
+        $operation = Operation::orderBy('created_at' , 'desc')->paginate(50);
+        return view('admin.operation_list' , ['operations' => $operation]);
+    }
+
+    public function get(Request $request)
+    {
+        $operation_id = $request['operation_id'];
+        $operation = Operation::Find($operation_id);
+        $operationproducts = OperationProduct::where('operation_id',$operation_id)->get();
+        return view('admin.operation_get', ['operation'=>$operation,'operationproducts'=>$operationproducts]); 
+    }
+
+    public function autocomplete_indoor_patient(Request $request)
+    {
+        $term = $request->term ;
+        $data =  Patient::where('id','LIKE','%'.$term.'%')
+        ->orWhere('name','LIKE','%'.$term.'%')
+        ->take(10)
+        ->get();
+        $results = array();
+        foreach ($data as $value) {
+            $results[] = ['label' => $value->name .'-'. $value->pphone ,'id' => $value->id];
+        }
+        return response()->json($results);
+    }
+
+    public function view(Request $request)
+    {
+        $operation_id = $request['operation_id'];
+        $operation = Operation::Find($operation_id);
+        $delivaryTime = $operation->created_at;
+        $money = $operation->subtotal;
+        $operationproducts = OperationProduct::where('operation_id',$operation_id)->get();
+        return view('admin.operation_view', ['operation'=>$operation,'operationproducts'=>$operationproducts, 'money' => $money]);
     }
 }

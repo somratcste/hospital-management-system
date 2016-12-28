@@ -1,29 +1,57 @@
 @extends('layouts.master')
 
-@section('top_header')
-  Add New Operation
+@section('run_custom_css')
+
 @endsection
+@section('top_header')
+  Update Operation
+@endsection
+
 
 @section('content')
 
 <!-- main area -->
 <div class="main-content">
-  <div class="row" style="background: white;">
-    <div class="panel mb25">
-        <div class="panel-heading border" style="margin-bottom: 20px;">
-          Report Entry Information
-        </div>
-        @if(count($errors) > 0)
-        <div>
-          <ul class="alert alert-danger">
-            @foreach ($errors->all() as $error)
-              {{$error}}
-            @endforeach
-          </ul>
-        </div>
-        @endif
+  <div class="row">
+  <div class="panel mb25">
+    <div class="panel-heading border">
+    	Update Operation Information
     </div>
-  </div>
+
+    <div class="col-md-6 pull-left">
+      <table class="table table-bordered table-hover">
+        <tbody>
+            <tr>
+              <td>operation ID</td>
+              <td>{{ $operation->id }}</td>
+            </tr>
+            <tr>
+              <td>Patient Name</td>
+              <td>{{ $operation->patient->name }}</td>
+            </tr>                      
+        </tbody>
+      </table>
+      </div>
+
+      <div class="col-md-6 pull-right">
+        <table class="table table-bordered table-hover">
+          <tbody>
+
+            <tr>
+              <td>Patient ID</td>
+              <td>{{ $operation->patient_id }}-{{ $operation->created_at->format('m-d-Y')}}</td>
+            </tr>
+            <tr>
+              <td>Patient Mobile</td>
+              <td>{{ $operation->patient->pphone }}</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+      </div>
+      </div>
+    
 
 <div class="row">
     <div class="panel mb25">
@@ -31,64 +59,11 @@
   
   <div class="col-xs-12"> 
     <div class="box">
-    <form class="form-horizontal bordered-group" role="form" action="{{ route('operation.store') }}" method="post">
+    <form action="{{ route('operation.update' , $operation->id)}}" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
-    <input name="_method" type="hidden" value="POST">
-  
-    <div class="row col-md-6 pull-left">
-    
-    <div class="form-group form-inline">
-      <label class="col-sm-4" >Report No : &nbsp;</label>
-      <div class="input-group col-sm-6">
-        <input type="number" class="form-control" value="{{ $operation_id }}" readonly>
-      </div>
-    </div>  
-    </div>
-
-    <div class="row col-md-6 pull-right">  
-    <div class="form-group form-inline">
-      <label class="col-sm-4" >Search : &nbsp;</label>
-      <div class="input-group col-sm-6">
-        <input type="text" name="patient_id" class="form-control" id="patient_id" name="patient_id" required>
-      </div>
-    </div>  
-    </div>  
-
-    <div class="row col-md-6 pull-left">
-      <div class="form-group form-inline">
-          <label class="col-sm-4">Select Doctor : &nbsp;</label>
-          <div class="input-group col-sm-6">
-            <select class="form-control" name="doctor_id">
-            @foreach($doctors as $doctor)
-              <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
-            @endforeach
-            </select>
-          </div>
-        </div>
-    </div>
-
-
-    <div class="row col-md-6 pull-right">
-    <div class="form-group form-inline">
-      <label class="col-sm-4" >Patient Name : &nbsp;</label>
-      <div class="input-group col-sm-6">
-        <input type="text" class="form-control" id="patient_name" required readonly>
-      </div>
-    </div>  
-    </div>
-
-    <div  class="row col-md-6 pull-left">
-      <div class="form-group form-inline">
-        <label class="col-sm-4">O.T Date / Time</label>
-        <div class="input-group col-sm-6">
-          <input class="form-control" data-format="MM/dd/yyyy HH:mm:ss PP" type="dateTime"  name="dateTime" placeholder="12/12/2016 10:48:50 PM">
-        </div>
-      </div>
-    </div>
-            
-   </div>
-
-
+     <input type="hidden" name="operation_id" value="{{ $operation->id }}">
+    <input name="_method" type="hidden" value="Put">
+    <div class='box-body'>  
 
       <div class="box-body">
        <div class="table-responsive">  
@@ -101,16 +76,20 @@
               <th width="33%">Operation Name</th>
               <th width="13%">Price</th>
             </tr>
-                    </thead>
+            </thead>
 
-                    <tbody>
-                      <tr>
+            <tbody>
+              
+              @foreach($operationproducts as $operationproduct)
+              <tr>
               <td><input class="case" type="checkbox"/></td>
-              <td><input type="text" data-type="test_id" name="itemNo[]" id="itemNo_1" class="form-control autocomplete_txt" autocomplete="off" readonly></td>
-              <td><input type="text" data-type="name" name="itemName[]" id="itemName_1" class="form-control autocomplete_txt" autocomplete="off" required></td>
-              <input type="hidden" data-type="test_id" name="itemDiscount[]" id="itemDiscount_1" class="form-control autocomplete_txt" autocomplete="off" required>
-              <td><input type="number" name="total[]" id="total_1" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" required readonly></td>
-            </tr>
+              <td><input type="text" data-type="test_id" name="itemNo[]" id="itemNo_1" class="form-control autocomplete_txt" autocomplete="off" value="{{ $operationproduct->operation_type_id }}" readonly></td>
+              <td><input type="text" data-type="name" name="itemName[]" id="itemName_1" class="form-control autocomplete_txt" autocomplete="off" value="{{ $operationproduct->operation_name }}" required></td>
+              <td><input type="number" name="total[]" id="total_1" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" value="{{ $operationproduct->operation_cost }}" required readonly></td>
+             </tr>
+
+              @endforeach
+
                     </tbody>
                   </table>
                 </div>
@@ -125,17 +104,17 @@
         <label class="col-sm-4" >Subtotal: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
-          <input name="subtotal" type="number" class="form-control" id="subTotal" placeholder="Subtotal" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" readonly>
+          <input name="subtotal" type="number" class="form-control" id="subTotal" placeholder="Subtotal" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" value="{{ $operation->subtotal }}" readonly>
         </div>
       </div>
-
+      
       <div class="form-group">        
-        <label class="col-sm-4"></label>  
-        <div class="input-group col-sm-6">
-        <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
-        <input type="hidden" name="_token" value="{{ Session::token() }}">
-        </div>
+      <label class="col-sm-4"></label>  
+      <div class="input-group col-sm-6">
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
       </div>
+     
+          </div>
 
     
     </div>
@@ -160,21 +139,9 @@
 </div>
 <!-- /content panel -->
 @endsection
+
+
 @section('run_custom_jquery')
-<script type="text/javascript">
-  $('#patient_id').autocomplete({
-    source : '{!!URL::route('autocomplete_indoor_patient')!!}',
-    minlenght:1,
-    autoFocus:true,
-    select:function(event,ui){
-      event.preventDefault();
-      $('#patient_name').val(ui.item.label);
-      $('#patient_id').val(ui.item.id);
-    }
-  });
-</script>
-
-
 <script type="text/javascript">
   /**
  * Site : http:www.somrat.info
@@ -188,7 +155,6 @@ $(".addmore").on('click',function(){
   html += '<td><input class="case" type="checkbox"/></td>';
   html += '<td><input type="text" data-type="test_id" name="itemNo[]" id="itemNo_'+i+'" class="form-control autocomplete_txt" autocomplete="off" readonly></td>';
   html += '<td><input type="text" data-type="name" name="itemName[]" id="itemName_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
-  html += '<input type="hidden"  name="itemDiscount[]" id="itemDiscount_'+i+'" class="form-control autocomplete_txt" autocomplete="off">';
   html += '<td><input type="text" name="total[]" id="total_'+i+'" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" readonly></td>';
   html += '</tr>';
   $('#invoice_bill').append(html);
@@ -211,13 +177,13 @@ $(".delete").on('click', function() {
 $(document).on('focus','.autocomplete_txt',function(){
   type = $(this).data('type');
   
-  if(type =='id' )autoTypeNo=0;
+  if(type =='test_id' )autoTypeNo=0;
   if(type =='name' )autoTypeNo=1;  
   
   $(this).autocomplete({
     source: function( request, response ) {
       $.ajax({
-        url : 'http://localhost/hospital/resources/views/admin/operationproduct.php',
+        url : 'http://localhost/hospital/resources/views/admin/ajax.php',
         dataType: "json",
         method: 'post',
         data: {
@@ -244,9 +210,8 @@ $(document).on('focus','.autocomplete_txt',function(){
         id = id_arr.split("_");
       $('#itemNo_'+id[1]).val(names[0]);
       $('#itemName_'+id[1]).val(names[1]);
-      // $('#itemDiscount_'+id[1]).val(names[2]);
-      // $('#itemAvailable_'+id[1]).val(names[3]);
-      $('#total_'+id[1]).val(names[2] );
+      $('#itemAvailable_'+id[1]).val(names[2]);
+      $('#total_'+id[1]).val(names[3] );
       calculateTotal();
     }           
   });
@@ -314,5 +279,4 @@ function IsNumeric(e) {
 }
 
 </script>
-
 @endsection

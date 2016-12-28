@@ -158,13 +158,12 @@
         </div>
       </div> -->
 
-          <div class="form-group">        
-      <label class="col-sm-4"></label>  
-      <div class="input-group col-sm-6">
-      <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
-      </div>
-     
+        <div class="form-group">        
+          <label class="col-sm-4"></label>  
+          <div class="input-group col-sm-6">
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
           </div>
+        </div>
 
     
     </div>

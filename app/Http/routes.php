@@ -142,30 +142,17 @@ Route::group(['middleware' => ['auth']] , function() {
 
 	//operation
 
-	Route::get('/operation' , [
-		'uses' => 'Operationcontroller@getIndex',
-		'as' => 'operation.index'
-	]);
+	Route::resource('operation','OperationController');
 
-	Route::post('/operation/save' , [
-		'uses' => 'Operationcontroller@save',
-		'as' => 'operation.save'
-	]);
+	Route::get('/operation_view',[
+    	'uses' => 'OperationController@view',
+    	'as' => 'operation.view'
+    ]);
 
-	Route::post('/operation/update' , [
-		'uses' => 'Operationcontroller@update',
-		'as' => 'operation.update'
-	]);
-
-	Route::get('/operation/delete' , [
-		'uses' => 'Operationcontroller@delete',
-		'as' => 'operation.delete'
-	]);
-
-	Route::get('/operation/viewlist' , [
-		'uses' => 'Operationcontroller@viewList',
-		'as' => 'operation.list'
-	]);
+    Route::get('/operation_get' , [
+    	'uses' => 'OperationController@get',
+    	'as' => 'operation.get'
+    ]);
 
 	//Patient
 

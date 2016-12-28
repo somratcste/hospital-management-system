@@ -281,7 +281,7 @@
                 </a>
               </li>
               <li>
-                <a href="{{ route('operation.list') }}">
+                <a href="{{ route('operation.create') }}">
                   <span>Operation List</span>
                 </a>
               </li>
