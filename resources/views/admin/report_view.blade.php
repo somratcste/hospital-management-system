@@ -101,6 +101,22 @@
       </div>
 
       <div class="row">
+       <div class="col-md-6 pull-left">
+        <table class="table table-bordered table-hover">
+          <tbody>
+            <p style="color: red;text-align: center;font-size: 40px;font-family:initial;padding-top: 50px;">
+            @if($report->due== 0)
+              PAID 
+            @else
+              DUE
+            @endif
+            </p>
+            <p style="padding-top:28px;text-transform: capitalize;"><b>Collected By :: </b>{{ Auth::user()->name }}</p>
+            <p style="text-transform: capitalize;">Received with thanks Tk. {{ $money }} Only</p>
+          </tbody>
+        </table>
+        </div>
+
         <div class="col-md-6 pull-right">
         <table class="table table-bordered table-hover">
           <tbody>
@@ -109,6 +125,24 @@
                 <td width="50%">Subtotal</td>
                 <td width="50%">{{ $report->subtotal }} Tk.</td>
               </tr>
+                
+              <tr>
+                <td>Discount</td>
+                <td>{{ number_format($report->discount + $report->percent_amount) }} Tk.</td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td>{{ $report->total }} Tk.</td>
+              </tr>
+              <tr>
+                <td>Paid</td>
+                <td>{{ $report->receive_cash }} Tk.</td>
+              </tr>
+              <tr>
+                <td>Due </td>
+                <td>{{ $report->due }} Tk.</td>
+              </tr>
+
           </tbody>
         </table>
         </div>

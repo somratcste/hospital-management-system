@@ -99,6 +99,12 @@ class ReportController extends Controller
         $report = new Report();
         $report->patient_id = $request['patient_id'];
         $report->subtotal = $request['subtotal'];
+        $report->percent_amount = $request['percent_amount'];
+        $report->without_percent = $request['without_percent'];
+        $report->discount = $request['discount'];
+        $report->total = $request['total_paid'];
+        $report->receive_cash = $request['receive_cash'];
+        $report->due = $request['total_paid'] - $request['receive_cash'];
         $report->user_id = Auth::user()->id ;
         $report->save();
         $reportID = $report->id;
@@ -121,6 +127,15 @@ class ReportController extends Controller
     {
         $report = Report::find($id);
         $report->subtotal = $request['subtotal'];
+        $report->percent_amount = $request['percent_amount'];
+        $report->without_percent = $request['without_percent'];
+        $report->discount = $request['discount'];
+        $report->total = $request['total_paid'];
+        $paid = $report->receive_cash;
+        // $report->due = $request['total_paid'] - $request['receive_cash'];
+        $report->due = $report->total - ($paid + $request['receive_cash']);
+        $report->receive_cash = $request['receive_cash'] + $paid;
+        
         
 
         $reportproduct = ReportProduct::where('report_id', $request['report_id'])->get();
@@ -207,7 +222,8 @@ class ReportController extends Controller
         $report_id = $request['report_id'];
         $report = Report::Find($report_id);
         $delivaryTime = $report->created_at;
-        $money = $report->subtotal;
+        $money = $report->receive_cash;
+        $money = InvoiceoutController::convert_number_to_words($money);
         $reportproducts = ReportProduct::where('report_id',$report_id)->get();
         return view('admin.report_view', ['report'=>$report,'reportproducts'=>$reportproducts, 'money' => $money]);
     }

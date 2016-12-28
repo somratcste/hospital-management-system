@@ -109,16 +109,66 @@
           <input name="subtotal" type="number" class="form-control" id="subTotal" placeholder="Subtotal" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" value="{{ $report->subtotal }}" readonly>
         </div>
       </div>
-      
-      <div class="form-group">        
-      <label class="col-sm-4"></label>  
-      <div class="input-group col-sm-6">
-      <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+      <div class="form-group form-inline">
+        <label class="col-sm-4">Percent: &nbsp;</label>
+        <div class="input-group col-sm-6">
+          <div class="input-group-addon">Tk.</div>
+          <input name="percent" type="number" class="form-control" id="tax" placeholder="Percent" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" value="{{ $report->percent }}">
+              <div class="input-group-addon">%</div>
+        </div>
       </div>
-     
-          </div>
+      <div class="form-group form-inline">
+        <label class="col-sm-4">Percent Amount: &nbsp;</label>
+        <div class="input-group col-sm-6">
+          <div class="input-group-addon">Tk.</div>
+          <input name="percent_amount" type="text" class="form-control" id="taxAmount" placeholder="Percent" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" value="{{ $report->percent_amount }}">          
+        </div>
+      </div>
 
-    
+      <div class="form-group form-inline">
+        <label class="col-sm-4">Without Percent: &nbsp;</label>
+        <div class="input-group col-sm-6">
+          <div class="input-group-addon">Tk.</div>
+          <input name="without_percent" type="text" class="form-control" id="totalAftertax" placeholder="Without Percen" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" value="{{ $report->without_percent }}">
+        </div>
+      </div>
+      <div class="form-group form-inline">
+        <label class="col-sm-4">Discount Amount: &nbsp;</label>
+        <div class="input-group col-sm-6">
+          <div class="input-group-addon">Tk.</div>
+          <input name="discount" type="number" class="form-control" id="amountPaid" placeholder="Discount Amount" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" value="{{ $report->discount }}">
+        </div>
+      </div>
+      <div class="form-group form-inline">
+        <label class="col-sm-4">Total : &nbsp;</label>
+        <div class="input-group col-sm-6">
+          <div class="input-group-addon">Tk.</div>
+          <input name="total_paid" type="number" class="form-control amountDue" id="amountDue" placeholder="Total" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" value="{{ $report->total}}" readonly>
+        </div>
+      </div>
+
+      <div class="form-group form-inline">
+        <label class="col-sm-4">Paid : &nbsp;</label>
+        <div class="input-group col-sm-6">
+          <div class="input-group-addon">Tk.</div>
+          <input name="" type="number" class="form-control" value="{{ $report->receive_cash }}" readonly>
+        </div>
+      </div>
+
+      <div class="form-group form-inline">
+        <label class="col-sm-4">Receive Cash : &nbsp;</label>
+        <div class="input-group col-sm-6">
+          <div class="input-group-addon">Tk.</div>
+          <input name="receive_cash" type="number" class="form-control" placeholder="Receive Cash" required>
+        </div>
+      </div>
+
+        <div class="form-group">        
+          <label class="col-sm-4"></label>  
+          <div class="input-group col-sm-6">
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+          </div>
+        </div>    
     </div>
 
 
@@ -243,13 +293,13 @@ function calculateTotal(){
   tax = $('#tax').val();
   if(tax != '' && typeof(tax) != "undefined" ){
     taxAmount = subTotal * ( parseFloat(tax) /100 );
-    $('#taxAmount').val(taxAmount.toFixed(2));
+    $('#taxAmount').val(taxAmount.toFixed());
     total = subTotal - taxAmount;
   }else{
     $('#taxAmount').val(0);
     total = subTotal;
   }
-  $('#totalAftertax').val( total.toFixed(2) );
+  $('#totalAftertax').val( total.toFixed() );
   calculateAmountDue();
 }
 
