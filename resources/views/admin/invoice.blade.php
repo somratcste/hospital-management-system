@@ -311,13 +311,13 @@
           <input name="total_amount" type="text" class="form-control" id="totalAftertax" placeholder="Total Amout" required>
         </div>
       </div>
-      <div class="form-group form-inline" style="border-bottom: none;padding-bottom: 0px;">
+     <!--  <div class="form-group form-inline" style="border-bottom: none;padding-bottom: 0px;">
         <label class="col-sm-4">Discount Amount: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
           <input name="discount" type="number" class="form-control" id="discount" value="0" required>
         </div>
-      </div>
+      </div> -->
       <div class="form-group form-inline" style="border-bottom: none;padding-bottom: 0px;">
         <label class="col-sm-4"><button type="button" id="total" class="btn btn-primary">Total</button></label>
         <div class="input-group col-sm-6">
@@ -401,7 +401,7 @@
       });
 
       $("#totalAmount").val(function() {
-        var result = (parseFloat($("#subTotal").val()) + parseFloat($("#taxAmount").val()) - parseFloat($("#discount").val())).toFixed();
+        var result = (parseFloat($("#subTotal").val()) + parseFloat($("#taxAmount").val())).toFixed();
         if(!isFinite(result)) result = 0 ;
         return result;
       });

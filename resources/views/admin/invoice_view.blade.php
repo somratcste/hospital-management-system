@@ -217,7 +217,7 @@
             <p> : {{ $invoice->others}} Tk.</p>
             @endif
             <hr/>
-            <p> : {{ $invoice->subtotal}} Tk.</p>
+            <p> : {{ $invoice->total_amount}} Tk.</p>
             <p> : {{ $invoice->discount }} Tk.</p>
             <p> : {{ $invoice->total}} Tk.</p>
          </div>

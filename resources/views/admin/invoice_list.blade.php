@@ -75,35 +75,66 @@
                           <p>Admission Fee</p>
                           <p>Bed/Cabin Rent</p>
                           <p>Consultation</p>
-                          <p>Doctor</p>
+                          <!-- <p>Doctor</p> -->
+                          @if($invoice->surgeon != 0)
                           <p>Surgeon Fee</p>
+                          @endif
+                          @if($invoice->anesthesia != 0)
                           <p>Anesthesia Fee</p>
+                          @endif
+                          @if($invoice->assistant1 != 0)
                           <p>1st Assistant Fee</p>
+                          @endif
+                          @if($invoice->assistant2 != 0)
                           <p>2nd Assistant Fee</p>
+                          @endif
+                          @if($invoice->operation != 0)
                           <p>Operation Charge</p>
+                          @endif
+                          @if($invoice->delivary != 0)
                           <p>Delivary Charge</p>
+                          @endif
                           <p>Medicine Charge</p>
                           <p>Pathology</p>
-                          <P>U.S.G</P>
+                      <!--<P>U.S.G</P>
                           <P>E.C.G</P>
-                          <P>X-Ray</P>
+                          <P>X-Ray</P> -->
+                          @if($invoice->nebulizer != 0)
                           <p>Nebulizer Charge</p>
+                          @endif
+                          @if($invoice->suction != 0)
                           <p>Suction Charge</p>
+                          @endif
+                          @if($invoice->blood != 0)
                           <p>Blood Transfusion</p>
+                          @endif
+                          @if($invoice->dressing != 0)
                           <p>Dressing</p>
+                          @endif
+                          @if($invoice->oxygen != 0)
                           <p>Oxygen</p>
+                          @endif
+                          @if($invoice->canulla != 0)
                           <p>Canulla</p>
+                          @endif
+                          @if($invoice->catheter != 0)
                           <p>Catheter</p>
+                          @endif
+                          @if($invoice->tube != 0)
                           <p>Ryles Tube</p>
+                          @endif
+                          @if($invoice->ambulance != 0)
                           <p>Ambulance</p>
+                          @endif
+                          @if($invoice->incubator != 0)
                           <p>Baby Incubator</p>
-                          <p>Others</p>
-                          <hr/>
-
-                          <p>Subtotal</p>
-                          <p>Percent</p>
+                          @endif
                           <p>Service Charge</p>
-                          <p>Total Amount</p>
+                          @if($invoice->others != 0)
+                          <p>Others</p>
+                          @endif
+                          <hr/>
+                          <p>Subtotal</p>
                           <p>Discount</p>
                           <p>Total</p>
                         </div>
@@ -111,35 +142,67 @@
                           <p> : {{ $invoice->admission}} Tk.</p>
                           <p> : {{ $invoice->rent}} Tk.</p>
                           <p> : {{ $invoice->consultation}} Tk.</p>
-                          <p> : {{ $invoice->doctor}} Tk.</p>
+                          <!-- <p> : {{ $invoice->doctor}} Tk.</p> -->
+                          @if($invoice->surgeon != 0)
                           <p> : {{ $invoice->surgeon}} Tk.</p>
+                          @endif
+                          @if($invoice->anesthesia != 0)
                           <p> : {{ $invoice->anesthesia}} Tk.</p>
+                          @endif
+                          @if($invoice->assistant1 != 0)
                           <p> : {{ $invoice->assistant1}} Tk.</p>
+                          @endif
+                          @if($invoice->assistant2 != 0)
                           <p> : {{ $invoice->assistant2}} Tk.</p>
+                          @endif
+                          @if($invoice->operation != 0)
                           <p> : {{ $invoice->operation}} Tk.</p>
+                          @endif
+                          @if($invoice->delivary != 0)
                           <p> : {{ $invoice->delivary}} Tk.</p>
+                          @endif
                           <p> : {{ $invoice->medicine}} Tk.</p>
                           <p> : {{ $invoice->pathology}} Tk.</p>
-                          <p> : {{ $invoice->usg}} Tk.</p>
+                          <!-- <p> : {{ $invoice->usg}} Tk.</p>
                           <p> : {{ $invoice->ecg}} Tk.</p>
-                          <p> : {{ $invoice->xray}} Tk.</p>
+                          <p> : {{ $invoice->xray}} Tk.</p>  -->  
+                          @if($invoice->nebulizer != 0)
                           <p> : {{ $invoice->nebulizer}} Tk.</p>
+                          @endif
+                          @if($invoice->suction != 0)
                           <p> : {{ $invoice->suction}} Tk.</p>
+                          @endif
+                          @if($invoice->blood != 0)
                           <p> : {{ $invoice->blood}} Tk.</p>
+                          @endif
+                          @if($invoice->dressing != 0)
                           <p> : {{ $invoice->dressing}} Tk.</p>
+                          @endif
+                          @if($invoice->oxygen != 0)
                           <p> : {{ $invoice->oxygen}} Tk.</p>
+                          @endif
+                          @if($invoice->canulla != 0)
                           <p> : {{ $invoice->canulla}} Tk.</p>
+                          @endif
+                          @if($invoice->catheter != 0)
                           <p> : {{ $invoice->catheter}} Tk.</p>
+                          @endif
+                          @if($invoice->tube != 0)
                           <p> : {{ $invoice->tube}} Tk.</p>
+                          @endif
+                          @if($invoice->ambulance != 0)
                           <p> : {{ $invoice->ambulance}} Tk.</p>
+                          @endif
+                          @if($invoice->incubator != 0)
                           <p> : {{ $invoice->incubator}} Tk.</p>
-                          <p> : {{ $invoice->others}} Tk.</p>
-                          <hr/>
-                          <p> : {{ $invoice->subtotal}} Tk.</p>
-                          <p> : {{ $invoice->vat}} %</p>
+                          @endif
                           <p> : {{ $invoice->service}} Tk.</p>
+                          @if($invoice->others != 0)
+                          <p> : {{ $invoice->others}} Tk.</p>
+                          @endif
+                          <hr/>
                           <p> : {{ $invoice->total_amount}} Tk.</p>
-                          <p> : {{ $invoice->discount}} Tk.</p>
+                          <p> : {{ $invoice->discount }} Tk.</p>
                           <p> : {{ $invoice->total}} Tk.</p>
                        </div>
                       </div>
@@ -159,8 +222,10 @@
                 <button class="btn btn-primary">Print</button>
                 </form>
               </td>
-              @if(Auth::user()->invoice_edit_id == 1)
+              @if(Auth::user()->invoice_edit_id == 1 && $invoice->total != $invoice->receive_cash)
               <td><a data-toggle="modal" data-target="#edit<?php echo $i; ?>" href=""><button type="button" class="btn btn-info">Edit</button></a></td>
+              @else
+                <td><button type="button" class="btn btn-info">Paid</button></td>
               @endif
               <div class="modal" id="edit<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog">
@@ -180,7 +245,7 @@
         <label class="col-sm-4" >Subtotal: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
-          <input type="number" class="form-control" id="subTotal" value="{{ $invoice->subtotal}}" readonly>
+          <input type="number" class="form-control" id="subTotal" value="{{ $invoice->total}}" readonly>
         </div>
       </div>
       <div class="form-group form-inline">
@@ -192,7 +257,7 @@
         </div>
       </div>
       <div class="form-group form-inline">
-        <label class="col-sm-4">Service Charge: &nbsp;</label>
+        <label class="col-sm-4">Percent Amount: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
           <input name="percent_amount" type="text" class="form-control" id="taxAmount" required>          
@@ -210,7 +275,7 @@
         <label class="col-sm-4">Discount Amount: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
-          <input name="discount" type="number" class="form-control" id="discount" value="{{ $invoice->discount }}" required>
+          <input name="discount" type="number" class="form-control" value="0" id="discount" required>
         </div>
       </div>
       <div class="form-group form-inline">

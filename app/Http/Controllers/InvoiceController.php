@@ -75,7 +75,7 @@ class InvoiceController extends Controller
         $invoice->vat = $request['vat'];
         $invoice->service = $request['service'];
         $invoice->total_amount = $request['total_amount'];
-        $invoice->discount = $request['discount'];
+        // $invoice->discount = $request['discount'];
         $invoice->total = $request['total'];
         $invoice->patient_id = $request['patient_id'];
 
@@ -84,14 +84,14 @@ class InvoiceController extends Controller
         $seat->update();
 
         $invoice->save();
-        return redirect()->back()->with(['success' => 'Invoice Create Successfully'] );
+        return redirect()->route('invoice.index')->with(['success' => 'Invoice Create Successfully'] );
     }
 
     public function update(Request $request,$id)
     {
         $invoice = Invoice::find($id);
         $invoice->discount = $request['percent_amount'] + $request['discount'];
-        $invoice->total_amount = $request['total_amount'];
+        // $invoice->total_amount = $request['total_amount'];
         $invoice->total = $request['total'];
         $invoice->receive_cash = $request['receive_cash'];
         $invoice->save();
