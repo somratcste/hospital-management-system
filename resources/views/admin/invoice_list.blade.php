@@ -101,7 +101,7 @@
                           <hr/>
 
                           <p>Subtotal</p>
-                          <p>VAT</p>
+                          <p>Percent</p>
                           <p>Service Charge</p>
                           <p>Total Amount</p>
                           <p>Discount</p>
@@ -151,7 +151,14 @@
                 </div>
               </div>
               
-              <td>Print</td>
+              <td>
+                <form action="{{ route('invoice.view') }}" method="GET">
+                  {{ csrf_field() }}
+                <input name="_method" type="hidden" value="GET">
+                <input type="hidden" name="invoice_id" value="{{ $invoice->id }}">
+                <button class="btn btn-primary">Print</button>
+                </form>
+              </td>
               @if(Auth::user()->invoice_edit_id == 1)
               <td><a data-toggle="modal" data-target="#edit<?php echo $i; ?>" href=""><button type="button" class="btn btn-info">Edit</button></a></td>
               @endif
@@ -173,14 +180,14 @@
         <label class="col-sm-4" >Subtotal: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
-          <input name="subtotal" type="number" class="form-control" id="subTotal" value="{{ $invoice->subtotal}}" required>
+          <input type="number" class="form-control" id="subTotal" value="{{ $invoice->subtotal}}" readonly>
         </div>
       </div>
       <div class="form-group form-inline">
-        <label class="col-sm-4">VAT: &nbsp;</label>
+        <label class="col-sm-4">Percent: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
-          <input name="vat" type="number" class="form-control" id="tax" placeholder="Percent" value="{{ $invoice->vat}}" required>
+          <input name="percent" type="number" class="form-control" id="tax" placeholder="Percent" required>
               <div class="input-group-addon">%</div>
         </div>
       </div>
@@ -188,7 +195,7 @@
         <label class="col-sm-4">Service Charge: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
-          <input name="service" type="text" class="form-control" id="taxAmount" value="{{ $invoice->service}}" required>          
+          <input name="percent_amount" type="text" class="form-control" id="taxAmount" required>          
         </div>
       </div>
 
@@ -196,14 +203,14 @@
         <label class="col-sm-4">Total Amount: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
-          <input name="total_amount" type="text" class="form-control" id="totalAftertax" value="{{ $invoice->total_amount}}" required>
+          <input name="total_amount" type="text" class="form-control" id="totalAftertax"  required>
         </div>
       </div>
       <div class="form-group form-inline">
         <label class="col-sm-4">Discount Amount: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
-          <input name="discount" type="number" class="form-control" id="discount" value="{{ $invoice->discount}}" required>
+          <input name="discount" type="number" class="form-control" id="discount" value="{{ $invoice->discount }}" required>
         </div>
       </div>
       <div class="form-group form-inline">
@@ -211,6 +218,14 @@
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
           <input name="total" type="number" class="form-control" id="totalAmount" value="{{ $invoice->total}}" required>
+        </div>
+      </div>
+
+      <div class="form-group form-inline">
+        <label class="col-sm-4">Receive Cash: &nbsp;</label>
+        <div class="input-group col-sm-6">
+          <div class="input-group-addon">Tk.</div>
+          <input name="receive_cash" type="number" class="form-control" required>
         </div>
       </div>
 
@@ -237,11 +252,11 @@
                     <h4 class="modal-title">Delete invoices Information</h4>
                   </div>
                   <div class="modal-body">
-                      Are you sure ?
+                      Are you sure ? 
                   </div>
                   <form action="{{ route('invoice.destroy' , $invoice->id)}}" method="POST">
                   <input name="_method" type="hidden" value="DELETE">
-                  {{ csrf_field() }}>
+                  {{ csrf_field() }}
 
                   <div class="modal-footer no-border">
                       <button type="button" class="btn btn-info" data-dismiss="modal">No</button>
@@ -293,13 +308,13 @@
       });
 
       $("#totalAftertax").val(function() {
-        var result = (parseFloat($("#subTotal").val()) + parseFloat($("#taxAmount").val())).toFixed(2);
+        var result = (parseFloat($("#subTotal").val()) - parseFloat($("#taxAmount").val())).toFixed(2);
         if(!isFinite(result)) result = 0 ;
         return result;
       });
 
       $("#totalAmount").val(function() {
-        var result = (parseFloat($("#subTotal").val()) + parseFloat($("#taxAmount").val()) - parseFloat($("#discount").val())).toFixed();
+        var result = (parseFloat($("#subTotal").val()) - parseFloat($("#taxAmount").val()) - parseFloat($("#discount").val())).toFixed();
         if(!isFinite(result)) result = 0 ;
         return result;
       });

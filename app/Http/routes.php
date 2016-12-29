@@ -196,6 +196,11 @@ Route::group(['middleware' => ['auth']] , function() {
     	'as' => 'invoice.create_invoce'
     ]);
 
+    Route::get('/invoice_view',[
+    	'uses' => 'InvoiceController@view',
+    	'as' => 'invoice.view'
+    ]);
+
     Route::resource('invoice', 'InvoiceController');
 
     Route::resource('ecategory' , 'EmployeeCategoryController');

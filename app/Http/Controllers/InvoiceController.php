@@ -41,6 +41,9 @@ class InvoiceController extends Controller
 
     public function store(Request $request) 
     {
+        $this->validate($request , [
+            'patient_id' => 'unique:invoices'
+        ]);
         $invoice = new Invoice();
         $invoice->admission = $request['admission'];
         $invoice->rent = $request['rent'];
@@ -87,12 +90,10 @@ class InvoiceController extends Controller
     public function update(Request $request,$id)
     {
         $invoice = Invoice::find($id);
-        $invoice->subtotal = $request['subtotal'];
-        $invoice->vat = $request['vat'];
-        $invoice->service = $request['service'];
+        $invoice->discount = $request['percent_amount'] + $request['discount'];
         $invoice->total_amount = $request['total_amount'];
-        $invoice->discount = $request['discount'];
         $invoice->total = $request['total'];
+        $invoice->receive_cash = $request['receive_cash'];
         $invoice->save();
         return redirect()->back()->with(['success' => 'Invoice Updtaed Successfully'] );
     }
@@ -111,6 +112,14 @@ class InvoiceController extends Controller
     {
         $patients = Patient::all();
         return view('admin.create_invoice', ['patients' => $patients]);
+    }
+
+    public function view(Request $request)
+    {
+        $invoice = Invoice::find($request['invoice_id']);
+        $money = $invoice->total;
+        $money = InvoiceoutController::convert_number_to_words($money);
+        return view('admin.invoice_view', ['invoice'=>$invoice,'money'=>$money]);
     }
 
 
