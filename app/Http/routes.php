@@ -275,6 +275,11 @@ Route::group(['middleware' => ['auth']] , function() {
 		'as' => 'daily_delivary_hospital'
 	]);
 
+	Route::get('/patient_details', [
+		'uses' => 'PatientController@details',
+		'as' => 'patient.details'
+	]);
+
 	Route::get('/monthly_entry_hospital' , [
 		'uses' => 'TotalReportController@monthlyEntryHospital',
 		'as' => 'monthly_entry_hospital'

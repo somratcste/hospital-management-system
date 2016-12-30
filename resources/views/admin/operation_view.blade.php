@@ -44,7 +44,7 @@
         <tbody>
 
             <tr>
-              <td>operation ID</td>
+              <td>Operation ID</td>
               <td>{{ $operation->id }}</td>
             </tr>
             <tr>
@@ -80,9 +80,8 @@
       <table class="table table-bordered table-hover">
         <thead>
             <tr>
-              <th width="50%">Test Name</th>
-              <th width="30%">Room No.</th>
-              <th width="20%">Price</th>
+              <th width="50%">Operation Name</th>
+              <th width="16%">Price</th>
             </tr>
             </thead>
 
@@ -90,7 +89,6 @@
               @foreach($operationproducts as $operationproduct)
                 <tr>
                   <td>{{ $operationproduct->operation_name }}</td>
-                  <td>{{ $operationproduct->operation_room }} </td>
                   <td>{{ $operationproduct->operation_cost }} Tk.</td>
                </tr>
               @endforeach
@@ -106,8 +104,8 @@
           <tbody>
               
               <tr>
-                <td width="50%">Subtotal</td>
-                <td width="50%">{{ $operation->subtotal }} Tk.</td>
+                <th width="50%">Subtotal</th>
+                <th width="50%">{{ $operation->subtotal }} Tk.</th>
               </tr>
           </tbody>
         </table>

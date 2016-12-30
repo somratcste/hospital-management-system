@@ -10,6 +10,12 @@ use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Ecategory;
+use App\Report;
+use App\ReportProduct;
+use App\Operation;
+use App\OperationProduct;
+use App\Invoice;
+
 class PatientController extends Controller
 {
     
@@ -80,5 +86,20 @@ class PatientController extends Controller
         $patient->delete();
         return redirect()->route('patient.list' , ['patient' => $patient->patient_type ])->with(['success' => 'Deleted Information Successfully !']);
 
+    }
+
+    public function details(Request $request)
+    {
+        $report = Report::where('patient_id',$request['patient_id'])->first();
+        $reportproducts = ReportProduct::where('report_id',$report->id)->get();
+        $money_report = $report->receive_cash;
+        $money_report = InvoiceoutController::convert_number_to_words($money_report);
+        $operation = Operation::where('patient_id',$request['patient_id'])->first();
+        $operationproducts =OperationProduct::where('operation_id',$operation->id)->get();
+        $invoice = Invoice::where('patient_id',$request['patient_id'])->first();
+        $money_invoice = $invoice->total;
+        $money_invoice = InvoiceoutController::convert_number_to_words($money_invoice);
+        $patient = Patient::find($request['patient_id']);
+        return view('admin.patient_details',['patient'=>$patient,'report'=>$report,'reportproducts'=>$reportproducts,'money_report'=>$money_report,'operation'=>$operation,'operationproducts'=>$operationproducts,'invoice'=>$invoice,'money_invoice'=>$money_invoice]);
     }
 }

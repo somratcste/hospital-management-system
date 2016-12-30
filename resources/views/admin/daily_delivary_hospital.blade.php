@@ -46,7 +46,14 @@
               <td>{{ $patient_admit->name }}</td>         
               <td>{{ $patient_admit->id }}</td>         
               <td>{{ $patient_admit->created_at->format('d-m-Y h:i:s A')}}</td>     
-              <td>Details</td>           
+              <td>
+                <form action="{{ route('patient.details') }}" method="GET">
+                  {{ csrf_field() }}
+                <input name="_method" type="hidden" value="GET">
+                <input type="hidden" name="patient_id" value="{{ $patient_admit->id }}">
+                <button class="btn btn-primary">Details</button>
+                </form>
+              </td>       
             </tr>
           @endforeach 
           </tbody>
@@ -94,7 +101,14 @@
               <td>{{ $patient_release->patient->name }}</td>         
               <td>{{ $patient_release->patient->id }}</td>         
               <td>{{ $patient_release->updated_at->format('d-m-Y h:i:s A')}}</td>     
-              <td>Details</td>           
+              <td>
+                <form action="{{ route('patient.details') }}" method="GET">
+                  {{ csrf_field() }}
+                <input name="_method" type="hidden" value="GET">
+                <input type="hidden" name="patient_id" value="{{ $patient_release->patient->id }}">
+                <button class="btn btn-primary">Details</button>
+                </form>
+              </td>          
             </tr>
           @endforeach 
           </tbody>
