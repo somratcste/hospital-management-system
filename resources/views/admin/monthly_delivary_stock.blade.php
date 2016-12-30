@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('top_header')
-  Monthly Delivary Information
+  Daily Delivary information
 @endsection
 
 
@@ -12,7 +12,7 @@
   <div class="row">
     <div class="panel mb25">
         <div class="panel-heading border">
-          Admin Patient
+          Monthly Stock Delivary Report at {{ $type }} on {{ $date }}
         </div>
         <div class="panel-body">
         <div class="table-responsive">
@@ -20,62 +20,36 @@
           <thead>
             <tr>
               <th>No.</th>
-              <th>Patient Name</th>
-              <th>Patient ID</th>
-              <th>Date / Time</th>
-              <th>Amount</th>
+              <th>Item Name</th>
+              <th>Quantity in Stock</th>
+              <th>Delivary</th>
+              <th>Address</th>
+              <th>Date</th>
             </tr>
           </thead>
           <tfoot>
             <tr>
               <th>No.</th>
-              <th>Patient Name</th>
-              <th>Patient ID</th>
-              <th>Date / Time</th>
-              <th>Amount</th>
+              <th>Item Name</th>
+              <th>Quantity in Stock</th>
+              <th>Delivary</th>
+              <th>Address</th>
+              <th>Date</th>
             </tr>          
             </tfoot>
           <tbody>
+            <?php $i = 1; ?>
+            @foreach($stockDelivaries as $stockDelivary)
             <tr>
-              <td>01</td>         
-              <td>Mr. Nazmul Hossain</td>         
-              <td>10</td>         
-              <td>17-Oct-2016 / 10:32:59 a.m</td>
-              <td>20000 Tk.</td>                 
+              <td><?php echo $i ; ?></td>         
+              <td>{{ $stockDelivary->name }}</td>         
+              <td>{{ $stockDelivary->quantity}}</td> 
+              <td>{{ $stockDelivary->quantity_delivary }}</td>        
+              <td>{{ $stockDelivary->address }}</td>
+              <td>{{ $stockDelivary->created_at }}</td>                 
             </tr>
-            <tr>
-              <td>01</td>         
-              <td>Mr. Nazmul Hossain</td>         
-              <td>10</td>         
-              <td>17-Oct-2016 / 10:32:59 a.m</td>
-              <td>20000 Tk.</td>                 
-            </tr><tr>
-              <td>01</td>         
-              <td>Mr. Nazmul Hossain</td>         
-              <td>10</td>         
-              <td>17-Oct-2016 / 10:32:59 a.m</td>
-              <td>20000 Tk.</td>                 
-            </tr><tr>
-              <td>01</td>         
-              <td>Mr. Nazmul Hossain</td>         
-              <td>10</td>         
-              <td>17-Oct-2016 / 10:32:59 a.m</td>
-              <td>20000 Tk.</td>                 
-            </tr><tr>
-              <td>01</td>         
-              <td>Mr. Nazmul Hossain</td>         
-              <td>10</td>         
-              <td>17-Oct-2016 / 10:32:59 a.m</td>
-              <td>20000 Tk.</td>                 
-            </tr>
-            <tr>
-              <td></td>         
-              <td></td>         
-              <td></td>         
-              <td>Oct-2016</td>
-              <td>5,80,000 Tk.</td>                 
-            </tr>
-            
+            <?php $i++; ?>
+            @endforeach
           </tbody>
         </table>
       </div>
@@ -85,7 +59,6 @@
   </div>
   <!--Admit Patient Section End-->
 
- 
   <!-- /main area -->
 </div>
 <!-- /content panel -->

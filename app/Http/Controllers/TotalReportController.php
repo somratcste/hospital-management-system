@@ -183,17 +183,44 @@ class TotalReportController extends Controller
 					->where('stock_delivaries.type' , '=' , $request['type'])
 					->whereDate('stock_delivaries.created_at' , '=' , $date)
 					->get();
-		return view('admin.daily_delivary_stock',['stockDelivaries' => $stockDelivary,'type' => $type]);
+		return view('admin.daily_delivary_stock',['stockDelivaries' => $stockDelivary,'type' => $type,'date'=>$date]);
 	}
 
-	public function monthlyEntryStock()
+	public function monthlyEntryStock(Request $request)
 	{
-		return view('admin.monthly_entry_stock');
+		if($request['type'] == 1 ) 
+			$type = 'Hospital';
+		else
+			$type = 'Laboratory';
+		$month = $request['month'];
+		$year = $request['year'];
+		$date = $year .'-'. $month  ; 
+		$stockEntry = DB::table('stocks')
+					->join('stock_entries' , 'stocks.id', '=' , 'stock_entries.stock_id')
+					->where('stock_entries.type' , '=' , $request['type'])
+					->whereMonth('stock_entries.created_at' , '=' , $month)
+					->whereYear('stock_entries.created_at','=',$year)
+					->get();
+
+		return view('admin.monthly_entry_stock',['stockEntries' => $stockEntry , 'type'=> $type , 'date' => $date]);
 	}
 
-	public function monthlyDelivaryStock()
+	public function monthlyDelivaryStock(Request $request)
 	{
-		return view('admin.monthly_delivary_stock');
+		if($request['type'] == 1 ) 
+			$type = 'Hospital';
+		else
+			$type = 'Laboratory';
+		$month = $request['month'];
+		$year = $request['year'];
+		$date = $year .'-'. $month ; 
+		$stockDelivary = DB::table('stocks')
+					->join('stock_delivaries' , 'stocks.id' , '=' , 'stock_delivaries.stock_id')
+					->where('stock_delivaries.type' , '=' , $request['type'])
+					->whereMonth('stock_delivaries.created_at' , '=' , $month)
+					->whereYear('stock_delivaries.created_at','=',$year)
+					->get();
+		return view('admin.monthly_delivary_stock',['stockDelivaries' => $stockDelivary,'type' => $type,'date'=>$date]);
 	}
 
 	// end stock section 

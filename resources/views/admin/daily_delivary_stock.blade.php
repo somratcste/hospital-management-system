@@ -12,7 +12,7 @@
   <div class="row">
     <div class="panel mb25">
         <div class="panel-heading border">
-          Daily Stock Delivary Report at {{ $type }} on {{ $day }}
+          Daily Stock Delivary Report at {{ $type }} on {{ $date }}
         </div>
         <div class="panel-body">
         <div class="table-responsive">

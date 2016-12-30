@@ -526,7 +526,7 @@
         </div>
 
         <div class="row">
-           <div class="col-md-6" data-toggle="modal" data-target="#monthlyEntryPharmacy" style="cursor: pointer;">
+           <div class="col-md-6" data-toggle="modal" data-target="#monthlyEntryHospital" style="cursor: pointer;">
             <section class="widget bg-lightblue"
               style="border-radius: 40px;
               background-color: #458484;
@@ -535,16 +535,16 @@
                   <img src="images/central/list-9.png" class="avatar avatar-sm img-circle bordered" alt="Monthly Entry Report">
               </div>
               <div class="widget-details">
-                <span class="h3 bold" style="font-family: initial;">Monthly Entry Report</span>
+                <span class="h3 bold" style="font-family: initial;">Monthly Report</span>
               </div>
             </section>
           </div>
-          <div class="modal" id="monthlyEntryPharmacy" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal" id="monthlyEntryHospital" tabindex="-1" role="dialog" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Search Monthly Entry Report</h4>
+                <h4 class="modal-title">Search Monthly Report</h4>
               </div>
               <div class="modal-body">
                 <div class="row mb25">
@@ -610,7 +610,7 @@
           </div>
         </div>
 
-        <div class="col-md-6" data-toggle="modal" data-target="#monthlyDelivaryPharmacy" style="cursor: pointer;">
+        <div class="col-md-6" data-toggle="modal" data-target="#monthlyDelivaryHospital" style="cursor: pointer;">
             <section class="widget bg-lightblue"
               style="border-radius: 40px;
               background-color: #458484;
@@ -619,16 +619,16 @@
                   <img src="images/central/list-9.png" class="avatar avatar-sm img-circle bordered" alt="Monthly Delivary Report">
               </div>
               <div class="widget-details">
-                <span class="h3 bold" style="font-family: initial;">Monthly Delivary Report</span>
+                <span class="h3 bold" style="font-family: initial;">Monthly Patient Report</span>
               </div>
             </section>
           </div>
-          <div class="modal" id="monthlyDelivaryPharmacy" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal" id="monthlyDelivaryHospital" tabindex="-1" role="dialog" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Search Monthly Delivary Report</h4>
+                <h4 class="modal-title">Search Monthly Patient Report</h4>
               </div>
               <div class="modal-body">
                 <div class="row mb25">
