@@ -70,10 +70,13 @@ class villageController extends Controller
             $day = $request['day'];
             $date = $year.'-'.$month.'-'.$day;
             $village_id = $request['village_id'];
+            $marketing_id = $request['marketing_id'];
             $village = Village::Find($village_id);
 
             $invoiceouts = DB::table('invoice_out_products')
                         ->join('invoice_outs','invoice_out_id','=' ,'invoice_outs.id')
+                        ->where('village_id' , $village_id)
+                        ->where('marketing_id',$marketing_id)
                         ->whereDate('invoice_outs.created_at','=',$date)
                         ->select('*',DB::raw('SUM(report_cost*report_discount/100) as totalRf'))
                         ->groupBy('invoice_out_id')
@@ -87,9 +90,12 @@ class villageController extends Controller
             $day = $request['day'];
             $village_id = $request['village_id'];
             $village = Village::Find($village_id);
+            $marketing_id = $request['marketing_id'];
 
             $invoiceouts = DB::table('invoice_out_products')
                         ->join('invoice_outs','invoice_out_id','=' ,'invoice_outs.id')
+                        ->where('village_id' , $village_id)
+                        ->where('marketing_id',$marketing_id)
                         ->whereYear('invoice_outs.created_at','=',date('Y'))
                         ->whereMonth('invoice_outs.created_at','=',date('m'))
                         ->select('*',DB::raw('SUM(report_cost*report_discount/100) as totalRf'))
