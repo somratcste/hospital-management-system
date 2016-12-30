@@ -87,6 +87,16 @@
                 </a>
               </li>
               @endif
+              <li>
+                <a href="{{ route('report.index') }}">
+                  <span>Indoor Test</span>
+                </a>
+              </li>
+              <li>
+                <a href="{{ route('report.create') }}">
+                  <span>Indoor Test List</span>
+                </a>
+              </li>
              </ul>
             </li>
 
