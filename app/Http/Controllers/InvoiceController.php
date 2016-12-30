@@ -9,6 +9,8 @@ use App\Invoice;
 use App\Seat;
 use App\Operation;
 use App\Report; 
+use App\IndoorPatientIncome;
+use Auth;
 
 class InvoiceController extends Controller
 {
@@ -94,6 +96,13 @@ class InvoiceController extends Controller
         // $invoice->total_amount = $request['total_amount'];
         $invoice->total = $request['total'];
         $invoice->receive_cash = $request['receive_cash'];
+
+        $indoorPatientIncome = new IndoorPatientIncome();
+        $indoorPatientIncome->invoice_id = $id;
+        $indoorPatientIncome->taka = $request['receive_cash'];
+        $indoorPatientIncome->user_id = Auth::user()->id ;
+        $indoorPatientIncome->save();
+
         $invoice->save();
         return redirect()->back()->with(['success' => 'Invoice Updtaed Successfully'] );
     }
