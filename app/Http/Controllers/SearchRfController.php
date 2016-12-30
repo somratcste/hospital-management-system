@@ -10,12 +10,14 @@ class SearchRfController extends Controller
 {
 	public function index()
 	{
-        return view('admin.search_rf');
+    $marketings = Marketing::all();
+    return view('admin.search_rf',['marketings'=>$marketings]);
 	}
 
 	public function create()
 	{
-		return view('admin.search_rf_marketing');
+    $marketings = Marketing::all();
+		return view('admin.search_rf_marketing',['marketings'=>$marketings]);
 	}
 
 	public function autocomplete_marketing(Request $request)

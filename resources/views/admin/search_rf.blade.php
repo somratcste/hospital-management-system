@@ -32,12 +32,12 @@
         </div>
       </div>
 
-      <div class="form-group clear">
-      <label class="col-sm-3 control-label" >Village Doctor : &nbsp;</label>
-      <div class="col-sm-7">
-        <input type="text" class="form-control" id="village_name" required>
-        <input type="hidden" name="village_id" id="village_id">
-      </div>
+    <!-- <div class="form-group clear">
+    <label class="col-sm-3 control-label" >Village Doctor : &nbsp;</label>
+    <div class="col-sm-7">
+      <input type="text" class="form-control" id="village_name" required>
+      <input type="hidden" name="village_id" id="village_id">
+    </div>
     </div>  
 
     <div class="form-group clear">
@@ -46,7 +46,28 @@
         <input type="hidden" class="form-control" name="marketing_id" id="marketing_id">
         <input type="text" class="form-control" id="marketing_name" required readonly>
       </div>
-    </div>  
+    </div> -->  
+
+    <div class="form-group clear">
+      <label class="col-sm-3 control-label" >Marketing Officer : &nbsp;</label>
+      <div class="col-sm-7">
+        <select name="marketing_id" class="form-control" id="marketing" required>
+          <option value="">Select Marketig Officer</option>
+          @foreach($marketings as $marketing)
+          <option value="{{ $marketing->id }}">{{ $marketing->name }}</option>
+          @endforeach
+        </select>
+      </div>
+    </div>
+
+      <div class="form-group clear">
+      <label class="col-sm-3 control-label" >Village Doctor : &nbsp;</label>
+      <div class="col-sm-7">
+        <select name="village_id" id="village" class="form-control" required>
+          <option value="">Select Village Doctor</option>
+        </select>
+      </div>
+    </div>
 
     <div class="form-group clear">
       <label class="col-sm-3 control-label">Year</label>
@@ -155,17 +176,27 @@
     });
   });
 
-  $('#village_name').autocomplete({
-    source : '{!!URL::route('autocomplete_village')!!}',
-    minlenght:1,
-    autoFocus:true,
-    select:function(event,ui){
-      event.preventDefault();
-      $('#village_name').val(ui.item.label);
-      $('#village_id').val(ui.item.village_id);
-      $('#marketing_id').val(ui.item.marketing_id);
-      $('#marketing_name').val(ui.item.marketing_name);
-    }
+  // $('#village_name').autocomplete({
+  //   source : '{!!URL::route('autocomplete_village')!!}',
+  //   minlenght:1,
+  //   autoFocus:true,
+  //   select:function(event,ui){
+  //     event.preventDefault();
+  //     $('#village_name').val(ui.item.label);
+  //     $('#village_id').val(ui.item.village_id);
+  //     $('#marketing_id').val(ui.item.marketing_id);
+  //     $('#marketing_name').val(ui.item.marketing_name);
+  //   }
+  // });
+
+  $('#marketing').on('change' , function(e){
+    var marketing_id = e.target.value;
+    $.get('/hospital/public/reportout_village?marketing_id=' + marketing_id, function(data){
+      $('#village').empty();
+      $.each(data, function(index,villageobj){
+        $('#village').append('<option value="'+villageobj.id+'">'+villageobj.name+'</option>')
+      });
+    });
   });
 </script>
 
