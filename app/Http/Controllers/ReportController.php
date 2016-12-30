@@ -10,6 +10,7 @@ use App\Report;
 use App\Patient;
 use App\ReportProduct;
 use Auth;
+use App\IndoorIncome;
 
 class ReportController extends Controller
 {
@@ -99,6 +100,7 @@ class ReportController extends Controller
         $report = new Report();
         $report->patient_id = $request['patient_id'];
         $report->subtotal = $request['subtotal'];
+        $report->percent = $request['percent'];
         $report->percent_amount = $request['percent_amount'];
         $report->without_percent = $request['without_percent'];
         $report->discount = $request['discount'];
@@ -108,6 +110,12 @@ class ReportController extends Controller
         $report->user_id = Auth::user()->id ;
         $report->save();
         $reportID = $report->id;
+
+        $indoorIncome = new IndoorIncome();
+        $indoorIncome->report_id = $reportID;
+        $indoorIncome->taka = $request['receive_cash'];
+        $indoorIncome->user_id = Auth::user()->id ;
+        $indoorIncome->save();
         
         
         for($i=0;$i<count($_POST['itemNo']);$i++)
@@ -148,6 +156,12 @@ class ReportController extends Controller
         }
 
         $report->update();
+
+        $indoorIncome = new IndoorIncome();
+        $indoorIncome->report_id = $id;
+        $indoorIncome->taka = $request['receive_cash'];
+        $indoorIncome->user_id = Auth::user()->id ;
+        $indoorIncome->save();
 
         for($i=0;$i<count($_POST['itemNo']);$i++)
         {
