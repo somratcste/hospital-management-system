@@ -9,76 +9,12 @@
 
 <!-- main area -->
 <div class="main-content">
-  <!-- Start Admit Patient Section-->
-  <!-- <div class="row">
-    <div class="panel mb25">
-        <div class="panel-heading border">
-          Admin Patient
-        </div>
-        <div class="panel-body">
-        <div class="table-responsive">
-        <table class="table table-bordered table-striped mb0">
-          <thead>
-            <tr>
-              <th>No.</th>
-              <th>Patient Name</th>
-              <th>Patient ID</th>
-              <th>Time</th>
-            </tr>
-          </thead>
-          <tfoot>
-            <tr>
-              <th>No.</th>
-              <th>Patient Name</th>
-              <th>Patient ID</th>
-              <th>Time</th>
-            </tr>          
-            </tfoot>
-          <tbody>
-            <tr>
-              <td>01</td>         
-              <td>Mr. Nazmul Hossain</td>         
-              <td>10</td>         
-              <td>10:32:59 a.m</td>                 
-            </tr>
-             <tr>
-              <td>01</td>         
-              <td>Mr. Nazmul Hossain</td>         
-              <td>10</td>         
-              <td>10:32:59 a.m</td>                 
-            </tr>
-             <tr>
-              <td>01</td>         
-              <td>Mr. Nazmul Hossain</td>         
-              <td>10</td>         
-              <td>10:32:59 a.m</td>                 
-            </tr>
-             <tr>
-              <td>01</td>         
-              <td>Mr. Nazmul Hossain</td>         
-              <td>10</td>         
-              <td>10:32:59 a.m</td>                 
-            </tr>
-             <tr>
-              <td>01</td>         
-              <td>Mr. Nazmul Hossain</td>         
-              <td>10</td>         
-              <td>10:32:59 a.m</td>                 
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      </div>
-    </div>
-  </div> -->
-  <!--Admit Patient Section End-->
 
   <!--Start Due Report Section-->
   <div class="row">
     <div class="panel mb25">
         <div class="panel-heading border">
-          Due Report List
+          Due Outdoor Report List on {{ $date }}
         </div>
         <div class="panel-body">
         <div class="table-responsive">
@@ -129,7 +65,7 @@
   <div class="row">
     <div class="panel mb25">
         <div class="panel-heading border">
-          Paid Report List
+          Paid Outdoor Report List on {{ $date  }}
         </div>
         <div class="panel-body">
         <div class="table-responsive">
@@ -157,7 +93,7 @@
               <td><?php echo $i; ?></td>         
               <td>{{ $paid_list->id }}</td>         
               <td>{{ $paid_list->total}}</td>   
-              <td style="text-transform:capitalize;">{{ $due_list->user->name }}</td>
+              <td style="text-transform:capitalize;">{{ $paid_list->user->name }}</td>
             </tr>
             @php $i++ @endphp
             @endforeach  
@@ -174,7 +110,7 @@
   <div class="row">
     <div class="panel mb25">
         <div class="panel-heading border">
-          Refund Report List
+          Refund Outdoor Report List on {{ $date }}
         </div>
         <div class="panel-body">
         <div class="table-responsive">
@@ -220,6 +156,51 @@
     </div>
   </div>
   <!--end Refund report list-->
+
+    <!--start indoor report list-->
+  <div class="row">
+    <div class="panel mb25">
+        <div class="panel-heading border">
+          Indoor Report List on {{ $date  }}
+        </div>
+        <div class="panel-body">
+        <div class="table-responsive">
+        <table class="table table-bordered table-striped mb0">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Report ID</th>
+              <th>Total Amount</th>
+              <th>User Name</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <th>No.</th>
+              <th>Report ID</th>
+              <th>Total Amount</th>
+              <th>User Name</th>
+            </tr>         
+            </tfoot>
+          <tbody>
+           @php $i = 1; @endphp
+            @foreach($indoor_lists as $indoor_list)
+            <tr>
+              <td><?php echo $i; ?></td>         
+              <td>{{ $indoor_list->id }}</td>         
+              <td>{{ $indoor_list->total}}</td>   
+              <td style="text-transform:capitalize;">{{ $indoor_list->user->name }}</td>
+            </tr>
+            @php $i++ @endphp
+            @endforeach  
+          </tbody>
+        </table>
+      </div>
+
+      </div>
+    </div>
+  </div>
+  <!--end indoor report list-->
 
   <!-- /main area -->
 </div>

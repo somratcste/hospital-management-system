@@ -245,7 +245,7 @@
         <label class="col-sm-4" >Subtotal: &nbsp;</label>
         <div class="input-group col-sm-6">
           <div class="input-group-addon">Tk.</div>
-          <input type="number" class="form-control" id="subTotal" value="{{ $invoice->total}}" readonly>
+          <input type="number" class="form-control" id="subTotal" value="{{ $invoice->total_amount }}" readonly>
         </div>
       </div>
       <div class="form-group form-inline">

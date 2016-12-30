@@ -14,6 +14,9 @@ use App\Refund;
 use App\OutdoorIncome;
 use App\IndoorIncome;
 use App\IndoorPatientIncome; 
+use App\Report;
+use App\Patient;
+use App\Invoice;
 
 class TotalReportController extends Controller
 { 
@@ -78,12 +81,27 @@ class TotalReportController extends Controller
 		$refund_lists = Refund::whereDate('created_at' , '=' , $date)
 					->orderBy('created_at' , 'desc')
 					->get();
-		return view('admin.daily_entry_hospital' , ['due_lists'=>$due_lists,'paid_lists'=>$paid_lists , 'refund_lists' => $refund_lists]);
+
+		$indoor_lists = Report::whereDate('created_at' , '=' , $date)
+					->orderBy('created_at' , 'desc')
+					->get();
+
+		return view('admin.daily_entry_hospital' , ['due_lists'=>$due_lists,'paid_lists'=>$paid_lists , 'refund_lists' => $refund_lists,'date'=>$date,'indoor_lists'=>$indoor_lists]);
 	}
 
-	public function dailyDelivaryHospital()
+	public function dailyDelivaryHospital(Request $request)
 	{
-		return view('admin.daily_delivary_hospital');
+		$day = $request['day'];
+		$month = $request['month'];
+		$year = $request['year'];
+		$date = $year .'-'. $month . '-' . $day ;
+		$patient_admits = Patient::whereDate('created_at','=',$date)
+				->orderBy('created_at','desc')
+				->get();
+		$patient_releases = Invoice::whereDate('updated_at','=',$date)
+				->orderBy('created_at','desc')
+				->get();
+		return view('admin.daily_delivary_hospital',['patient_admits'=>$patient_admits,'date'=>$date,'patient_releases'=>$patient_releases]);
 	}
 
 	public function monthlyEntryHospital()

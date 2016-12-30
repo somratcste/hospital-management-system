@@ -282,7 +282,7 @@
                   <img src="images/central/list-9.png" class="avatar avatar-sm img-circle bordered" alt="Daily Entry Report">
               </div>
               <div class="widget-details">
-                <span class="h3 bold" style="font-family: initial;">Daily Entry Report</span>
+                <span class="h3 bold" style="font-family: initial;">Daily Report</span>
               </div>
             </section>
           </div>
@@ -291,7 +291,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Search Daily Entry Report</h4>
+                <h4 class="modal-title">Search Daily Report</h4>
               </div>
               <div class="modal-body">
                 <div class="row mb25">
@@ -406,7 +406,7 @@
                   <img src="images/central/list-9.png" class="avatar avatar-sm img-circle bordered" alt="Daily Delivary Report">
               </div>
               <div class="widget-details">
-                <span class="h3 bold" style="font-family: initial;">Daily Delivary Report</span>
+                <span class="h3 bold" style="font-family: initial;">Daily Patient Report</span>
               </div>
             </section>
           </div>
@@ -415,7 +415,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Search Daily Delivary Report</h4>
+                <h4 class="modal-title">Search Daily Patient Report</h4>
               </div>
               <div class="modal-body">
                 <div class="row mb25">

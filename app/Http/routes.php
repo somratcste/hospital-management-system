@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Input;
 use App\Village;
 use App\Doctor;
-
+date_default_timezone_set("Asia/Dhaka");
 Route::get('/' , function() {
 	return view('auth.login');
 });
