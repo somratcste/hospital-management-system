@@ -44,11 +44,21 @@ class TotalReportController extends Controller
 						->groupBy(DB::raw('Date(created_at)'))
 						->get(array('taka','created_at'));
 		$outdoor_incomes = OutdoorIncome::whereMonth('created_at' , '=' , $month)
-						->select('taka','created_at',DB::raw('SUM(taka) as totalIncome'))
+						->select('taka','created_at',DB::raw('SUM(taka) as totalOutdoorIncome'))
+						->groupBy(DB::raw('Date(created_at)'))
+						->get(array('taka','created_at'));
+
+		$indoor_incomes = IndoorIncome::whereMonth('created_at' , '=' , $month)
+						->select('taka','created_at',DB::raw('SUM(taka) as totalIndoorIncome'))
+						->groupBy(DB::raw('Date(created_at)'))
+						->get(array('taka','created_at'));
+
+	$indoor_patient_incomes = IndoorPatientIncome::whereMonth('created_at' , '=' , $month)
+						->select('taka','created_at',DB::raw('SUM(taka) as totalIndoorPatientIncome'))
 						->groupBy(DB::raw('Date(created_at)'))
 						->get(array('taka','created_at'));
 						
-		return view('admin.monthly_accounce', ['accounce_costs' => $accounce_costs,'date'=> $date,'outdoor_incomes'=> $outdoor_incomes]);
+		return view('admin.monthly_accounce', ['accounce_costs' => $accounce_costs,'date'=> $date,'outdoor_incomes'=> $outdoor_incomes,'indoor_incomes'=>$indoor_incomes,'indoor_patient_incomes'=>$indoor_patient_incomes]);
 	}
 
 	public function dailyEntryHospital(Request $request)

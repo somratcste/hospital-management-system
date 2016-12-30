@@ -268,11 +268,15 @@
             </tr>
             <tr>
               <td>{{ "Total Admit Patient Income" }}</td>
-              <td>{{ $totalIndoorPatientIncome }}</td>
+              <td>{{ $totalIndoorPatientIncome }} /-</td>
             </tr>
             <tr>
-              <td>{{ "Total Cost "}}</td>
-              <td>{{ $totalCost }} /-</td>
+              <th>{{ "Total Income" }}</th>
+              <th>{{ $totalOutdoorIncome + $totalIndoorIncome + $totalIndoorPatientIncome }} /-</th>
+            </tr>
+            <tr>
+              <th>{{ "Total Cost "}}</th>
+              <th>{{ $totalCost }} /-</th>
             </tr>
           </tbody>
           <tfoot>
