@@ -104,14 +104,48 @@ class TotalReportController extends Controller
 		return view('admin.daily_delivary_hospital',['patient_admits'=>$patient_admits,'date'=>$date,'patient_releases'=>$patient_releases]);
 	}
 
-	public function monthlyEntryHospital()
+	public function monthlyEntryHospital(Request $request)
 	{
-		return view('admin.monthly_entry_hospital');
+		$month = $request['month'];
+		$year = $request['year'];
+		$date = $year .'-'. $month ;
+		$due_lists = InvoiceOut::whereMonth('created_at' , '=' , $month)
+					->whereYear('created_at','=', $year)
+					->orderBy('created_at' , 'asc')
+					->where('due','!=',0)
+					->get();
+		$paid_lists = InvoiceOut::whereMonth('created_at' , '=' , $month)
+					->whereYear('created_at','=', $year)
+					->orderBy('created_at' , 'asc')
+					->whereRaw('total = receive_cash')
+					->get();
+		$refund_lists = Refund::whereMonth('created_at' , '=' , $month)
+					->whereYear('created_at','=', $year)
+					->orderBy('created_at' , 'asc')
+					->get();
+
+		$indoor_lists = Report::whereMonth('created_at' , '=' , $month)
+					->whereYear('created_at','=', $year)					
+					->orderBy('created_at' , 'asc')
+					->get();
+
+		return view('admin.monthly_entry_hospital' , ['due_lists'=>$due_lists,'paid_lists'=>$paid_lists , 'refund_lists' => $refund_lists,'date'=>$date,'indoor_lists'=>$indoor_lists]);
 	}
 
-	public function monthlyDelivaryHospital()
+	public function monthlyDelivaryHospital(Request $request)
 	{
-		return view('admin.monthly_delivary_hospital');
+		$month = $request['month'];
+		$year = $request['year'];
+		$date = $year .'-'. $month ;
+		$patient_admits = Patient::whereMonth('created_at' , '=' , $month)
+					->whereYear('created_at','=', $year)					
+					->orderBy('created_at' , 'asc')
+					->get();
+		$patient_releases = Invoice::whereMonth('created_at' , '=' , $month)
+					->whereYear('created_at','=', $year)					
+					->orderBy('created_at' , 'asc')
+					->get();
+		return view('admin.monthly_delivary_hospital',['patient_admits'=>$patient_admits,'date'=>$date,'patient_releases'=>$patient_releases]);
 	}
 
 	// start stock section 

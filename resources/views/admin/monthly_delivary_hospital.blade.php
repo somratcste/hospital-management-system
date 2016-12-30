@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('top_header')
-  Monthly Delivary Information
+  Daily Delivary information
 @endsection
 
 
@@ -9,10 +9,12 @@
 
 <!-- main area -->
 <div class="main-content">
+
+  <!--Indoor admit patient start-->
   <div class="row">
     <div class="panel mb25">
         <div class="panel-heading border">
-          Admin Patient
+          Admit Patient List on {{ $date }}
         </div>
         <div class="panel-body">
         <div class="table-responsive">
@@ -22,8 +24,8 @@
               <th>No.</th>
               <th>Patient Name</th>
               <th>Patient ID</th>
-              <th>Date / Time</th>
-              <th>Amount</th>
+              <th>Admit Time</th>
+              <th>Details</th>
             </tr>
           </thead>
           <tfoot>
@@ -31,51 +33,22 @@
               <th>No.</th>
               <th>Patient Name</th>
               <th>Patient ID</th>
-              <th>Date / Time</th>
-              <th>Amount</th>
+              <th>Admit Time</th>
+              <th>Details</th>
             </tr>          
             </tfoot>
           <tbody>
+          @php $i = 0 @endphp
+          @foreach($patient_admits as $patient_admit)
+          <?php $i++; ?>
             <tr>
-              <td>01</td>         
-              <td>Mr. Nazmul Hossain</td>         
-              <td>10</td>         
-              <td>17-Oct-2016 / 10:32:59 a.m</td>
-              <td>20000 Tk.</td>                 
+              <td>{{ $i }}</td>         
+              <td>{{ $patient_admit->name }}</td>         
+              <td>{{ $patient_admit->id }}</td>         
+              <td>{{ $patient_admit->created_at->format('d-m-Y h:i:s A')}}</td>     
+              <td>Details</td>          
             </tr>
-            <tr>
-              <td>01</td>         
-              <td>Mr. Nazmul Hossain</td>         
-              <td>10</td>         
-              <td>17-Oct-2016 / 10:32:59 a.m</td>
-              <td>20000 Tk.</td>                 
-            </tr><tr>
-              <td>01</td>         
-              <td>Mr. Nazmul Hossain</td>         
-              <td>10</td>         
-              <td>17-Oct-2016 / 10:32:59 a.m</td>
-              <td>20000 Tk.</td>                 
-            </tr><tr>
-              <td>01</td>         
-              <td>Mr. Nazmul Hossain</td>         
-              <td>10</td>         
-              <td>17-Oct-2016 / 10:32:59 a.m</td>
-              <td>20000 Tk.</td>                 
-            </tr><tr>
-              <td>01</td>         
-              <td>Mr. Nazmul Hossain</td>         
-              <td>10</td>         
-              <td>17-Oct-2016 / 10:32:59 a.m</td>
-              <td>20000 Tk.</td>                 
-            </tr>
-            <tr>
-              <td></td>         
-              <td></td>         
-              <td></td>         
-              <td>Oct-2016</td>
-              <td>5,80,000 Tk.</td>                 
-            </tr>
-            
+          @endforeach 
           </tbody>
         </table>
       </div>
@@ -83,7 +56,57 @@
       </div>
     </div>
   </div>
-  <!--Admit Patient Section End-->
+  <!--Indoor Admit Patient Section End-->
+
+    <!--Indoor Release patient start-->
+  <div class="row">
+    <div class="panel mb25">
+        <div class="panel-heading border">
+          Release Patient List on {{ $date }}
+        </div>
+        <div class="panel-body">
+        <div class="table-responsive">
+        <table class="table table-bordered table-striped mb0">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Patient Name</th>
+              <th>Patient ID</th>
+              <th>Release Time</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <th>No.</th>
+              <th>Patient Name</th>
+              <th>Patient ID</th>
+              <th>Release Time</th>
+              <th>Details</th>
+            </tr>          
+            </tfoot>
+          <tbody>
+          @php $i = 0 @endphp
+          @foreach($patient_releases as $patient_release)
+          <?php $i++; ?>
+            <tr>
+              <td>{{ $i }}</td>         
+              <td>{{ $patient_release->patient->name }}</td>         
+              <td>{{ $patient_release->patient->id }}</td>         
+              <td>{{ $patient_release->updated_at->format('d-m-Y h:i:s A')}}</td>     
+              <td>Details</td>           
+            </tr>
+          @endforeach 
+          </tbody>
+        </table>
+      </div>
+
+      </div>
+    </div>
+  </div>
+  <!--Indoor Release Patient Section End-->
+
+
 
  
   <!-- /main area -->
