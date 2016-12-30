@@ -14,7 +14,7 @@
   <div class="row">
     <div class="panel mb25">
         <div class="panel-heading border">
-         View ALL Monthly Income on {{ $date }}
+         View ALL Monthly Outdoor Income on {{ $date }}
         </div>
         <div class="panel-body">
         
@@ -28,17 +28,17 @@
             </tr>
           </thead>
           @php 
-            $totalIncome = 0
+            $totalOutdoorIncome = 0
           @endphp
           <tbody>
             <?php $i =1 ; ?>
-            @foreach ($accounce_incomes as $accounce_income)
+            @foreach ($outdoor_incomes as $outdoor_income)
               <tr>
               <td><?php echo $i; ?></td>
-              <td>{{ $accounce_income->created_at->format('m-d-Y')}}</td>
-              <td>{{ $accounce_income->totalIncome }} /-</td> 
+              <td>{{ $outdoor_income->created_at->format('m-d-Y')}}</td>
+              <td>{{ $outdoor_income->totalOutdoorIncome }} /-</td> 
                   @php 
-                  $totalIncome = $accounce_income->totalIncome+ $totalIncome @endphp                        
+                  $totalOutdoorIncome = $outdoor_income->totalOutdoorIncome+ $totalOutdoorIncome @endphp                        
             </tr>
             <?php $i++; ?>
             @endforeach
@@ -47,7 +47,7 @@
             <tr>
               <th></th>
               <th>Total</th>
-              <th>{{ $totalIncome }} Tk.</th>
+              <th>{{ $totalOutdoorIncome }} Tk.</th>
             </tr>
           </tfoot>
         </table>
@@ -129,7 +129,7 @@
           <tbody>
             <tr>
               <td>{{ "Total Outdoor Income" }}</td>
-              <td>{{ $totalIncome }} /-</td>
+              <td>{{ $totalOutdoorIncome }} /-</td>
             </tr>
             <tr>
               <td>{{ "Total Cost "}}</td>
@@ -139,7 +139,7 @@
           <tfoot>
             <tr>
               <th>Net Balance</th>
-              <th>{{ $totalIncome - $totalCost }} /-</th>
+              <th>{{ $totalOutdoorIncome - $totalCost }} /-</th>
             </tr>
           </tfoot>
         </table>

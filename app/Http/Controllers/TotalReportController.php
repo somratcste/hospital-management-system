@@ -12,6 +12,8 @@ use Carbon\Carbon;
 use App\InvoiceOut;
 use App\Refund;
 use App\OutdoorIncome;
+use App\IndoorIncome;
+use App\IndoorPatientIncome; 
 
 class TotalReportController extends Controller
 { 
@@ -26,8 +28,10 @@ class TotalReportController extends Controller
 		$year = $request['year'];
 		$date = $year .'-'. $month . '-' . $day ;
 		$accounce_costs = AccounceCost::whereDate('created_at' , '=' , $date)->orderBy('created_at' , 'desc')->get();
-		$daily_incomes = OutdoorIncome::whereDate('created_at','=', $date)->orderBy('created_at','desc')->get();
-		return view('admin.daily_accounce', ['accounce_costs' => $accounce_costs , 'date' => $date ,'daily_incomes'=> $daily_incomes]);
+		$outdoor_incomes = OutdoorIncome::whereDate('created_at','=', $date)->orderBy('created_at','desc')->get();
+		$indoor_incomes = IndoorIncome::whereDate('created_at','=', $date)->orderBy('created_at','desc')->get();
+		$indoor_patient_incomes = IndoorPatientIncome::whereDate('created_at','=',$date)->orderBy('created_at','desc')->get();
+		return view('admin.daily_accounce', ['accounce_costs' => $accounce_costs , 'date' => $date ,'outdoor_incomes'=> $outdoor_incomes,'indoor_incomes'=>$indoor_incomes,'indoor_patient_incomes'=>$indoor_patient_incomes]);
 	}
 
 	public function monthlyAccounce(Request $request)
@@ -39,12 +43,12 @@ class TotalReportController extends Controller
 						->select('taka','created_at',DB::raw('SUM(taka) as totalCost'))
 						->groupBy(DB::raw('Date(created_at)'))
 						->get(array('taka','created_at'));
-		$accounce_incomes = OutdoorIncome::whereMonth('created_at' , '=' , $month)
+		$outdoor_incomes = OutdoorIncome::whereMonth('created_at' , '=' , $month)
 						->select('taka','created_at',DB::raw('SUM(taka) as totalIncome'))
 						->groupBy(DB::raw('Date(created_at)'))
 						->get(array('taka','created_at'));
 						
-		return view('admin.monthly_accounce', ['accounce_costs' => $accounce_costs,'date'=> $date,'accounce_incomes'=> $accounce_incomes]);
+		return view('admin.monthly_accounce', ['accounce_costs' => $accounce_costs,'date'=> $date,'outdoor_incomes'=> $outdoor_incomes]);
 	}
 
 	public function dailyEntryHospital(Request $request)
