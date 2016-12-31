@@ -97,6 +97,11 @@ class InvoiceController extends Controller
         $invoice->total = $request['total'];
         $invoice->receive_cash = $request['receive_cash'];
 
+        $report = Report::where('patient_id',$invoice->patient_id)->first();
+        $report->due = "0";
+        $report->receive_cash = $report->receive_cash;
+        $report->update();
+
         $indoorPatientIncome = new IndoorPatientIncome();
         $indoorPatientIncome->invoice_id = $id;
         $indoorPatientIncome->taka = $request['receive_cash'];

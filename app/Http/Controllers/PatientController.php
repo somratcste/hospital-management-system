@@ -91,14 +91,27 @@ class PatientController extends Controller
     public function details(Request $request)
     {
         $report = Report::where('patient_id',$request['patient_id'])->first();
-        $reportproducts = ReportProduct::where('report_id',$report->id)->get();
-        $money_report = $report->receive_cash;
-        $money_report = InvoiceoutController::convert_number_to_words($money_report);
+        if($report == NULL){
+            $money_report = 0;
+            $reportproducts = 0 ;
+        }else {
+            $reportproducts = ReportProduct::where('report_id',$report->id)->get();
+            $money_report = $report->receive_cash;
+            $money_report = InvoiceoutController::convert_number_to_words($money_report);
+        }  
         $operation = Operation::where('patient_id',$request['patient_id'])->first();
-        $operationproducts =OperationProduct::where('operation_id',$operation->id)->get();
+        if($operation == NULL){
+            $operationproducts = 0 ;
+        }else {
+            $operationproducts =OperationProduct::where('operation_id',$operation->id)->get();
+        }   
         $invoice = Invoice::where('patient_id',$request['patient_id'])->first();
-        $money_invoice = $invoice->total;
-        $money_invoice = InvoiceoutController::convert_number_to_words($money_invoice);
+        if($invoice == NUll){
+            $money_invoice = 0 ;
+        } else {
+            $money_invoice = $invoice->total;
+            $money_invoice = InvoiceoutController::convert_number_to_words($money_invoice);
+        }
         $patient = Patient::find($request['patient_id']);
         return view('admin.patient_details',['patient'=>$patient,'report'=>$report,'reportproducts'=>$reportproducts,'money_report'=>$money_report,'operation'=>$operation,'operationproducts'=>$operationproducts,'invoice'=>$invoice,'money_invoice'=>$money_invoice]);
     }

@@ -111,6 +111,10 @@
 
 
   <!--Report info start -->
+  @php
+    if($report == NULL){
+    } else {
+  @endphp
   <div class="row">
     <div class="panel mb25">
         <div class="panel-heading border">
@@ -232,9 +236,14 @@
       </div>
     </div>
   </div>
+  @php } @endphp
   <!--Report Info end -->
 
   <!--Operation info start -->
+  @php
+    if($operation == NULL){
+    } else {
+  @endphp
   <div class="row">
     <div class="panel mb25">
         <div class="panel-heading border">
@@ -319,9 +328,14 @@
       </div>
     </div>
   </div>
+  @php } @endphp
   <!--Operation Info end -->
 
   <!--Invoice info start -->
+  @php
+    if($invoice==NULL){
+    } else {
+  @endphp
   <div class="row">
     <div class="panel mb25">
         <div class="panel-heading border">
@@ -356,7 +370,7 @@
             </tr>
             </tr>
               <td>Patient Name</td>
-              <td>{{ $invoice->patient->name }}</td>
+              <td>{{ $invoice->name }}</td>
             </tr>            
           </tbody>
         </table>
@@ -516,6 +530,7 @@
       </div>
     </div>
   </div>
+  @php } @endphp
   <!--Invoice Info end -->
 
   <!-- /main area -->
