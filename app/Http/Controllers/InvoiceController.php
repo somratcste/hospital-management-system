@@ -85,6 +85,12 @@ class InvoiceController extends Controller
         $seat->status = "empty";
         $seat->update();
 
+        $report = Report::where('patient_id',$invoice->patient_id)->first();
+        $report->due = "0";
+        $report->receive_cash = $report->total;
+        $report->update();
+
+
         $invoice->save();
         return redirect()->route('invoice.index')->with(['success' => 'Invoice Create Successfully'] );
     }
@@ -96,11 +102,6 @@ class InvoiceController extends Controller
         // $invoice->total_amount = $request['total_amount'];
         $invoice->total = $request['total'];
         $invoice->receive_cash = $request['receive_cash'];
-
-        $report = Report::where('patient_id',$invoice->patient_id)->first();
-        $report->due = "0";
-        $report->receive_cash = $report->receive_cash;
-        $report->update();
 
         $indoorPatientIncome = new IndoorPatientIncome();
         $indoorPatientIncome->invoice_id = $id;
