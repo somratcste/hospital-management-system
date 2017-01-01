@@ -33,7 +33,7 @@
               @if(Auth::user()->refund_id == 1)
               <th>Refund</th>
               @endif
-              @if(Auth::user()->outdoor_patient_delete_id == 1)
+              @if(Auth::user()->super_id == 1)
               <th>Delete</th>
               @endif
             </tr>
@@ -48,7 +48,7 @@
               @if(Auth::user()->refund_id == 1)
               <th>Refund</th>
               @endif
-              @if(Auth::user()->outdoor_patient_delete_id == 1)
+              @if(Auth::user()->super_id == 1)
               <th>Delete</th>
               @endif
             </tr>
@@ -141,7 +141,7 @@
                 </form>
               </td>
               @endif
-              @if(Auth::user()->outdoor_patient_delete_id == 1)
+              @if(Auth::user()->super_id == 1)
 
               <td><a data-toggle="modal" data-target="#delete<?php echo $i; ?>" href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
               @endif

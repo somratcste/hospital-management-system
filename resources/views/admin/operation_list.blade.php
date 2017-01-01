@@ -31,7 +31,7 @@
               <th>Operation ID</th>
               <th>View</th>
               <th>Edit</th>
-              @if(Auth::user()->test_delete_id == 1)
+              @if(Auth::user()->super_id == 1)
               <th>Delete</th>
               @endif
             </tr>
@@ -44,7 +44,7 @@
               <th>Operation ID</th>
               <th>View</th>
               <th>Edit</th>
-              @if(Auth::user()->test_delete_id == 1)
+              @if(Auth::user()->super_id == 1)
               <th>Delete</th>
               @endif
             </tr>          
@@ -74,7 +74,7 @@
                 </form>
               </td>
               
-              @if(Auth::user()->test_delete_id == 1)
+              @if(Auth::user()->super_id == 1)
               <td><a data-toggle="modal" data-target="#delete<?php echo $i; ?>" href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
               @endif
               <div class="modal" id="delete<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">

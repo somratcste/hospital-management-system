@@ -30,10 +30,8 @@
               <th>P. ID</th>
               <th>View</th>
               <th>Print</th>
-              @if(Auth::user()->invoice_edit_id == 1)
               <th>Edit</th>
-              @endif
-              @if(Auth::user()->invoice_delete_id == 1)
+              @if(Auth::user()->super_id == 1)
               <th>Delete</th>
               @endif
             </tr>
@@ -45,10 +43,8 @@
               <th>P. ID</th>
               <th>View</th>
               <th>Print</th>
-              @if(Auth::user()->invoice_edit_id == 1)
               <th>Edit</th>
-              @endif
-              @if(Auth::user()->invoice_delete_id == 1)
+              @if(Auth::user()->super_id == 1)
               <th>Delete</th>
               @endif
             </tr>
@@ -222,7 +218,7 @@
                 <button class="btn btn-primary">Print</button>
                 </form>
               </td>
-              @if(Auth::user()->invoice_edit_id == 1 && $invoice->total != $invoice->receive_cash)
+              @if($invoice->total != $invoice->receive_cash)
               <td><a data-toggle="modal" data-target="#edit<?php echo $i; ?>" href=""><button type="button" class="btn btn-info">Edit</button></a></td>
               @else
                 <td><button type="button" class="btn btn-info">Paid</button></td>
@@ -306,7 +302,7 @@
    </form>
               
 
-              @if(Auth::user()->invoice_delete_id == 1)
+              @if(Auth::user()->super_id == 1)
               <td><a data-toggle="modal" data-target="#delete<?php echo $i; ?>" href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
               @endif
               <div class="modal" id="delete<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">

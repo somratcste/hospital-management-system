@@ -30,7 +30,7 @@
               <th>ID</th>
               <th>Phone</th>
               <th>View</th>
-              @if(Auth::user()->indoor_patient_delete_id == 1)
+              @if(Auth::user()->super_id == 1)
               <th>Delete</th>
               @endif
             </tr>
@@ -42,7 +42,7 @@
               <th>ID</th>
               <th>Phone</th>
               <th>View</th>
-              @if(Auth::user()->indoor_patient_delete_id == 1)
+              @if(Auth::user()->super_id == 1)
               <th>Delete</th>
               @endif
             </tr>
@@ -55,66 +55,16 @@
               <td>{{ $patient->name }}</td>
               <td>{{ $patient->id }}</td>
               <td>{{ $patient->pphone }}</td>
-              <td><a data-toggle="modal" data-target="#details<?php echo $i; ?>" href=""><button type="button" class="btn btn-success">Details</button></a></td>
-              <div class="modal" id="details<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                      <h4 class="modal-title">Patient's Information</h4>
-                    </div>
-                    <div class="modal-body">
-                      <div class="row">
-                        <div class="col-xs-1"></div>
-                        <div class="col-xs-4">
-                          <p>Admit DateTime</p>
-                          <p>Name</p>
-                          <p>Patient ID</p>
-                          @if($patient->fh == 1)
-                            <p>Father's Name</p>
-                          @else
-                            <p>Husband Name</p>
-                          @endif
-                          <p>Gender</p>
-                          <p>Blood Group</p>
-                          <p>Age</p>
-                          <p>Religion</p>
-                          <p>Occupation</p>
-                          <p>Consultant</p>
-                          <p>Allocated Seat</p>
-                          <p>Mobile</p>
-                          <p>Home Phone</p>
-                          <p>Local Address</p>
-                          <p>Permanent Address</p>
-                        </div>
-                        <div class="col-xs-7">
-                          <P> : {{ $patient->created_at->format('d-m-Y h.i.A')}}</P>
-                          <p> : {{ $patient->name }}</p>
-                          <p> : {{ $patient->id or '101' }}</p>
-                          <p> :  {{ $patient->fname }}</p>
-                          <p> : {{ $patient->gender }}</p>
-                          <p> : {{ $patient->bloodGroup }}</p>
-                          <p> : {{ $patient->age }}</p>
-                          <p> : {{ $patient->religion }}</p>
-                          <p style="text-transform: capitalize;"> : {{ $patient->occupation }}</p>
-                          <p> : {{ $patient->doctor->name }}</p>
-                          <p> : {{ $patient->seat->seatFloor }}nd Floor {{ $patient->seat->seatNo}} no. Bed</p>
-                          <p> : {{ $patient->pphone }}</p>
-                          <p> : {{ $patient->hphone }}</p>
-                          <p> : {{ $patient->laddress }}</p>
-                          <p> : {{ $patient->paddress }}</p>
-
-                </div>
-                      </div>
-                    </div>
-                    <div class="modal-footer no-border">
-                      <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <td>
+                <form action="{{ route('patient.details') }}" method="GET">
+                  {{ csrf_field() }}
+                <input name="_method" type="hidden" value="GET">
+                <input type="hidden" name="patient_id" value="{{ $patient->id }}">
+                <button class="btn btn-primary">Details</button>
+                </form>
+              </td>
               
-              @if(Auth::user()->indoor_patient_delete_id == 1)
+              @if(Auth::user()->super_id == 1)
               <td><a data-toggle="modal" data-target="#delete<?php echo $i; ?>" href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
               @endif
               <div class="modal" id="delete<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">

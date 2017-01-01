@@ -27,8 +27,7 @@
 
         <ul class="nav">
 
-          <!-- dashboard -->
-    
+          <!-- dashboard -->   
           <li>
             <a href="">
               <i class="fa fa-flask"></i>
@@ -50,12 +49,12 @@
             </ul>
           </li>
           <!-- /dashboard -->
-           @if(Auth::user()->outdoor_patient_id ==1)
 
-          <!--Outdoor patient -->
+          @if(Auth::user()->outdoor_id == 1)
+          <!--Outdoor patient -->         
           <li>
             <a href="javascript:;">
-              <i class="fa fa-tint"></i>
+              <i class="fa fa-toggle-on"></i>
               <span>Outdoor Patient</span>
             </a>
             <ul class="sub-menu">
@@ -64,11 +63,6 @@
                   <span>Add Patient</span>
                 </a>
               </li>
-              <!-- <li>
-                <a href="{{ route('invoiceout.index')}}">
-                  <span>Add Report</span>
-                </a>
-              </li> -->
               <li>
                 <a href="{{ route('invoiceout.create')}}">
                   <span>DUE List</span>
@@ -80,13 +74,14 @@
                 </a>
               </li>
               @endif
-              @if(Auth::user()->refund_id ==1)
+              @if(Auth::user()->refund_id == 1)
               <li>
                 <a href="{{ route('refund.index')}}">
                   <span>Refund List</span>
                 </a>
               </li>
               @endif
+              @if(Auth::user()->outdoor_id == 1)
               <li>
                 <a href="{{ route('report.index') }}">
                   <span>Indoor Test</span>
@@ -99,29 +94,17 @@
               </li>
              </ul>
             </li>
+            <!-- End Outdoor Patient -- > 
+            @endif
 
-            
-
-            @if(Auth::user()->rf_id ==1)
-
+            @if(Auth::user()->rf_id==1)
             <!--R.F -->
           <li>
             <a href="javascript:;">
-              <i class="fa fa-send"></i>
+              <i class="fa fa-toggle-on"></i>
               <span>R.F.</span>
             </a>
             <ul class="sub-menu">
-              <li>
-                <a href="{{ route('marketing.index')}}">
-                  <span>Marketing Officer</span>
-                </a>
-              </li>
-              <li>
-                <a href="{{ route('village.index') }}">
-                  <span>Village Doctor</span>
-                </a>
-              </li>
-              @if(Auth::user()->name=='super')
               <li>
                 <a href="{{ route('searchrf.index') }}">
                   <span>Search V. Doctor</span>
@@ -132,36 +115,14 @@
                   <span>Search M. Officer</span>
                 </a>
               </li>
-              @endif
             </ul>
           </li>
           <!-- End R.F -->
           @endif
-          @if(Auth::user()->doctor_id ==1)
 
-          <!--R.F -->
-          <li>
-            <a href="javascript:;">
-              <i class="fa fa-map-marker"></i>
-              <span>Doctor</span>
-            </a>
-            <ul class="sub-menu">
-              <li>
-                <a href="{{ route('doctor.index') }}">
-                  <span>Doctor</span>
-                </a>
-              </li>
-              <li>
-                <a href="{{ route('specialist.index') }}">
-                  <span>Specialist</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-          @endif
-          <!-- End R.F -->
-          @if(Auth::user()->indoor_patient_id ==1)
-          <!--Admit patient -->
+
+          @if(Auth::user()->indoor_id == 1)
+          <!--Indoor patient -->
           <li>
             <a href="javascript:;">
               <i class="fa fa-toggle-on"></i>
@@ -180,7 +141,8 @@
               </li>
              </ul>
             </li>
-          @endif
+          <!-- End Indoor Patient-->
+
           <!-- employee -->
           <!-- @if(Auth::user()->employee_id ==1)
           <li>
@@ -208,79 +170,15 @@
             </li>
             @endif -->
           <!-- /employee -->
-          @if(Auth::user()->seat_id ==1)
-          <!-- Appoinment -->
-          <li>
-            <a href="javascript:;">
-              <i class="fa fa-tag"></i>
-              <span>Seat</span>
-            </a>
-            <ul class="sub-menu">
-              <li>
-                <a href="{{ route('seat.index') }}">
-                  <span>Add New</span>
-                </a>
-              </li>
-              @for($i=1;$i<=5;$i++)
-              <li>
-                <a href="{{ route('seat.list' , ['seat' => $i ]) }}">
-                  <span><?php if($i==1) echo '1st Floor' ;
-                              else if($i==2) echo '2nd Floor';
-                              else if ($i==3) echo '3rd Floor';
-                              else if ($i==4) echo '4th Floor';
-                              else if ($i==5) echo '5th Floor';
-                        ?></span>
-                </a>
-              </li>
-              @endfor
-            </ul>
-          </li>
-          <!-- /Appoinment -->
-          @endif
 
-          <!-- Report -->
-          @if(Auth::user()->test_id ==1)
-          <li>
-            <a href="javascript:;">
-              <i class="fa fa-map-marker"></i>
-              <span>Test</span>
-              {{-- <span class="label label-success pull-right">2</span> --}}
-            </a>
-         
-            <ul class="sub-menu">
-            
-              <li>
-                <a href="{{ route('report.index') }}">
-                  <span>Add New Test</span>
-                </a>
-              </li>
-              <li>
-                <a href="{{ route('report.create') }}">
-                  <span>Test List</span>
-                </a>
-              </li>
-             
-              <li>
-                <a href="{{ route('reportType.index') }}">
-                  <span>New Type</span>
-                </a>
-              </li>
-              <li>
-                <a href="{{ route('reportType.list') }}">
-                  <span>Type List</span>
-                </a>
-              </li>
-             
-            </ul>
-          </li>
-           @endif
-         
-          <!-- /Report -->
-          @if(Auth::user()->operation_id ==1)
+          <!-- Appoinment -->
+          
+          <!-- /Appoinment -->
+
           <!-- Operation -->
           <li>
             <a href="javascript:;">
-              <i class="fa fa-send"></i>
+              <i class="fa fa-toggle-on"></i>
               <span>Operation</span>
             </a>
             <ul class="sub-menu">
@@ -295,24 +193,10 @@
                   <span>Operation List</span>
                 </a>
               </li>
-             
-              <li>
-                <a href="{{ route('operationType.index') }}">
-                  <span>O.T Type</span>
-                </a>
-              </li>
-              <li>
-                <a href="{{ route('operationType.list') }}">
-                  <span>O.T List</span>
-                </a>
-              </li>
-
             </ul>
           </li>
           <!-- /Operation -->
-          @endif
-       
-          @if(Auth::user()->invoice_id ==1)
+
           <!-- Invoice -->
           <li>
             <a href="javascript:;">
@@ -334,16 +218,9 @@
           </li>
           <!-- /Invoice -->
           @endif
-          @if(Auth::user()->pharmacy_id ==1)
-          <li>
-            <a href="http://localhost/pharmacy/index.php" target="_blank">
-              <i class="fa fa-toggle-on"></i>
-              <span>Pharmacy Section</span>
-            </a>
-          </li>
-          @endif
 
-          @if(Auth::user()->stock_id == 1)
+          @if(Auth::user()->accounce_id == 1)
+          <!--Accounce start-->
           <li>
             <a href="javascript:;">
               <i class="fa fa-toggle-on"></i>
@@ -357,31 +234,29 @@
               </li>            
             </ul>
           </li>
-     
+          <!--End Accounce-->
           @endif
-
+     
           @if(Auth::user()->stock_id == 1)
+          <!--stock start-->
           <li>
             <a href="javascript:;">
               <i class="fa fa-toggle-on"></i>
               <span>Stock</span>
             </a>
-            <ul class="sub-menu">
+            <ul class="sub-menu">          
               <li>
                 <a href="{{ route('stock.create')}}">
                   <span>Stock Process</span>
                 </a>
-              </li>            
-              <li>
-                <a href="{{ route('stock.index')}}">
-                  <span>Stock Item</span>
-                </a>
               </li>
             </ul>
           </li>
-     
+          <!--End Stock -->
           @endif
-          @if(Auth::user()->user_id ==1)
+     
+          @if(Auth::user()->super_id == 1)
+          <!--Create User -->
           <li>
             <a href="javascript:;">
               <i class="fa fa-toggle-on"></i>
@@ -400,28 +275,154 @@
               </li>
             </ul>
           </li>
+          <!-- End User -->
+          
+          <!-- Start Pharmacy section -->
+          <li>
+            <a href="http://localhost/pharmacy/index.php" target="_blank">
+              <i class="fa fa-toggle-on"></i>
+              <span>Pharmacy Section</span>
+            </a>
+          </li>
+          <!--End  Pharmacy Section -->
           @endif
 
-          <!-- User Create -->
-          <!-- <li>
+          @if(Auth::user()->data_entry_id == 1)
+          <!-- Data Entry start -->
+          <li>
             <a href="javascript:;">
               <i class="fa fa-toggle-on"></i>
-              <span>Create User</span>
+              <span>Data Entry</span>
             </a>
             <ul class="sub-menu">
               <li>
-                <a href="">
-                  <span>Add New User</span>
+                <a href="javascript:;">
+                  <!-- <i class="fa fa-toggle-on"></i> -->
+                  <span>R.F.</span>
                 </a>
-              </li>            
-              <li>
-                <a href="">
-                  <span>User Role</span>
-                </a>
+                <ul class="sub-menu">
+                  <li>
+                    <a href="{{ route('marketing.index')}}">
+                      <i class="fa fa-map-marker"></i>
+                      <span>Marketing Officer</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{ route('village.index') }}">
+                      <i class="fa fa-map-marker"></i>
+                      <span>Village Doctor</span>
+                    </a>
+                  </li>
+                </ul>
               </li>
+              <li>
+                <a href="javascript:;">
+                  <!-- <i class="fa fa-toggle-on"></i> -->
+                  <span>Doctor</span>
+                </a>
+                <ul class="sub-menu">
+                  <li>
+                    <a href="{{ route('doctor.index') }}">
+                      <i class="fa fa-map-marker"></i>
+                      <span>Doctor</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{ route('specialist.index') }}">
+                      <i class="fa fa-map-marker"></i>
+                      <span>Specialist</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="javascript:;">
+                  <!-- <i class="fa fa-toggle-on"></i> -->
+                  <span>Seat</span>
+                </a>
+                <ul class="sub-menu">
+                  <li>
+                    <a href="{{ route('seat.index') }}">
+                      <i class="fa fa-map-marker"></i>
+                      <span>Add New</span>
+                    </a>
+                  </li>
+                  @for($i=1;$i<=5;$i++)
+                  <li>
+                    <a href="{{ route('seat.list' , ['seat' => $i ]) }}">
+                      <i class="fa fa-map-marker"></i>
+                      <span><?php if($i==1) echo '1st Floor' ;
+                                  else if($i==2) echo '2nd Floor';
+                                  else if ($i==3) echo '3rd Floor';
+                                  else if ($i==4) echo '4th Floor';
+                                  else if ($i==5) echo '5th Floor';
+                            ?></span>
+                    </a>
+                  </li>
+                  @endfor
+                </ul>
+              </li>
+              <li>
+                <a href="javascript:;">
+                  <!-- <i class="fa fa-toggle-on"></i> -->
+                  <span>Test</span>
+                </a>
+             
+                <ul class="sub-menu">             
+                  <li>
+                    <a href="{{ route('reportType.index') }}">
+                      <i class="fa fa-map-marker"></i>
+                      <span>New Type</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{ route('reportType.list') }}">
+                    <i class="fa fa-map-marker"></i>
+                      <span>Type List</span>
+                    </a>
+                  </li>
+                 
+                </ul>
+              </li>
+               <li>
+                  <a href="javascript:;">
+                    <!-- <i class="fa fa-toggle-on"></i> -->
+                    <span>Operation</span>
+                  </a>
+                  <ul class="sub-menu">                      
+                    <li>
+                      <a href="{{ route('operationType.index') }}">
+                        <i class="fa fa-map-marker"></i>
+                        <span>O.T Type</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{{ route('operationType.list') }}">
+                        <i class="fa fa-map-marker"></i>
+                        <span>O.T List</span>
+                      </a>
+                    </li>
+
+                  </ul>
+                </li> 
+                <li>
+                  <a href="javascript:;">
+                    <!-- <i class="fa fa-toggle-on"></i> -->
+                    <span>Stock</span>
+                  </a>
+                  <ul class="sub-menu">           
+                    <li>
+                      <a href="{{ route('stock.index')}}">
+                        <i class="fa fa-map-marker"></i>
+                        <span>Stock Item</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
             </ul>
-          </li> -->
-          <!-- /End User -->
+          </li>
+          <!-- End Data  Entry -->
+          @endif
 
           <!-- menu levels -->
           <!-- <li>

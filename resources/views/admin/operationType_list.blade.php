@@ -28,10 +28,8 @@
               <th>No.</th>
               <th>Name</th>
               <th>cost</th>
-              @if(Auth::user()->operation_edit_id == 1)
               <th>Edit</th>
-              @endif
-              @if(Auth::user()->operation_delete_id == 1)
+              @if(Auth::user()->super_id == 1)
               <th>Delete</th>
               @endif
             </tr>
@@ -41,10 +39,8 @@
               <th>No.</th>
               <th>Name</th>
               <th>cost</th>
-              @if(Auth::user()->operation_edit_id == 1)
               <th>Edit</th>
-              @endif
-              @if(Auth::user()->operation_delete_id == 1)
+              @if(Auth::user()->super_id == 1)
               <th>Delete</th>
               @endif
             </tr>         
@@ -57,9 +53,9 @@
               <td>{{ $operationType->name }}</td>
               <td>{{ $operationType->cost }} Tk.</td>
               
-              @if(Auth::user()->operation_edit_id == 1)
+
               <td><a data-toggle="modal" data-target="#edit<?php echo $i; ?>" href=""><button type="button" class="btn btn-info">Edit</button></a></td>
-              @endif
+
               <div class="modal" id="edit<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -97,7 +93,7 @@
                </form>
               
 
-              @if(Auth::user()->operation_delete_id == 1)
+              @if(Auth::user()->super_id == 1)
               <td><a data-toggle="modal" data-target="#delete<?php echo $i; ?>" href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
               @endif
               <div class="modal" id="delete<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
