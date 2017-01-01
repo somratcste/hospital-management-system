@@ -28,11 +28,9 @@
               <th>No.</th>
               <th>Name</th>
               <th>User ID</th>
-              @if(Auth::user()->name == 'super')
               <th>Edit</th>
               <th>Reset Password</th>
               <th>Delete</th>
-              @endif
             </tr>
           </thead>
           <tfoot>
@@ -40,11 +38,9 @@
               <th>No.</th>
               <th>Name</th>
               <th>User ID</th>
-              @if(Auth::user()->name == 'super')
               <th>Edit</th>
               <th>Reset Password</th>
               <th>Delete</th>
-              @endif
             </tr>
           </tfoot>
           <tbody>
@@ -56,9 +52,9 @@
               <td>{{ $user->id }}</td>
               
               
-              @if(Auth::user()->name == 'super')
+
               <td><a data-toggle="modal" data-target="#edit<?php echo $i; ?>" href=""><button type="button" class="btn btn-info">Edit</button></a></td>
-              @endif
+   
               <div class="modal" id="edit<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -74,7 +70,7 @@
                         <div class="col-md-6" style="width: 450px;">
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">User Name</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ $user->name }}" readonly>
@@ -90,34 +86,24 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="outdoor_patient_id" class="col-md-4 control-label">Outdoor Patient</label>
+                            <label for="outdoor_id" class="col-md-4 control-label">Outdoor </label>
 
                             <div class="col-md-6">
-                            <select class="form-control" name="outdoor_patient_id" required>      
+                            <select class="form-control" name="outdoor_id" required>      
                               <option value="0">No</option>
-                              <option value="1" {{ $user->outdoor_patient_id == 1 ? 'selected'  : '' }}>Yes</option>
+                              <option value="1" {{ $user->outdoor_id == 1 ? 'selected'  : '' }}>Yes</option>
                           </select>       
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Patient Edit</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="outdoor_patient_edit_id" required>      
-                              <option value="0">No</option>
-                              <option value="1" {{ $user->outdoor_patient_edit_id == 1 ? 'selected'  : '' }}>Yes</option>
-                          </select>       
-                            </div>
-                        </div>
 
                         <div class="form-group">
-                            <label class="col-md-4 control-label">Patient Delete</label>
+                            <label for="indoor_id" class="col-md-4 control-label">Indoor </label>
 
                             <div class="col-md-6">
-                            <select class="form-control" name="outdoor_patient_delete_id" required>      
+                            <select class="form-control" name="indoor_id" required>      
                               <option value="0">No</option>
-                              <option value="1" {{ $user->outdoor_patient_delete_id == 1 ? 'selected'  : '' }}>Yes</option>
+                              <option value="1" {{ $user->indoor_id == 1 ? 'selected'  : '' }}>Yes</option>
                           </select>       
                             </div>
                         </div>
@@ -134,28 +120,6 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-4 control-label">R.F Edit </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="rf_edit_id" required>      
-                              <option value="0">No</option>
-                              <option value="1" {{ $user->rf_edit_id == 1 ? 'selected'  : '' }}>Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">R.F Delete  </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="rf_delete_id" required>      
-                              <option value="0">No</option>
-                              <option value="1" {{ $user->rf_delete_id == 1 ? 'selected'  : '' }}>Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
                             <label class="col-md-4 control-label">Refund </label>
 
                             <div class="col-md-6">
@@ -167,245 +131,12 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="rf_id" class="col-md-4 control-label">Doctor </label>
+                            <label class="col-md-4 control-label">Accounce </label>
 
                             <div class="col-md-6">
-                            <select class="form-control" name="doctor_id" required>      
+                            <select class="form-control" name="accounce_id" required>      
                               <option value="0">No</option>
-                              <option value="1" {{ $user->doctor_id == 1 ? 'selected'  : '' }}>Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Doctor Edit </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="doctor_edit_id" required>      
-                              <option value="0">No</option>
-                              <option value="1" {{ $user->doctor_edit_id == 1 ? 'selected'  : '' }}>Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Doctor Delete  </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="doctor_delete_id" required>      
-                              <option value="0">No</option>
-                              <option value="1" {{ $user->doctor_delete_id == 1 ? 'selected'  : '' }}>Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="indoor_patient_id" class="col-md-4 control-label">Indoor Admit Patient </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="indoor_patient_id" required>      
-                              <option value="0">No</option>
-                              <option value="1" {{ $user->indoor_patient_id == 1 ? 'selected'  : '' }}>Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Indoor Patient Edit</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="indoor_patient_edit_id" required>      
-                              <option value="0">No</option>
-                              <option value="1" {{ $user->indoor_patient_edit_id == 1 ? 'selected'  : '' }}>Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="indoor_patient_id" class="col-md-4 control-label">Indoor Patient Delete </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="indoor_patient_delete_id" required>      
-                              <option value="0">No</option>
-                              <option value="1" {{ $user->indoor_patient_delete_id == 1 ? 'selected'  : '' }}>Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-                    </div>
-                     <div class="col-md-6" style="width: 450px;">
-
-                        <div class="form-group">
-                            <label for="employee_id" class="col-md-4 control-label">Employee </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="employee_id" required>      
-                              <option value="0">No</option>
-                              <option value="1" {{ $user->employee_id == 1 ? 'selected'  : '' }}>Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Employee Edit</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="employee_edit_id" required>      
-                              <option value="0">No</option>
-                              <option value="1" {{ $user->employee_edit_id == 1 ? 'selected'  : '' }}>Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Employee Delete</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="employee_delete_id" required>      
-                              <option value="0">No</option>
-                              <option value="1" {{ $user->employee_delete_id == 1 ? 'selected'  : '' }}>Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="seat_id" class="col-md-4 control-label">Seat </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="seat_id" required>      
-                              <option value="0">No</option>
-                              <option value="1" {{ $user->seat_id == 1 ? 'selected'  : '' }}>Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Seat Edit</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="seat_edit_id" required>      
-                              <option value="0">No</option>
-                              <option value="1" {{ $user->seat_edit_id == 1 ? 'selected'  : '' }}>Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Seat Delete</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="seat_delete_id" required>      
-                              <option value="0">No</option>
-                              <option value="1" {{ $user->seat_delete_id == 1 ? 'selected'  : '' }}>Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="test_id" class="col-md-4 control-label">Test </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="test_id" required>      
-                              <option value="0">No</option>
-                              <option value="1" {{ $user->test_id == 1 ? 'selected'  : '' }}>Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Test Edit</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="test_edit_id" required>      
-                              <option value="0">No</option>
-                              <option value="1" {{ $user->test_edit_id == 1 ? 'selected'  : '' }}>Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Test Delete</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="test_delete_id" required>      
-                              <option value="0">No</option>
-                              <option value="1" {{ $user->test_delete_id == 1 ? 'selected'  : '' }}>Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Operation </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="operation_id" required>      
-                              <option value="0">No</option>
-                              <option value="1" {{ $user->operation_id == 1 ? 'selected'  : '' }}>Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Operation Edit</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="operation_edit_id" required>      
-                              <option value="0">No</option>
-                              <option value="1" {{ $user->operation_edit_id == 1 ? 'selected'  : '' }}>Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Operation Delete</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="operation_delete_id" required>
-                              <option value="0">No</option>
-                              <option value="1" {{ $user->operation_delete_id == 1 ? 'selected'  : '' }}>Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="invoice_id" class="col-md-4 control-label">Indoor Invoice </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="invoice_id" required>      
-                              <option value="0">No</option>
-                              <option value="1" {{ $user->invoice_id == 1 ? 'selected'  : '' }}>Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Invoice Edit</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="invoice_edit_id" required>      
-                              <option value="0">No</option>
-                              <option value="1" {{ $user->invoice_edit_id == 1 ? 'selected'  : '' }}>Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Invoice Delete</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="invoice_delete_id" required>      
-                              <option value="0">No</option>
-                              <option value="1" {{ $user->invoice_delete_id == 1 ? 'selected'  : '' }}>Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="pharmacy_id" class="col-md-4 control-label">Pharmacy </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="pharmacy_id" required>      
-                              <option value="0">No</option>
-                              <option value="1" {{ $user->pharmacy_id == 1 ? 'selected'  : '' }}>Yes</option>
+                              <option value="1" {{ $user->accounce_id == 1 ? 'selected'  : '' }}>Yes</option>
                           </select>       
                             </div>
                         </div>
@@ -422,15 +153,16 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="invoice_id" class="col-md-4 control-label">Create User </label>
+                            <label class="col-md-4 control-label">Data Entry </label>
 
                             <div class="col-md-6">
-                            <select class="form-control" name="user_id" required>      
+                            <select class="form-control" name="data_entry_id" required>      
                               <option value="0">No</option>
-                              <option value="1" {{ $user->user_id == 1 ? 'selected'  : '' }}>Yes</option>
+                              <option value="1" {{ $user->data_entry_id == 1 ? 'selected'  : '' }}>Yes</option>
                           </select>       
                             </div>
                         </div>
+
 
                         <div class="form-group">
                           <div class="col-md-6 col-md-offset-4" style="margin-top:15px;">
@@ -440,7 +172,7 @@
                           </div>
                       </div>
 
-                        </div>
+                    </div>
                     
                 </div> <!--panel body -->
                 
@@ -515,9 +247,9 @@
                 </form>
               
 
-              @if(Auth::user()->name == 'super')
+ 
               <td><a data-toggle="modal" data-target="#delete<?php echo $i; ?>" href=""><button type="button" class="btn btn-danger">Delete</button></a></td>
-              @endif
+
               <div class="modal" id="delete<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">

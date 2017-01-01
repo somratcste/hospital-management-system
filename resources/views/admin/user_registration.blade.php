@@ -22,7 +22,7 @@
                         <div class="col-md-6" style="width: 450px;">
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">User Name</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
@@ -35,8 +35,73 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label for="password" class="col-md-4 control-label">Password</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control" name="password" autocomplete="off" required>
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="outdoor_id" class="col-md-4 control-label">Outdoor </label>
+
+                            <div class="col-md-6">
+                            <select class="form-control" name="outdoor_id" required>      
+                              <option value="0">No</option>
+                              <option value="1">Yes</option>
+                          </select>       
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="indoor_patient_id" class="col-md-4 control-label">Indoor </label>
+
+                            <div class="col-md-6">
+                            <select class="form-control" name="indoor_id" required>      
+                              <option value="0">No</option>
+                              <option value="1">Yes</option>
+                          </select>       
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="rf_id" class="col-md-4 control-label">Reference Fund (R.F) </label>
+
+                            <div class="col-md-6">
+                            <select class="form-control" name="rf_id" required>      
+                              <option value="0">No</option>
+                              <option value="1">Yes</option>
+                          </select>       
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Refund</label>
+
+                            <div class="col-md-6">
+                            <select class="form-control" name="refund_id" required>      
+                              <option value="0">No</option>
+                              <option value="1">Yes</option>
+                          </select>       
+                            </div>
+                        </div>
+
+
+                    </div>
+                     <div class="col-md-6" style="width: 450px;">
+
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="col-md-4 control-label">E-Mail </label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
@@ -44,20 +109,6 @@
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -78,331 +129,10 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="outdoor_patient_id" class="col-md-4 control-label">Outdoor Patient</label>
+                            <label class="col-md-4 control-label">Accounce </label>
 
                             <div class="col-md-6">
-                            <select class="form-control" name="outdoor_patient_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Patient Edit</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="outdoor_patient_edit_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Patient Delete</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="outdoor_patient_delete_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="rf_id" class="col-md-4 control-label">Reference Fund (R.F) </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="rf_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">R.F Edit </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="rf_edit_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">R.F Delete  </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="rf_delete_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Refund</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="refund_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="rf_id" class="col-md-4 control-label">Doctor </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="doctor_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Doctor Edit </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="doctor_edit_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Doctor Delete  </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="doctor_delete_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="indoor_patient_id" class="col-md-4 control-label">Indoor Admit Patient </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="indoor_patient_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Indoor Patient Edit</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="indoor_patient_edit_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="indoor_patient_id" class="col-md-4 control-label">Indoor Patient Delete </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="indoor_patient_delete_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-                    </div>
-                     <div class="col-md-6" style="width: 450px;">
-
-                        <div class="form-group">
-                            <label for="employee_id" class="col-md-4 control-label">Employee </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="employee_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Employee Edit</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="employee_edit_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Employee Delete</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="employee_delete_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="seat_id" class="col-md-4 control-label">Seat </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="seat_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Seat Edit</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="seat_edit_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Seat Delete</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="seat_delete_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="test_id" class="col-md-4 control-label">Test </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="test_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Test Edit</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="test_edit_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Test Delete</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="test_delete_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Operation </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="operation_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Operation Edit</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="operation_edit_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Operation Delete</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="operation_delete_id" required>
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="invoice_id" class="col-md-4 control-label">Indoor Invoice </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="invoice_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Invoice Edit</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="invoice_edit_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Invoice Delete</label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="invoice_delete_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="pharmacy_id" class="col-md-4 control-label">Pharmacy </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="pharmacy_id" required>      
-                              <option value="0">No</option>
-                              <option value="1">Yes</option>
-                          </select>       
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="invoice_id" class="col-md-4 control-label">Create User </label>
-
-                            <div class="col-md-6">
-                            <select class="form-control" name="user_id" required>      
+                            <select class="form-control" name="accounce_id" required>      
                               <option value="0">No</option>
                               <option value="1">Yes</option>
                           </select>       
@@ -420,7 +150,18 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label for="invoice_id" class="col-md-4 control-label">Data Entry </label>
+
+                            <div class="col-md-6">
+                            <select class="form-control" name="data_entry_id" required>      
+                              <option value="0">No</option>
+                              <option value="1">Yes</option>
+                          </select>       
+                            </div>
                         </div>
+
+                      </div>
                     
                 </div> <!--panel body -->
                 <div class="form-group">
